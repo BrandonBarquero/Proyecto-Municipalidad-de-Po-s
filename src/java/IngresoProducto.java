@@ -63,13 +63,13 @@ public class IngresoProducto extends HttpServlet {
                 lu_ps.setString(7,lc_marca);
                 lu_ps.setString(8,lc_Fecha_Entrada);
                 lu_ps.setString(9,lc_Ubicacion);
-                  lu_ps.setString(10,"Activo");
-                  lu_ps.setString(11,lc_Tipo);
-                   lu_ps.setString(12,lc_Tipo2);
-                    lu_ps.setString(13,lc_Tipo3);
+                lu_ps.setString(10,"Activo");
+                lu_ps.setString(11,lc_Tipo);
+                lu_ps.setString(12,lc_Tipo2);
+                lu_ps.setString(13,lc_Tipo3);
                 ln_r=lu_ps.executeUpdate();
                 if(ln_r>=1){
-               response.sendRedirect("ListarProductos.jsp");
+                response.sendRedirect("ListarProductos.jsp");
                 
                 }else {
                 out.println("<h1> Error</h1>");
