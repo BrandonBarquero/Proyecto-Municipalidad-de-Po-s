@@ -1,4 +1,4 @@
-  function validar_clave(contrasenna){
+  /*function validar_clave(contrasenna){
       if(contrasenna.length >= 8){		
           var mayuscula = false;
           var minuscula = false;
@@ -28,8 +28,8 @@
           }
       }
       return false;
-  }
-
+  }*/
+  /*
 function validar_form()
 {
     var contrasenna = document.getElementById('password').value;
@@ -41,7 +41,7 @@ function validar_form()
         alert('La contraseña ingresada no es fuerte');
     }
 }
-
+*/
  //Formularios
 
 function validarTodo(){
@@ -58,7 +58,6 @@ function validarTodo(){
             alert("Correo Incorrecto");
         return false;
     }
-       
     if(!validateTelefono(document.getElementById('txtTelefono'))){
         alert("Telefono Incorrecto");
         return false;
@@ -67,15 +66,15 @@ function validarTodo(){
           alert("Contraseña Incorecta, verifique que tenga al menos una mayuscula, una minuscula y numeros");
           return false;
     }
-    validarTodo=true;
+    valideTodo = true;
     return valideTodo;
     }
     
     
-    function validarCampo(campo){
+function validarCampo(campo){
     valor = campo.value;
-    if(valor.length == 0 || /ˆ\s+$/.test(valor)){
-        alert("Complete todos los Espacios");
+    if(valor.length === 0 || /ˆ\s+$/.test(valor)){
+        //alert("Complete todos los Espacios");
         return false;
     }
     return true;
@@ -112,7 +111,7 @@ function validateEmail(elementValue){
     }
     return passRegex.test(campo.value);
 }
-
+/*
 function confirmaClave(){
     var contra = document.frmIndice.txtContrasena.value;
     var confirma = document.frmIndice.txtContrasena3.value;
@@ -130,8 +129,7 @@ function confirmaClave(){
         return false;
     }
 }
-
-
+*/
 function validateNum(campo){
     numRegex = /^([0-9])*$/;
     valor = campo.value;
@@ -144,7 +142,7 @@ function validateNum(campo){
 function validarTodoProducto(){
     valideTodo = false;
 
-    if(!validateCampo(document.getElementById('Presupuestario'))){
+    if(!validarCampo(document.getElementById('Presupuestario'))){
         alert("Codigo Presupuestario en blanco o incorrecto.");
         return false;
     }
@@ -196,21 +194,17 @@ function validarTodoProducto(){
         alert("Ubicacion en blanco.");
         return false;
     }
-    validarTodo=true;
+    valideTodo = true;
     return valideTodo;
     }
     
-    
+    /*
     function validarTodoModificar(){
     valideTodo = false;
-
+    
     if(!validarCampo(document.getElementById('txtNombre'))){
         return false;
-   
     }
-    
-   
-       
     if(!validateTelefono(document.getElementById('txtTelefono'))){
         alert("Telefono Incorrecto");
         return false;
@@ -222,7 +216,7 @@ function validarTodoProducto(){
     validarTodo=true;
     return valideTodo;
     }
-    
+    */
     
     function validarFecha(){
     var primera = document.getElementById('Garantia');

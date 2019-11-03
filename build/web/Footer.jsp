@@ -19,13 +19,14 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/timeline.css">
+    <link rel="stylesheet" href="css/timeline.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
     <script src="js/modernizr.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
+    <script language="javascript" src="js/formulario.js"></script>
     </head>
     <body>
      <!--Mensaje Ayuda-->
@@ -60,12 +61,12 @@
                     <div class="col-xs-12 col-sm-6">
                         <h4 class="all-tittles">Desarrolladores</h4>
                         <ul class="list-unstyled">
-                            <li><i class=""></i> Brandon Barquero (Front End) <br> Allan Oviedo (Back End) <i class="zmdi zmdi-facebook zmdi-hc-fw footer-social"> </i><i class="zmdi zmdi-twitter zmdi-hc-fw footer-social"></i></li>
+                            <li><i class=""></i> Brandon Barquero <br> Allan Oviedo <br> Sebastian Ramirez <br> Joseph Cerdas <br> Manfred Gonzalez <i class="zmdi zmdi-facebook zmdi-hc-fw footer-social"> </i><i class="zmdi zmdi-twitter zmdi-hc-fw footer-social"></i></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="footer-copyright full-reset all-tittles">© 2019 Brandon Barquero Allan Oviedo </div>
+            <div class="footer-copyright full-reset all-tittles">© 2019 Brandon Barquero, Allan Oviedo, Sebastian Ramirez, Joseph Cerdas, Manfred Gonzalez </div>
         </footer>
                  <!--Fin Footer PÃ¡gina-->
     </body>

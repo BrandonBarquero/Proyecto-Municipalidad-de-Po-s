@@ -6,7 +6,7 @@
     <title>Insertar producto</title>
     <meta charset=UTF-8? />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="js/formulario.js"></script>
+
 </head>
 <body>
     <%
@@ -56,7 +56,7 @@
         </div>
           
         <div class="container-fluid">
-            <form name="ingreso" action="IngresoProducto" method="post" autocomplete="off" onsubmit="return validarTodoProducto();">
+            <form name="ingreso" action="IngresoProducto" method="post" autocomplete="off" onsubmit="return validarFecha('Garantia','Fecha')">
                 <div class="container-flat-form">
                     <div class="title-flat-form title-flat-blue">Nuevo Producto</div>
                     <div class="row">
@@ -64,28 +64,28 @@
                             <legend><strong>Ingresar Producto</strong></legend><br>
 
                             <div class="group-material">
-                                <input id="Presupuestario" name="Presupuestario" type="number" min="1" class="tooltips-general material-control" placeholder="Escriba aquí el código presupuestario del producto" pattern="[0-9]{1,20}" required="" maxlength="20" data-toggle="tooltip" data-placement="top" title="Solamente nÃºmeros">
+                                <input id="Presupuestario" name="Presupuestario" type="number" min="1" class="tooltips-general material-control" placeholder="Escriba aquí el código presupuestario del producto" pattern="[0-9]{1,20}" required="" maxlength="20" data-toggle="tooltip" data-placement="top" title="Solamente números">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Código Presupuestario</label>
                             </div>
 
                             <div class="group-material">
-                                <input id="nombre" name="nombre" type="text" class="tooltips-general material-control" placeholder="Escriba aquí el nombre del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del producto">
+                                <input id="nombre" name="nombre" type="text" pattern="[A-Z a-z]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí el nombre del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre</label>
                             </div>
 
                             <div class="group-material">
-                                <input id="Unidad" name="Unidad" type="text" class="tooltips-general material-control" placeholder="Escriba aquí la unidad del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la unidad o del producto">
+                                <input id="Unidad" name="Unidad" type="text" pattern="[A-Z a-z]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí la unidad del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la unidad o del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Unidad</label>
                             </div>
 
                             <div class="group-material">
-                                <input id="Descripcion" name="Descripcion" type="text" class="tooltips-general material-control" placeholder="Escriba aquí la descripción del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la descripción del producto">
+                                <input id="Descripcion" name="Descripcion" type="text" pattern="[A-Z a-z]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí la descripción del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la descripción del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Descripción</label>
@@ -106,14 +106,14 @@
                             </div>
 
                             <div class="group-material">
-                                <input id="Marca" name="Marca" type="text" class="tooltips-general material-control" placeholder="Escribe aquí la marca del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba la marca del producto">
+                                <input id="Marca" name="Marca" type="text" pattern="[A-Z a-z]{1,70}" class="tooltips-general material-control" placeholder="Escribe aquí la marca del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba la marca del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Marca</label>
                             </div>
 
                             <div class="group-material">
-                                <input id="Proveedor" name="Proveedor" type="text" class="tooltips-general material-control" placeholder="Escribe aquí el proveedor del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba el proveedor del producto">
+                                <input id="Proveedor" name="Proveedor" type="text" pattern="[A-Z a-z]{1,70}" class="tooltips-general material-control" placeholder="Escribe aquí el proveedor del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba el proveedor del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Proveedor</label>
@@ -121,7 +121,7 @@
 
 
                             <div class="group-material">
-                                <input id="Garantia" name="Garantia" type="date" class="tooltips-general material-control" placeholder="Seleccione aquí la fecha de vencimiento de garantía del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba la fecha de vencimiento del producto">
+                                <input id="Garantia" name="Garantia"  type="date" class="tooltips-general material-control" placeholder="Seleccione aquí la fecha de vencimiento de garantía del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba la fecha de vencimiento del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Fecha vencimiento de garantía</label>
@@ -142,7 +142,7 @@ lc_sAhora += "-0" + ln_dia;
 lc_sAhora += "-"+ln_dia;
 } %>
                                 <div class="group-material">
-                                    <input value="<%=lc_sAhora%>" required="" id="Fecha" name="Fecha" type="text" class="tooltips-general material-control" placeholder="Fecha entrada del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la fecha de entrada del producto">
+                                    <input value="<%=lc_sAhora%>" required="" id="Fecha" name="Fecha" type="date" class="tooltips-general material-control" placeholder="Fecha entrada del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la fecha de entrada del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Fecha de entrada</label>
@@ -168,18 +168,13 @@ lc_sAhora += "-"+ln_dia;
                         
                             <p class="text-center">
                                 <button type="reset" class="btn btn-info" style="margin-right: 20px;"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>
-                                <button type="submit" data-placement="bottom" class="btn btn-primary insertar"><i class="zmdi zmdi-floppy"></i> &nbsp;&nbsp; Guardar</button>
+                                <button type="submit" onclick="confirmar();" data-placement="bottom" class="btn btn-primary insertar"><i class="zmdi zmdi-floppy"></i> &nbsp;&nbsp; Guardar</button>
                             </p>
                        </div>
                    </div>
                 </div>
             </form>
         </div>
-
-
-
-
-
 
 
            <!--Fin Cuerpo PÃ¡gina-->
@@ -189,3 +184,29 @@ lc_sAhora += "-"+ln_dia;
     </div>
 </body>
 </html>
+
+<script type="text/javascript">
+    
+    function confirmar(e) {
+        if (!confirm('¿Desea agregar este producto?')) e.preventDefault();
+    };
+    for (var i = 0, l = elems.length; i < l; i++) {
+        elems[i].addEventListener('click', confirmIt, false);
+    }
+    
+    function validarFecha(primero, segunda){
+    var primera = document.getElementById('Garantia').value;
+    var segunda = document.getElementById('Fecha').value;
+ 
+    if(primera < segunda){
+        alert("La fecha de entrada es mayor a la fecha de la garantia");
+        return false;
+    }//else if(primera === segunda) {
+       // alert("La fecha de garantia no puede ser igual a la fecha de entrada del producto");
+        //return false;
+    //}
+    else{
+        return true;
+    }
+    }
+</script>
