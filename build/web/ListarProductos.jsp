@@ -49,7 +49,7 @@
                     <img src="assets/img/list2.png" alt="pdf" class="img-responsive center-box" style="max-width: 110px;">
                 </div>
                 <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
-                    Bienvenido a la sección para mostrar los productos que se encuentran actualmente registrados
+                    Bienvenido a la sección para mostrar los productos que se encuentran actualmente registrados.
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
                                         <thead>
                                             <tr class="success">
                                                 <th class="text-center">Nombre</th>
-                                                <th class="text-center">Código Presupuestario</th>
+                                                <th class="text-center">Código del Producto</th>
                                                 <th class="text-center">Cantidad</th>
 
                                                 <th class="text-center">Ver Detalles</th>
@@ -86,31 +86,22 @@
                                         </thead>
                                         <tbody>
                                             <tr><%    while(rs.next()){   %>
-                                                
-                        <td><%=rs.getString("Nombre")%> </td>                        
-                     <td><%=rs.getString("Codigo_Producto")%> </td>
-                      <td><%=rs.getString("Cantidad")%> </td>
+                                                <td><%=rs.getString("Nombre")%> </td>                        
+                                                <td><%=rs.getString("Codigo_Producto")%> </td>
+                                                <td><%=rs.getString("Cantidad")%> </td>
                   
-                
-                          
-                   
 
-                                                <td><a href="DetalleProducto.jsp?Codigo_Producto=<%=rs.getString("Codigo_Producto")%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
-                                                <td> <a href="ModificarProductos.jsp?Codigo_Producto=<%=rs.getString("Codigo_Producto")%>"> <button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
-                                                <td> <a href="DesecharProducto?Codigo_Producto=<%=rs.getString("Codigo_Producto")%>"><button data-href="DesecharProducto?Codigo_Producto=<%=rs.getString("Codigo_Producto")%>" data-placement="bottom" class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
-                                                <td> <a href="RetirarProducto.jsp?Cantidad=<%=rs.getString("cantidad")%>&Codigo_Producto=<%=rs.getString("Codigo_Producto")%>" > <button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-swap"></i></button></td>
-                                                <td><a href="Devolucion.jsp??Cantidad=<%=rs.getString("cantidad")%>&Codigo_Producto=<%=rs.getString("Codigo_Producto")%>"> <button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-time-restore"></i></button></td>
+                                                <td> <a href="DetalleProducto.jsp?Codigo_Producto=<%=rs.getString("Codigo_Producto")%>" /><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
+                                                <td> <a href="ModificarProductos.jsp?Codigo_Producto=<%=rs.getString("Codigo_Producto")%>" /> <button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
+                                                <td> <a href="DesecharProducto?Codigo_Producto=<%=rs.getString("Codigo_Producto")%>" /><button data-href="DesecharProducto?Codigo_Producto=<%=rs.getString("Codigo_Producto")%>" data-placement="bottom" class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
+                                                <td> <a href="RetirarProducto.jsp?Cantidad=<%=rs.getString("cantidad")%>&Codigo_Producto=<%=rs.getString("Codigo_Producto")%>" /> <button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-swap"></i></button></td>
+                                                <td> <a href="Devolucion.jsp?Cantidad=<%=rs.getString("cantidad")%>&Codigo_Producto=<%=rs.getString("Codigo_Producto")%>" /> <button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-time-restore"></i></button></td>
                                             </tr>
                      
           <!--TR EXTRA-->                                  
-          <tr style="align-items: center" class='noSearch hide'>
-      <td colspan="5"></td>  
-                
-              </tr> 
-
-                                            
-                                            
-                                            
+                                            <tr style="align-items: center" class='noSearch hide'>
+                                                <td colspan="5"></td>  
+                                            </tr> 
                                             <% }%>
                                         </tbody>
 
@@ -118,9 +109,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
 
            <!--Fin Cuerpo PÃ¡gina-->
 

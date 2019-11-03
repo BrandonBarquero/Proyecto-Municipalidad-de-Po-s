@@ -50,7 +50,7 @@
                     <img src="assets/img/insert.png" alt="pdf" class="img-responsive center-box" style="max-width: 110px;">
                 </div>
                 <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
-                    Bienvenido a la sección para insertar nuevos productos, debera de llenar todos los campos para poder registrar el producto correctamente
+                    Bienvenido a la sección para insertar nuevos productos, debera de llenar todos los campos para poder registrar el producto correctamente.
                 </div>
             </div>
         </div>

@@ -75,7 +75,7 @@
                                         <thead>
                                             <tr class="success">
                                                 <th class="text-center">Nombre</th>
-                                                <th class="text-center">Código Presupuestario</th>
+                                                <th class="text-center">Código del Producto</th>
                                                 <th class="text-center">Descripción</th>
                                                 <th class="text-center">Ver detalles</th>
                                                 <th class="text-center">Activar Producto</th>

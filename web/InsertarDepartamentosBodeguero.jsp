@@ -48,7 +48,7 @@
                               
 
                                <div class="group-material">
-                                <input name="nombre" type="text" class="material-control tooltips-general" placeholder="Nombre del departamento" required="" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,70}" data-toggle="tooltip" data-placement="top" title="Escriba el nombre del departamento">
+                                <input name="nombre" type="text" class="material-control tooltips-general" placeholder="Nombre del departamento" required="" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" data-toggle="tooltip" data-placement="top" title="Escriba el nombre del departamento">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre del Departamento</label>

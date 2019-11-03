@@ -43,17 +43,17 @@
                 <form name="modificarr" action="" method="post" autocomplete="off">
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                               <div>
-                                   <label style="  top:-20px; font-size:17px;font-weight: 700;color:#333;font-weight: normal;">ID</label>
-                                   <input name="id" value="<%=lu_rs.getString("Id_Tipo_Producto")%>" type="text" class="material-control tooltips-general input-check-user" required="" maxlength="20" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1,20}" data-toggle="tooltip" data-placement="top">
+                            <div>
+                                <label style="  top:-20px; font-size:17px;font-weight: 700;color:#333;font-weight: normal;">ID</label>
+                                <input name="id" value="<%=lu_rs.getString("Id_Tipo_Producto")%>" type="text" class="material-control tooltips-general input-check-user" required="" maxlength="20" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1,20}" data-toggle="tooltip" data-placement="top" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                
                            </div>
                                 <br><br>
 
-                               <div class="group-material">
-                                   <input name="nombre" value="<%=lu_rs.getString("Nombre_Tipo_Producto")%>" type="text" class="material-control tooltips-general" required="" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,70}" data-toggle="tooltip" data-placement="top" >
+                            <div class="group-material">
+                                <input name="nombre" value="<%=lu_rs.getString("Nombre_Tipo_Producto")%>" type="text" class="material-control tooltips-general" required="" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" data-toggle="tooltip" data-placement="top" >
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre tipo producto</label>

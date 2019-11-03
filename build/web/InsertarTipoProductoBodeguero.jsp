@@ -48,7 +48,7 @@
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
 
                                <div class="group-material">
-                                   <input name="nombre" type="text" class="material-control tooltips-general" placeholder="Tipo de Producto" required="" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,70}" data-toggle="tooltip" data-placement="top" title="Escribe el tipo de producto">
+                                   <input name="nombre" type="text" class="material-control tooltips-general" placeholder="Tipo de Producto" required="" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" data-toggle="tooltip" data-placement="top" title="Escribe el tipo de producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre tipo producto</label>

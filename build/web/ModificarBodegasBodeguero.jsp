@@ -54,7 +54,7 @@
                            <br><br>
 
                                <div class="group-material">
-                                   <input value="<%=lu_rs.getString("Nombre_Bodega")%>" name="nombre" type="text" class="material-control tooltips-general"  required="">
+                                   <input value="<%=lu_rs.getString("Nombre_Bodega")%>" name="nombre" type="text" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" class="material-control tooltips-general"  required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre de la Bodega</label>

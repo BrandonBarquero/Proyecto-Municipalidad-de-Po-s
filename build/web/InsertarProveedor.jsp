@@ -46,7 +46,7 @@
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                                <div class="group-material">
-                                <input type="text" class="material-control tooltips-general input-check-user" placeholder="Cédula jurídica" required="" maxlength="20" pattern="[a-zA-Z0-9Ã¡Ã©Ã­Ã³ÃºÃÃ‰ÃÃ“ÃšÃ±Ã‘]{1,20}" data-toggle="tooltip" data-placement="top" title="Escriba la cédula jurídica del proveedor">
+                                <input type="text" class="material-control tooltips-general input-check-user" placeholder="Cédula jurídica" required="" maxlength="10" pattern="[0-9]{9,10}" data-toggle="tooltip" data-placement="top" title="Escriba la cédula jurídica del proveedor">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Cédula Jurídica</label>
@@ -59,14 +59,14 @@
                                 <label>Nombre completo</label>
                             </div>
                                  <div class="group-material">
-                                <input type="email" class="material-control tooltips-general" required="" placeholder="E-mail"  maxlength="50" data-toggle="tooltip" data-placement="top" title="Escriba el correo electrónico">
+                                <input type="email" class="material-control tooltips-general" required="" placeholder="E-mail"  maxlength="50" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" data-toggle="tooltip" data-placement="top" title="Escriba el correo electrónico">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Email</label>
                             </div>
 
                                       <div class="group-material">
-                                <input type="text" class="material-control tooltips-general" required="" placeholder="Teléfono"  maxlength="50" data-toggle="tooltip" data-placement="top" title="Escriba el teléfono">
+                                <input type="text" class="material-control tooltips-general" required="" placeholder="Teléfono"  maxlength="12" pattern="[0-9]{6,12}" data-toggle="tooltip" data-placement="top" title="Escriba el teléfono">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Teléfono</label>

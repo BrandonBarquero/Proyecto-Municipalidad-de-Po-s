@@ -40,61 +40,66 @@
          lu_ps=lu_con.prepareStatement("select * from Usuario where cedula="+ln_id);
          lu_rs=lu_ps.executeQuery();
          while(lu_rs.next()){%>
-                <form name="modificarr" action="" method="post" autocomplete="off">
+                <form name="modificarr" action="" method="post" autocomplete="off" onsubmit="return validarContrasena('Contrasena','password')">
                     <div class="row">
            
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                               <div>
-                                   <label style="  top:-20px;font-size:17px;font-weight: 700;color:#333;font-weight: normal; ">Cédula</label>
-                                <input name="cedula" value="<%=lu_rs.getString("Cedula")%>" type="text" class="material-control tooltips-general input-check-user" required="" readonly="">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
+                           <div>
+                               <label style="  top:-20px;font-size:17px;font-weight: 700;color:#333;font-weight: normal; ">Cédula</label>
+                               <input name="cedula" value="<%=lu_rs.getString("Cedula")%>" type="text" class="material-control tooltips-general input-check-user" required="" readonly="">
+                               <span class="highlight"></span>
+                               <span class="bar"></span>
+                           </div>
+                               <br><br>
+                           <div  class="group-material">
+                               <input name="correo" value="<%=lu_rs.getString("Correo")%>"  type="email" maxlength="50" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" class="material-control tooltips-general" required="">
+                               <span class="highlight"></span>
+                               <span class="bar"></span>
+                               <label>Email</label>
+                           </div>
                                
+                           <div class="group-material">
+                               <input name="telefono" value="<%=lu_rs.getString("Telefono")%>" type="text" maxlength="12" pattern="[0-9]{6,12}" class="material-control tooltips-general" required="">
+                               <span class="highlight"></span>
+                               <span class="bar"></span>
+                               <label>Teléfono</label>
                            </div>
                                 
-                                <br><br>
-                                 <div  class="group-material">
-                                     <input name="correo" value="<%=lu_rs.getString("Correo")%>"  type="email" class="material-control tooltips-general" required="">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Email</label>
-                            </div>
-
-                                      <div class="group-material">
-                                          <input name="telefono" value="<%=lu_rs.getString("Telefono")%>" type="text" class="material-control tooltips-general" required="">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Teléfono</label>
-                            </div>
-
-                                         <div class="group-material">
-                                             <input name="Rol" value="<%=lu_rs.getString("Rol")%>" type="text" class="material-control tooltips-general" required="">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Rol</label>
-                            </div>
-
-                      
-
-                            <div class="group-material">
-                                <input name="Nombre" value="<%=lu_rs.getString("Nombre")%>" type="text" class="material-control tooltips-general" required="">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Nombre completo</label>
-                            </div>
+                           <div class="group-material">
+                               <label style=" top:-20px; font-size:17px; font-weight: 700; color:#333; font-weight: normal;">Rol</label>
+                               <select id="Rol" name="Rol" value="<%=lu_rs.getString("Rol")%>" class="tooltips-general material-control" data-toggle="tooltip" data-placement="top" required="" title="Elige el rol">
+                                   <option value="" disabled="" selected="">Seleccione un rol</option>
+                                   <option value="1">Administrador</option>
+                                   <option value="2">Bodeguero</option>
+                               </select>
+                           </div>
+                               <!--
+                           <div class="group-material">
+                               <input name="Rol" value="<%=lu_rs.getString("Rol")%>" type="text" class="material-control tooltips-general" required="">
+                               <span class="highlight"></span>
+                               <span class="bar"></span>
+                               <label>Rol</label>
+                           </div>
+                               -->
+                           <div class="group-material">
+                               <input name="Nombre" value="<%=lu_rs.getString("Nombre")%>" type="text" maxlength="70" pattern="[a-zA-ZÃ¡Ã©Ã­Ã³ÃºÃÃ‰ÃÃ“ÃšÃ±Ã‘ ]{1,70}" class="material-control tooltips-general" required="">
+                               <span class="highlight"></span>
+                               <span class="bar"></span>
+                               <label>Nombre completo</label>
+                           </div>
                     
                       
-                            <div class="group-material">
-                                <input name="Contrasena" value="<%=lu_rs.getString("Contrasena")%>" type="password" class="material-control tooltips-general" required="">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Contraseña</label>
-                            </div>
+                           <div class="group-material">
+                               <input name="Contrasena" value="<%=lu_rs.getString("Contrasena")%>" type="password" maxlength="200" pattern="[A-Z][A-Za-z0-9.-_,´+}{;:*%]{8,200}" class="material-control tooltips-general" required="">
+                               <span class="highlight"></span>
+                               <span class="bar"></span>
+                               <label>Contraseña</label>
+                           </div>
                            <div class="group-material">
                                <input  type="password" class="material-control tooltips-general" required="">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Repetir contraseña</label>
+                               <span class="highlight"></span>
+                               <span class="bar"></span>
+                               <label>Repetir contraseña</label>
                            </div> 
                             <p class="text-center">
                                 <button type="submit" data-placement="bottom" class="btn btn-primary modificar"><i class="zmdi zmdi-refresh"></i> &nbsp;&nbsp; Modificar</button>
@@ -132,6 +137,7 @@
                 
                  lu_ps= lu_con.prepareStatement("update Usuario set "
                          + "Nombre='"+Nombre+
+                         "' ,Correo='"+correo+
                         "' ,Telefono='"+telefono+
                         "' ,Rol='"+Rol+
                          "' ,Contrasena='"+Contrasena+
@@ -146,3 +152,19 @@
             out.println("Error"+lu_e.getMessage());
             }
             %>
+            
+    <script type="text/javascript">
+    
+    function validarContrasena(primero, segunda){
+    var primera = document.getElementById('Contrasena').value;
+    var segunda = document.getElementById('password').value;
+ 
+    if(primera !== segunda){
+        alert("La contraseñas no coinciden, vuelva a introducir la contraseña.");
+        return false;
+    }
+    else{
+        return true;
+    }
+    }
+</script>

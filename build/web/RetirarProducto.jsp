@@ -8,18 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <script>function cal() {
-  try {
-    var a = parseInt(document.f.disponible.value),
-        b = parseInt(document.f.nuevo.value);
-    if((a-b) >= 0){
-            document.f.sum.value = a - b;
-        }else
-            alert("La resta es negativa");
-    
-  } catch (e) {
-  }
-}</script>
+    <script>
+        function cal() {
+            try {
+                var a = parseInt(document.retiro.disponible.value),
+                b = parseInt(document.retiro.nuevo.value);
+                if((a-b) >= 0){
+                    document.retiro.sum.value = a - b;
+                }else
+                    alert("No se puede retirar mas productos de los que existen disponibles.");
+            } catch (e) {
+                
+            }
+        }
+</script>
         
         <%
          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -27,7 +29,7 @@
          PreparedStatement lu_ps;
          ResultSet lu_rs;
          int ln_id=Integer.parseInt(request.getParameter("Codigo_Producto"));
-        int ln_id2=Integer.parseInt(request.getParameter("Cantidad"));
+         int ln_id2=Integer.parseInt(request.getParameter("Cantidad"));
                 
          lu_ps=lu_con.prepareStatement("select * from Departamento");
          lu_rs=lu_ps.executeQuery();
@@ -64,33 +66,32 @@
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                             <legend><strong>Retirar Producto</strong></legend><br>
 
-                                <div>
-                                       <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Cantidad disponible</label>
-                                    <input onchange="cal();" id="disponible" name="disponible" readonly value="<%=ln_id2%>" type="number" class="tooltips-general material-control" required="">
-                             
+                            <div>
+                                <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Cantidad disponible</label>
+                                <input onchange="cal();" id="disponible" name="disponible" readonly value="<%=ln_id2%>" type="number" class="tooltips-general material-control" required="">
                             </div>
                                     
-                                    <br><br>
+                            <br><br>
 
-                                           <div class="group-material">
-                                <input onchange="cal();" id="nuevo" name="nuevo" type="number" class="tooltips-general material-control" required="">
+                            <div class="group-material">
+                                <input onchange="cal();" id="nuevo" name="nuevo" min="1" pattern="[0-9]{1,20}" type="number" class="tooltips-general material-control" required="">
                                 <label>Cantidad a retirar</label>
                             </div>
 
-                                                    <div class="group-material">
-                                <input id="sum" name="sum" type="number" class="tooltips-general material-control" required="">
-                                <label>Nueva cantidad disponible</label>
+                            <div class="group-material">
+                                <input id="sum" name="sum" type="number" class="tooltips-general material-control" required="" readonly="">
+                                <label  style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Nueva cantidad disponible</label>
                             </div>
 
-                                                           <div>
-                             <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código de producto</label>               
-                             <input value="<%=ln_id%>" readonly="" id="codigo" name="codigo" type="number" class="tooltips-general material-control" required="">
+                            <div>
+                                <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código de producto</label>               
+                                <input value="<%=ln_id%>" readonly="" id="codigo" name="codigo" type="number" class="tooltips-general material-control" required="">
                             </div>
                                 
-                                <br><br>
+                            <br><br>
 
-                                                                    <div class="group-material">
-                                <input id="res" name="res" type="text" class="tooltips-general material-control" required="">
+                            <div class="group-material">
+                                <input id="res" name="res" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
                                 <label>Responsable</label>
                             </div>
 
@@ -110,10 +111,9 @@ lc_sAhora += "-0" + ln_dia;
 } else {
 lc_sAhora += "-"+ln_dia;
 } %>
-                  <div>
-                        <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Fecha de Salida</label>
-                 <input id="date" name="date" value="<%=lc_sAhora%>" readonly type="date" class="tooltips-general material-control" required="">
-                              
+                            <div>
+                                <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Fecha de Salida</label>
+                                 <input id="date" name="date" value="<%=lc_sAhora%>" readonly type="date" class="tooltips-general material-control" required="">
                             </div>
                  
                  <br><br>

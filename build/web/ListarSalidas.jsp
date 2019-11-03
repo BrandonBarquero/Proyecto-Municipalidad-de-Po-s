@@ -72,7 +72,7 @@
                                         <thead>
                                             <tr class="success">
                                                 <th class="text-center">Nombre</th>
-                                                <th class="text-center">Código Presupuestario</th>
+                                                <th class="text-center">Código del Producto</th>
                                                 <th class="text-center">Descripción</th>
                                                 <th class="text-center">Ver Detalles</th>
                                                 <th class="text-center">Devolución</th>
@@ -90,7 +90,7 @@
                 
                           
                                                 <td><a href="DetalleProducto.jsp?Codigo_Producto=<%=rs.getString("Codigo_Producto")%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
-                                                <td><a href="Devolucion.jsp??Cantidad=<%=rs.getString("cantidad")%>&Codigo_Producto=<%=rs.getString("Codigo_Producto")%>"> <button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-time-restore"></i></button></td>
+                                                <td><a href="Devolucion.jsp?Cantidad=<%=rs.getString("cantidad")%>&Codigo_Producto=<%=rs.getString("Codigo_Producto")%>"> <button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-time-restore"></i></button></td>
                                             </tr>
                                                                    <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>

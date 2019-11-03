@@ -33,7 +33,7 @@
          Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
          PreparedStatement lu_ps;
          ResultSet lu_rs;
-          String ln_id=request.getParameter("Codigo_Producto");
+         String ln_id=request.getParameter("Codigo_Producto");
          lu_ps=lu_con.prepareStatement("select * from producto where Codigo_Producto="+ln_id);
          lu_rs=lu_ps.executeQuery();
          while(lu_rs.next()){%>
@@ -47,16 +47,16 @@
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                             <legend><strong>Modificar Producto</strong></legend><br>
   
-                                         <div>
-                                             <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código </label>   
-                                    <input id="Codigo" name="Codigo" value="<%=lu_rs.getString("Codigo_Producto")%>" type="text" class="tooltips-general material-control" required="" readonly="">
+                            <div>
+                                <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código </label>   
+                                <input id="Codigo" name="Codigo" value="<%=lu_rs.getString("Codigo_Producto")%>" type="text" class="tooltips-general material-control" required="" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
                             </div>
-                                <div>
-                                     <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Codigo Presupuestario</label>
-                                    <input id="Codigo_P" name="Codigo_P" value="<%=lu_rs.getString("Codigo_Presupuestario")%>" type="text" class="tooltips-general material-control" required="" readonly="">
+                            <div>
+                                <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Codigo Presupuestario</label>
+                                <input id="Codigo_P" name="Codigo_P" value="<%=lu_rs.getString("Codigo_Presupuestario")%>" type="text" class="tooltips-general material-control" required="" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                
@@ -64,28 +64,29 @@
                                 
                                 <br><br>
 
-                              <div class="group-material">
-                                  <input id="Nombre" name="Nombre" value="<%=lu_rs.getString("Nombre")%>" type="text" class="tooltips-general material-control" required="">
+                            <div class="group-material">
+                                <input id="Nombre" name="Nombre" value="<%=lu_rs.getString("Nombre")%>" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre</label>
                             </div>
 
-                                  <div class="group-material">
-                                      <input id="Unidad" name="Unidad" value="<%=lu_rs.getString("Unidad")%>" type="text" class="tooltips-general material-control" required="">
+                            <div class="group-material">
+                                <input id="Unidad" name="Unidad" value="<%=lu_rs.getString("Unidad")%>" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Unidad</label>
                             </div>
 
-                                 <div class="group-material">
-                                     <input name="Descripcion" id="Descripcion" value="<%=lu_rs.getString("Descripcion")%>" type="text" class="tooltips-general material-control" required="">
-                                
+                            <div class="group-material">
+                                <input name="Descripcion" id="Descripcion" value="<%=lu_rs.getString("Descripcion")%>" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
                                 <label>Descripción</label>
                             </div>
 
-                              <div class="group-material">
-                                  <input id="Precio" name="Precio" value="<%=lu_rs.getString("Precio")%>" type="text" class="tooltips-general material-control" required="">
+                            <div class="group-material">
+                                <input id="Precio" name="Precio" value="<%=lu_rs.getString("Precio")%>" type="number" min="1" pattern="[0-9]{1,20}" maxlength="20" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Precio</label>
@@ -93,7 +94,7 @@
 
 
                             <div class="group-material">
-                                <input id="Marca" name="Marca" value="<%=lu_rs.getString("marca")%>" type="text" class="tooltips-general material-control" required="" >
+                                <input id="Marca" name="Marca" value="<%=lu_rs.getString("marca")%>" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="" >
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Marca</label>
@@ -101,24 +102,29 @@
 
 
                             <div class="group-material">
-                                <input id="Fecha" name="Fecha"  value="<%=lu_rs.getString("Garantia")%>" type="date" class="tooltips-general material-control" required="">
+                                <input id="Fecha" name="Fecha" value="<%=lu_rs.getString("Garantia")%>" type="date" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Fecha vencimiento de garantía</label>
                             </div>
 
-                           
+                           <div class="group-material">
+                               <input id="Entrada" name="Entrada" value="<%=lu_rs.getString("Fecha_Entrada")%>" type="date" class="tooltips-general material-control" required="">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Fecha de entrada</label>
+                            </div>
 
-                                    <div class="group-material">
-                                        <input id="Ubicacion" name="Ubicacion" value="<%=lu_rs.getString("Ubicacion")%>" type="text" class="tooltips-general material-control" required="">
+                            <div class="group-material">
+                                <input id="Ubicacion" name="Ubicacion" value="<%=lu_rs.getString("Ubicacion")%>" type="text" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Ubicación</label>
                             </div>
 
 
-                                    <div class="group-material">
-                                        <input id="tipo" name="Tipo" value="<%=lu_rs.getString("Tipo_Producto")%>" type="text" class="tooltips-general material-control" required="">
+                            <div class="group-material">
+                                <input id="tipo" name="Tipo" value="<%=lu_rs.getString("Tipo_Producto")%>" type="text" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Tipo Producto</label>
@@ -156,6 +162,7 @@
             String Precio=request.getParameter("Precio");
             String marca=request.getParameter("Marca");
             String fecha=request.getParameter("Fecha");
+            String entrada=request.getParameter("Entrada");
             String ubicacion=request.getParameter("Ubicacion");
             String tipo=request.getParameter("Tipo");
               
@@ -173,7 +180,7 @@
                         "' ,Precio='"+Precio+        
                         "' ,marca='"+marca+
                         "' ,Ubicacion='"+ubicacion+
-                       
+
                         "' ,Tipo_Producto='"+tipo
                       + "' where Codigo_Producto="+Codigo+"");
                 ln_r=lu_ps.executeUpdate();

@@ -35,17 +35,21 @@ public class IngresoUsuario extends HttpServlet {
       
             String lc_cedulaTraidadelInput=request.getParameter("Cedula");
             String lc_nombreTraidadelInput=request.getParameter("Nombre");
-            String lc_contrasenaTraidadelInput=request.getParameter("Contrasena");
             String lc_CorreoTraidadelInput=request.getParameter("correo");
-            String lc_RolTraidadelInput=request.getParameter("Rol");
             String lc_TelefonoTraidadelInput=request.getParameter("Telefono");
+            String lc_RolTraidadelInput=request.getParameter("Rol");
+            String lc_EstadoTraidadelInput=request.getParameter("Estado");
+            String lc_contrasenaTraidadelInput=request.getParameter("Contrasena");
+            
+            
+            
             
             int ln_r;
             try{
                 
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                 Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-                PreparedStatement lu_ps= lu_con.prepareStatement("insert into Usuario(Cedula,Nombre,Correo,Telefono,Rol,Contrasena)values(?,?,?,?,?,?)");
+                PreparedStatement lu_ps= lu_con.prepareStatement("insert into Usuario(Cedula,Nombre,Correo,Telefono,Rol,Estado,Contrasena)values(?,?,?,?,?,?,?)");
                 
                 
                 lu_ps.setString(1,lc_cedulaTraidadelInput);
@@ -53,7 +57,8 @@ public class IngresoUsuario extends HttpServlet {
                 lu_ps.setString(3,lc_CorreoTraidadelInput);
                 lu_ps.setString(4,lc_TelefonoTraidadelInput);
                 lu_ps.setString(5,lc_RolTraidadelInput);
-                lu_ps.setString(6,lc_contrasenaTraidadelInput);
+                lu_ps.setString(6,lc_EstadoTraidadelInput);
+                lu_ps.setString(7,lc_contrasenaTraidadelInput);
                 ln_r=lu_ps.executeUpdate();
                 if(ln_r>=1){
                 response.sendRedirect("ListarUsuarios.jsp");
