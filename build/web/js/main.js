@@ -46,7 +46,7 @@ $(document).ready(function(){
             window.location=LinkExitSystem; 
         });  
     });
-    /*
+    
       $('.insertar').on('click', function(e){
         e.preventDefault();
         swal({
@@ -63,7 +63,7 @@ $(document).ready(function(){
              document.forms["ingreso"].submit();
         });  
     });
-    */
+    
           $('.modificar').on('click', function(e){
         e.preventDefault();
         swal({
