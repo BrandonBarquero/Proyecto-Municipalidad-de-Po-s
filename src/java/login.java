@@ -39,38 +39,38 @@ public class login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
      
-      String Ic_nombretraidodelinput=request.getParameter("txtCedula2");
-      String Ic_contrasenatraidadelinput=request.getParameter("txtContrasena2");
+      String lc_nombretraidodelinput=request.getParameter("txtCedula2");
+      String lc_contrasenatraidadelinput=request.getParameter("txtContrasena2");
         response.setContentType("text/html;charset=UTF-8");
      
-      Operaciones Go_objetooperaciones= new Operaciones();
+      Operaciones go_objetooperaciones= new Operaciones();
        
       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
+         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
         
-         PreparedStatement ps2;
-        PreparedStatement ps = null;
+         PreparedStatement lu_ps2;
+        PreparedStatement lu_ps = null;
         
-         ResultSet rs;
-         ResultSet rs2;
+         ResultSet lu_rs;
+         ResultSet lu_rs2;
        
-         String x= null;
-          String x2= null;
+         String lc_x= null;
+          String lc_x2= null;
 
-      Usuario usuario = new Usuario(Ic_nombretraidodelinput, Ic_contrasenatraidadelinput);
+      Usuario usuario = new Usuario(lc_nombretraidodelinput, lc_contrasenatraidadelinput);
        HttpSession sesion=request.getSession();
-      switch(Go_objetooperaciones.loguear(usuario)){
+      switch(go_objetooperaciones.loguear(usuario)){
       case 1:{
-      sesion.setAttribute("user",Ic_nombretraidodelinput);
+      sesion.setAttribute("user",lc_nombretraidodelinput);
       sesion.setAttribute("nivel","1");
       
    
      
          
-          ps2=con.prepareStatement("select Nombre from Usuario where Cedula='"+Ic_nombretraidodelinput+"'");
-         rs2=ps2.executeQuery();
-          while(rs2.next()){ 
-           x=  rs2.getString("Nombre");
+          lu_ps2=lu_con.prepareStatement("select Nombre from Usuario where Cedula='"+lc_nombretraidodelinput+"'");
+         lu_rs2=lu_ps2.executeQuery();
+          while(lu_rs2.next()){ 
+           lc_x=  lu_rs2.getString("Nombre");
           }
       
       
@@ -82,7 +82,7 @@ public class login extends HttpServlet {
           
           
           
-              sesion.setAttribute("user5",x);
+              sesion.setAttribute("user5",lc_x);
       
       
       
@@ -97,13 +97,13 @@ public class login extends HttpServlet {
           
           
           
-      sesion.setAttribute("user2",Ic_nombretraidodelinput);
+      sesion.setAttribute("user2",lc_nombretraidodelinput);
       sesion.setAttribute("nivel","2");
       
-        ps2=con.prepareStatement("select Nombre from Usuario where Cedula='"+Ic_nombretraidodelinput+"'");
-         rs2=ps2.executeQuery();
-          while(rs2.next()){ 
-           x2=  rs2.getString("Nombre");
+        lu_ps2=lu_con.prepareStatement("select Nombre from Usuario where Cedula='"+lc_nombretraidodelinput+"'");
+         lu_rs2=lu_ps2.executeQuery();
+          while(lu_rs2.next()){ 
+           lc_x2=  lu_rs2.getString("Nombre");
           }
       
       
@@ -115,7 +115,7 @@ public class login extends HttpServlet {
           
           
           
-              sesion.setAttribute("user6",x2);
+              sesion.setAttribute("user6",lc_x2);
       
       
       

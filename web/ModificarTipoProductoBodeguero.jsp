@@ -32,8 +32,8 @@
          Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
          PreparedStatement lu_ps;
          ResultSet lu_rs;
-         String ln_id=request.getParameter("Id_Tipo_Producto");
-         lu_ps=lu_con.prepareStatement("select * from Tipo_Producto where Id_Tipo_Producto="+ln_id);
+         String lc_id=request.getParameter("Id_Tipo_Producto");
+         lu_ps=lu_con.prepareStatement("select * from Tipo_Producto where Id_Tipo_Producto="+lc_id);
          lu_rs=lu_ps.executeQuery();
          while(lu_rs.next()){%>
 
@@ -81,20 +81,20 @@
 </html>
 <%
             
-            String id=request.getParameter("id");
+            String lc_id1=request.getParameter("id");
             String nombre=request.getParameter("nombre");
       
             
             int r;
             try{
                 
-                if(id!=null&&nombre!=null){
+                if(lc_id1!=null&&nombre!=null){
                 
                  lu_ps= lu_con.prepareStatement("update Tipo_Producto set "
                          + "Nombre_Tipo_Producto='"+nombre
                       
                          
-                                 + "' where Id_Tipo_Producto="+ln_id+"");
+                                 + "' where Id_Tipo_Producto="+lc_id+"");
                 lu_ps.executeUpdate();
                 response.sendRedirect("ListarTipoProductoBodeguero.jsp");
                 

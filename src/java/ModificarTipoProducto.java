@@ -34,26 +34,26 @@ public class ModificarTipoProducto extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
-     String id=request.getParameter("id");
-            String nombre=request.getParameter("nombre");
+     String lc_id=request.getParameter("id");
+            String lc_nombre=request.getParameter("nombre");
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
          Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
          PreparedStatement lu_ps;
          ResultSet lu_rs;
        
-         lu_ps=lu_con.prepareStatement("select * from Tipo_Producto where Id_Tipo_Producto="+id);
+         lu_ps=lu_con.prepareStatement("select * from Tipo_Producto where Id_Tipo_Producto="+lc_id);
          lu_rs=lu_ps.executeQuery();
             
             int r;
             try{
                 
-                if(nombre!=null&&id!=null){
+                if(lc_nombre!=null&&lc_id!=null){
                 
                  lu_ps= lu_con.prepareStatement("update Tipo_Producto set "
-                         + "Nombre_Tipo_Producto='"+nombre
+                         + "Nombre_Tipo_Producto='"+lc_nombre
                       
                          
-                                 + " where Id_Tipo_Producto="+id+"");
+                                 + " where Id_Tipo_Producto="+lc_id+"");
                 lu_ps.executeUpdate();
                 response.sendRedirect("ListarTipoProducto.jsp");
                 

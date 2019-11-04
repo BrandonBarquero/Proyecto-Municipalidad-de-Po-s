@@ -23,40 +23,40 @@ import java.sql.SQLException;
  * @author Allan
  */
 public class Operaciones {
-    String Ic_driver;
-    String Ic_url;
-    String Ic_usuariobasededatos;
-    String Ic_contrasenabasededatos;
+    String lc_driver;
+    String lc_url;
+    String lc_usuariobasededatos;
+    String lc_contrasenabasededatos;
     public Operaciones(){
-    Ic_driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    Ic_url="jdbc:sqlserver://localhost:1433;databaseName=inventario";
-    Ic_usuariobasededatos="test";
-    Ic_contrasenabasededatos="root";
+    lc_driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    lc_url="jdbc:sqlserver://localhost:1433;databaseName=inventario";
+    lc_usuariobasededatos="test";
+    lc_contrasenabasededatos="root";
     }
     public int loguear(Usuario usuario) throws SQLException{
-    Connection conn;
-    PreparedStatement pst = null;
-    ResultSet rs;
-    int cont=0;
-    int Ic_nivelautoridad=0;
+    Connection lu_conn;
+    PreparedStatement lu_pst = null;
+    ResultSet lu_rs;
+    int ln_cont=0;
+    int ln_nivelautoridad=0;
     String sql="select Rol from Usuario where Cedula=? and Contrasena=? and Estado=?";
     
                
            
     try{
-    Class.forName(this.Ic_driver);
-    conn=DriverManager.getConnection(this.Ic_url,this.Ic_usuariobasededatos,this.Ic_contrasenabasededatos);
-    pst=conn.prepareStatement(sql);
-    pst.setString(1, usuario.getUsuario());
-    pst.setString(2,usuario.getPassword());
-    pst.setString(3,"Activo");
-    rs=pst.executeQuery();
-    while(rs.next()){
-    Ic_nivelautoridad= rs.getInt(1);
+    Class.forName(this.lc_driver);
+    lu_conn=DriverManager.getConnection(this.lc_url,this.lc_usuariobasededatos,this.lc_contrasenabasededatos);
+    lu_pst=lu_conn.prepareStatement(sql);
+    lu_pst.setString(1, usuario.getUsuario());
+    lu_pst.setString(2,usuario.getPassword());
+    lu_pst.setString(3,"Activo");
+    lu_rs=lu_pst.executeQuery();
+    while(lu_rs.next()){
+    ln_nivelautoridad= lu_rs.getInt(1);
     }
-    conn.close();
+    lu_conn.close();
     }catch(ClassNotFoundException |SQLException e){}
-    return Ic_nivelautoridad;
+    return ln_nivelautoridad;
     }
     
     

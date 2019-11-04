@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-             <% String Usuario2=(String) session.getAttribute("user6");%>
+             <% String lc_Usuario2=(String) session.getAttribute("user6");%>
        <!--Inicio Barra lateral-->
     <div class="navbar-lateral full-reset">
         <div class="visible-xs font-movile-menu mobile-menu-button"></div>
@@ -58,7 +58,7 @@
                    <img src="assets/img/user.png" alt="user-picture" class="img-responsive img-circle center-box">
                 </figure>
                    <li style="color:#fff; cursor:default;">
-                    <span class="all-tittles"><%=Usuario2%></span>
+                    <span class="all-tittles"><%=lc_Usuario2%></span>
                 </li>
                 <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
                     <i class="zmdi zmdi-power"></i>

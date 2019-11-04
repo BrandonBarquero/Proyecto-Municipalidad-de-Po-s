@@ -36,7 +36,7 @@ public class SalidaProducto extends HttpServlet {
        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                 Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
                 PreparedStatement lu_ps= lu_con.prepareStatement("insert into Salida_Producto(Fecha_Salida,Departamento,Cantidad_Salida,Codigo_Producto,Responsable)values(?,?,?,?,?)");
-               PrintWriter out = response.getWriter(); 
+               PrintWriter lu_out = response.getWriter(); 
           
           PreparedStatement lu_ps1;
       PreparedStatement lu_ps2;
@@ -77,11 +77,11 @@ public class SalidaProducto extends HttpServlet {
                response.sendRedirect("ListarProductos.jsp");
                 
                 }else {
-                out.println("<h1> Error</h1>");
+                lu_out.println("<h1> Error</h1>");
                 }
                 
             }catch(Exception lu_e){
-            out.println("Error"+lu_e.getMessage());
+            lu_out.println("Error"+lu_e.getMessage());
             }
             
 
@@ -111,7 +111,7 @@ public class SalidaProducto extends HttpServlet {
                 }
                 
             }catch(Exception lu_e){
-            out.println("Error"+lu_e.getMessage());
+            lu_out.println("Error"+lu_e.getMessage());
             }
 
 

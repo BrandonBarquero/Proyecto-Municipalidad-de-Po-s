@@ -36,8 +36,8 @@
          Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
          PreparedStatement lu_ps;
          ResultSet lu_rs;
-         String ln_id=request.getParameter("Cedula");
-         lu_ps=lu_con.prepareStatement("select * from Usuario where cedula="+ln_id);
+         String lc_id=request.getParameter("Cedula");
+         lu_ps=lu_con.prepareStatement("select * from Usuario where cedula="+lc_id);
          lu_rs=lu_ps.executeQuery();
          while(lu_rs.next()){%>
                 <form name="modificarr" action="" method="post" autocomplete="off" onsubmit="return validarContrasena('Contrasena','password')">
@@ -122,26 +122,26 @@
 </html>
 <%
             
-            String cedula=request.getParameter("cedula");
-            String correo=request.getParameter("correo");
-            String telefono=request.getParameter("telefono");
+            String lc_cedula=request.getParameter("cedula");
+            String lc_correo=request.getParameter("correo");
+            String lc_telefono=request.getParameter("telefono");
            
-            String Rol=request.getParameter("Rol");
-            String Nombre=request.getParameter("Nombre");
-            String Contrasena=request.getParameter("Contrasena");
+            String lc_Rol=request.getParameter("Rol");
+            String lc_Nombre=request.getParameter("Nombre");
+            String lc_Contrasena=request.getParameter("Contrasena");
             
             int ln_r;
             try{
                 
-                if(cedula!=null&&Contrasena!=null){
+                if(lc_cedula!=null&&lc_Contrasena!=null){
                 
                  lu_ps= lu_con.prepareStatement("update Usuario set "
-                         + "Nombre='"+Nombre+
-                         "' ,Correo='"+correo+
-                        "' ,Telefono='"+telefono+
-                        "' ,Rol='"+Rol+
-                         "' ,Contrasena='"+Contrasena+
-                         "' where Cedula="+ln_id+"");
+                         + "Nombre='"+lc_Nombre+
+                         "' ,Correo='"+lc_correo+
+                        "' ,Telefono='"+lc_telefono+
+                        "' ,Rol='"+lc_Rol+
+                         "' ,Contrasena='"+lc_Contrasena+
+                         "' where Cedula="+lc_id+"");
                 lu_ps.executeUpdate();
                 response.sendRedirect("ListarUsuarios.jsp");
                 

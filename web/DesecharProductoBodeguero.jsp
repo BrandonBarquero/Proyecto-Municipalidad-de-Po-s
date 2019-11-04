@@ -10,20 +10,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-     <%String Usuario2=(String) session.getAttribute("user2");
+     <%String lc_Usuario2=(String) session.getAttribute("user2");
           
-          if(Usuario2 == null){
+          if(lc_Usuario2 == null){
            request.getRequestDispatcher("Error").forward(request, response);
           
           }%>
          <%
          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement ps;
-         ResultSet rs;
+         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
+         PreparedStatement lu_ps;
+         ResultSet lu_rs;
          
-         ps=con.prepareStatement("select * from producto where Estado='Desecho' and Cantidad != '0'");
-         rs=ps.executeQuery();%>
+         lu_ps=lu_con.prepareStatement("select * from producto where Estado='Desecho' and Cantidad != '0'");
+         lu_rs=lu_ps.executeQuery();%>
        <jsp:include page="HeaderBodeguero.jsp"/>
 
 
@@ -86,19 +86,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr><%    while(rs.next()){   %>
+                                            <tr><%    while(lu_rs.next()){   %>
                                                 
-                        <td><%=rs.getString("Nombre")%> </td>                        
-                     <td><%=rs.getString("Codigo_Producto")%> </td>
-                      <td><%=rs.getString("Descripcion")%> </td>
+                        <td><%=lu_rs.getString("Nombre")%> </td>                        
+                     <td><%=lu_rs.getString("Codigo_Producto")%> </td>
+                      <td><%=lu_rs.getString("Descripcion")%> </td>
                   
                 
                           
                    
 
                                                 
-                      <td><a href="DetalleProductoBodeguero.jsp?Codigo_Producto=<%=rs.getString("Codigo_Producto")%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
-                      <td><a href="ActivarProductoBodeguero?Codigo_Producto=<%=rs.getString("Codigo_Producto")%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Activar producto"><i class="zmdi zmdi-refresh"></i></button></td>
+                      <td><a href="DetalleProductoBodeguero.jsp?Codigo_Producto=<%=lu_rs.getString("Codigo_Producto")%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
+                      <td><a href="ActivarProductoBodeguero?Codigo_Producto=<%=lu_rs.getString("Codigo_Producto")%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Activar producto"><i class="zmdi zmdi-refresh"></i></button></td>
    
          </tr><% }%>
                                         </tbody>

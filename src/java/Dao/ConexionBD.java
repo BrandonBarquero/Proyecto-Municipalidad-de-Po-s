@@ -16,13 +16,13 @@ import java.util.logging.Logger;
  * @author Allan
  */
 public class ConexionBD {
-    private Connection conection = null;
+    private Connection pu_conection = null;
  
     public Connection getConnection() throws Exception {
-        if (conection == null) {
+        if (pu_conection == null) {
              Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                 Connection conection= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
         }
-        return conection;
+        return pu_conection;
     }
 }

@@ -19,49 +19,49 @@ import java.util.logging.Logger;
  * @author Allan
  */
 public class ProductoDAO { 
-    int r = 0;
-    int r2 = 0;
-    int r3 = 0;
-      private final Connection connection;
+    int ln_r = 0;
+    int ln_r2 = 0;
+    int ln_r3 = 0;
+      private final Connection lu_connection;
 
     public ProductoDAO() throws Exception {
-        this.connection = new ConexionBD().getConnection();
+        this.lu_connection = new ConexionBD().getConnection();
     }
-   public int insertar(Producto producto) throws ClassNotFoundException, SQLException  {
+   public int insertar(Producto lo_producto) throws ClassNotFoundException, SQLException  {
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                Connection con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Inge","test","root");
+                Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Inge","test","root");
             
-                PreparedStatement ps= con.prepareStatement("insert into producto(Nombre,Descripcion,Precio,cantidad,tipo)values(?,?,?,?,?)");
+                PreparedStatement lu_ps= lu_con.prepareStatement("insert into producto(Nombre,Descripcion,Precio,cantidad,tipo)values(?,?,?,?,?)");
 
               
                 
               
-                ps.setString(1,producto.getNombre());
-                ps.setString(2,producto.getDescripcion());
-                ps.setString(3,producto.getPrecio());
-                ps.setString(4,producto.getCantidad());
-                ps.setString(5,producto.gettipo());
+                lu_ps.setString(1,lo_producto.getNombre());
+                lu_ps.setString(2,lo_producto.getDescripcion());
+                lu_ps.setString(3,lo_producto.getPrecio());
+                lu_ps.setString(4,lo_producto.getCantidad());
+                lu_ps.setString(5,lo_producto.gettipo());
                            
              
-                r=ps.executeUpdate();
+                ln_r=lu_ps.executeUpdate();
            
       
-                return r;
+                return ln_r;
 }
  public int eliminar(int id) throws ClassNotFoundException, SQLException  {
  
  
  
   Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Inge","test","root");
-         PreparedStatement ps;
+         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Inge","test","root");
+         PreparedStatement lu_ps;
        
          
-         ps=con.prepareStatement("delete from producto where Codigo_Producto= ?");
-           ps.setInt(1, id);
+         lu_ps=lu_con.prepareStatement("delete from producto where Codigo_Producto= ?");
+           lu_ps.setInt(1, id);
          
-        r2=ps.executeUpdate();
-        return r2;
+        ln_r2=lu_ps.executeUpdate();
+        return ln_r2;
  
  
  
@@ -71,18 +71,18 @@ public class ProductoDAO {
  }
   public int actualizar(Producto producto) throws ClassNotFoundException, SQLException  {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Inge","test","root");
-         PreparedStatement ps;
+         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Inge","test","root");
+         PreparedStatement lu_ps;
   
-                ps= con.prepareStatement("update producto set Nombre='?' ,Descripcion='?' ,Precio='?' ,cantidad='?',tipo='?'  where Codigo_Producto= ?");
-                ps.setString(1,producto.getNombre());
-                ps.setString(2,producto.getDescripcion());
-                ps.setString(3,producto.getPrecio());
-                ps.setString(4,producto.gettipo());
-                ps.setString(5,producto.getCantidad());
+                lu_ps= lu_con.prepareStatement("update producto set Nombre='?' ,Descripcion='?' ,Precio='?' ,cantidad='?',tipo='?'  where Codigo_Producto= ?");
+                lu_ps.setString(1,producto.getNombre());
+                lu_ps.setString(2,producto.getDescripcion());
+                lu_ps.setString(3,producto.getPrecio());
+                lu_ps.setString(4,producto.gettipo());
+                lu_ps.setString(5,producto.getCantidad());
              
-            r3= ps.executeUpdate();
-   return r3;
+            ln_r3= lu_ps.executeUpdate();
+   return ln_r3;
   }
 
 }

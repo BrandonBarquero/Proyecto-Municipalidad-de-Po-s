@@ -154,35 +154,35 @@
 </body>
 </html>
 <%
-            String Codigo_P=request.getParameter("Codigo_P");
-            String Codigo=request.getParameter("Codigo");
-            String Nombre=request.getParameter("Nombre");
-            String Unidad=request.getParameter("Unidad");
-            String Descripcion=request.getParameter("Descripcion");
-            String Precio=request.getParameter("Precio");
-            String marca=request.getParameter("Marca");
-            String fecha=request.getParameter("Fecha");
-            String entrada=request.getParameter("Entrada");
-            String ubicacion=request.getParameter("Ubicacion");
-            String tipo=request.getParameter("Tipo");
+            String lc_Codigo_P=request.getParameter("Codigo_P");
+            String lc_Codigo=request.getParameter("Codigo");
+            String lc_Nombre=request.getParameter("Nombre");
+            String lc_Unidad=request.getParameter("Unidad");
+            String lc_Descripcion=request.getParameter("Descripcion");
+            String lc_Precio=request.getParameter("Precio");
+            String lc_marca=request.getParameter("Marca");
+            String lc_fecha=request.getParameter("Fecha");
+            String lc_entrada=request.getParameter("Entrada");
+            String lc_ubicacion=request.getParameter("Ubicacion");
+            String lc_tipo=request.getParameter("Tipo");
               
             
             int ln_r;
             try{
                 
-                if(Codigo!=null&&Codigo_P!=null){
+                if(lc_Codigo!=null&&lc_Codigo_P!=null){
                 
                  lu_ps= lu_con.prepareStatement("update producto set "
-                      + " Codigo_Presupuestario='"+Codigo_P+
-                        "' ,Nombre='"+Nombre+
-                        "' ,Unidad='"+Unidad+
-                        "' ,Descripcion='"+Descripcion+
-                        "' ,Precio='"+Precio+        
-                        "' ,marca='"+marca+
-                        "' ,Ubicacion='"+ubicacion+
+                      + " Codigo_Presupuestario='"+lc_Codigo_P+
+                        "' ,Nombre='"+lc_Nombre+
+                        "' ,Unidad='"+lc_Unidad+
+                        "' ,Descripcion='"+lc_Descripcion+
+                        "' ,Precio='"+lc_Precio+        
+                        "' ,marca='"+lc_marca+
+                        "' ,Ubicacion='"+lc_ubicacion+
 
-                        "' ,Tipo_Producto='"+tipo
-                      + "' where Codigo_Producto="+Codigo+"");
+                        "' ,Tipo_Producto='"+lc_tipo
+                      + "' where Codigo_Producto="+lc_Codigo+"");
                 ln_r=lu_ps.executeUpdate();
                 
            if(ln_r>=1){

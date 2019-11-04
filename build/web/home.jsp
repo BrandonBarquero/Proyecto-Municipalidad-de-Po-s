@@ -7,50 +7,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-       <%String Usuario2=(String) session.getAttribute("user");
+       <%String lc_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(lc_Usuario2 == null){
            request.getRequestDispatcher("Error").forward(request, response);
           
           }%>
             <%
-                int x=0;
-                int x2=0;
-                int x3=0;
-                int x4=0;
+                int ln_x=0;
+                int ln_x2=0;
+                int ln_x3=0;
+                int ln_x4=0;
                 
                 
          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
+         Connection lc_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
          
          
-         PreparedStatement ps;
-         ResultSet rs;
+         PreparedStatement lc_ps;
+         ResultSet lc_rs;
          
-         PreparedStatement ps2;
-         ResultSet rs2;
+         PreparedStatement lc_ps2;
+         ResultSet lc_rs2;
          
-         PreparedStatement ps3;
-         ResultSet rs3;
+         PreparedStatement lc_ps3;
+         ResultSet lc_rs3;
          
-         PreparedStatement ps4;
-         ResultSet rs4;
+         PreparedStatement lc_ps4;
+         ResultSet lc_rs4;
          
-         ps=con.prepareStatement("select * from Usuario where Rol='1' and Estado='Activo'");
-         rs=ps.executeQuery();
-             while(rs.next()){ 
-                 x=x+1;
+         lc_ps=lc_con.prepareStatement("select * from Usuario where Rol='1' and Estado='Activo'");
+         lc_rs=lc_ps.executeQuery();
+             while(lc_rs.next()){ 
+                 ln_x=ln_x+1;
              }
              
-  ps2=con.prepareStatement("select * from Usuario where Rol='2' and Estado='Activo'");
-         rs2=ps2.executeQuery();
-             while(rs2.next()){ 
-                 x2=x2+1;
+  lc_ps2=lc_con.prepareStatement("select * from Usuario where Rol='2' and Estado='Activo'");
+         lc_rs2=lc_ps2.executeQuery();
+             while(lc_rs2.next()){ 
+                 ln_x2=ln_x2+1;
              }
-          ps3=con.prepareStatement("select * from Producto where Estado='Activo'");
-         rs3=ps3.executeQuery();
-             while(rs3.next()){ 
-                 x3=x3+1;
+          lc_ps3=lc_con.prepareStatement("select * from Producto where Estado='Activo'");
+         lc_rs3=lc_ps3.executeQuery();
+             while(lc_rs3.next()){ 
+                 ln_x3=ln_x3+1;
              }
          
          %>
@@ -80,12 +80,12 @@
             <article href="LitarProductos.jsp"class="tile">
                 <div class="tile-icon full-reset"><i class="zmdi zmdi-face"></i></div>
                 <div class="tile-name all-tittles"><a href="ListarUsuarios.jsp">Administradores</a></div>
-                <div class="tile-num full-reset"><%=x%></div>
+                <div class="tile-num full-reset"><%=ln_x%></div>
             </article>
             <article class="tile">
                 <div class="tile-icon full-reset"><i class="zmdi zmdi-accounts"></i></div>
                 <div class="tile-name all-tittles"><a href="ListarUsuarios.jsp">Bodegueros</a></div>
-                <div class="tile-num full-reset"><%=x2%></div>
+                <div class="tile-num full-reset"><%=ln_x2%></div>
             </article>
              <article class="tile">
                 <div class="tile-icon full-reset"><i class="zmdi zmdi-truck"></i></div>
@@ -95,7 +95,7 @@
             <article class="tile">
                 <div class="tile-icon full-reset"><i class="zmdi zmdi-mall"></i></div>
                 <div class="tile-name all-tittles"><a href="ListarProductos.jsp">Productos</a></div>
-                <div class="tile-num full-reset"><%=x3%></div>
+                <div class="tile-num full-reset"><%=ln_x3%></div>
             </article>
         </section>
            <!--Fin Cuerpo Página-->

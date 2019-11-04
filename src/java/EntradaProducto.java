@@ -50,13 +50,13 @@ public class EntradaProducto extends HttpServlet {
           
           
           
-            String codigo=request.getParameter("codigo");
-            String mot=request.getParameter("mot");
-            String date=request.getParameter("date");
-            String dep=request.getParameter("dep");
-            String res=request.getParameter("res");
+            String lc_codigo=request.getParameter("codigo");
+            String lc_mot=request.getParameter("mot");
+            String lc_date=request.getParameter("date");
+            String lc_dep=request.getParameter("dep");
+            String lc_res=request.getParameter("res");
             
-            String cantidad1=request.getParameter("cantidad1");
+            String lc_cantidad1=request.getParameter("cantidad1");
 
             
             
@@ -69,12 +69,12 @@ public class EntradaProducto extends HttpServlet {
                 
                
                 
-                lu_ps.setString(1,date);
-                lu_ps.setString(2,mot);
-                lu_ps.setString(3,cantidad1);
-                lu_ps.setString(4,res);
-                lu_ps.setString(5,codigo);
-                 lu_ps.setString(6,dep);
+                lu_ps.setString(1,lc_date);
+                lu_ps.setString(2,lc_mot);
+                lu_ps.setString(3,lc_cantidad1);
+                lu_ps.setString(4,lc_res);
+                lu_ps.setString(5,lc_codigo);
+                 lu_ps.setString(6,lc_dep);
                ln_r=lu_ps.executeUpdate();
                 if(ln_r>=1){
                response.sendRedirect("ListarProductos.jsp");

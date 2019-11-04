@@ -53,15 +53,15 @@ public class SalidaProductoBodeguero extends HttpServlet {
           
           
           
-            String sum=request.getParameter("sum");
-            String codigo=request.getParameter("codigo");
-            String res=request.getParameter("res");
-            String date=request.getParameter("date");
-            String dep=request.getParameter("dep");
+            String lc_sum=request.getParameter("sum");
+            String lc_codigo=request.getParameter("codigo");
+            String lc_res=request.getParameter("res");
+            String lc_date=request.getParameter("date");
+            String lc_dep=request.getParameter("dep");
             
 
             
-             String nuevo=request.getParameter("nuevo");
+             String lc_nuevo=request.getParameter("nuevo");
             
             
             
@@ -71,11 +71,11 @@ public class SalidaProductoBodeguero extends HttpServlet {
                 
                
                 
-                lu_ps.setString(1,date);
-                lu_ps.setString(2,dep);
-                lu_ps.setString(3,nuevo);
-                lu_ps.setString(4,codigo);
-                lu_ps.setString(5,res);
+                lu_ps.setString(1,lc_date);
+                lu_ps.setString(2,lc_dep);
+                lu_ps.setString(3,lc_nuevo);
+                lu_ps.setString(4,lc_codigo);
+                lu_ps.setString(5,lc_res);
                ln_r=lu_ps.executeUpdate();
                 if(ln_r>=1){
                response.sendRedirect("ListarProductosBodeguero.jsp");
@@ -101,12 +101,12 @@ public class SalidaProductoBodeguero extends HttpServlet {
            
             try{
                 
-                if(nuevo!=null&&lc_Codigo!=null){
+                if(lc_nuevo!=null&&lc_Codigo!=null){
                 
                  lu_ps1= lu_con.prepareStatement("update producto set " + 
                         
                         
-                         "Cantidad="+sum+
+                         "Cantidad="+lc_sum+
                          "where Codigo_Producto="+lc_Codigo+"");
                 lu_ps1.executeUpdate();
                 response.sendRedirect("ListarProductosBodeguero.jsp");
