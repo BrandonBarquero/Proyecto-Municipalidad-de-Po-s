@@ -50,7 +50,7 @@
                             <%  while(lu_rs.next()){ %>
 
                                 <div >
-                                     <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código Presupuestario</label>
+                                     <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Código Presupuestario</label>
                                     <input value="<%=lu_rs.getString("Codigo_Presupuestario")%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
@@ -58,7 +58,7 @@
                             </div>
 
                               <div >
-                                  <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Nombre</label>
+                                  <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Nombre</label>
                                 <input value="<%=lu_rs.getString("Nombre")%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
@@ -66,7 +66,7 @@
                             </div>
 
                                 <div>
-                                  <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Unidad</label>
+                                  <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Unidad</label>
                                 <input value="<%=lu_rs.getString("Unidad")%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
@@ -75,7 +75,7 @@
                                 
                                 <div>
 
-                                 <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Descripción</label>
+                                 <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Descripción</label>
                                 <input value="<%=lu_rs.getString("Descripcion")%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
@@ -83,7 +83,7 @@
                             </div>
 
                                 <div>
-                               <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Precio</label>
+                               <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Precio</label>
                                 <input value="<%=lu_rs.getString("Precio")%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
@@ -92,7 +92,7 @@
                                 
                                 <div>
 
-                              <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Cantidad</label>
+                              <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Cantidad</label>
                                 <input value="<%=lu_rs.getString("cantidad")%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
@@ -101,7 +101,7 @@
                                 
                                 <div>
 
-                            <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Marca</label>
+                            <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Marca</label>
                                 <input value="<%=lu_rs.getString("marca")%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
@@ -110,7 +110,7 @@
                                 
                                 <div>
 
-                           <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Proveedor</label>
+                           <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Proveedor</label>
                                 <input value="<%=lu_rs.getString("Proveedor")%>" type="text" class="tooltips-general material-control"  readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
@@ -119,7 +119,7 @@
 
 
                             <div>
-                                  <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Fecha vencimiento de garantía</label>
+                                  <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Fecha vencimiento de garantía</label>
                                 <input value="<%=lu_rs.getString("Garantia")%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
@@ -127,14 +127,14 @@
                             </div>
 
                                 <div>
-                                   <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Fecha de entrada</label> 
+                                   <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Fecha de entrada</label> 
                                 <input value="<%=lu_rs.getString("Fecha_Entrada")%>" type="text" class="tooltips-general material-control"  readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
                             </div>
                                     <div>
-                                          <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Ubicación</label>
+                                          <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Ubicación</label>
                                 <input value="<%=lu_rs.getString("Ubicacion")%>" type="text" class="tooltips-general material-control"  readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
@@ -142,7 +142,7 @@
                             </div>
 
                                        <div>
-                                         <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Tipo de producto</label>  
+                                         <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Tipo de producto</label>  
                                 <input  value="<%=lu_rs.getString("Tipo_Producto")%>" type="text" class="tooltips-general material-control"  readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
