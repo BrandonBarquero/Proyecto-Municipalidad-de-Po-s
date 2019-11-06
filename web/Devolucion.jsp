@@ -16,7 +16,7 @@
                var a = parseInt(document.dev.cantidad.value),
                b = parseInt(document.dev.cantidad1.value);
                if((a-b) >= 0){
-                   document.dev.cantidad2.value = a - b;
+                   document.dev.cantidad2.value = a + b;
                }else
                    alert("No se puede devolver mas productos de los que existen disponibles.");
            }catch (e) {

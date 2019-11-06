@@ -45,7 +45,7 @@
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                            <div class="group-material">
-                               <input id="Cedula" name="Cedula" type="text" class="material-control tooltips-general input-check-user" placeholder="Cédula" required="" maxlength="10" pattern="[0-9]{9,10}" data-toggle="tooltip" data-placement="top" title="Escriba su cédula sin espacios, que servira para iniciar sesión">
+                               <input id="Cedula" name="Cedula" type="text" class="material-control tooltips-general input-check-user" placeholder="Cédula" required="" maxlength="10" pattern="[0-9]{9,10}" data-toggle="tooltip" data-placement="top" title="Cédula sin guiones ni espacios (9 o 10 dígitos">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                                <label>Cédula</label>
@@ -58,7 +58,7 @@
                            </div>
 
                            <div class="group-material">
-                               <input id="Telefono" name="Telefono" type="text" class="material-control tooltips-general" required="" placeholder="Teléfono"  maxlength="12" pattern="[0-9]{6,12}" data-toggle="tooltip" data-placement="top" title="Escriba el telÃ©fono">
+                               <input id="Telefono" name="Telefono" type="text" class="material-control tooltips-general" required="" placeholder="Teléfono"  maxlength="12" pattern="[0-9]{6,12}" data-toggle="tooltip" data-placement="top" title="Solo se permiten números">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                                <label>Teléfono</label>
@@ -81,7 +81,7 @@
                            </div>
                            
                            <div class="group-material">
-                               <input id="Nombre" name="Nombre" type="text" class="material-control tooltips-general" placeholder="Nombre completo" required="" maxlength="70" pattern="[a-zA-ZÃ¡Ã©Ã­Ã³ÃºÃÃ‰ÃÃ“ÃšÃ±Ã‘ ]{1,70}" data-toggle="tooltip" data-placement="top" title="Escribe el nombre">
+                               <input id="Nombre" name="Nombre" type="text" class="material-control tooltips-general" placeholder="Nombre completo" required="" maxlength="70" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" data-toggle="tooltip" data-placement="top" title="Escribe el nombre">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                                <label>Nombre completo</label>
@@ -89,21 +89,21 @@
                     
                       
                            <div class="group-material">
-                               <input id="Contrasena" name="Contrasena" type="password" class="material-control tooltips-general" placeholder="Contraseña" required="" maxlength="200" pattern="[A-Z][A-Za-z0-9.-_,´+}{;:*%]{8,200}" data-toggle="tooltip" data-placement="top" title="Escribe una contraseña">
+                               <input id="Contrasena" name="Contrasena" type="password" class="material-control tooltips-general" placeholder="Contraseña" required="" maxlength="200" pattern="[A-Z][A-Za-z0-9.-_,´+}{;:*%]{8,200}" data-toggle="tooltip" data-placement="top" title="Primer letra mayúscula y 9 carácteres mínimo">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                                <label>Contraseña</label>
                            </div>            
            
                           <div class="group-material">
-                               <input id="password" type="password" class="material-control tooltips-general" placeholder="Repite la contraseña" required="" maxlength="200" data-toggle="tooltip" data-placement="top" title="Repite la contraseña">
+                               <input id="password" type="password" class="material-control tooltips-general" placeholder="Repite la contraseña" required="" maxlength="200" data-toggle="tooltip" data-placement="top" title="Repitir la contraseña">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                                <label>Repetir contraseña</label>
                           </div>
                             <p class="text-center">
                                 <button type="reset" class="btn btn-info" style="margin-right: 20px;"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>
-                              <button type="submit" onclick="confirmar();" data-placement="bottom" class="btn btn-primary insertar"><i class="zmdi zmdi-floppy"></i> &nbsp;&nbsp; Guardar</button>
+                              <button type="submit" onclick="confirmar();" data-placement="bottom" class="btn btn-primary"><i class="zmdi zmdi-floppy"></i> &nbsp;&nbsp; Guardar</button>
                             </p> 
                        </div>
                    </div>

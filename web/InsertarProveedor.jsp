@@ -53,7 +53,7 @@
                            </div>
 
                                <div class="group-material">
-                                <input type="text" class="material-control tooltips-general" placeholder="Nombre completo" required="" maxlength="70" pattern="[a-zA-ZÃ¡Ã©Ã­Ã³ÃºÃÃ‰ÃÃ“ÃšÃ±Ã‘ ]{1,70}" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del proveedor">
+                                <input type="text" class="material-control tooltips-general" placeholder="Nombre completo" required="" maxlength="70" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s ]{1,70}" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del proveedor">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre completo</label>

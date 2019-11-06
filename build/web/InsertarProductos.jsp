@@ -71,21 +71,21 @@
                             </div>
 
                             <div class="group-material">
-                                <input id="nombre" name="nombre" type="text" pattern="[A-Z a-z]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí el nombre del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del producto">
+                                <input id="nombre" name="nombre" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí el nombre del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre</label>
                             </div>
 
                             <div class="group-material">
-                                <input id="Unidad" name="Unidad" type="text" pattern="[A-Z a-z]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí la unidad del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la unidad o del producto">
+                                <input id="Unidad" name="Unidad" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí la unidad del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la unidad o del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Unidad</label>
                             </div>
 
                             <div class="group-material">
-                                <input id="Descripcion" name="Descripcion" type="text" pattern="[A-Z a-z]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí la descripción del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la descripción del producto">
+                                <input id="Descripcion" name="Descripcion" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí la descripción del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la descripción del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Descripción</label>
@@ -106,14 +106,14 @@
                             </div>
 
                             <div class="group-material">
-                                <input id="Marca" name="Marca" type="text" pattern="[A-Z a-z]{1,70}" class="tooltips-general material-control" placeholder="Escribe aquí la marca del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba la marca del producto">
+                                <input id="Marca" name="Marca" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" class="tooltips-general material-control" placeholder="Escribe aquí la marca del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba la marca del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Marca</label>
                             </div>
 
                             <div class="group-material">
-                                <input id="Proveedor" name="Proveedor" type="text" pattern="[A-Z a-z]{1,70}" class="tooltips-general material-control" placeholder="Escribe aquí el proveedor del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba el proveedor del producto">
+                                <input id="Proveedor" name="Proveedor" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" class="tooltips-general material-control" placeholder="Escribe aquí el proveedor del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba el proveedor del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Proveedor</label>

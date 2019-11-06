@@ -55,10 +55,12 @@
                             <li><a href="ListarProveedores.jsp"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Listar Proveedor</a></li>
                         </ul>
                     </li>
+                     <div class="dropdown-menu-button">
                    <li><a href="Bitacora.jsp"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Bitacora</a></li>
                     <li><a href="Gastos.jsp"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Gastos</a></li>
                     <li><a href="ListarDepartamentos.jsp"><i class="zmdi zmdi-city-alt "></i>&nbsp;&nbsp; Departamentos</a></li>
                     <li><a href="ListarBodegas.jsp"><i class="zmdi zmdi-local-store"></i>&nbsp;&nbsp; Bodegas</a></li>
+                    </div>
                 </ul>
             </div>
         </div>

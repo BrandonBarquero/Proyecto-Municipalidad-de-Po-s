@@ -64,8 +64,8 @@
                                     <table id="datos" class="table table-hover text-center">
                                         <thead>
                                             <tr class="success">
-                                                <th class="text-center">Nombre</th>
                                                 <th class="text-center">Cédula</th>
+                                                <th class="text-center">Nombre</th>
                                                 <th class="text-center">Email</th>
                                                 <th class="text-center">Teléfono</th>
                                                 <th class="text-center">Rol</th>

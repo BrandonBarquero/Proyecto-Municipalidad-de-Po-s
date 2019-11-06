@@ -38,9 +38,9 @@
                             <li><a href="DesecharProductoBodeguero.jsp"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Lista Desechos</a></li>
                             <li><a href="ListarSalidasBodeguero.jsp"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Lista Salidas</a></li>
                         </ul>
-                      <li><a href="ListarDepartamentosBodeguero.jsp"><i class="zmdi zmdi-home zmdi-hc-fw"></i>&nbsp;&nbsp; Departamentos</a></li>
-                       <li><a href="ListarBodegasBodeguero.jsp"><i class="zmdi zmdi-home zmdi-hc-fw"></i>&nbsp;&nbsp; Bodegas</a></li>
-                        <li><a href="ListarTipoProductoBodeguero.jsp"><i class="zmdi zmdi-home zmdi-hc-fw"></i>&nbsp;&nbsp; Tipos de productos</a></li>
+                      <li><a href="ListarDepartamentosBodeguero.jsp"><i class="zmdi zmdi-city-alt"></i>&nbsp;&nbsp; Departamentos</a></li>
+                       <li><a href="ListarBodegasBodeguero.jsp"><i class="zmdi zmdi-local-store"></i>&nbsp;&nbsp; Bodegas</a></li>
+                        <li><a href="ListarTipoProductoBodeguero.jsp"><i class="zmdi zmdi-collection-case-play"></i>&nbsp;&nbsp; Tipos de productos</a></li>
                     </li>
                 </ul>
             </div>

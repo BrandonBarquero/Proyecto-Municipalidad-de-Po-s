@@ -148,6 +148,12 @@
                                 <span class="bar"></span>
                                 
                             </div>
+                                
+                                              <br><br>
+
+                <p class="text-center">
+                  <a href="ListarProductosBodeguero.jsp" class="btn btn-primary btn-lg active" role="button">Regresar</a>
+                    </p> 
 
                 
 <% }%>

@@ -18,7 +18,7 @@
     var a = parseInt(document.f.disponible.value),
         b = parseInt(document.f.nuevo.value);
     if((a-b) >= 0){
-            document.f.sum.value = a - b;
+            document.f.sum.value = a + b;
         }else
             alert("La resta es negativa");
     

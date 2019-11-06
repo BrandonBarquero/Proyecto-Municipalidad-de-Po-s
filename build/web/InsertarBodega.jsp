@@ -49,7 +49,7 @@
                                
 
                                <div class="group-material">
-                                <input name="nombre" type="text" class="material-control tooltips-general" placeholder="Nombre de la bodega" required="" maxlength="70" pattern="[a-zA-ZÃ¡Ã©Ã­Ã³ÃºÃÃ‰ÃÃ“ÃšÃ±Ã‘ 0-9]{1,70}" data-toggle="tooltip" data-placement="top" title="Escriba el nombre de la bodega">
+                                <input name="nombre" type="text" class="material-control tooltips-general" placeholder="Nombre de la bodega" required="" maxlength="70" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s 0-9]{1,70}" data-toggle="tooltip" data-placement="top" title="Escriba el nombre de la bodega">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre de la bodega</label>
