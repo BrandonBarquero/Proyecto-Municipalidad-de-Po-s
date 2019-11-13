@@ -129,7 +129,7 @@
                                 <span class="bar"></span>
                                 <label>Tipo Producto</label>
                             </div>
-
+<!--Falta agregar select de tipo producto y bodega -->
                         
                             <p class="text-center">
                               <button type="submit" data-placement="bottom" class="btn btn-primary modificar"><i class="zmdi zmdi-refresh"></i> &nbsp;&nbsp; Modificar</button>
