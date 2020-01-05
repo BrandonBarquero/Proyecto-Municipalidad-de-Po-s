@@ -1,10 +1,13 @@
+package Servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import Dao.Operaciones;
+import Dao.LoginDAO;
+import Dao.UsuarioDAO;
 import Entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,99 +40,36 @@ public class login extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException, ClassNotFoundException {
-     
-      String lc_nombretraidodelinput=request.getParameter("txtCedula2");
+            throws ServletException, IOException, SQLException, ClassNotFoundException, Exception {
+     // variables
+      String Cedula=request.getParameter("txtCedula2");
       String lc_contrasenatraidadelinput=request.getParameter("txtContrasena2");
-        response.setContentType("text/html;charset=UTF-8");
-     
-      Operaciones go_objetooperaciones= new Operaciones();
-       
-      Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-        
-         PreparedStatement lu_ps2;
-        PreparedStatement lu_ps = null;
-        
-         ResultSet lu_rs;
-         ResultSet lu_rs2;
-       
-         String lc_x= null;
-          String lc_x2= null;
-
-      Usuario usuario = new Usuario(lc_nombretraidodelinput, lc_contrasenatraidadelinput);
-       HttpSession sesion=request.getSession();
+      LoginDAO go_objetooperaciones= new LoginDAO();
+      UsuarioDAO usuariodao = new UsuarioDAO();
+      Usuario usuario = new Usuario(Cedula, lc_contrasenatraidadelinput);
+      HttpSession sesion=request.getSession();
+      
+      
+      
       switch(go_objetooperaciones.loguear(usuario)){
+          
       case 1:{
-      sesion.setAttribute("user",lc_nombretraidodelinput);
+      sesion.setAttribute("user",Cedula);
       sesion.setAttribute("nivel","1");
-      
-   
-     
-         
-          lu_ps2=lu_con.prepareStatement("select Nombre from Usuario where Cedula='"+lc_nombretraidodelinput+"'");
-         lu_rs2=lu_ps2.executeQuery();
-          while(lu_rs2.next()){ 
-           lc_x=  lu_rs2.getString("Nombre");
-          }
-      
-      
-     
-               
-          
-             
-          
-          
-          
-          
-              sesion.setAttribute("user5",lc_x);
-      
-      
-      
-      
-      
-      
-      
-      
+      String Nombreusuario=usuariodao.SelecionarNombre(Cedula);
+      sesion.setAttribute("user5",Nombreusuario);
       response.sendRedirect("home.jsp");
       break;}
-      case 2:{
-          
-          
-          
-      sesion.setAttribute("user2",lc_nombretraidodelinput);
+      
+      case 2:{ 
+      sesion.setAttribute("user2",Cedula);
       sesion.setAttribute("nivel","2");
-      
-        lu_ps2=lu_con.prepareStatement("select Nombre from Usuario where Cedula='"+lc_nombretraidodelinput+"'");
-         lu_rs2=lu_ps2.executeQuery();
-          while(lu_rs2.next()){ 
-           lc_x2=  lu_rs2.getString("Nombre");
-          }
-      
-      
-     
-               
-          
-             
-          
-          
-          
-          
-              sesion.setAttribute("user6",lc_x2);
-      
-      
-      
-      
+      String Nombreusuario=usuariodao.SelecionarNombre(Cedula);
+      sesion.setAttribute("user6",Nombreusuario);
       response.sendRedirect("homeBodeguero.jsp");
       break;}
       default:{
-   
-      
-       response.sendRedirect("Error");
-             
-       
-
-       
+      response.sendRedirect("Error");
       break;
       }
       }
@@ -161,6 +101,8 @@ public class login extends HttpServlet {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -180,6 +122,8 @@ public class login extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

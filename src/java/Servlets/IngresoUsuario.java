@@ -1,13 +1,19 @@
+package Servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Dao.UsuarioDAO;
+import Entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +37,7 @@ public class IngresoUsuario extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
       
             String lc_cedulaTraidadelInput=request.getParameter("Cedula");
             String lc_nombreTraidadelInput=request.getParameter("Nombre");
@@ -40,26 +46,12 @@ public class IngresoUsuario extends HttpServlet {
             String lc_RolTraidadelInput=request.getParameter("Rol");
             String lc_EstadoTraidadelInput=request.getParameter("Estado");
             String lc_contrasenaTraidadelInput=request.getParameter("Contrasena");
+            Usuario usuario = new Usuario(lc_cedulaTraidadelInput,lc_nombreTraidadelInput,lc_CorreoTraidadelInput,lc_TelefonoTraidadelInput,lc_RolTraidadelInput,lc_EstadoTraidadelInput,lc_contrasenaTraidadelInput);
+
+            UsuarioDAO usariodao =new UsuarioDAO();
+             int ln_r=usariodao.insertar(usuario);
+           
             
-            
-            
-            
-            int ln_r;
-            try{
-                
-                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-                PreparedStatement lu_ps= lu_con.prepareStatement("insert into Usuario(Cedula,Nombre,Correo,Telefono,Rol,Estado,Contrasena)values(?,?,?,?,?,?,?)");
-                
-                
-                lu_ps.setString(1,lc_cedulaTraidadelInput);
-                lu_ps.setString(2,lc_nombreTraidadelInput);
-                lu_ps.setString(3,lc_CorreoTraidadelInput);
-                lu_ps.setString(4,lc_TelefonoTraidadelInput);
-                lu_ps.setString(5,lc_RolTraidadelInput);
-                lu_ps.setString(6,lc_EstadoTraidadelInput);
-                lu_ps.setString(7,lc_contrasenaTraidadelInput);
-                ln_r=lu_ps.executeUpdate();
                 if(ln_r>=1){
                 response.sendRedirect("ListarUsuarios.jsp");
                 
@@ -67,9 +59,7 @@ public class IngresoUsuario extends HttpServlet {
                 out.println("<h1> Error</h1>");
                 }
                 
-            }catch(Exception lu_e){
-            out.println("Error"+lu_e.getMessage());
-            }
+          
             
         
     }
@@ -86,7 +76,11 @@ public class IngresoUsuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(IngresoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -100,7 +94,11 @@ public class IngresoUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(IngresoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

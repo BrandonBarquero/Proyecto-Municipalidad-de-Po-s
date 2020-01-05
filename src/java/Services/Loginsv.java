@@ -5,7 +5,7 @@
  */
 package Services;
 
-import Dao.Operaciones;
+import Dao.LoginDAO;
 import Entidades.Usuario;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -16,10 +16,10 @@ import java.util.logging.Logger;
  * @author Allan
  */
 public class Loginsv implements ServiceLoginManager{
-       private final Operaciones operaciones;
+       private final LoginDAO operaciones;
 
     public Loginsv() throws Exception {
-        this.operaciones = new Operaciones();
+        this.operaciones = new LoginDAO();
     }
 
        @Override

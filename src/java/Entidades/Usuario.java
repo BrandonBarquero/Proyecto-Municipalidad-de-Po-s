@@ -8,115 +8,96 @@ package Entidades;
 import java.util.Date;
 
 public class Usuario {
-        private String Codigo;
-	private String usuario;
-	private String password;
-        private String rol;
-        private String nombre;
-        private String fechacreacion;
-	
-	//Constructor
-	public Usuario(){
-	}
-        	public Usuario(String Codigo,String nombre, String rol, String fechacreacion,String usuario,String password){
-		this.Codigo = Codigo;
-                 this.usuario = usuario;
-		this.password = password;
-                this.rol = rol;
-                this.nombre = nombre;
-                this.fechacreacion = fechacreacion;
-	}
-	public Usuario(String nombre, String rol, String fechacreacion,String usuario,String password){
-		this.usuario = usuario;
-		this.password = password;
-                this.rol = rol;
-                this.nombre = nombre;
-                this.fechacreacion = fechacreacion;
-	}
-public Usuario(String nombre, String rol,String usuario,String password){
-		this.usuario = usuario;
-		this.password = password;
-                this.rol = rol;
-                this.nombre = nombre;
-                
-	}
-	public Usuario(String usuario, String password){
-		this.usuario = usuario;
-		this.password = password;
-	}
+        private String Cedula;
+	private String Nombre;
+	private String Correo;
+        private String Telefono;
+        private String Rol;
+        private String Estado;
+        private String Contrasena;
 
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-    /**
-     * @return the rol
-     */
-    public String getRol() {
-        return rol;
+    public Usuario() {
     }
 
-    /**
-     * @param rol the rol to set
-     */
-    public void setRol(String rol) {
-        this.rol = rol;
+    public Usuario(String Cedula, String Nombre, String Correo, String Telefono, String Rol, String Estado, String Contrasena) {
+        this.Cedula = Cedula;
+        this.Nombre = Nombre;
+        this.Correo = Correo;
+        this.Telefono = Telefono;
+        this.Rol = Rol;
+        this.Estado = Estado;
+        this.Contrasena = Contrasena;
+    }
+public Usuario(String Cedula, String Nombre, String Correo, String Telefono, String Rol, String Estado ) {
+        this.Cedula = Cedula;
+        this.Nombre = Nombre;
+        this.Correo = Correo;
+        this.Telefono = Telefono;
+        this.Rol = Rol;
+        this.Estado = Estado;
+    
+    }
+    public Usuario(String Cedula, String Contrasena) {
+        this.Cedula = Cedula;
+        this.Contrasena = Contrasena;
     }
 
-    /**
-     * @return the nombre
-     */
+    public String getCedula() {
+        return Cedula;
+    }
+
+    public void setCedula(String Cedula) {
+        this.Cedula = Cedula;
+    }
+
     public String getNombre() {
-        return nombre;
+        return Nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
-    public String getCodigo() {
-        return Codigo;
+    public String getCorreo() {
+        return Correo;
     }
 
-    public void setCodigo(String Codigo) {
-        this.Codigo = Codigo;
+    public void setCorreo(String Correo) {
+        this.Correo = Correo;
     }
 
-    public String getFechacreacion() {
-        return fechacreacion;
+    public String getTelefono() {
+        return Telefono;
     }
 
-    public void setFechacreacion(String fechacreacion) {
-        this.fechacreacion = fechacreacion;
+    public void setTelefono(String Telefono) {
+        this.Telefono = Telefono;
     }
 
-    /**
-     * @return the ultimafechalogin
-     */
-    public String getfechacreacion() {
-        return fechacreacion;
+    public String getRol() {
+        return Rol;
     }
 
-    /**
-     * @param ultimafechalogin the ultimafechalogin to set
-     */
-    public void setfechacreacion(String fechacreacion) {
-        this.fechacreacion = fechacreacion;
+    public void setRol(String Rol) {
+        this.Rol = Rol;
     }
+
+    public String getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
+    }
+
+    public String getContrasena() {
+        return Contrasena;
+    }
+
+    public void setContrasena(String Contrasena) {
+        this.Contrasena = Contrasena;
+    }
+	
+	
 	
 }

@@ -22,12 +22,12 @@ import java.sql.SQLException;
  *
  * @author Allan
  */
-public class Operaciones {
+public class LoginDAO {
     String lc_driver;
     String lc_url;
     String lc_usuariobasededatos;
     String lc_contrasenabasededatos;
-    public Operaciones(){
+    public LoginDAO(){
     lc_driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
     lc_url="jdbc:sqlserver://localhost:1433;databaseName=inventario";
     lc_usuariobasededatos="test";
@@ -47,8 +47,8 @@ public class Operaciones {
     Class.forName(this.lc_driver);
     lu_conn=DriverManager.getConnection(this.lc_url,this.lc_usuariobasededatos,this.lc_contrasenabasededatos);
     lu_pst=lu_conn.prepareStatement(sql);
-    lu_pst.setString(1, usuario.getUsuario());
-    lu_pst.setString(2,usuario.getPassword());
+    lu_pst.setString(1, usuario.getCedula());
+    lu_pst.setString(2,usuario.getContrasena());
     lu_pst.setString(3,"Activo");
     lu_rs=lu_pst.executeQuery();
     while(lu_rs.next()){

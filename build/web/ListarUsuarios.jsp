@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Entidades.Usuario"%>
+<%@page import="Dao.UsuarioDAO"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -7,16 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-        
-
-     <%
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-         ResultSet lu_rs;
-         
-         lu_ps=lu_con.prepareStatement("select * from Usuario where Estado='Activo'");
-         lu_rs=lu_ps.executeQuery();%>
+<%
+       UsuarioDAO daousuario=new UsuarioDAO();
+       ArrayList<Usuario> ListaUsuarios=  daousuario.listaUsuarios();
+%>
 
     <jsp:include page="Header.jsp"/>
 
@@ -76,34 +73,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <%    while(lu_rs.next()){   %>
+               <%    for(int x=0;x<ListaUsuarios.size();x++){   %>
                  <tr>
-                     <td><%=lu_rs.getString("Cedula")%> </td>
-                     <td><%=lu_rs.getString("Nombre")%> </td> 
-                     <td><%=lu_rs.getString("Correo")%> </td> 
-                     <td><%=lu_rs.getString("telefono")%> </td> 
-                     
-                     
+                     <td><%=ListaUsuarios.get(x).getCedula()%> </td>
+                     <td><%=ListaUsuarios.get(x).getNombre()%> </td>
+                     <td><%=ListaUsuarios.get(x).getCorreo()%> </td>
+                     <td><%=ListaUsuarios.get(x).getTelefono()%> </td>
+   
                      <% 
-                         if(lu_rs.getInt("Rol")==1){%> <td>Administrador </td> <%}%>
+                         if(ListaUsuarios.get(x).getRol().equals("1")){%> <td>Administrador </td> <%}%>
                          
                           <% 
-                         if(lu_rs.getInt("Rol")==2){%> <td>Bodeguero </td> <%}%>
-                         
-                         
-                         
-                         
-                        
-                         
-                     
-                     
-                    
-                     
-                 
-                     <td><a href="ModificarUsuario.jsp?Cedula=<%=lu_rs.getString("Cedula")%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
-                    <td><a href="DesactivarUsuario?Cedula=<%=lu_rs.getString("Cedula")%>"><button data-href="DesactivarUsuario?Cedula=<%=lu_rs.getString("Cedula")%>" data-placement="bottom" class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td> 
+                         if(ListaUsuarios.get(x).getRol().equals("2")){%> <td>Bodeguero </td> <%}%>
+
+                     <td><a href="ModificarUsuario.jsp?Cedula=<%=ListaUsuarios.get(x).getCedula()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
+                    <td><a href="DesactivarUsuario?Cedula=<%=ListaUsuarios.get(x).getCedula()%>"><button data-href="DesactivarUsuario?Cedula=<%=ListaUsuarios.get(x).getCedula()%>" data-placement="bottom" class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td> 
                      </tr>
-                     
+                     <% } %>
                      
                             <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>
@@ -111,7 +97,7 @@
                 
               </tr> 
                  
-                     <% } %>
+                    
                                         </tbody>
                                     </table>
                                 </div>

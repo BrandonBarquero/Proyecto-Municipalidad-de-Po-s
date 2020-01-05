@@ -1,3 +1,5 @@
+<%@page import="Dao.ProductoDAO"%>
+<%@page import="Dao.UsuarioDAO"%>
 <!DOCTYPE html>
 <%@page import="java.sql.*"%>
 <html lang="es">
@@ -12,47 +14,18 @@
           if(lc_Usuario2 == null){
            request.getRequestDispatcher("Error").forward(request, response);
           
-          }%>
-            <%
-                int ln_x=0;
+          }
+           int ln_x=0;
                 int ln_x2=0;
                 int ln_x3=0;
-                int ln_x4=0;
-                
-                
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lc_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         
-         
-         PreparedStatement lc_ps;
-         ResultSet lc_rs;
-         
-         PreparedStatement lc_ps2;
-         ResultSet lc_rs2;
-         
-         PreparedStatement lc_ps3;
-         ResultSet lc_rs3;
-         
-         PreparedStatement lc_ps4;
-         ResultSet lc_rs4;
-         
-         lc_ps=lc_con.prepareStatement("select * from Usuario where Rol='1' and Estado='Activo'");
-         lc_rs=lc_ps.executeQuery();
-             while(lc_rs.next()){ 
-                 ln_x=ln_x+1;
-             }
-             
-  lc_ps2=lc_con.prepareStatement("select * from Usuario where Rol='2' and Estado='Activo'");
-         lc_rs2=lc_ps2.executeQuery();
-             while(lc_rs2.next()){ 
-                 ln_x2=ln_x2+1;
-             }
-          lc_ps3=lc_con.prepareStatement("select * from Producto where Estado='Activo'");
-         lc_rs3=lc_ps3.executeQuery();
-             while(lc_rs3.next()){ 
-                 ln_x3=ln_x3+1;
-             }
-         
+              UsuarioDAO daousuario= new UsuarioDAO();
+              ProductoDAO daoproducto= new ProductoDAO();
+              
+
+               ln_x=daousuario.ContadorAdmins();
+               ln_x2=daousuario.ContadorBodeguero();
+               ln_x3=daoproducto.ContadorProductos();
+
          %>
     
 	   

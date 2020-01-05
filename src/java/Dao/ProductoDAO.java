@@ -10,6 +10,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,10 +23,11 @@ public class ProductoDAO {
     int ln_r = 0;
     int ln_r2 = 0;
     int ln_r3 = 0;
-      private final Connection lu_connection;
+      private final Connection connection;
 
     public ProductoDAO() throws Exception {
-        this.lu_connection = new ConexionBD().getConnection();
+        this.connection = new ConexionBD().getConnection();
+
     }
    public int insertar(Producto lo_producto) throws ClassNotFoundException, SQLException  {
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -84,5 +86,15 @@ public class ProductoDAO {
             ln_r3= lu_ps.executeUpdate();
    return ln_r3;
   }
-
+ public int ContadorProductos() throws SQLException{
+           int cont=0;
+           PreparedStatement ps= null;
+           ps= connection.prepareStatement("select * from Producto where Estado='Activo'");
+           ResultSet rs=ps.executeQuery();
+             while(rs.next()){ 
+                 cont=cont+1;
+             }
+             return cont;
+  
+  }
 }
