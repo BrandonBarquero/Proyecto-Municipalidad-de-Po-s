@@ -1,11 +1,9 @@
 package Servlets;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import Dao.UsuarioDAO;
 import Entidades.Usuario;
 import java.io.IOException;
@@ -46,9 +44,12 @@ public class IngresoUsuario extends HttpServlet {
             String lc_RolTraidadelInput=request.getParameter("Rol");
             String lc_EstadoTraidadelInput=request.getParameter("Estado");
             String lc_contrasenaTraidadelInput=request.getParameter("Contrasena");
+            
+            
             Usuario usuario = new Usuario(lc_cedulaTraidadelInput,lc_nombreTraidadelInput,lc_CorreoTraidadelInput,lc_TelefonoTraidadelInput,lc_RolTraidadelInput,lc_EstadoTraidadelInput,lc_contrasenaTraidadelInput);
 
             UsuarioDAO usariodao =new UsuarioDAO();
+            
              int ln_r=usariodao.insertar(usuario);
            
             

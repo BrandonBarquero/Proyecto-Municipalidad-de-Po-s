@@ -8,74 +8,155 @@ package Entidades;
 
 
 public class Producto{
-	
-	private String nombre;
-	private String descripcion;
-	private String precio;
-	private String cantidad;
-	private String tipo;
-	private String imagen;
-
-    public Producto ( String nombre, String descripcion,String precio,String cantidad,String tipo,String imagen) {
-    	this.tipo = tipo;
-    	this.nombre = nombre;
-    	this.descripcion=descripcion;
-    	this.precio=precio;
-    	this.cantidad=cantidad;
-    	this.imagen=imagen;
+	private String Codigo_Producto;
+        private String Codigo_Presupuestario;
+	private String Nombre;
+	private String Unidad;
+	private String Descripcion;
+	private String Precio;
+	private String Cantidad;
+	private String Estado;
+        private String Marca;
+        private String Fecha_Entrada;
+        private String Ubicacion;
+        private String Tipo_Producto;
+        private String Garantia;
+        private String Proveedor;
+        
+    public Producto() {
     }
 
-    public Producto () {
+    public Producto(String Codigo_Producto, String Codigo_Presupuestario, String Nombre, String Unidad, String Descripcion, String Precio, String Cantidad, String Estado, String Marca, String Fecha_Entrada, String Ubicacion, String Tipo_Producto, String Garantia, String Proveedor) {
+        this.Codigo_Producto = Codigo_Producto;
+        this.Codigo_Presupuestario = Codigo_Presupuestario;
+        this.Nombre = Nombre;
+        this.Unidad = Unidad;
+        this.Descripcion = Descripcion;
+        this.Precio = Precio;
+        this.Cantidad = Cantidad;
+        this.Estado = Estado;
+        this.Marca = Marca;
+        this.Fecha_Entrada = Fecha_Entrada;
+        this.Ubicacion = Ubicacion;
+        this.Tipo_Producto = Tipo_Producto;
+        this.Garantia = Garantia;
+        this.Proveedor = Proveedor;
+    }
+
+    public String getCodigo_Producto() {
+        return Codigo_Producto;
+    }
+
+    public void setCodigo_Producto(String Codigo_Producto) {
+        this.Codigo_Producto = Codigo_Producto;
+    }
+
+    public String getCodigo_Presupuestario() {
+        return Codigo_Presupuestario;
+    }
+
+    public void setCodigo_Presupuestario(String Codigo_Presupuestario) {
+        this.Codigo_Presupuestario = Codigo_Presupuestario;
     }
 
     public String getNombre() {
-		return nombre;
-	}
+        return Nombre;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
 
-  
-	public String gettipo() {
-		return tipo;
-	}
+    public String getUnidad() {
+        return Unidad;
+    }
 
-	public void settipo(String tipo) {
-		this.tipo = tipo;
-	}
+    public void setUnidad(String Unidad) {
+        this.Unidad = Unidad;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public String getDescripcion() {
+        return Descripcion;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public void setDescripcion(String Descripcion) {
+        this.Descripcion = Descripcion;
+    }
 
-	public String getCantidad() {
-		return cantidad;
-	}
+    public String getPrecio() {
+        return Precio;
+    }
 
-	public void setCantidad(String cantidad) {
-		this.cantidad= cantidad;
-	}
+    public void setPrecio(String Precio) {
+        this.Precio = Precio;
+    }
 
-	public String getPrecio() {
-		return precio;
-	}
+    public String getCantidad() {
+        return Cantidad;
+    }
 
-	public void setPrecio(String precio) {
-		this.precio = precio;
-	}
+    public void setCantidad(String Cantidad) {
+        this.Cantidad = Cantidad;
+    }
 
-	public String getimagen() {
-		return imagen;
-	}
+    public String getEstado() {
+        return Estado;
+    }
 
-	public void setimagen(String imagen) {
-		this.imagen = imagen;
-	}
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
+    }
+
+    public String getMarca() {
+        return Marca;
+    }
+
+    public void setMarca(String Marca) {
+        this.Marca = Marca;
+    }
+
+    public String getFecha_Entrada() {
+        return Fecha_Entrada;
+    }
+
+    public void setFecha_Entrada(String Fecha_Entrada) {
+        this.Fecha_Entrada = Fecha_Entrada;
+    }
+
+    public String getUbicacion() {
+        return Ubicacion;
+    }
+
+    public void setUbicacion(String Ubicacion) {
+        this.Ubicacion = Ubicacion;
+    }
+
+    public String getTipo_Producto() {
+        return Tipo_Producto;
+    }
+
+    public void setTipo_Producto(String Tipo_Producto) {
+        this.Tipo_Producto = Tipo_Producto;
+    }
+
+    public String getGarantia() {
+        return Garantia;
+    }
+
+    public void setGarantia(String Garantia) {
+        this.Garantia = Garantia;
+    }
+
+    public String getProveedor() {
+        return Proveedor;
+    }
+
+    public void setProveedor(String Proveedor) {
+        this.Proveedor = Proveedor;
+    }
+    
+        
+
 
 	
 }

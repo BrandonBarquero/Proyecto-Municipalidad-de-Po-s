@@ -1,9 +1,12 @@
+package Servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Entidades.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
@@ -45,29 +48,12 @@ public class IngresoProducto extends HttpServlet {
             String lc_Tipo2=request.getParameter("Proveedor");
             String lc_Tipo3=request.getParameter("Garantia");
             
+            Producto producto = new Producto();
+            
+            
             int ln_r;
-            try{
-                
-                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-                PreparedStatement lu_ps= lu_con.prepareStatement("insert into producto(Codigo_Presupuestario,Nombre,Unidad,Descripcion,Precio,cantidad,marca,Fecha_Entrada,Ubicacion,Estado,Tipo_Producto,Proveedor,Garantia)values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                
-                
-                
-                lu_ps.setString(1,lc_Codigo_Presupuestario);
-                lu_ps.setString(2,lc_Nombre);
-                lu_ps.setString(3,lc_Unidad);
-                lu_ps.setString(4,lc_Descripcion);
-                lu_ps.setString(5,lc_Precio);
-                lu_ps.setString(6,lc_cantidad);             
-                lu_ps.setString(7,lc_marca);
-                lu_ps.setString(8,lc_Fecha_Entrada);
-                lu_ps.setString(9,lc_Ubicacion);
-                lu_ps.setString(10,"Activo");
-                lu_ps.setString(11,lc_Tipo);
-                lu_ps.setString(12,lc_Tipo2);
-                lu_ps.setString(13,lc_Tipo3);
-                ln_r=lu_ps.executeUpdate();
+               
+               
                 if(ln_r>=1){
                 response.sendRedirect("ListarProductos.jsp");
                 
@@ -75,9 +61,7 @@ public class IngresoProducto extends HttpServlet {
                 out.println("<h1> Error</h1>");
                 }
                 
-            }catch(Exception lu_e){
-            out.println("Error"+lu_e.getMessage());
-            }
+           
             
     }
 
