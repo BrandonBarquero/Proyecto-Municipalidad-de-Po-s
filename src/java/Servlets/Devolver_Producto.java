@@ -74,6 +74,7 @@ public class Devolver_Producto extends HttpServlet {
                 
                 }else {
                 out.println("<h1> Error</h1>");
+                            response.sendRedirect("PaginaError.jsp");
                 }
 
 

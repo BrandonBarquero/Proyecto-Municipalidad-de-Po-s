@@ -52,6 +52,7 @@ public class IngresoBodegaBodeguero extends HttpServlet {
                   response.sendRedirect("ListarBodegasBodeguero.jsp");
                 }else {
                 out.println("<h1> Error</h1>");
+                            response.sendRedirect("PaginaErrorBodeguero.jsp");
                 }
                 
     }

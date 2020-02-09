@@ -52,6 +52,7 @@ public class IngresoDepartamentoBodeguero extends HttpServlet {
                 
                 }else {
                 out.println("<h1> Error</h1>");
+                            response.sendRedirect("PaginaErrorBodeguero.jsp");
                 }
         
         

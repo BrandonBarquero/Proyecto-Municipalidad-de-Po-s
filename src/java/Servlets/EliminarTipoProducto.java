@@ -46,6 +46,7 @@ public class EliminarTipoProducto extends HttpServlet {
                 response.sendRedirect("ListarTipoProducto.jsp");
                 }else {
                 out.println("<h1> Error</h1>");
+                            response.sendRedirect("PaginaError.jsp");
                 }
     }
 

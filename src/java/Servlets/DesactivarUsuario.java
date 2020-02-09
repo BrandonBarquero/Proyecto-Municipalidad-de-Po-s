@@ -51,6 +51,7 @@ public class DesactivarUsuario extends HttpServlet {
                response.sendRedirect("ListarUsuarios.jsp");
                 }else {
                 out.println("<h1> Error</h1>");
+                            response.sendRedirect("PaginaError.jsp");
                 } 
     }
 
