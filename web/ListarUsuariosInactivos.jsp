@@ -12,7 +12,7 @@
 <body>
 <%
        UsuarioDAO daousuario=new UsuarioDAO();
-       ArrayList<Usuario> ListaUsuarios=  daousuario.listaUsuarios();
+       ArrayList<Usuario> ListaUsuarios=  daousuario.listaUsuariosInactivos();
 %>
 
     <jsp:include page="Header.jsp"/>
@@ -21,7 +21,7 @@
 
                <div class="container">
             <div class="page-header">
-              <h1 class="all-tittles">SIM<small> Listar Usuarios</small></h1>
+              <h1 class="all-tittles">SIM<small> Listar Usuarios Inactivos</small></h1>
             </div>
         </div>
     
@@ -31,7 +31,7 @@
                     <img src="assets/img/users.png" alt="user" class="img-responsive center-box" style="max-width: 110px;">
                 </div>
                 <div class="col-xs-12 col-sm-8 col-md-8 text-justify lead">
-                    Bienvenido a la sección donde se muestran los usuarios registrados hasta la fecha actual
+                    Bienvenido a la sección donde se muestran los usuarios inactivos
                 </div>
             </div>
         </div>
@@ -40,8 +40,8 @@
                 <div class="col-xs-12 lead">
                     <ol class="breadcrumb">
                    <li><a href="InsertarUsuarios.jsp">Nuevo Usuario</a></li>
-                        <li class="active">Lista de Usuarios</li>
-                         <li><a href="ListarUsuariosInactivos.jsp">Lista de Usuarios Inactivos</a></li>
+                   <li><a href="ListarUsuarios.jsp">Lista de Usuarios</a></li>
+                        <li class="active">Lista de Usuarios Inactivos</li>
                     </ol>
                 </div>
             </div>
@@ -49,7 +49,7 @@
 
         <div class="row">
                             <div class="col-xs-12">
-                                <h3 class="text-center all-tittles">Lista de Usuarios</h3>
+                                <h3 class="text-center all-tittles">Lista de Usuarios Inactivos</h3>
 
                                 <br>
 

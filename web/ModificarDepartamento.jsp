@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>  <%
+<body>  
+    
+    <%
          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
          Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
          PreparedStatement lu_ps;
@@ -15,6 +17,7 @@
          lu_ps=lu_con.prepareStatement("select * from Departamento where IdDepartamento="+ln_id);
          lu_rs=lu_ps.executeQuery();
          while(lu_rs.next()){%>
+         
        <jsp:include page="Header.jsp"/>
 
 
