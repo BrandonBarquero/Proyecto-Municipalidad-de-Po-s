@@ -41,16 +41,16 @@ public class IngresoProducto extends HttpServlet {
             PrintWriter out = response.getWriter();
             
             String Codigo_Producto=request.getParameter("Codigo_Producto");
-            String Codigo_Presupuestario=request.getParameter("Codigo_Presupuestario");
-            String Nombre=request.getParameter("Nombre");
+            String Codigo_Presupuestario=request.getParameter("Presupuestario");
+            String Nombre=request.getParameter("nombre");
             String Unidad=request.getParameter("Unidad");
             String Descripcion=request.getParameter("Descripcion");
             String Precio=request.getParameter("Precio");
             String Cantidad=request.getParameter("Cantidad");
             String Marca=request.getParameter("Marca");
-            String Fecha_Entrada=request.getParameter("Fecha_Entrada");
+            String Fecha_Entrada=request.getParameter("Fecha");
             String Ubicacion=request.getParameter("Ubicacion");
-            String Tipo_Producto=request.getParameter("Tipo_Producto");
+            String Tipo_Producto=request.getParameter("Tipo");
             String Garantia=request.getParameter("Garantia");
             String Proveedor=request.getParameter("Proveedor");
             

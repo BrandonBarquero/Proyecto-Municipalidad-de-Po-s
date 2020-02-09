@@ -33,24 +33,24 @@ public class ProductoDAO {
     }
    public int insertar(Producto lo_producto) throws ClassNotFoundException, SQLException  {
                
-                PreparedStatement lu_ps= connection.prepareStatement("insert into producto(Codigo_Producto,Codigo_Presupuestario,"
+                PreparedStatement lu_ps= connection.prepareStatement("insert into producto(Codigo_Presupuestario,"
                         + "Nombre,Unidad,Descripcion,Precio,Cantidad,Estado,Marca,Fecha_Entrada,Ubicacion"
-                        + ",Tipo_Producto,Garantia,Proveedor)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        + ",Tipo_Producto,Garantia,Proveedor)values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
-                lu_ps.setString(1,lo_producto.getCodigo_Producto());
-                lu_ps.setString(2,lo_producto.getCodigo_Presupuestario());
-                lu_ps.setString(3,lo_producto.getNombre());
-                lu_ps.setString(4,lo_producto.getUnidad());
-                lu_ps.setString(5,lo_producto.getDescripcion());
-                lu_ps.setString(6,lo_producto.getPrecio());           
-                lu_ps.setString(7,lo_producto.getCantidad());
-                lu_ps.setString(8,"Activo");
-                lu_ps.setString(9,lo_producto.getMarca());
-                lu_ps.setString(10,lo_producto.getFecha_Entrada());
-                lu_ps.setString(11,lo_producto.getUbicacion());
-                lu_ps.setString(12,lo_producto.getTipo_Producto());
-                lu_ps.setString(13,lo_producto.getGarantia());
-                lu_ps.setString(14,lo_producto.getProveedor());
+                
+                lu_ps.setString(1,lo_producto.getCodigo_Presupuestario());
+                lu_ps.setString(2,lo_producto.getNombre());
+                lu_ps.setString(3,lo_producto.getUnidad());
+                lu_ps.setString(4,lo_producto.getDescripcion());
+                lu_ps.setString(5,lo_producto.getPrecio());           
+                lu_ps.setString(6,lo_producto.getCantidad());
+                lu_ps.setString(7,"Activo");
+                lu_ps.setString(8,lo_producto.getMarca());
+                lu_ps.setString(9,lo_producto.getFecha_Entrada());
+                lu_ps.setString(10,lo_producto.getUbicacion());
+                lu_ps.setString(11,lo_producto.getTipo_Producto());
+                lu_ps.setString(12,lo_producto.getGarantia());
+                lu_ps.setString(13,lo_producto.getProveedor());
                 ln_r=lu_ps.executeUpdate();
            
       

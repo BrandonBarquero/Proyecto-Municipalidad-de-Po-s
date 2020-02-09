@@ -31,7 +31,7 @@ public class DepartamentoDAO {
   }
           public int insertar(String nombre) throws ClassNotFoundException, SQLException  {
        
-                PreparedStatement ps= connection.prepareStatement("insert into Departamento(Nombre_Bodega)values(?)");
+                PreparedStatement ps= connection.prepareStatement("insert into Departamento(NombreD)values(?)");
 
                
                 ps.setString(1,nombre);
