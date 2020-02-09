@@ -49,9 +49,9 @@
         <!--Fin Mensaje Ayuda-->
 
                  <!--Inicio Footer PÃ¡gina-->
-        <footer class="footer full-reset">
-            <div class="container-fluid">
-                <div class="row">
+        <footer class="footer full-reset" >
+            <div class="container-fluid" style="  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
+                <div class="row" style="  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
                     <div class="col-xs-12 col-sm-6">
                         <h4 class="all-tittles">Acerca de</h4>
                         <p>
