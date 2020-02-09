@@ -31,8 +31,9 @@
             <div class="row">
                 <div class="col-xs-12 lead">
                     <ol class="breadcrumb">
-                      <li class="active">Nuevo usuario</li>
-                      <li><a href="ListarUsuarios.jsp">Lista de usuarios</a></li>
+                      <li class="active">Nuevo Usuario</li>
+                      <li><a href="ListarUsuarios.jsp">Lista de Usuarios</a></li>
+                       <li><a href="ListarUsuariosInactivos.jsp">Lista de Usuarios Inactivos</a></li>
                     </ol>
                 </div>
             </div>

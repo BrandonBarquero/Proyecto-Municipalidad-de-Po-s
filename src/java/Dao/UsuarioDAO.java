@@ -100,8 +100,33 @@ public class UsuarioDAO {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         try {
             PreparedStatement ps;
-            ps=connection.prepareStatement("select * from Usuario");
+            ps=connection.prepareStatement("select * from Usuario where Estado='Activo'");
 
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setCedula(resultSet.getString("Cedula"));
+                usuario.setContrasena(resultSet.getString("Contrasena"));
+                usuario.setNombre(resultSet.getString("Nombre"));
+                usuario.setCorreo(resultSet.getString("Correo"));
+                usuario.setRol(resultSet.getString("Rol"));
+                usuario.setTelefono(resultSet.getString("Telefono"));
+                usuario.setEstado(resultSet.getString("Estado"));
+                usuarios.add(usuario);
+            }
+            return usuarios;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
+  
+    public ArrayList<Usuario> listaUsuariosInactivos( ) {
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+        try {
+            PreparedStatement ps;
+            ps=connection.prepareStatement("select * from Usuario where Estado='Inactivo'");
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
                 Usuario usuario = new Usuario();
