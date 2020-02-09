@@ -72,12 +72,14 @@
     <div class="content-page-container full-reset custom-scroll-containers">
         <nav class="navbar-user-top full-reset" style="  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
             <ul class="list-unstyled full-reset" style="  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
-               
+             
+            
                 <figure> 
-               
-                   <img src="assets/img/user.png" alt="user-picture" class="img-responsive img-circle center-box">
-
+        <img src="assets/img/user.png" alt="user-picture" class="img-responsive img-circle center-box">
                 </figure>
+                   
+                <a href="UsuarioInfo.jsp">Dele aqui</a>
+             
                 
                 <li style="color:#fff; cursor:default;">
                     <span class="all-tittles"><%=Usuario2%></span>
