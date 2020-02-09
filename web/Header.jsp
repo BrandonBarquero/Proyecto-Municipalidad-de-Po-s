@@ -15,10 +15,10 @@
     <body>
           <% String Usuario2=(String) session.getAttribute("user5");%>
 	    <!--Inicio Barra lateral-->
-    <div class="navbar-lateral full-reset">
-        <div class="visible-xs font-movile-menu mobile-menu-button"></div>
-        <div class="full-reset container-menu-movile custom-scroll-containers">
-            <div class="logo full-reset all-tittles">
+    <div  style="  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);" class="navbar-lateral full-reset">
+        <div class="visible-xs font-movile-menu mobile-menu-button" style="  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"></div>
+        <div class="full-reset container-menu-movile custom-scroll-containers"  >
+            <div class="logo full-reset all-tittles"  style="  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
                 <i class="visible-xs zmdi zmdi-close pull-left mobile-menu-button" style="line-height: 55px; cursor: pointer; padding: 0 10px; margin-left: 7px;"></i> 
                 Municipalidad de Poás
             </div>
@@ -26,40 +26,40 @@
                 <figure>
                     <img src="assets/img/muni.png" alt="Municipalidad" class="img-responsive center-box" style="width:40%;">
                 </figure>
-                <p class="text-center" style="padding-top: 15px;">Sistema Inventario de Materiales</p>
+                <p class="text-center" style="padding-top: 15px; color: black; font-size: 20px">Sistema Inventario de Materiales</p>
             </div>
-            <div class="full-reset nav-lateral-list-menu">
-                <ul class="list-unstyled">
-                    <li><a href="home.jsp"><i class="zmdi zmdi-home zmdi-hc-fw"></i>&nbsp;&nbsp; Inicio</a></li>
+            <div class="full-reset nav-lateral-list-menu"  style="  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
+                <ul class="list-unstyled"  style="  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
+                    <li><a href="home.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-home zmdi-hc-fw" ></i>&nbsp;&nbsp; Inicio</a></li>
                     <li>
-                        <div class="dropdown-menu-button"><i class="zmdi zmdi-case zmdi-hc-fw"></i>&nbsp;&nbsp; Productos <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
+                        <div class="dropdown-menu-button" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-case zmdi-hc-fw"></i>&nbsp;&nbsp; Productos <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
                         <ul class="list-unstyled">
-                            <li><a href="InsertarProductos.jsp"><i class="zmdi zmdi-shopping-cart-plus"></i>&nbsp;&nbsp; insertar Productos</a></li>
-                            <li><a href="ListarProductos.jsp"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Lista Productos</a></li>
-                            <li><a href="DesecharProducto.jsp"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Lista Desechos</a></li>
-                            <li><a href="ListarSalidas.jsp"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Lista Salidas</a></li>
-                            <li><a href="ListarTipoProducto.jsp"><i class="zmdi zmdi-collection-case-play"></i>&nbsp;&nbsp; Tipos de Producto</a></li>
+                            <li><a href="InsertarProductos.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-shopping-cart-plus"></i>&nbsp;&nbsp; Insertar Productos</a></li>
+                            <li><a href="ListarProductos.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Lista Productos</a></li>
+                            <li><a href="DesecharProducto.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Lista Desechos</a></li>
+                            <li><a href="ListarSalidas.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Lista Salidas</a></li>
+                            <li><a href="ListarTipoProducto.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-collection-case-play"></i>&nbsp;&nbsp; Tipos de Producto</a></li>
                         </ul>
                     </li>
                     <li>
-                        <div class="dropdown-menu-button"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i>&nbsp;&nbsp; Registro de usuarios <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
+                        <div class="dropdown-menu-button" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i>&nbsp;&nbsp; Registro de usuarios <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
                         <ul class="list-unstyled">
-                            <li><a href="InsertarUsuarios.jsp"><i class="zmdi zmdi-face zmdi-hc-fw"></i>&nbsp;&nbsp; Insertar Usuarios</a></li>
-                            <li><a href="ListarUsuarios.jsp"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i>&nbsp;&nbsp; Listar Usuarios</a></li>
+                            <li><a href="InsertarUsuarios.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-face zmdi-hc-fw"></i>&nbsp;&nbsp; Insertar Usuarios</a></li>
+                            <li><a href="ListarUsuarios.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i>&nbsp;&nbsp; Listar Usuarios</a></li>
                         </ul>
                     </li>
                     <li>
-                        <div class="dropdown-menu-button"><i class="zmdi zmdi-assignment-o zmdi-hc-fw"></i>&nbsp;&nbsp;Proveedores<i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
+                        <div class="dropdown-menu-button" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-assignment-o zmdi-hc-fw"></i>&nbsp;&nbsp;Proveedores<i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
                         <ul class="list-unstyled">
-                            <li><a href="InsertarProveedor.jsp"><i class="zmdi zmdi-plus-circle"></i>&nbsp;&nbsp; Insertar Proveedor</a></li>
-                            <li><a href="ListarProveedores.jsp"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Listar Proveedor</a></li>
+                            <li><a href="InsertarProveedor.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-plus-circle"></i>&nbsp;&nbsp; Insertar Proveedor</a></li>
+                            <li><a href="ListarProveedores.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Listar Proveedor</a></li>
                         </ul>
                     </li>
                      <div class="dropdown-menu-button">
-                   <li><a href="Bitacora.jsp"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Bitacora</a></li>
-                    <li><a href="Gastos.jsp"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i>&nbsp;&nbsp; Gastos</a></li>
-                    <li><a href="ListarDepartamentos.jsp"><i class="zmdi zmdi-city-alt "></i>&nbsp;&nbsp; Departamentos</a></li>
-                    <li><a href="ListarBodegas.jsp"><i class="zmdi zmdi-local-store"></i>&nbsp;&nbsp; Bodegas</a></li>
+                   <li><a href="Bitacora.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-file-text" ></i>&nbsp;&nbsp; Bitacora</a></li>
+                    <li><a href="Gastos.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-trending-up zmdi-hc-fw" ></i>&nbsp;&nbsp; Gastos</a></li>
+                    <li><a href="ListarDepartamentos.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-city-alt " ></i>&nbsp;&nbsp; Departamentos</a></li>
+                    <li><a href="ListarBodegas.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-local-store" ></i>&nbsp;&nbsp; Bodegas</a></li>
                     </div>
                 </ul>
             </div>
@@ -71,8 +71,8 @@
 
     <!--Inicio Barra Superior-->
     <div class="content-page-container full-reset custom-scroll-containers">
-        <nav class="navbar-user-top full-reset">
-            <ul class="list-unstyled full-reset">
+        <nav class="navbar-user-top full-reset" style="  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
+            <ul class="list-unstyled full-reset" style="  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
                 <figure>
                    <img src="assets/img/user.png" alt="user-picture" class="img-responsive img-circle center-box">
                 </figure>
