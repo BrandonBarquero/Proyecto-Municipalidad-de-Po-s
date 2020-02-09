@@ -1,11 +1,16 @@
+package Servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Dao.BodegaDAO;
+import Dao.ProductoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -35,14 +40,27 @@ public class EliminarBodega extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
+            throws ServletException, IOException, SQLException, Exception {
+      
        
          int ln_id=Integer.parseInt(request.getParameter("Id_Bodega"));
-         lu_ps=lu_con.prepareStatement("delete from Bodega where Id_Bodega="+ln_id);
-        lu_ps.executeUpdate();
-         response.sendRedirect("ListarBodegas.jsp");
+        
+          BodegaDAO bodegadao =new BodegaDAO();
+            
+             int ln_r=bodegadao.Eliminar_Bodega(ln_id);
+            
+               
+               
+                if(ln_r>=1){
+                 response.sendRedirect("ListarBodegas.jsp");
+                
+                }else {
+                out.println("<h1> Error</h1>");
+                }
+        
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,6 +79,8 @@ public class EliminarBodega extends HttpServlet {
             processRequest(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(EliminarBodega.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(EliminarBodega.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -78,6 +98,8 @@ public class EliminarBodega extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
+            Logger.getLogger(EliminarBodega.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(EliminarBodega.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

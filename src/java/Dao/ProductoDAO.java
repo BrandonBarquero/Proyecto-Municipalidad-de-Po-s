@@ -44,7 +44,7 @@ public class ProductoDAO {
                 lu_ps.setString(5,lo_producto.getDescripcion());
                 lu_ps.setString(6,lo_producto.getPrecio());           
                 lu_ps.setString(7,lo_producto.getCantidad());
-                lu_ps.setString(8,lo_producto.getEstado());
+                lu_ps.setString(8,"Activo");
                 lu_ps.setString(9,lo_producto.getMarca());
                 lu_ps.setString(10,lo_producto.getFecha_Entrada());
                 lu_ps.setString(11,lo_producto.getUbicacion());
@@ -77,12 +77,12 @@ public class ProductoDAO {
                         + ",Unidad='?' "
                         + ",Descripcion='?'"
                         + ",Precio='?'  "
-                         + ",Cantidad='?'  "
-                         + ",Marca='?'  "
-                         + ",Ubicacion='?'  "
-                         + ",Tipo_Producto='?'  "
-                         + ",Garantia='?'  "
-                         + ",Proveedor='?'  "
+                        + ",Cantidad='?'  "
+                        + ",Marca='?'  "
+                        + ",Ubicacion='?'  "
+                        + ",Tipo_Producto='?'  "
+                        + ",Garantia='?'  "
+                        + ",Proveedor='?'  "
                         + "where getCodigo_Producto= ?");
                 
                 lu_ps.setString(1,lo_producto.getCodigo_Presupuestario());
@@ -112,13 +112,19 @@ public class ProductoDAO {
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
                 Producto producto = new Producto();
-                producto.setCodigo_Presupuestario(resultSet.getString("Cedula"));
-                producto.setContrasena(resultSet.getString("Contrasena"));
+                producto.setCodigo_Presupuestario(resultSet.getString("Codigo_Presupuestario"));
+                producto.setCodigo_Producto(resultSet.getString("Codigo_Producto"));
                 producto.setNombre(resultSet.getString("Nombre"));
-                producto.setCorreo(resultSet.getString("Correo"));
-                producto.setRol(resultSet.getString("Rol"));
-                producto.setTelefono(resultSet.getString("Telefono"));
-                producto.setEstado(resultSet.getString("Estado"));
+                producto.setUnidad(resultSet.getString("Unidad"));
+                producto.setDescripcion(resultSet.getString("Descripcion"));
+                producto.setPrecio(resultSet.getString("Precio"));
+                producto.setCantidad(resultSet.getString("Cantidad"));
+                producto.setMarca(resultSet.getString("Marca"));
+                producto.setFecha_Entrada(resultSet.getString("Fecha_Entrada"));
+                producto.setUbicacion(resultSet.getString("Ubicacion"));
+                producto.setTipo_Producto(resultSet.getString("Tipo_Producto"));
+                producto.setGarantia(resultSet.getString("Garantia"));
+                producto.setProveedor(resultSet.getString("Proveedor"));
                 productos.add(producto);
             }
             return productos;
@@ -129,32 +135,96 @@ public class ProductoDAO {
 
     }
   
-  
-  
-  
-  public ArrayList<Usuario> listaUsuariosFiltrado(String Cedula) {
-        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+  public ArrayList<Producto> listaProductosInactivos( ) {
+        ArrayList<Producto> productos = new ArrayList<Producto>();
         try {
             PreparedStatement ps;
-            ps=connection.prepareStatement("select * from Usuario where Cedula="+Cedula);
+            ps=connection.prepareStatement("select * from producto where Estado='Desecho' and Cantidad != '0'");
 
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
-                Usuario usuario = new Usuario();
-                usuario.setCedula(resultSet.getString("Cedula"));
-                usuario.setContrasena(resultSet.getString("Contrasena"));
-                usuario.setNombre(resultSet.getString("Nombre"));
-                usuario.setCorreo(resultSet.getString("Correo"));
-                usuario.setRol(resultSet.getString("Rol"));
-                usuario.setTelefono(resultSet.getString("Telefono"));
-                usuario.setEstado(resultSet.getString("Estado"));
-                usuarios.add(usuario);
+                Producto producto = new Producto();
+                producto.setCodigo_Presupuestario(resultSet.getString("Codigo_Presupuestario"));
+                producto.setCodigo_Producto(resultSet.getString("Codigo_Producto"));
+                producto.setNombre(resultSet.getString("Nombre"));
+                producto.setUnidad(resultSet.getString("Unidad"));
+                producto.setDescripcion(resultSet.getString("Descripcion"));
+                producto.setPrecio(resultSet.getString("Precio"));
+                producto.setCantidad(resultSet.getString("Cantidad"));
+                producto.setMarca(resultSet.getString("Marca"));
+                producto.setFecha_Entrada(resultSet.getString("Fecha_Entrada"));
+                producto.setUbicacion(resultSet.getString("Ubicacion"));
+                producto.setTipo_Producto(resultSet.getString("Tipo_Producto"));
+                producto.setGarantia(resultSet.getString("Garantia"));
+                producto.setProveedor(resultSet.getString("Proveedor"));
+                productos.add(producto);
             }
-            return usuarios;
+            return productos;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
         }
 
     }
+  public int Activar_Producto(int Codigo_Producto) throws SQLException{
+  PreparedStatement ps;
+  ps= connection.prepareStatement("update producto set Estado='Activo' where Codigo_Producto="+Codigo_Producto+"");
+  int r=ps.executeUpdate();
+        return r;
+  }
+   public int Desechar_Producto(int Codigo_Producto) throws SQLException{
+  PreparedStatement ps;
+   ps= connection.prepareStatement("update producto set Estado='Desecho' where Codigo_Producto="+Codigo_Producto+"");
+  int r=ps.executeUpdate();
+        return r;
+  }
+  public ArrayList<Producto> listaUsuariosFiltrado(String Codigo_Producto) {
+        ArrayList<Producto> productos = new ArrayList<Producto>();
+        try {
+            PreparedStatement ps;
+ 
+            ps=connection.prepareStatement("select * from producto where Codigo_Producto="+Codigo_Producto);
+
+            ResultSet resultSet = ps.executeQuery();
+             while (resultSet.next()) {
+                Producto producto = new Producto();
+                producto.setCodigo_Presupuestario(resultSet.getString("Codigo_Presupuestario"));
+                producto.setCodigo_Producto(resultSet.getString("Codigo_Producto"));
+                producto.setNombre(resultSet.getString("Nombre"));
+                producto.setUnidad(resultSet.getString("Unidad"));
+                producto.setDescripcion(resultSet.getString("Descripcion"));
+                producto.setPrecio(resultSet.getString("Precio"));
+                producto.setCantidad(resultSet.getString("Cantidad"));
+                producto.setMarca(resultSet.getString("Marca"));
+                producto.setFecha_Entrada(resultSet.getString("Fecha_Entrada"));
+                producto.setUbicacion(resultSet.getString("Ubicacion"));
+                producto.setTipo_Producto(resultSet.getString("Tipo_Producto"));
+                producto.setGarantia(resultSet.getString("Garantia"));
+                producto.setProveedor(resultSet.getString("Proveedor"));
+                productos.add(producto);
+            }
+            return productos;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
+   public int Actualizar_Cantidad(String Cantidad,String Codigo_Producto) throws SQLException{
+  PreparedStatement ps;
+ps= connection.prepareStatement("update producto set Cantidad="+Cantidad+"where Codigo_Producto="+Codigo_Producto+"");
+int r=ps.executeUpdate();
+        return r;
+  }
+     public int ContadorProductos() throws SQLException{
+           int cont=0;
+           PreparedStatement ps= null;
+           ps= connection.prepareStatement("select * from Producto where Estado='Activo'");
+           ResultSet rs=ps.executeQuery();
+             while(rs.next()){ 
+                 cont=cont+1;
+             }
+             return cont;
+  
+  }
 }

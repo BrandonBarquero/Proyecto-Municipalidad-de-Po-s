@@ -146,5 +146,11 @@ public class UsuarioDAO {
         }
 
     }
+   public int Desactivar_Usuario(int Cedula) throws SQLException{
+  PreparedStatement ps;
+  ps= connection.prepareStatement("update Usuario set Estado='Inactivo' where Cedula="+Cedula+"");
+  int r=ps.executeUpdate();
+        return r;
+  }
 }
 

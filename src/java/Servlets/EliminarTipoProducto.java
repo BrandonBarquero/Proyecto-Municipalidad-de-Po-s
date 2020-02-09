@@ -1,15 +1,19 @@
+package Servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Dao.DepartamentoDAO;
+import Dao.Tipo_ProductoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,10 +22,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author barqu
+ * @author Allan
  */
-@WebServlet(urlPatterns = {"/IngresoDepartamentoBodeguero"})
-public class IngresoDepartamentoBodeguero extends HttpServlet {
+@WebServlet(urlPatterns = {"/EliminarTipoProducto"})
+public class EliminarTipoProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,29 +37,16 @@ public class IngresoDepartamentoBodeguero extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String lc_nombreTraidadelInput=request.getParameter("nombre");           
-            int ln_r;
-            try{
-                
-                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-                PreparedStatement lu_ps= lu_con.prepareStatement("insert into Departamento(NombreD)values(?)");
-                
-                
-               
-                lu_ps.setString(1,lc_nombreTraidadelInput);
-                ln_r=lu_ps.executeUpdate();
+            throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
+        
+         int ln_id=Integer.parseInt(request.getParameter("Id_Tipo_Producto"));
+          Tipo_ProductoDAO Tipo_Productodao =new Tipo_ProductoDAO();
+             int ln_r=Tipo_Productodao.Eliminar_Tipo_Producto(ln_id);
                 if(ln_r>=1){
-                response.sendRedirect("ListarDepartamentosBodeguero.jsp");
-                
+                response.sendRedirect("ListarTipoProducto.jsp");
                 }else {
                 out.println("<h1> Error</h1>");
                 }
-                
-            }catch(Exception lu_e){
-            out.println("Error"+lu_e.getMessage());
-            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -70,7 +61,15 @@ public class IngresoDepartamentoBodeguero extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EliminarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EliminarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(EliminarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -84,7 +83,15 @@ public class IngresoDepartamentoBodeguero extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EliminarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EliminarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(EliminarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -1,3 +1,7 @@
+<%@page import="Entidades.Bodega"%>
+<%@page import="Dao.BodegaDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Dao.DepartamentoDAO"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -8,13 +12,8 @@
 </head>
 <body>
               <%
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-         ResultSet lu_rs;
-         
-         lu_ps=lu_con.prepareStatement("select * from Bodega");
-         lu_rs=lu_ps.executeQuery();%>
+        BodegaDAO asd = new BodegaDAO();
+        ArrayList<Bodega> a2=  asd.listaBodegas();%>
          <jsp:include page="HeaderBodeguero.jsp"/>
 
 
@@ -54,7 +53,7 @@
 
                                 <br>
 
- <div class="md-form mt-0">
+  <div class="md-form mt-0">
   <input style="width: 25%; margin-left: 10px" id="searchTerm" onkeyup="doSearch()" class="form-control" type="text" placeholder="Buscar" aria-label="Search">
 </div>
 
@@ -71,25 +70,24 @@
 
 
 
-
                                             </tr>
                                         </thead>
                                         <tbody>
                                              <tr>
-                                                <%    while(lu_rs.next()){   %>
+                                               <% for(int x=0;x<a2.size();x++){ %>
+                                                <td><%=a2.get(x).getNombre_Bodega()%> </td>
+                                               <td><%=a2.get(x).getId_Bodega()%> </td>
                                                 
-                                                <td><%=lu_rs.getString("Nombre_Bodega")%></td>
-                                                <td><%=lu_rs.getString("Id_Bodega")%></td>
 
                                                 
-                                                <td> <a href="ModificarBodegasBodeguero.jsp?Id_Bodega=<%=lu_rs.getString("Id_Bodega")%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
-                                          
+                                                <td> <a href="ModificarBodegasBodeguero.jsp?Id_Bodega=<%=a2.get(x).getId_Bodega()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
                                             </tr>
-                                                               <!--TR EXTRA-->                                  
+                                                                  <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>
       <td colspan="5"></td>  
                 
-              </tr> 
+              </tr>   
+                                            
                                             <% } %>
                                         </tbody>
                                     </table>

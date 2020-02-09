@@ -6,12 +6,14 @@ package Servlets;
  * and open the template in the editor.
  */
 
-import Dao.ProductoDAO;
-import Dao.UsuarioDAO;
-import Entidades.Producto;
+import Dao.DepartamentoDAO;
+import Dao.Tipo_ProductoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
+import static java.lang.System.out;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -24,8 +26,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Allan
  */
-@WebServlet(urlPatterns = {"/IngresoProducto"})
-public class IngresoProducto extends HttpServlet {
+@WebServlet(urlPatterns = {"/IngresoTipoProducto"})
+public class IngresoTipoProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,40 +40,22 @@ public class IngresoProducto extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-            PrintWriter out = response.getWriter();
+   
+            String lc_nombreTraidadelInput=request.getParameter("nombre");           
             
-            String Codigo_Producto=request.getParameter("Codigo_Producto");
-            String Codigo_Presupuestario=request.getParameter("Codigo_Presupuestario");
-            String Nombre=request.getParameter("Nombre");
-            String Unidad=request.getParameter("Unidad");
-            String Descripcion=request.getParameter("Descripcion");
-            String Precio=request.getParameter("Precio");
-            String Cantidad=request.getParameter("Cantidad");
-            String Marca=request.getParameter("Marca");
-            String Fecha_Entrada=request.getParameter("Fecha_Entrada");
-            String Ubicacion=request.getParameter("Ubicacion");
-            String Tipo_Producto=request.getParameter("Tipo_Producto");
-            String Garantia=request.getParameter("Garantia");
-            String Proveedor=request.getParameter("Proveedor");
+            Tipo_ProductoDAO tipo_ProductoDAO =new Tipo_ProductoDAO();
             
-            Producto producto = new Producto(Codigo_Producto,Codigo_Presupuestario,Nombre,Unidad,Descripcion,Precio
-                    ,Cantidad,Marca,Fecha_Entrada,Ubicacion,Tipo_Producto,Garantia,Proveedor);
+         int ln_r=tipo_ProductoDAO.insertar(lc_nombreTraidadelInput);
             
-             ProductoDAO Productodao =new ProductoDAO();
             
-             int ln_r=Productodao.insertar(producto);
-            
-               
-               
                 if(ln_r>=1){
-                response.sendRedirect("ListarProductos.jsp");
+                response.sendRedirect("ListarTipoProducto.jsp");
                 
                 }else {
                 out.println("<h1> Error</h1>");
                 }
                 
-           
-            
+         
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -89,7 +73,7 @@ public class IngresoProducto extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -107,7 +91,7 @@ public class IngresoProducto extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

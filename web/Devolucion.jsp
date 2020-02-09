@@ -1,3 +1,6 @@
+<%@page import="Entidades.Departamento"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Dao.DepartamentoDAO"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.util.Calendar"%>
 <!DOCTYPE html>
@@ -26,15 +29,11 @@
 </script>
         
         <%
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-         ResultSet lu_rs;
+       
          String ln_id=request.getParameter("Codigo_Producto");
          String ln_id2=request.getParameter("Cantidad");
-                
-         lu_ps=lu_con.prepareStatement("select * from Departamento");
-         lu_rs=lu_ps.executeQuery();
+      DepartamentoDAO asd = new DepartamentoDAO();
+        ArrayList<Departamento> a2=  asd.listaDepartamentos();
         
         
          %>
@@ -128,8 +127,8 @@ lc_sAhora += "-"+ln_dia;
                            <div class="group-material">
                                <span>Departamento</span>
                                <select id="dep" name="dep" class="tooltips-general material-control" required="">
-                                      <%    while(lu_rs.next()){   %>
-                 <option  value="<%=lu_rs.getString("NombreD")%>"><%=lu_rs.getString("NombreD")%> </option>
+                                     <% for(int x=0;x<a2.size();x++){ %>
+                 <option  value="<%=a2.get(x).getNombreD()%>"><%=a2.get(x).getNombreD()%> </option>
                  
                      <% } %>
                                </select>

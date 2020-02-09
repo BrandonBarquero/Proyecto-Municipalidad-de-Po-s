@@ -1,11 +1,15 @@
+package Servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Dao.ProductoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Allan
  */
-@WebServlet(urlPatterns = {"/EliminarTipoProducto"})
-public class EliminarTipoProducto extends HttpServlet {
+@WebServlet(urlPatterns = {"/DesecharProducto"})
+public class DesecharProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,15 +36,26 @@ public class EliminarTipoProducto extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
-       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
+            throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
+         
+            int ln_id=Integer.parseInt(request.getParameter("Codigo_Producto"));
        
-         int ln_id=Integer.parseInt(request.getParameter("Id_Tipo_Producto"));
-         lu_ps=lu_con.prepareStatement("delete from Tipo_Producto where Id_Tipo_Producto="+ln_id);
-        lu_ps.executeUpdate();
-         response.sendRedirect("ListarTipoProducto.jsp");
+           ProductoDAO Productodao =new ProductoDAO();
+            
+             int ln_r=Productodao.Activar_Producto(ln_id);
+            
+               
+               
+                if(ln_r>=1){
+                response.sendRedirect("ListarProductos.jsp");
+                
+                }else {
+                out.println("<h1> Error</h1>");
+                }
+         
+         
+         
+         
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,9 +73,11 @@ public class EliminarTipoProducto extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EliminarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DesecharProducto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(EliminarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DesecharProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(DesecharProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -78,9 +95,11 @@ public class EliminarTipoProducto extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EliminarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DesecharProducto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(EliminarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DesecharProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(DesecharProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

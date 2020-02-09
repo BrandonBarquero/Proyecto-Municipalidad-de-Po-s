@@ -1,3 +1,7 @@
+<%@page import="Entidades.Departamento"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Dao.DepartamentoDAO"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -7,14 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-           <%
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-         ResultSet lu_rs;
-         
-         lu_ps=lu_con.prepareStatement("select * from Departamento");
-         lu_rs=lu_ps.executeQuery();%>
+         <%
+        DepartamentoDAO asd = new DepartamentoDAO();
+        ArrayList<Departamento> a2=  asd.listaDepartamentos();%>
          
          <jsp:include page="Header.jsp"/>
 
@@ -77,15 +76,15 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <%    while(lu_rs.next()){   %>
-                                                 <td><%=lu_rs.getString("NombreD")%></td>
-                                                <td><%=lu_rs.getString("IdDepartamento")%></td>
+                                               <% for(int x=0;x<a2.size();x++){ %>
+                                                 <td><%=a2.get(x).getNombreD()%></td>
+                                                <td><%=a2.get(x).getIdDepartamento()%></td>
                                                
                               
 
                                                 
-                                                <td> <a href="ModificarDepartamento.jsp?IdDepartamento=<%=lu_rs.getString("IdDepartamento")%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
-                                                <td> <a href="EliminarDepartamento?IdDepartamento=<%=lu_rs.getString("IdDepartamento")%>"><button data-href="EliminarDepartamento?IdDepartamento=<%=lu_rs.getString("IdDepartamento")%>" data-placement="bottom"   class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
+                                                <td> <a href="ModificarDepartamento.jsp?IdDepartamento=<%=a2.get(x).getIdDepartamento()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
+                                                <td> <a href="EliminarDepartamento?IdDepartamento=<%=a2.get(x).getIdDepartamento()%>"><button data-href="EliminarDepartamento?IdDepartamento=<%=a2.get(x).getIdDepartamento()%>" data-placement="bottom"   class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
                                             </tr>
                                                                  <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>

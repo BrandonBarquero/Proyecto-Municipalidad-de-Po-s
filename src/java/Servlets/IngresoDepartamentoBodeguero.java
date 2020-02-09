@@ -1,15 +1,18 @@
+package Servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Dao.DepartamentoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -20,10 +23,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Allan
+ * @author barqu
  */
-@WebServlet(urlPatterns = {"/EliminarDepartamento"})
-public class EliminarDepartamento extends HttpServlet {
+@WebServlet(urlPatterns = {"/IngresoDepartamentoBodeguero"})
+public class IngresoDepartamentoBodeguero extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,15 +38,26 @@ public class EliminarDepartamento extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
-   Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-       
-         int ln_id=Integer.parseInt(request.getParameter("IdDepartamento"));
-         lu_ps=lu_con.prepareStatement("delete from Departamento where IdDepartamento="+ln_id);
-        lu_ps.executeUpdate();
-         response.sendRedirect("ListarDepartamentos.jsp");
+            throws ServletException, IOException, Exception {
+        String lc_nombreTraidadelInput=request.getParameter("nombre");           
+           
+        
+           DepartamentoDAO departamentodao =new DepartamentoDAO();
+            
+         int ln_r=departamentodao.insertar(lc_nombreTraidadelInput);
+            
+      
+                if(ln_r>=1){
+                response.sendRedirect("ListarDepartamentosBodeguero.jsp");
+                
+                }else {
+                out.println("<h1> Error</h1>");
+                }
+        
+        
+        
+                
+               
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,10 +74,8 @@ public class EliminarDepartamento extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(IngresoDepartamentoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -80,10 +92,8 @@ public class EliminarDepartamento extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(IngresoDepartamentoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

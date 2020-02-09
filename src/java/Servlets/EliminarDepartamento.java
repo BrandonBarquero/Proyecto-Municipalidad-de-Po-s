@@ -1,11 +1,16 @@
+package Servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Dao.BodegaDAO;
+import Dao.DepartamentoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,10 +25,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author barqu
+ * @author Allan
  */
-@WebServlet(urlPatterns = {"/ActivarProductoBodeguero"})
-public class ActivarProductoBodeguero extends HttpServlet {
+@WebServlet(urlPatterns = {"/EliminarDepartamento"})
+public class EliminarDepartamento extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,15 +40,24 @@ public class ActivarProductoBodeguero extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
-      Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
+            throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
+
        
-         int ln_id=Integer.parseInt(request.getParameter("Codigo_Producto"));
-         lu_ps= lu_con.prepareStatement("update producto set Estado='Activo' where Codigo_Producto="+ln_id+"");
-        lu_ps.executeUpdate();
-         response.sendRedirect("DesecharProductoBodeguero.jsp");
+         int ln_id=Integer.parseInt(request.getParameter("IdDepartamento"));
+        
+          DepartamentoDAO departamentodao =new DepartamentoDAO();
+            
+             int ln_r=departamentodao.Eliminar_Departamento(ln_id);
+            
+               
+               
+                if(ln_r>=1){
+                 response.sendRedirect("ListarDepartamentos.jsp");
+                
+                }else {
+                out.println("<h1> Error</h1>");
+                }
+         
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,9 +75,11 @@ public class ActivarProductoBodeguero extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ActivarProductoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ActivarProductoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -81,9 +97,11 @@ public class ActivarProductoBodeguero extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ActivarProductoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ActivarProductoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -1,11 +1,17 @@
+package Servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Dao.DevolucionesDAO;
+import Dao.ProductoDAO;
+import Entidades.Devoluciones;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,8 +25,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Allan
  */
-@WebServlet(urlPatterns = {"/ActivarProducto"})
-public class ActivarProducto extends HttpServlet {
+@WebServlet(urlPatterns = {"/EntradaProducto"})
+public class Devolver_Producto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,15 +38,48 @@ public class ActivarProducto extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
-              Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-       
-         int ln_id=Integer.parseInt(request.getParameter("Codigo_Producto"));
-         lu_ps= lu_con.prepareStatement("update producto set Estado='Activo' where Codigo_Producto="+ln_id+"");
-        lu_ps.executeUpdate();
-         response.sendRedirect("DesecharProducto.jsp");
+            throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
+        
+           
+           
+            String lc_codigo=request.getParameter("codigo");
+            String lc_mot=request.getParameter("mot");
+            String lc_date=request.getParameter("date");
+            String lc_dep=request.getParameter("dep");
+            String lc_res=request.getParameter("res");
+            String lc_cantidad1=request.getParameter("cantidad1");
+            int entero = Integer.parseInt(lc_cantidad1);
+           Devoluciones devolucion= new Devoluciones(lc_date,lc_mot,entero,lc_res,lc_codigo,lc_dep);
+           
+           DevolucionesDAO Devolucionesdao=new DevolucionesDAO();
+            int ln_r1=Devolucionesdao.insertar(devolucion);
+          
+
+              String lc_sum=request.getParameter("cantidad2");
+            String lc_Codigo=request.getParameter("codigo");
+            
+            
+           
+                
+                if(lc_sum!=null&&lc_Codigo!=null){
+
+                ProductoDAO Productodao =new ProductoDAO();
+            
+            Productodao.Actualizar_Cantidad(lc_sum,lc_Codigo);
+                
+                }
+
+                   if(ln_r1>=1){
+               response.sendRedirect("ListarProductos.jsp");
+                
+                }else {
+                out.println("<h1> Error</h1>");
+                }
+
+
+
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,9 +97,11 @@ public class ActivarProducto extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ActivarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Devolver_Producto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ActivarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Devolver_Producto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Devolver_Producto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -78,9 +119,11 @@ public class ActivarProducto extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ActivarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Devolver_Producto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ActivarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Devolver_Producto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Devolver_Producto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

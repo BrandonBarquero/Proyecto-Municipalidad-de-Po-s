@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Entidades.Producto"%>
+<%@page import="Dao.ProductoDAO"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,15 +15,13 @@
           if(lc_Usuario2 == null){
            request.getRequestDispatcher("Error").forward(request, response);
           
-          }%>
-         <%
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-         ResultSet lu_rs;
+          }
+        
+       ProductoDAO asd = new ProductoDAO();
+        ArrayList<Producto> a2=  asd.listaProductosInactivos();
+
          
-         lu_ps=lu_con.prepareStatement("select * from producto where Estado='Desecho' and Cantidad != '0'");
-         lu_rs=lu_ps.executeQuery();%>
+         %>
        <jsp:include page="Header.jsp"/>
 
 
@@ -85,19 +86,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr><%    while(lu_rs.next()){   %>
+                                            <tr> <% for(int x=0;x<a2.size();x++){ %>
                                                 
-                        <td><%=lu_rs.getString("Nombre")%> </td>                        
-                     <td><%=lu_rs.getString("Codigo_Producto")%> </td>
-                      <td><%=lu_rs.getString("Descripcion")%> </td>
+                        <td><%=a2.get(x).getNombre()%> </td>                        
+                     <td><%=a2.get(x).getCodigo_Producto()%> </td>
+                      <td><%=a2.get(x).getDescripcion()%> </td>
                   
                 
                           
                    
 
                                                 
-                      <td><a href="DetalleProducto.jsp?Codigo_Producto=<%=lu_rs.getString("Codigo_Producto")%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
-                      <td><a href="ActivarProducto?Codigo_Producto=<%=lu_rs.getString("Codigo_Producto")%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Activar producto"><i class="zmdi zmdi-refresh"></i></button></td>
+                      <td><a href="DetalleProducto.jsp?Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
+                      <td><a href="ActivarProducto?Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Activar producto"><i class="zmdi zmdi-refresh"></i></button></td>
    
          </tr>
                         <!--TR EXTRA-->                                  
