@@ -48,6 +48,22 @@ public class Salida_ProductoDAO {
 
     }
      
-     
+        public int insertar(Salida_Producto dalida_producto) throws ClassNotFoundException, SQLException  {
+               
+              PreparedStatement lu_ps= connection.prepareStatement("insert into Salida_Producto(Fecha_Salida,Departamento,Cantidad_Salida,Codigo_Producto,Responsable)values(?,?,?,?,?)");
+
+
+                
+                lu_ps.setString(1,dalida_producto.getFecha_Salida());
+                lu_ps.setString(2,dalida_producto.getDepartamento());
+                lu_ps.setInt(3,dalida_producto.getCantidad_Salida());
+                lu_ps.setString(4,dalida_producto.getCodigo_Producto());
+                lu_ps.setString(5,dalida_producto.getResponsable());           
+            
+               int ln_r=lu_ps.executeUpdate();
+           
+      
+                return ln_r;
+}
      
 }

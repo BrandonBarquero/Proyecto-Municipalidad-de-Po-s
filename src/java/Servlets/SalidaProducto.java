@@ -1,9 +1,16 @@
+package Servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Dao.ProductoDAO;
+import Dao.Salida_ProductoDAO;
+import Entidades.Producto;
+import Entidades.Salida_Producto;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
@@ -32,61 +39,23 @@ public class SalidaProducto extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
-       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-                PreparedStatement lu_ps= lu_con.prepareStatement("insert into Salida_Producto(Fecha_Salida,Departamento,Cantidad_Salida,Codigo_Producto,Responsable)values(?,?,?,?,?)");
+            throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
                PrintWriter lu_out = response.getWriter(); 
-          
-          PreparedStatement lu_ps1;
-      PreparedStatement lu_ps2;
-           ResultSet lu_rs1;
-           ResultSet lu_rs2;
-          lu_ps1=lu_con.prepareStatement("select * from Departamento");
-         lu_rs1=lu_ps1.executeQuery();
-           int ln_r1;
-          
-          
-          
-          
+
             String sum=request.getParameter("sum");
             String codigo=request.getParameter("codigo");
             String res=request.getParameter("res");
             String date=request.getParameter("date");
             String dep=request.getParameter("dep");
+            String nuevo=request.getParameter("nuevo");
+        
+          int entero = Integer.parseInt(sum);
+          
+           Salida_Producto salida_producto = new Salida_Producto(date,dep,entero,codigo,res);
             
-
-            
-             String nuevo=request.getParameter("nuevo");
-            
-            
-            
-            
-            int ln_r;
-            try{
-                
-               
-                
-                lu_ps.setString(1,date);
-                lu_ps.setString(2,dep);
-                lu_ps.setString(3,nuevo);
-                lu_ps.setString(4,codigo);
-                lu_ps.setString(5,res);
-               ln_r=lu_ps.executeUpdate();
-                if(ln_r>=1){
-               response.sendRedirect("ListarProductos.jsp");
-                
-                }else {
-                lu_out.println("<h1> Error</h1>");
-                }
-                
-            }catch(Exception lu_e){
-            lu_out.println("Error"+lu_e.getMessage());
-            }
-            
-
-
-
+             Salida_ProductoDAO Salida_Productodao =new Salida_ProductoDAO();
+             ProductoDAO productodao =new ProductoDAO();
+             int ln_r=Salida_Productodao.insertar(salida_producto);
 
 
 
@@ -95,29 +64,14 @@ public class SalidaProducto extends HttpServlet {
             
             
            
-            try{
-                
+               
                 if(nuevo!=null&&lc_Codigo!=null){
-                
-                 lu_ps1= lu_con.prepareStatement("update producto set " + 
-                        
-                        
-                         "Cantidad="+sum+
-                         "where Codigo_Producto="+lc_Codigo+"");
-                lu_ps1.executeUpdate();
+                int p=productodao.Actualizar_Cantidad(sum, codigo);
+                 
                 response.sendRedirect("ListarProductos.jsp");
                 
                 
                 }
-                
-            }catch(Exception lu_e){
-            lu_out.println("Error"+lu_e.getMessage());
-            }
-
-
-
-
-
 
 
     }
@@ -140,6 +94,8 @@ public class SalidaProducto extends HttpServlet {
             Logger.getLogger(SalidaProducto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(SalidaProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(SalidaProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -159,6 +115,8 @@ public class SalidaProducto extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SalidaProducto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(SalidaProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(SalidaProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
