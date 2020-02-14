@@ -44,8 +44,8 @@ public class DesactivarUsuario extends HttpServlet {
       
            int ln_cedulaUsuario=Integer.parseInt(request.getParameter("Cedula"));
          
-           UsuarioDAO usariodao =new UsuarioDAO();
-           int ln_cedula=usariodao.Desactivar_Usuario(ln_cedulaUsuario);      
+           UsuarioDAO lo_usariodao =new UsuarioDAO();
+           int ln_cedula=lo_usariodao.Desactivar_Usuario(ln_cedulaUsuario);      
            if(ln_cedula>=1){
                response.sendRedirect("ListarUsuarios.jsp");
                 }else {

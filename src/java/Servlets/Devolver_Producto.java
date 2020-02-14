@@ -52,9 +52,9 @@ public class Devolver_Producto extends HttpServlet {
             
             Devoluciones lo_devolucion = new Devoluciones(ld_fecha,la_motivo,ln_cantidad,la_responsable,ln_codigoProducto,la_departamento);
            
-            DevolucionesDAO lo_evolucionesdao = new DevolucionesDAO();
+            DevolucionesDAO lo_devolucionesdao = new DevolucionesDAO();
             
-            int ln_numero = lo_evolucionesdao.insertar(lo_devolucion);
+            int ln_numero = lo_devolucionesdao.insertar(lo_devolucion);
           
 
             String la_suma = request.getParameter("cantidadFinal");

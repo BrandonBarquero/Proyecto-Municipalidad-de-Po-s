@@ -17,9 +17,9 @@
     <script>function cal() {
   try {
     var a = parseInt(document.f.disponible.value),
-        b = parseInt(document.f.nuevo.value);
+        b = parseInt(document.f.cantidadRetirar.value);
     if((a-b) >= 0){
-            document.f.sum.value = a - b;
+            document.f.suma.value = a - b;
         }else
             alert("La resta es negativa");
     
@@ -72,25 +72,25 @@
                                     <br><br>
 
                                            <div class="group-material">
-                                <input onchange="cal();" id="nuevo" name="nuevo" type="number" class="tooltips-general material-control" required="">
+                                <input onchange="cal();" id="cantidadRetirar" name="cantidadRetirar" type="number" class="tooltips-general material-control" required="">
                                 <label>Cantidad a retirar</label>
                             </div>
 
                                                     <div class="group-material">
-                                <input id="sum" name="sum" type="number" class="tooltips-general material-control" required="">
+                                <input id="suma" name="suma" type="number" class="tooltips-general material-control" required="">
                                 <label>Nueva cantidad disponible</label>
                             </div>
 
                                                            <div>
                              <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código de producto</label>               
-                                <input id="codigo" name="codigo" readonly value="<%=ln_id%>" type="text" class="tooltips-general material-control" required="">
+                                <input id="codigoProducto" name="codigoProducto" readonly value="<%=ln_id%>" type="text" class="tooltips-general material-control" required="">
 
                             </div>
                                 
                                 <br><br>
 
                                                                     <div class="group-material">
-                                <input id="res" name="res" type="text" class="tooltips-general material-control" required="">
+                                <input id="responsable" name="responsable" type="text" class="tooltips-general material-control" required="">
                                 <label>Responsable</label>
                             </div>
 
@@ -123,9 +123,9 @@ lc_sAhora += "-"+ln_dia;
 
                             <div class="group-material">
                                 <span>Departamento</span>
-                                <select id="dep" name="dep" class="tooltips-general material-control" required="">
+                                <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
                                      <% for(int x=0;x<a2.size();x++){ %>
-                 <option  value="<%=a2.get(x).getNombreD()%> </option>
+                 <option  value="<%=a2.get(x).getNombreD()%>" </option>
                  
                      <% } %>
                                 </select>

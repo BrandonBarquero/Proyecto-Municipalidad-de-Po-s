@@ -43,15 +43,15 @@ public class EliminarDepartamento extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
 
        
-         int ln_id=Integer.parseInt(request.getParameter("IdDepartamento"));
+         int ln_iddepartamento=Integer.parseInt(request.getParameter("IdDepartamento"));
         
-          DepartamentoDAO departamentodao =new DepartamentoDAO();
+          DepartamentoDAO lo_departamentodao =new DepartamentoDAO();
             
-             int ln_r=departamentodao.Eliminar_Departamento(ln_id);
+             int ln_var=lo_departamentodao.Eliminar_Departamento(ln_iddepartamento);
             
                
                
-                if(ln_r>=1){
+                if(ln_var>=1){
                  response.sendRedirect("ListarDepartamentos.jsp");
                 
                 }else {

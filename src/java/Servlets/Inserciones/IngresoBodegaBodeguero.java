@@ -42,13 +42,13 @@ public class IngresoBodegaBodeguero extends HttpServlet {
       
         
         
-         String lc_nombreTraidadelInput=request.getParameter("nombre");           
-         BodegaDAO bodegadao =new BodegaDAO();
+         String la_nombrebodega=request.getParameter("nombre");           
+         BodegaDAO lo_bodegadao =new BodegaDAO();
             
-         int ln_r=bodegadao.insertar(lc_nombreTraidadelInput);
+         int ln_var=lo_bodegadao.insertar(la_nombrebodega);
             
       
-                if(ln_r>=1){
+                if(ln_var>=1){
                   response.sendRedirect("ListarBodegasBodeguero.jsp");
                 }else {
                 out.println("<h1> Error</h1>");

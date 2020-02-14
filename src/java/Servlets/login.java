@@ -42,30 +42,31 @@ public class login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException, Exception {
      // variables
-      String Cedula=request.getParameter("txtCedula2");
-      String lc_contrasenatraidadelinput=request.getParameter("txtContrasena2");
-      LoginDAO go_objetooperaciones= new LoginDAO();
-      UsuarioDAO usuariodao = new UsuarioDAO();
-      Usuario usuario = new Usuario(Cedula, lc_contrasenatraidadelinput);
-      HttpSession sesion=request.getSession();
+     
+      String la_cedula=request.getParameter("txtCedula2");
+      String la_contrasenatraidadelinput=request.getParameter("txtContrasena2");
+      LoginDAO lo_objetooperaciones= new LoginDAO();
+      UsuarioDAO lo_usuariodao = new UsuarioDAO();
+      Usuario lo_usuario = new Usuario(la_cedula, la_contrasenatraidadelinput);
+      HttpSession session=request.getSession();
       
       
       
-      switch(go_objetooperaciones.loguear(usuario)){
+      switch(lo_objetooperaciones.loguear(lo_usuario)){
           
       case 1:{
-      sesion.setAttribute("user",Cedula);
-      sesion.setAttribute("nivel","1");
-      String Nombreusuario=usuariodao.SelecionarNombre(Cedula);
-      sesion.setAttribute("user5",Nombreusuario);
+      session.setAttribute("user",la_cedula);
+      session.setAttribute("nivel","1");
+      String Nombreusuario=lo_usuariodao.SelecionarNombre(la_cedula);
+      session.setAttribute("user5",Nombreusuario);
       response.sendRedirect("home.jsp");
       break;}
       
       case 2:{ 
-      sesion.setAttribute("user2",Cedula);
-      sesion.setAttribute("nivel","2");
-      String Nombreusuario=usuariodao.SelecionarNombre(Cedula);
-      sesion.setAttribute("user6",Nombreusuario);
+      session.setAttribute("user2",la_cedula);
+      session.setAttribute("nivel","2");
+      String Nombreusuario=lo_usuariodao.SelecionarNombre(la_cedula);
+      session.setAttribute("user6",Nombreusuario);
       response.sendRedirect("homeBodeguero.jsp");
       break;}
       default:{

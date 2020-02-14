@@ -44,24 +44,24 @@ public class ModificarProducto extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
      
         
-            String lc_Codigo_P=request.getParameter("Codigo_P");
-            String lc_Codigo=request.getParameter("Codigo");
-            String lc_Nombre=request.getParameter("Nombre");
-            String lc_Unidad=request.getParameter("Unidad");
-            String lc_Descripcion=request.getParameter("Descripcion");
-            String lc_Precio=request.getParameter("Precio");
-            String lc_marca=request.getParameter("Marca");
-            String lc_fecha=request.getParameter("Fecha");
-            String lc_entrada=request.getParameter("Entrada");
-            String lc_ubicacion=request.getParameter("Ubicacion");
-            String lc_tipo=request.getParameter("Tipo");
-            String lc_Proveedor=request.getParameter("Proveedor");
-          Producto producto = new Producto( lc_Codigo_P,  lc_Codigo,  lc_Nombre,  lc_Unidad,  lc_Descripcion,  lc_Precio, 
-                   lc_marca,  lc_entrada,  lc_ubicacion,  lc_tipo,  lc_fecha,  lc_Proveedor); 
+            String la_codigoPresupuestario=request.getParameter("Codigo_P");
+            String la_codigoProducto=request.getParameter("Codigo");
+            String la_nombreProducto=request.getParameter("Nombre");
+            String la_unidad=request.getParameter("Unidad");
+            String la_descripcion=request.getParameter("Descripcion");
+            String la_precioProducto=request.getParameter("Precio");
+            String la_marcaProducto=request.getParameter("Marca");
+            String la_fecha=request.getParameter("Fecha");
+            String la_entrada=request.getParameter("Entrada");
+            String la_ubicacion=request.getParameter("Ubicacion");
+            String la_tipo=request.getParameter("Tipo");
+            String la_proveedor=request.getParameter("Proveedor");
+          Producto lo_producto = new Producto( la_codigoPresupuestario,  la_codigoProducto,  la_nombreProducto,  la_unidad,  la_descripcion,  la_precioProducto, 
+                   la_marcaProducto,  la_entrada,  la_ubicacion,  la_tipo,  la_fecha,  la_proveedor); 
         
-          ProductoDAO productodao = new ProductoDAO();
-          int ln_r=productodao.actualizar(producto);
-           if(ln_r>=1){
+          ProductoDAO lo_productodao = new ProductoDAO();
+          int ln_var=lo_productodao.actualizar(lo_producto);
+           if(ln_var>=1){
                 response.sendRedirect("ListarProductos.jsp");
                 
                 }else {

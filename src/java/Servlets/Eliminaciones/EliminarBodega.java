@@ -43,15 +43,15 @@ public class EliminarBodega extends HttpServlet {
             throws ServletException, IOException, SQLException, Exception {
       
        
-         int ln_id=Integer.parseInt(request.getParameter("Id_Bodega"));
+         int ln_iddebodega=Integer.parseInt(request.getParameter("Id_Bodega"));
         
-          BodegaDAO bodegadao =new BodegaDAO();
+          BodegaDAO lo_bodegadao =new BodegaDAO();
             
-             int ln_r=bodegadao.Eliminar_Bodega(ln_id);
+             int ln_var=lo_bodegadao.Eliminar_Bodega(ln_iddebodega);
             
                
                
-                if(ln_r>=1){
+                if(ln_var>=1){
                  response.sendRedirect("ListarBodegas.jsp");
                 
                 }else {

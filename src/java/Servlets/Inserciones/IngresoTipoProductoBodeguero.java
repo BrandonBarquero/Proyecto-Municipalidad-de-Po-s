@@ -39,13 +39,14 @@ public class IngresoTipoProductoBodeguero extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-       String lc_nombreTraidadelInput=request.getParameter("nombre");           
-                Tipo_ProductoDAO tipo_ProductoDAO =new Tipo_ProductoDAO();
+        
+       String la_nombretipoproducto=request.getParameter("nombre");           
+                Tipo_ProductoDAO lo_tipoProductoDAO =new Tipo_ProductoDAO();
             
-         int ln_r=tipo_ProductoDAO.insertar(lc_nombreTraidadelInput);
+         int ln_var=lo_tipoProductoDAO.insertar(la_nombretipoproducto);
             
             
-                if(ln_r>=1){
+                if(ln_var>=1){
                 response.sendRedirect("ListarTipoProductoBodeguero.jsp");
                 
                 }else {

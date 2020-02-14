@@ -39,10 +39,12 @@ public class EliminarTipoProducto extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
         
-         int ln_id=Integer.parseInt(request.getParameter("Id_Tipo_Producto"));
-          Tipo_ProductoDAO Tipo_Productodao =new Tipo_ProductoDAO();
-             int ln_r=Tipo_Productodao.Eliminar_Tipo_Producto(ln_id);
-                if(ln_r>=1){
+         int ln_idtipoproducto=Integer.parseInt(request.getParameter("Id_Tipo_Producto"));
+         
+          Tipo_ProductoDAO lo_tipoProductodao =new Tipo_ProductoDAO();
+          
+             int ln_var=lo_tipoProductodao.Eliminar_Tipo_Producto(ln_idtipoproducto);
+                if(ln_var>=1){
                 response.sendRedirect("ListarTipoProducto.jsp");
                 }else {
                 out.println("<h1> Error</h1>");

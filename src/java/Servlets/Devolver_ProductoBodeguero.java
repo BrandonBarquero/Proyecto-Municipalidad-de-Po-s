@@ -45,34 +45,35 @@ public class Devolver_ProductoBodeguero extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
          
         
-            String lc_codigo=request.getParameter("codigo");
-            String lc_mot=request.getParameter("mot");
-            String lc_date=request.getParameter("date");
-            String lc_dep=request.getParameter("dep");
-            String lc_res=request.getParameter("res");
-            String lc_cantidad1=request.getParameter("cantidad1");
-            int entero = Integer.parseInt(lc_cantidad1);
-           Devoluciones devolucion= new Devoluciones(lc_date,lc_mot,entero,lc_res,lc_codigo,lc_dep);
+            String ln_codigoProducto=request.getParameter("codigo");
+            String la_motivo=request.getParameter("motivo");
+            String ld_fecha=request.getParameter("date");
+            String la_departamento=request.getParameter("departamento");
+            String la_responsable=request.getParameter("responsable");
+            String ln_cantidadIngreso=request.getParameter("cantidadIngreso");
+            int ln_cantidad = Integer.parseInt(ln_cantidadIngreso);
+            
+            Devoluciones lo_devolucion= new Devoluciones(ld_fecha,la_motivo,ln_cantidad,la_responsable,ln_codigoProducto,la_departamento);
            
-           DevolucionesDAO Devolucionesdao=new DevolucionesDAO();
-            int ln_r1=Devolucionesdao.insertar(devolucion);
+            DevolucionesDAO lo_devolucionesdao=new DevolucionesDAO();
+            int ln_numero=lo_devolucionesdao.insertar(lo_devolucion);
           
 
-              String lc_sum=request.getParameter("cantidad2");
-            String lc_Codigo=request.getParameter("codigo");
+            String la_suma=request.getParameter("cantidadFinal");
+            String lc_codigo=request.getParameter("codigo");
             
             
            
                 
-                if(lc_sum!=null&&lc_Codigo!=null){
+            if(la_suma!=null&&lc_codigo!=null){
 
-                ProductoDAO Productodao =new ProductoDAO();
+            ProductoDAO lo_productodao =new ProductoDAO();
             
-            Productodao.Actualizar_Cantidad(lc_sum,lc_Codigo);
+            lo_productodao.Actualizar_Cantidad(la_suma,lc_codigo);
                 
                 }
 
-                   if(ln_r1>=1){
+                if(ln_numero>=1){
                 response.sendRedirect("ListarProductosBodeguero.jsp");
                 
                 }else {

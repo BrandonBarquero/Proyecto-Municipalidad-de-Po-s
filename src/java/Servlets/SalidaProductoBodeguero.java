@@ -43,31 +43,31 @@ public class SalidaProductoBodeguero extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
       
-            String sum=request.getParameter("sum");
-            String codigo=request.getParameter("codigo");
-            String res=request.getParameter("res");
-            String date=request.getParameter("date");
-            String dep=request.getParameter("dep");
-            String nuevo=request.getParameter("nuevo");
+            String la_suma=request.getParameter("suma");
+            String ln_codigoProducto=request.getParameter("codigoProducto");
+            String la_resta=request.getParameter("responsable");
+            String ld_date=request.getParameter("date");
+            String la_departamento=request.getParameter("departamento");
+            String la_nuevaCantidad=request.getParameter("cantidadRetirar");
         
-          int entero = Integer.parseInt(sum);
+          int ln_numero = Integer.parseInt(la_suma);
           
-           Salida_Producto salida_producto = new Salida_Producto(date,dep,entero,codigo,res);
+           Salida_Producto lo_salidaProducto = new Salida_Producto(ld_date,la_departamento,ln_numero,ln_codigoProducto,la_resta);
             
-             Salida_ProductoDAO Salida_Productodao =new Salida_ProductoDAO();
-             ProductoDAO productodao =new ProductoDAO();
-             int ln_r=Salida_Productodao.insertar(salida_producto);
+             Salida_ProductoDAO lo_salidaProductodao =new Salida_ProductoDAO();
+             ProductoDAO lo_productodao =new ProductoDAO();
+             int ln_var=lo_salidaProductodao.insertar(lo_salidaProducto);
 
 
 
              
-            String lc_Codigo=request.getParameter("codigo");
+            String ln_codigo=request.getParameter("codigoProducto");
             
             
            
                
-                if(nuevo!=null&&lc_Codigo!=null){
-                int p=productodao.Actualizar_Cantidad(sum, codigo);
+                if(la_nuevaCantidad!=null&&ln_codigo!=null){
+                int ln_p=lo_productodao.Actualizar_Cantidad(la_suma, ln_codigoProducto);
                  
                 response.sendRedirect("ListarProductos.jsp");
                 

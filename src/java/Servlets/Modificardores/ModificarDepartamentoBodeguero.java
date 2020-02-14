@@ -36,17 +36,18 @@ public class ModificarDepartamentoBodeguero extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-       String lc_id=request.getParameter("id");
-            String lc_nombre=request.getParameter("nombre");
-        int entero = Integer.parseInt(lc_id);
-            Departamento departamento = new Departamento(entero,lc_nombre);
-             DepartamentoDAO departamentodao =new DepartamentoDAO();
+        
+        String la_idDepartamento=request.getParameter("id");
+        String la_nombreDepartamento=request.getParameter("nombre");
+        int ln_numero = Integer.parseInt(la_idDepartamento);
+            Departamento lo_departamento = new Departamento(ln_numero,la_nombreDepartamento);
+             DepartamentoDAO lo_departamentodao =new DepartamentoDAO();
             
-             int ln_r=departamentodao.actualizar(departamento);
+             int ln_var=lo_departamentodao.actualizar(lo_departamento);
             
                
                
-                if(ln_r>=1){
+                if(ln_var>=1){
                 response.sendRedirect("ListarDepartamentosBodeguero.jsp");
                 
                 }else {

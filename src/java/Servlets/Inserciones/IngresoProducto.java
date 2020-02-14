@@ -40,30 +40,30 @@ public class IngresoProducto extends HttpServlet {
             throws ServletException, IOException, Exception {
             PrintWriter out = response.getWriter();
             
-            String Codigo_Producto=request.getParameter("Codigo_Producto");
-            String Codigo_Presupuestario=request.getParameter("Presupuestario");
-            String Nombre=request.getParameter("nombre");
-            String Unidad=request.getParameter("Unidad");
-            String Descripcion=request.getParameter("Descripcion");
-            String Precio=request.getParameter("Precio");
-            String Cantidad=request.getParameter("Cantidad");
-            String Marca=request.getParameter("Marca");
-            String Fecha_Entrada=request.getParameter("Fecha");
-            String Ubicacion=request.getParameter("Ubicacion");
-            String Tipo_Producto=request.getParameter("Tipo");
-            String Garantia=request.getParameter("Garantia");
-            String Proveedor=request.getParameter("Proveedor");
+            String la_codigoProducto=request.getParameter("Codigo_Producto");
+            String la_codigoPresupuestario=request.getParameter("Presupuestario");
+            String la_nombre=request.getParameter("nombre");
+            String la_unidad=request.getParameter("Unidad");
+            String la_descripcion=request.getParameter("Descripcion");
+            String la_precio=request.getParameter("Precio");
+            String la_cantidad=request.getParameter("Cantidad");
+            String la_marca=request.getParameter("Marca");
+            String ld_fechaEntrada=request.getParameter("Fecha");
+            String la_ubicacion=request.getParameter("Ubicacion");
+            String la_tipoProducto=request.getParameter("Tipo");
+            String la_garantia=request.getParameter("Garantia");
+            String la_proveedor=request.getParameter("Proveedor");
             
-            Producto producto = new Producto(Codigo_Producto,Codigo_Presupuestario,Nombre,Unidad,Descripcion,Precio
-                    ,Cantidad,Marca,Fecha_Entrada,Ubicacion,Tipo_Producto,Garantia,Proveedor);
+            Producto lo_producto = new Producto(la_codigoProducto,la_codigoPresupuestario,la_nombre,la_unidad,la_descripcion,la_precio
+                    ,la_cantidad,la_marca,ld_fechaEntrada,la_ubicacion,la_tipoProducto,la_garantia,la_proveedor);
             
-             ProductoDAO Productodao =new ProductoDAO();
+             ProductoDAO lo_productodao =new ProductoDAO();
             
-             int ln_r=Productodao.insertar(producto);
+             int ln_var=lo_productodao.insertar(lo_producto);
             
                
                
-                if(ln_r>=1){
+                if(ln_var>=1){
                 response.sendRedirect("ListarProductos.jsp");
                 
                 }else {

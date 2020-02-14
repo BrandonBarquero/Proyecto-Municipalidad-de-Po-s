@@ -88,7 +88,7 @@ lc_sAhora += "-"+ln_dia;
                             <label style=" top:-20px; font-size:17px; font-weight: 700; color:#333; font-weight: normal;">Motivo de devolución</label>
                              <div class="group-material">
 
-                             <p><textarea id="mot" name="mot" type="text" class="form-control rounded-0"  cols="40" rows="5" required=""></textarea></p>
+                             <p><textarea id="motivo" name="motivo" type="text" class="form-control rounded-0"  cols="40" rows="5" required=""></textarea></p>
                         
                          </div>
 
@@ -97,11 +97,11 @@ lc_sAhora += "-"+ln_dia;
                                 <label>Cantidad en base </label>
                             </div>
                              <div class="group-material">
-                                    <input id="cantidad1" name="cantidad1" type="text" class="tooltips-general material-control" required="">
+                                    <input id="cantidadIngreso" name="cantidadIngreso" type="text" class="tooltips-general material-control" required="">
                                 <label>Cantidad ingreso </label>
                             </div>
                              <div class="group-material">
-                                    <input id="cantidad2" name="cantidad2" type="text" class="tooltips-general material-control" required="">
+                                    <input id="cantidadFinal" name="cantidadFinal" type="text" class="tooltips-general material-control" required="">
                                 <label> Cantidad final </label>
                             </div>
                              
@@ -111,7 +111,7 @@ lc_sAhora += "-"+ln_dia;
                             </div>
 
                                                                     <div class="group-material">
-                                <input id="res" name="res" type="text" class="tooltips-general material-control" required="">
+                                <input id="responsable" name="responsable" type="text" class="tooltips-general material-control" required="">
                                 <label>Responsable</label>
                             </div>
 
@@ -128,7 +128,7 @@ lc_sAhora += "-"+ln_dia;
 
                              <div class="group-material">
                                 <span>Departamento</span>
-                                <select id="dep" name="dep" class="tooltips-general material-control" required="">
+                                <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
                                       <%    while(lu_rs.next()){   %>
                  <option  value="<%=lu_rs.getString("NombreD")%>"><%=lu_rs.getString("NombreD")%> </option>
                  

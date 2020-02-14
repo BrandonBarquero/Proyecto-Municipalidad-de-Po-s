@@ -40,15 +40,16 @@ public class IngresoBodega extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-      String lc_nombreTraidadelInput=request.getParameter("nombre");           
+        
+      String la_nombrebodega=request.getParameter("nombre");           
          
       
-       BodegaDAO bodegadao =new BodegaDAO();
+       BodegaDAO lo_bodegadao =new BodegaDAO();
             
-             int ln_r=bodegadao.insertar(lc_nombreTraidadelInput);
+             int ln_var=lo_bodegadao.insertar(la_nombrebodega);
             
       
-                if(ln_r>=1){
+                if(ln_var>=1){
                 response.sendRedirect("ListarBodegas.jsp");
                 
                 }else {

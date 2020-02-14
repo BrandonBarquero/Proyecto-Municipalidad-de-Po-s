@@ -43,9 +43,9 @@ public class ActivarProductoBodeguero extends HttpServlet {
              
             int ln_codigoProductoBodeguero=Integer.parseInt(request.getParameter("Codigo_Producto"));
        
-            ProductoDAO Productodao =new ProductoDAO();
+            ProductoDAO lo_productodao =new ProductoDAO();
             
-            int ln_idCodigo=Productodao.Activar_Producto(ln_codigoProductoBodeguero);
+            int ln_idCodigo=lo_productodao.Activar_Producto(ln_codigoProductoBodeguero);
             
             if(ln_idCodigo>=1){
                 response.sendRedirect("DesecharProductoBodeguero.jsp");

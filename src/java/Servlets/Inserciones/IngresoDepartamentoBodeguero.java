@@ -39,15 +39,16 @@ public class IngresoDepartamentoBodeguero extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-        String lc_nombreTraidadelInput=request.getParameter("nombre");           
+        
+        String la_nombrebodega=request.getParameter("nombre");           
            
         
-           DepartamentoDAO departamentodao =new DepartamentoDAO();
+           DepartamentoDAO lo_departamentodao =new DepartamentoDAO();
             
-         int ln_r=departamentodao.insertar(lc_nombreTraidadelInput);
+         int ln_var=lo_departamentodao.insertar(la_nombrebodega);
             
       
-                if(ln_r>=1){
+                if(ln_var>=1){
                 response.sendRedirect("ListarDepartamentosBodeguero.jsp");
                 
                 }else {

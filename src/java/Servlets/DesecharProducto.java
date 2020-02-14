@@ -40,9 +40,9 @@ public class DesecharProducto extends HttpServlet {
          
             int ln_codigoProducto=Integer.parseInt(request.getParameter("Codigo_Producto"));
        
-            ProductoDAO Productodao = new ProductoDAO();
+            ProductoDAO lo_Productodao = new ProductoDAO();
             
-            int ln_idCodigo=Productodao.Activar_Producto(ln_codigoProducto);
+            int ln_idCodigo=lo_Productodao.Activar_Producto(ln_codigoProducto);
             
                
                

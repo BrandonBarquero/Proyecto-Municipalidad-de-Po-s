@@ -38,18 +38,19 @@ public class ModificarBodegas extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-        String lc_id=request.getParameter("id");
-            String lc_nombre=request.getParameter("nombre");
+        
+            String la_idBodega=request.getParameter("id");
+            String la_nombreBodega=request.getParameter("nombre");
             
-              int entero = Integer.parseInt(lc_id);
-            Bodega bodega = new Bodega(entero,lc_nombre);
-             BodegaDAO bodegadao =new BodegaDAO();
+            int ln_numero = Integer.parseInt(la_idBodega);
+            Bodega lo_bodega = new Bodega(ln_numero,la_nombreBodega);
+            BodegaDAO lo_bodegadao =new BodegaDAO();
             
-             int ln_r=bodegadao.actualizar(bodega);
+            int ln_var=lo_bodegadao.actualizar(lo_bodega);
             
                
                
-                if(ln_r>=1){
+                if(ln_var>=1){
                 response.sendRedirect("ListarBodegas.jsp");
                 
                 }else {

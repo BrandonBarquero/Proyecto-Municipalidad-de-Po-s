@@ -38,20 +38,20 @@ public class ModificarUsuario extends HttpServlet {
             throws ServletException, IOException, Exception {
         
         
-            String lc_cedulaTraidadelInput=request.getParameter("Cedula");
-            String lc_nombreTraidadelInput=request.getParameter("Nombre");
-            String lc_CorreoTraidadelInput=request.getParameter("Correo");
-            String lc_TelefonoTraidadelInput=request.getParameter("Telefono");
-            String lc_RolTraidadelInput=request.getParameter("Rol");
-            String lc_EstadoTraidadelInput=request.getParameter("Estado");
+            String la_cedulaUsuario=request.getParameter("Cedula");
+            String la_nombreUsuario=request.getParameter("Nombre");
+            String la_correoUsuario=request.getParameter("Correo");
+            String la_telefonoUsuario=request.getParameter("Telefono");
+            String la_rolUsuario=request.getParameter("Rol");
+            String la_estadoUsuario=request.getParameter("Estado");
             
-            Usuario usuario = new Usuario(lc_cedulaTraidadelInput,lc_nombreTraidadelInput,lc_CorreoTraidadelInput,lc_TelefonoTraidadelInput,lc_RolTraidadelInput,lc_EstadoTraidadelInput);
+            Usuario lo_usuario = new Usuario(la_cedulaUsuario,la_nombreUsuario,la_correoUsuario,la_telefonoUsuario,la_rolUsuario,la_estadoUsuario);
 
-             UsuarioDAO usariodao =new UsuarioDAO();
-             int ln_r=usariodao.actualizar(usuario);
+             UsuarioDAO lo_usariodao =new UsuarioDAO();
+             int ln_var=lo_usariodao.actualizar(lo_usuario);
            
             
-                if(ln_r>=1){
+                if(ln_var>=1){
                 response.sendRedirect("ListarUsuarios.jsp");
                 
                 }else {

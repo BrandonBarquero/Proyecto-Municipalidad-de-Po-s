@@ -36,17 +36,18 @@ public class ModificarTipoProductoBodeguero extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-             String lc_id=request.getParameter("id");
-            String lc_nombre=request.getParameter("nombre");
-        int entero = Integer.parseInt(lc_id);
-            Tipo_Producto tipoproducto = new Tipo_Producto(entero,lc_nombre);
-             Tipo_ProductoDAO TipoProductodao =new Tipo_ProductoDAO();
+        
+            String la_idTipoProducto=request.getParameter("id");
+            String la_nombreTipoProducto=request.getParameter("nombre");
+            int ln_numero = Integer.parseInt(la_idTipoProducto);
+            Tipo_Producto lo_tipoproducto = new Tipo_Producto(ln_numero,la_nombreTipoProducto);
+             Tipo_ProductoDAO lo_tipoProductodao =new Tipo_ProductoDAO();
             
-             int ln_r=TipoProductodao.actualizar(tipoproducto);
+             int ln_var=lo_tipoProductodao.actualizar(lo_tipoproducto);
             
                
                
-                if(ln_r>=1){
+                if(ln_var>=1){
                 response.sendRedirect("ListarTipoProductoBodeguero.jsp");
                 
                 }else {

@@ -37,23 +37,23 @@ public class IngresoUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
       
-            String lc_cedulaTraidadelInput=request.getParameter("Cedula");
-            String lc_nombreTraidadelInput=request.getParameter("Nombre");
-            String lc_CorreoTraidadelInput=request.getParameter("correo");
-            String lc_TelefonoTraidadelInput=request.getParameter("Telefono");
-            String lc_RolTraidadelInput=request.getParameter("Rol");
-            String lc_EstadoTraidadelInput=request.getParameter("Estado");
-            String lc_contrasenaTraidadelInput=request.getParameter("Contrasena");
+            String la_cedulaInsertada=request.getParameter("Cedula");
+            String la_nombreInsertado=request.getParameter("Nombre");
+            String la_correoInsertado=request.getParameter("correo");
+            String la_telefonoInsertado=request.getParameter("Telefono");
+            String la_rolInsertado=request.getParameter("Rol");
+            String la_estadoInsertado=request.getParameter("Estado");
+            String la_contrasenaInsertada=request.getParameter("Contrasena");
             
             
-            Usuario usuario = new Usuario(lc_cedulaTraidadelInput,lc_nombreTraidadelInput,lc_CorreoTraidadelInput,lc_TelefonoTraidadelInput,lc_RolTraidadelInput,lc_EstadoTraidadelInput,lc_contrasenaTraidadelInput);
+            Usuario lo_usuario = new Usuario(la_cedulaInsertada,la_nombreInsertado,la_correoInsertado,la_telefonoInsertado,la_rolInsertado,la_estadoInsertado,la_contrasenaInsertada);
 
-            UsuarioDAO usariodao =new UsuarioDAO();
+            UsuarioDAO lo_usariodao =new UsuarioDAO();
             
-             int ln_r=usariodao.insertar(usuario);
+             int ln_var=lo_usariodao.insertar(lo_usuario);
            
             
-                if(ln_r>=1){
+                if(ln_var>=1){
                 response.sendRedirect("ListarUsuarios.jsp");
                 
                 }else {
