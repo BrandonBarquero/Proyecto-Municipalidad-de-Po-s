@@ -17,13 +17,17 @@ import java.sql.SQLException;
  */
 public class DevolucionesDAO {
      private final Connection connection;
+      PreparedStatement ps=null;
+     
+     
+     
      public DevolucionesDAO() throws Exception {
         this.connection = new ConexionBD().getConnection();
     } 
      
        public int insertar(Devoluciones devoluciones) throws ClassNotFoundException, SQLException  {
        
-                PreparedStatement ps= connection.prepareStatement("insert into Devoluciones(Fecha_Devolucion,Motivo,Cantidad,Responsable,Codigo_Producto,Departamento)values(?,?,?,?,?,?)");
+                ps= connection.prepareStatement("insert into Devoluciones(Fecha_Devolucion,Motivo,Cantidad,Responsable,Codigo_Producto,Departamento)values(?,?,?,?,?,?)");
 
                 ps.setString(1,devoluciones.getFecha_Devolucion());
                 ps.setString(2,devoluciones.getMotivo());

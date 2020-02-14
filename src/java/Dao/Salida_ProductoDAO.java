@@ -19,6 +19,9 @@ import java.util.ArrayList;
  */
 public class Salida_ProductoDAO {
        private final Connection connection;
+       PreparedStatement ps=null;
+       ResultSet resultSet = null;
+       int r=0;
      public Salida_ProductoDAO() throws Exception {
         this.connection = new ConexionBD().getConnection();
 
@@ -27,10 +30,8 @@ public class Salida_ProductoDAO {
        public ArrayList<Salida_Producto> listaSalida_Productos( ) {
         ArrayList<Salida_Producto> Salida_Productos = new ArrayList<Salida_Producto>();
         try {
-            PreparedStatement ps;
             ps=connection.prepareStatement("select * from Salida_Producto");
-
-            ResultSet resultSet = ps.executeQuery();
+             resultSet = ps.executeQuery();
             while (resultSet.next()) {
                 Salida_Producto Salida_Producto = new Salida_Producto();
                 Salida_Producto.setFecha_Salida(resultSet.getString("Fecha_Salida"));
@@ -51,20 +52,15 @@ public class Salida_ProductoDAO {
      
         public int insertar(Salida_Producto dalida_producto) throws ClassNotFoundException, SQLException  {
                
-              PreparedStatement lu_ps= connection.prepareStatement("insert into Salida_Producto(Fecha_Salida,Departamento,Cantidad_Salida,Codigo_Producto,Responsable)values(?,?,?,?,?)");
-
-
-                
-                lu_ps.setString(1,dalida_producto.getFecha_Salida());
-                lu_ps.setString(2,dalida_producto.getDepartamento());
-                lu_ps.setInt(3,dalida_producto.getCantidad_Salida());
-                lu_ps.setString(4,dalida_producto.getCodigo_Producto());
-                lu_ps.setString(5,dalida_producto.getResponsable());           
-            
-               int ln_r=lu_ps.executeUpdate();
-           
-     lu_ps.close();
-                return ln_r;
+        ps= connection.prepareStatement("insert into Salida_Producto(Fecha_Salida,Departamento,Cantidad_Salida,Codigo_Producto,Responsable)values(?,?,?,?,?)");
+        ps.setString(1,dalida_producto.getFecha_Salida());
+        ps.setString(2,dalida_producto.getDepartamento());
+        ps.setInt(3,dalida_producto.getCantidad_Salida());
+        ps.setString(4,dalida_producto.getCodigo_Producto());
+        ps.setString(5,dalida_producto.getResponsable());           
+        r=ps.executeUpdate();
+        ps.close();
+        return r;
 }
      
 }

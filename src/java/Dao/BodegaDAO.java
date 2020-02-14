@@ -21,9 +21,10 @@ import java.util.ArrayList;
 public class BodegaDAO {
     //Variables
     PreparedStatement ps= null;
+    int r=0;
     private final Connection connection;
-    
-    
+    ResultSet resultSet=null;
+    Bodega bodega = new Bodega();
     
         //Metodos
      public BodegaDAO() throws Exception {
@@ -31,32 +32,28 @@ public class BodegaDAO {
     }
      
       public int Eliminar_Bodega(int Id_Bodega) throws SQLException{
-  PreparedStatement ps;
-    ps=connection.prepareStatement("delete from Bodega where Id_Bodega="+Id_Bodega);
-  int r=ps.executeUpdate();
+
+        ps=connection.prepareStatement("delete from Bodega where Id_Bodega="+Id_Bodega);
+        r=ps.executeUpdate();
         return r;
   }
-       public int insertar(String nombre) throws ClassNotFoundException, SQLException  {
-       
-                PreparedStatement ps= connection.prepareStatement("insert into Bodega(Nombre_Bodega)values(?)");
-
-               
-                ps.setString(1,nombre);
-
-               int r=ps.executeUpdate();
-                ps.close(); 
-      
-                return r;
+       public int insertar(String nombre) throws ClassNotFoundException, SQLException {
+           
+        ps= connection.prepareStatement("insert into Bodega(Nombre_Bodega)values(?)");
+        ps.setString(1,nombre);
+        r=ps.executeUpdate();
+        ps.close(); 
+        return r;
    }
-            public ArrayList<Bodega> listaBodegas( ) {
+       public ArrayList<Bodega> listaBodegas() {
         ArrayList<Bodega> bodegas = new ArrayList<Bodega>();
         try {
             PreparedStatement ps;
             ps=connection.prepareStatement("select * from Bodega");
 
-            ResultSet resultSet = ps.executeQuery();
+             resultSet = ps.executeQuery();
             while (resultSet.next()) {
-                Bodega bodega = new Bodega();
+               
                 bodega.setNombre_Bodega(resultSet.getString("Nombre_Bodega"));
                 
                 bodegas.add(bodega);
@@ -71,18 +68,15 @@ public class BodegaDAO {
 
     } 
             
-              public ArrayList<Bodega> listaBodegasFiltrado(String ID ) {
+    public ArrayList<Bodega> listaBodegasFiltrado(String ID ) {
         ArrayList<Bodega> bodegas = new ArrayList<Bodega>();
         try {
-            PreparedStatement ps;
-            ps=connection.prepareStatement("select * from Bodega where Id_Bodega="+ID);
+        ps=connection.prepareStatement("select * from Bodega where Id_Bodega="+ID);
 
-            ResultSet resultSet = ps.executeQuery();
+            resultSet = ps.executeQuery();
             while (resultSet.next()) {
-                Bodega bodega = new Bodega();
-                bodega.setNombre_Bodega(resultSet.getString("Nombre_Bodega"));
-                
-                bodegas.add(bodega);
+            bodega.setNombre_Bodega(resultSet.getString("Nombre_Bodega"));
+             bodegas.add(bodega);
             }ps.close();
             resultSet.close();
             return bodegas;
@@ -92,14 +86,12 @@ public class BodegaDAO {
         }
 
     } 
-         public int actualizar(Bodega bodega) throws ClassNotFoundException, SQLException  {
-         PreparedStatement lu_ps;
-             int ln_r3;
-                lu_ps= connection.prepareStatement("update Bodega set "
+    public int actualizar(Bodega bodega) throws ClassNotFoundException, SQLException  {
+        ps= connection.prepareStatement("update Bodega set "
                         + "Nombre_Bodega='"+bodega.getNombre_Bodega()+"' "
                         + "where Id_Bodega='"+bodega.getId_Bodega()+"'");
-            ln_r3= lu_ps.executeUpdate();
-            lu_ps.close();
-   return ln_r3;
+        r=ps.executeUpdate();
+        ps.close();
+   return r;
   }
 }

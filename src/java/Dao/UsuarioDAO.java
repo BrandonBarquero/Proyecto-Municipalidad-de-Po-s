@@ -19,12 +19,11 @@ import java.util.ArrayList;
  * @author Allan
  */
 public class UsuarioDAO {
-       int r = 0;
-    int r2 = 0;
-    int r3 = 0;
-     PreparedStatement ps= null;
-   private final Connection connection;
-
+    int r=0;
+    PreparedStatement ps= null;
+    private final Connection connection;
+    Usuario usuario = new Usuario();
+    ResultSet resultSet = null;
     public UsuarioDAO() throws Exception {
         this.connection = new ConexionBD().getConnection();
 
@@ -48,16 +47,16 @@ public class UsuarioDAO {
    }
   public int actualizar(Usuario usuario) throws ClassNotFoundException, SQLException  {
           
-             int ln_r3;
+            
                 ps= connection.prepareStatement("update Usuario set Nombre='"+usuario.getNombre()+"' "
                         + ",Correo='"+usuario.getCorreo()+"'"
                                 + " ,Telefono='"+usuario.getTelefono()+"' "
                                         + ",Rol='"+usuario.getRol()+"'"
                                                 + ",Estado='"+usuario.getEstado()+"'  "
                                                         + "where Cedula='"+usuario.getCedula()+"'");
-            ln_r3= ps.executeUpdate();
+            r= ps.executeUpdate();
             ps.close();
-   return ln_r3;
+   return r;
   }
   
   public String SelecionarNombre(String Cedula) throws SQLException{
@@ -103,9 +102,8 @@ public class UsuarioDAO {
            
             ps=connection.prepareStatement("select * from Usuario where Estado='Activo'");
 
-            ResultSet resultSet = ps.executeQuery();
+             resultSet = ps.executeQuery();
             while (resultSet.next()) {
-                Usuario usuario = new Usuario();
                 usuario.setCedula(resultSet.getString("Cedula"));
                 usuario.setContrasena(resultSet.getString("Contrasena"));
                 usuario.setNombre(resultSet.getString("Nombre"));
@@ -130,9 +128,8 @@ public class UsuarioDAO {
         try {
           
             ps=connection.prepareStatement("select * from Usuario where Estado='Inactivo'");
-            ResultSet resultSet = ps.executeQuery();
+             resultSet = ps.executeQuery();
             while (resultSet.next()) {
-                Usuario usuario = new Usuario();
                 usuario.setCedula(resultSet.getString("Cedula"));
                 usuario.setContrasena(resultSet.getString("Contrasena"));
                 usuario.setNombre(resultSet.getString("Nombre"));
@@ -156,9 +153,9 @@ public class UsuarioDAO {
             
             ps=connection.prepareStatement("select * from Usuario where Cedula="+Cedula);
 
-            ResultSet resultSet = ps.executeQuery();
+             resultSet = ps.executeQuery();
             while (resultSet.next()) {
-                Usuario usuario = new Usuario();
+               
                 usuario.setCedula(resultSet.getString("Cedula"));
                 usuario.setContrasena(resultSet.getString("Contrasena"));
                 usuario.setNombre(resultSet.getString("Nombre"));
