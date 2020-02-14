@@ -42,19 +42,18 @@ public class DesactivarUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
       
-       
-         int ln_id=Integer.parseInt(request.getParameter("Cedula"));
+           int ln_cedulaUsuario=Integer.parseInt(request.getParameter("Cedula"));
          
            UsuarioDAO usariodao =new UsuarioDAO();
-           int ln_r=usariodao.Desactivar_Usuario(ln_id);      
-           if(ln_r>=1){
+           int ln_cedula=usariodao.Desactivar_Usuario(ln_cedulaUsuario);      
+           if(ln_cedula>=1){
                response.sendRedirect("ListarUsuarios.jsp");
                 }else {
                 out.println("<h1> Error</h1>");
                             response.sendRedirect("PaginaError.jsp");
                 } 
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

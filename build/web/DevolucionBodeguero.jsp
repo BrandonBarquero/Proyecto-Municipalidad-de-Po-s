@@ -102,7 +102,7 @@ lc_sAhora += "-"+ln_dia;
                             </div>
                              <div class="group-material">
                                     <input id="cantidad2" name="cantidad2" type="text" class="tooltips-general material-control" required="">
-                                <label>final </label>
+                                <label> Cantidad final </label>
                             </div>
                              
                               <div class="group-material">

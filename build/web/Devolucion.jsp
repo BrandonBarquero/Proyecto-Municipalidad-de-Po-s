@@ -86,20 +86,20 @@ lc_sAhora += "-"+ln_dia;
                            <label style=" top:-20px; font-size:17px; font-weight: 700; color:#333; font-weight: normal;">Motivo de devolución</label>
                            <div class="group-material">
 
-                               <p><textarea id="mot" name="mot" type="text" class="form-control rounded-0"  cols="40" rows="5" required=""></textarea></p>
+                               <p><textarea id="motivo" name="motivo" type="text" class="form-control rounded-0"  cols="40" rows="5" required=""></textarea></p>
                         
                            </div>
 
                            <div class="group-material">
                                <label style=" top:-20px; font-size:17px; font-weight: 700; color:#333; font-weight: normal;"> Cantidad actual </label>
-                               <input class="tooltips-general material-control" value="<%=ln_id2%>" onchange="cal();" id="cantidad" name="cantidad" type="number"  required="" readonly>
+                               <input class="tooltips-general material-control" value="<%=ln_id2%>" onchange="cal();" id="cantidadActual" name="cantidadActual" type="number"  required="" readonly>
                            </div>
                            <div class="group-material">
-                               <input  class="tooltips-general material-control" id="cantidad1" onchange="cal();" min="1" pattern="[0-9]{1,20}" name="cantidad1" type="number" required="">
+                               <input  class="tooltips-general material-control" id="cantidadIngreso" onchange="cal();" min="1" pattern="[0-9]{1,20}" name="cantidadIngreso" type="number" required="">
                                <label> Cantidad de ingreso </label>
                            </div>
                            <div class="group-material">
-                               <input class="tooltips-general material-control" id="cantidad2" name="cantidad2" type="number" readonly="" required="">
+                               <input class="tooltips-general material-control" id="cantidadFinal" name="cantidadFinal" type="number" readonly="" required="">
                                <label  style=" top:-20px; font-size:17px; font-weight: 700; color:#333; font-weight: normal;"> Cantidad final </label>
                            </div>
                              
@@ -109,7 +109,7 @@ lc_sAhora += "-"+ln_dia;
                            </div>
                                
                            <div class="group-material">
-                               <input id="res" name="res" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
+                               <input id="responsable" name="responsable" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
                                <label>Responsable</label>
                            </div>
 
@@ -126,7 +126,7 @@ lc_sAhora += "-"+ln_dia;
 
                            <div class="group-material">
                                <span>Departamento</span>
-                               <select id="dep" name="dep" class="tooltips-general material-control" required="">
+                               <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
                                      <% for(int x=0;x<a2.size();x++){ %>
                  <option  value="<%=a2.get(x).getNombreD()%>"><%=a2.get(x).getNombreD()%> </option>
                  

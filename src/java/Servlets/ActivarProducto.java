@@ -38,25 +38,19 @@ public class ActivarProducto extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
             
-         int ln_id=Integer.parseInt(request.getParameter("Codigo_Producto"));
+            int ln_codigoProducto=Integer.parseInt(request.getParameter("Codigo_Producto"));
        
-           ProductoDAO Productodao =new ProductoDAO();
+            ProductoDAO Productodao = new ProductoDAO();
             
-             int ln_r=Productodao.Activar_Producto(ln_id);
+            int ln_idCodigo = Productodao.Activar_Producto(ln_codigoProducto);
             
-               
-               
-                if(ln_r>=1){
+            if(ln_idCodigo>=1){
                 response.sendRedirect("DesecharProducto.jsp");
-                
-                }else {
+            }else{
                 out.println("<h1> Error</h1>");
                 response.sendRedirect("PaginaError.jsp");
-                }
-         
-         
-         
-        
+            }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
