@@ -19,10 +19,15 @@ import java.util.ArrayList;
  * @author Allan
  */
 public class BodegaDAO {
-        private final Connection connection;
+    //Variables
+    PreparedStatement ps= null;
+    private final Connection connection;
+    
+    
+    
+        //Metodos
      public BodegaDAO() throws Exception {
         this.connection = new ConexionBD().getConnection();
-
     }
      
       public int Eliminar_Bodega(int Id_Bodega) throws SQLException{
@@ -56,6 +61,8 @@ public class BodegaDAO {
                 
                 bodegas.add(bodega);
             }
+            ps.close();
+            resultSet.close();
             return bodegas;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -76,7 +83,8 @@ public class BodegaDAO {
                 bodega.setNombre_Bodega(resultSet.getString("Nombre_Bodega"));
                 
                 bodegas.add(bodega);
-            }
+            }ps.close();
+            resultSet.close();
             return bodegas;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -91,6 +99,7 @@ public class BodegaDAO {
                         + "Nombre_Bodega='"+bodega.getNombre_Bodega()+"' "
                         + "where Id_Bodega='"+bodega.getId_Bodega()+"'");
             ln_r3= lu_ps.executeUpdate();
+            lu_ps.close();
    return ln_r3;
   }
 }

@@ -54,7 +54,8 @@ public class DepartamentoDAO {
                 departamento.setNombreD(resultSet.getString("NombreD"));
                 
                 departamentos.add(departamento);
-            }
+            }ps.close();
+            resultSet.close();
             return departamentos;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -74,7 +75,8 @@ public class DepartamentoDAO {
                 departamento.setNombreD(resultSet.getString("NombreD"));
                 
                 departamentos.add(departamento);
-            }
+            }ps.close();
+            resultSet.close();
             return departamentos;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -89,6 +91,7 @@ public class DepartamentoDAO {
                         + "NombreD='"+departamento.getNombreD()+"' "
                         + "where IdDepartamento='"+departamento.getIdDepartamento()+"'");
             ln_r3= lu_ps.executeUpdate();
+            lu_ps.close();
    return ln_r3;
   }
 }

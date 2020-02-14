@@ -52,7 +52,7 @@ public class ProductoDAO {
                 lu_ps.setString(12,lo_producto.getGarantia());
                 lu_ps.setString(13,lo_producto.getProveedor());
                 ln_r=lu_ps.executeUpdate();
-           
+                lu_ps.close();
       
                 return ln_r;
 }
@@ -66,6 +66,7 @@ public class ProductoDAO {
            lu_ps.setInt(1, id);
          
         ln_r2=lu_ps.executeUpdate();
+        lu_ps.close();
         return ln_r2;
  }
   public int actualizar(Producto lo_producto) throws ClassNotFoundException, SQLException  {
@@ -99,6 +100,7 @@ public class ProductoDAO {
                 lu_ps.setString(12,lo_producto.getCodigo_Producto());
              
             ln_r3= lu_ps.executeUpdate();
+            lu_ps.close();
    return ln_r3;
   }
   
@@ -127,6 +129,8 @@ public class ProductoDAO {
                 producto.setProveedor(resultSet.getString("Proveedor"));
                 productos.add(producto);
             }
+            ps.close();
+            resultSet.close();
             return productos;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -159,6 +163,8 @@ public class ProductoDAO {
                 producto.setProveedor(resultSet.getString("Proveedor"));
                 productos.add(producto);
             }
+            ps.close();
+            resultSet.close();
             return productos;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -170,6 +176,7 @@ public class ProductoDAO {
   PreparedStatement ps;
   ps= connection.prepareStatement("update producto set Estado='Activo' where Codigo_Producto="+Codigo_Producto+"");
   int r=ps.executeUpdate();
+  ps.close();
         return r;
   }
    public int Desechar_Producto(int Codigo_Producto) throws SQLException{
@@ -203,6 +210,8 @@ public class ProductoDAO {
                 producto.setProveedor(resultSet.getString("Proveedor"));
                 productos.add(producto);
             }
+             ps.close();
+             resultSet.close();
             return productos;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -214,6 +223,7 @@ public class ProductoDAO {
   PreparedStatement ps;
 ps= connection.prepareStatement("update producto set Cantidad="+Cantidad+"where Codigo_Producto="+Codigo_Producto+"");
 int r=ps.executeUpdate();
+  ps.close();
         return r;
   }
      public int ContadorProductos() throws SQLException{
@@ -224,6 +234,8 @@ int r=ps.executeUpdate();
              while(rs.next()){ 
                  cont=cont+1;
              }
+             ps.close();
+             rs.close();
              return cont;
   
   }

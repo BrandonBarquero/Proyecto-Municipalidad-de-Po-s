@@ -39,7 +39,8 @@ public class Salida_ProductoDAO {
                 Salida_Producto.setDepartamento(resultSet.getString("Departamento"));
                 Salida_Producto.setCantidad_Salida(resultSet.getInt("Cantidad_Salida"));
                 Salida_Productos.add(Salida_Producto);
-            }
+            }ps.close();
+            resultSet.close();
             return Salida_Productos;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -62,7 +63,7 @@ public class Salida_ProductoDAO {
             
                int ln_r=lu_ps.executeUpdate();
            
-      
+     lu_ps.close();
                 return ln_r;
 }
      

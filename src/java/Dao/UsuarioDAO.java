@@ -22,6 +22,7 @@ public class UsuarioDAO {
        int r = 0;
     int r2 = 0;
     int r3 = 0;
+     PreparedStatement ps= null;
    private final Connection connection;
 
     public UsuarioDAO() throws Exception {
@@ -30,7 +31,7 @@ public class UsuarioDAO {
     }
    public int insertar(Usuario usuario) throws ClassNotFoundException, SQLException  {
        
-                PreparedStatement ps= connection.prepareStatement("insert into Usuario(Cedula,Nombre,Correo,Telefono,Rol,Estado,Contrasena)values(?,?,?,?,?,?,?)");
+                ps= connection.prepareStatement("insert into Usuario(Cedula,Nombre,Correo,Telefono,Rol,Estado,Contrasena)values(?,?,?,?,?,?,?)");
 
                 ps.setString(1,usuario.getCedula());
                 ps.setString(2,usuario.getNombre());
@@ -46,28 +47,28 @@ public class UsuarioDAO {
                 return r;
    }
   public int actualizar(Usuario usuario) throws ClassNotFoundException, SQLException  {
-         PreparedStatement lu_ps;
+          
              int ln_r3;
-                lu_ps= connection.prepareStatement("update Usuario set Nombre='"+usuario.getNombre()+"' "
+                ps= connection.prepareStatement("update Usuario set Nombre='"+usuario.getNombre()+"' "
                         + ",Correo='"+usuario.getCorreo()+"'"
                                 + " ,Telefono='"+usuario.getTelefono()+"' "
                                         + ",Rol='"+usuario.getRol()+"'"
                                                 + ",Estado='"+usuario.getEstado()+"'  "
                                                         + "where Cedula='"+usuario.getCedula()+"'");
-            ln_r3= lu_ps.executeUpdate();
+            ln_r3= ps.executeUpdate();
+            ps.close();
    return ln_r3;
   }
   
   public String SelecionarNombre(String Cedula) throws SQLException{
-      
            String nombre1=null;
-           PreparedStatement ps= null;
+           
              ps= connection.prepareStatement("select Nombre from Usuario where Cedula='"+Cedula+"'");
 
            ResultSet rs=ps.executeQuery();
           while(rs.next()){ 
            nombre1=  rs.getString("Nombre");
-          }
+          }ps.close();
           return nombre1;
 
 }
@@ -75,23 +76,23 @@ public class UsuarioDAO {
   
   public int ContadorAdmins() throws SQLException{
            int cont=0;
-           PreparedStatement ps= null;
+          
            ps= connection.prepareStatement("select * from Usuario where Rol='1' and Estado='Activo'");
            ResultSet rs=ps.executeQuery();
              while(rs.next()){ 
                  cont=cont+1;
-             }
+             }ps.close();
              return cont;
   
   }
   public int ContadorBodeguero() throws SQLException{
            int cont=0;
-           PreparedStatement ps= null;
+           
            ps= connection.prepareStatement("select * from Usuario where Rol='2' and Estado='Activo'");
            ResultSet rs=ps.executeQuery();
              while(rs.next()){ 
                  cont=cont+1;
-             }
+             }ps.close();
              return cont;
   
   }
@@ -99,7 +100,7 @@ public class UsuarioDAO {
   public ArrayList<Usuario> listaUsuarios( ) {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         try {
-            PreparedStatement ps;
+           
             ps=connection.prepareStatement("select * from Usuario where Estado='Activo'");
 
             ResultSet resultSet = ps.executeQuery();
@@ -114,6 +115,8 @@ public class UsuarioDAO {
                 usuario.setEstado(resultSet.getString("Estado"));
                 usuarios.add(usuario);
             }
+            ps.close();
+            resultSet.close();
             return usuarios;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -125,7 +128,7 @@ public class UsuarioDAO {
     public ArrayList<Usuario> listaUsuariosInactivos( ) {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         try {
-            PreparedStatement ps;
+          
             ps=connection.prepareStatement("select * from Usuario where Estado='Inactivo'");
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
@@ -138,7 +141,8 @@ public class UsuarioDAO {
                 usuario.setTelefono(resultSet.getString("Telefono"));
                 usuario.setEstado(resultSet.getString("Estado"));
                 usuarios.add(usuario);
-            }
+            }ps.close();
+            resultSet.close();
             return usuarios;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -149,7 +153,7 @@ public class UsuarioDAO {
   public ArrayList<Usuario> listaUsuariosFiltrado(String Cedula) {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         try {
-            PreparedStatement ps;
+            
             ps=connection.prepareStatement("select * from Usuario where Cedula="+Cedula);
 
             ResultSet resultSet = ps.executeQuery();
@@ -163,7 +167,8 @@ public class UsuarioDAO {
                 usuario.setTelefono(resultSet.getString("Telefono"));
                 usuario.setEstado(resultSet.getString("Estado"));
                 usuarios.add(usuario);
-            }
+            }ps.close();
+            resultSet.close();
             return usuarios;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -172,9 +177,10 @@ public class UsuarioDAO {
 
     }
    public int Desactivar_Usuario(int Cedula) throws SQLException{
-  PreparedStatement ps;
+
   ps= connection.prepareStatement("update Usuario set Estado='Inactivo' where Cedula="+Cedula+"");
   int r=ps.executeUpdate();
+  ps.close();
         return r;
   }
 }

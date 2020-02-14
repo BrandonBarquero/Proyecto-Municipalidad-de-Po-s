@@ -29,6 +29,7 @@ public class Tipo_ProductoDAO {
   PreparedStatement ps;
       ps=connection.prepareStatement("delete from Tipo_Producto where Id_Tipo_Producto="+Id_Tipo_Producto);
   int r=ps.executeUpdate();
+  ps.close();
         return r;
   }
       public int insertar(String tipo_Producto) throws ClassNotFoundException, SQLException  {
@@ -37,7 +38,7 @@ public class Tipo_ProductoDAO {
 
                 lu_ps.setString(1,tipo_Producto);
                int ln_r = lu_ps.executeUpdate();
-           
+           lu_ps.close();
       
                 return ln_r;
 }
@@ -54,7 +55,8 @@ public class Tipo_ProductoDAO {
                 tipo_Producto.setId_Tipo_Producto(resultSet.getInt("id_Tipo_Producto"));
                 tipo_Producto.setNombre_Tipo_Producto(resultSet.getString("Nombre_tipo_Producto"));
                 tipo_productos.add(tipo_Producto);
-            }
+            }ps.close();
+            resultSet.close();
             return tipo_productos;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -75,7 +77,8 @@ public class Tipo_ProductoDAO {
                 tipo_Producto.setId_Tipo_Producto(resultSet.getInt("id_Tipo_Producto"));
                 tipo_Producto.setNombre_Tipo_Producto(resultSet.getString("Nombre_tipo_Producto"));
                 tipo_productos.add(tipo_Producto);
-            }
+            }ps.close();
+            resultSet.close();
             return tipo_productos;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -90,6 +93,7 @@ public class Tipo_ProductoDAO {
                         + "Nombre_Tipo_Producto='"+tipo_Producto.getNombre_Tipo_Producto()+"' "
                         + "where Id_Tipo_Producto='"+tipo_Producto.getId_Tipo_Producto()+"'");
             ln_r3= lu_ps.executeUpdate();
+            lu_ps.close();
    return ln_r3;
   }
   
