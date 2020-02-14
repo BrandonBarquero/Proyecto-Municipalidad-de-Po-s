@@ -57,15 +57,9 @@ public class SalidaProducto extends HttpServlet {
              ProductoDAO lo_productodao =new ProductoDAO();
              
              int ln_var=lo_salidaProductodao.insertar(lo_salidaProducto);
-
-
-
-             
+    
             String ln_codigo=request.getParameter("codigoProducto");
-            
-            
-           
-               
+
                 if(la_nuevaCantidad!=null&&ln_codigo!=null){
                 int ln_p = lo_productodao.Actualizar_Cantidad(la_suma, ln_codigoProducto);
                  

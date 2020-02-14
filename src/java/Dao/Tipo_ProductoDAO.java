@@ -24,7 +24,7 @@ public class Tipo_ProductoDAO {
        PreparedStatement ps=null;
        int r=0;
        ResultSet resultSet =null;
-       Tipo_Producto tipo_Producto = new Tipo_Producto();
+       
 
        
        
@@ -52,6 +52,7 @@ public class Tipo_ProductoDAO {
             ps=connection.prepareStatement("select * from Tipo_Producto");
              resultSet = ps.executeQuery();
              while (resultSet.next()) {
+                 Tipo_Producto tipo_Producto = new Tipo_Producto();
                 tipo_Producto.setId_Tipo_Producto(resultSet.getInt("id_Tipo_Producto"));
                 tipo_Producto.setNombre_Tipo_Producto(resultSet.getString("Nombre_tipo_Producto"));
                 tipo_productos.add(tipo_Producto);
@@ -67,9 +68,10 @@ public class Tipo_ProductoDAO {
     public ArrayList<Tipo_Producto> listaTipo_ProductosFiltrado(String nombre) {
         ArrayList<Tipo_Producto> tipo_productos = new ArrayList<Tipo_Producto>();
         try {
-            ps=connection.prepareStatement("select * from Tipo_Producto where="+nombre);
+            ps=connection.prepareStatement("select * from Tipo_Producto where Id_Tipo_Producto="+nombre);
              resultSet = ps.executeQuery();
              while (resultSet.next()) {
+                 Tipo_Producto tipo_Producto = new Tipo_Producto();
                 tipo_Producto.setId_Tipo_Producto(resultSet.getInt("id_Tipo_Producto"));
                 tipo_Producto.setNombre_Tipo_Producto(resultSet.getString("Nombre_tipo_Producto"));
                 tipo_productos.add(tipo_Producto);

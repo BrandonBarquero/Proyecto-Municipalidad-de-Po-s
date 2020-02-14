@@ -22,7 +22,7 @@ public class UsuarioDAO {
     int r=0;
     PreparedStatement ps= null;
     private final Connection connection;
-    Usuario usuario = new Usuario();
+   
     ResultSet resultSet = null;
     public UsuarioDAO() throws Exception {
         this.connection = new ConexionBD().getConnection();
@@ -104,6 +104,7 @@ public class UsuarioDAO {
 
              resultSet = ps.executeQuery();
             while (resultSet.next()) {
+                 Usuario usuario = new Usuario();
                 usuario.setCedula(resultSet.getString("Cedula"));
                 usuario.setContrasena(resultSet.getString("Contrasena"));
                 usuario.setNombre(resultSet.getString("Nombre"));
@@ -130,6 +131,7 @@ public class UsuarioDAO {
             ps=connection.prepareStatement("select * from Usuario where Estado='Inactivo'");
              resultSet = ps.executeQuery();
             while (resultSet.next()) {
+                 Usuario usuario = new Usuario();
                 usuario.setCedula(resultSet.getString("Cedula"));
                 usuario.setContrasena(resultSet.getString("Contrasena"));
                 usuario.setNombre(resultSet.getString("Nombre"));
@@ -155,7 +157,7 @@ public class UsuarioDAO {
 
              resultSet = ps.executeQuery();
             while (resultSet.next()) {
-               
+                Usuario usuario = new Usuario();
                 usuario.setCedula(resultSet.getString("Cedula"));
                 usuario.setContrasena(resultSet.getString("Contrasena"));
                 usuario.setNombre(resultSet.getString("Nombre"));

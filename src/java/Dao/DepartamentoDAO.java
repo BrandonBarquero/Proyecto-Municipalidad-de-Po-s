@@ -24,7 +24,7 @@ public class DepartamentoDAO {
     private final Connection connection;
     int r=0;
     ResultSet resultSet=null;    
-    Departamento departamento = new Departamento();
+    
     
     
     
@@ -52,7 +52,9 @@ public class DepartamentoDAO {
             ps=connection.prepareStatement("select * from Departamento");
             resultSet = ps.executeQuery();
             while (resultSet.next()) {
+                Departamento departamento = new Departamento();
             departamento.setNombreD(resultSet.getString("NombreD"));
+            departamento.setIdDepartamento(resultSet.getInt("IdDepartamento"));
             departamentos.add(departamento);
             }ps.close();
             resultSet.close();
@@ -69,7 +71,9 @@ public class DepartamentoDAO {
             ps=connection.prepareStatement("select * from Departamento where IdDepartamento="+id);
             resultSet = ps.executeQuery();
             while (resultSet.next()) {
+                Departamento departamento = new Departamento();
                 departamento.setNombreD(resultSet.getString("NombreD"));
+                departamento.setIdDepartamento(resultSet.getInt("IdDepartamento"));
                 departamentos.add(departamento);
             }ps.close();
             resultSet.close();

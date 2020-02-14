@@ -126,7 +126,7 @@ lc_sAhora += "-"+ln_dia;
                                 <span>Departamento</span>
                                 <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
                                         <% for(int x=0;x<a2.size();x++){ %>
-                 <option  value="<%=a2.get(x).getNombreD()%>" </option>
+                 <option  value="<%=a2.get(x).getNombreD()%>"> <%=a2.get(x).getNombreD()%></option>
                  
                      <% } %>
                                 </select>

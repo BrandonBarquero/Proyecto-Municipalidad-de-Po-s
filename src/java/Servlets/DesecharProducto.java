@@ -42,7 +42,7 @@ public class DesecharProducto extends HttpServlet {
        
             ProductoDAO lo_Productodao = new ProductoDAO();
             
-            int ln_idCodigo=lo_Productodao.Activar_Producto(ln_codigoProducto);
+            int ln_idCodigo=lo_Productodao.Desechar_Producto(ln_codigoProducto);
             
                
                

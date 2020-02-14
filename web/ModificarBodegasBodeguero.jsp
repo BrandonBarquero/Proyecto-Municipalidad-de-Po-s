@@ -22,7 +22,7 @@
             </div>
         </div>
 <%
-          String ln_id=request.getParameter("Codigo_Producto");
+          String ln_id=request.getParameter("Id_Bodega");
          BodegaDAO asd = new BodegaDAO();
         ArrayList<Bodega> a2=  asd.listaBodegasFiltrado(ln_id);
           
@@ -59,7 +59,7 @@
                                 <span class="bar"></span>
                                 <label>Nombre de la Bodega</label>
                             </div>
-<% } %>
+
                             <p class="text-center">
                                 <button type="submit" data-placement="bottom" class="btn btn-primary modificar"><i class="zmdi zmdi-refresh"></i> &nbsp;&nbsp; Modificar</button>
                             </p> 

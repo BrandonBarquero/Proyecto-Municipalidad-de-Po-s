@@ -60,7 +60,7 @@
                                 <span class="bar"></span>
                                 <label>Nombre del Departamento</label>
                             </div>
-<% } %>
+
                             <p class="text-center">
                                <button type="submit" data-placement="bottom" class="btn btn-primary modificar"><i class="zmdi zmdi-refresh"></i> &nbsp;&nbsp; Modificar</button>
                             </p> 

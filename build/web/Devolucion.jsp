@@ -19,7 +19,7 @@
                var a = parseInt(document.dev.cantidad.value),
                b = parseInt(document.dev.cantidad1.value);
                if((a-b) >= 0){
-                   document.dev.cantidad2.value = a + b;
+                   document.dev.cantidadFinal.value = a + b;
                }else
                    alert("No se puede devolver mas productos de los que existen disponibles.");
            }catch (e) {
@@ -99,7 +99,7 @@ lc_sAhora += "-"+ln_dia;
                                <label> Cantidad de ingreso </label>
                            </div>
                            <div class="group-material">
-                               <input class="tooltips-general material-control" id="cantidadFinal" name="cantidadFinal" type="number" readonly="" required="">
+                               <input class="tooltips-general material-control" id="cantidadFinal" name="cantidadFinal" type="number"  required="">
                                <label  style=" top:-20px; font-size:17px; font-weight: 700; color:#333; font-weight: normal;"> Cantidad final </label>
                            </div>
                              

@@ -23,10 +23,9 @@ import java.util.logging.Logger;
  */
 public class ProductoDAO { 
     private final Connection connection;
-    PreparedStatement ps=null;
+    
     int r;
-    ResultSet resultSet=null;
-    Producto producto = new Producto();
+    
 
 
     public ProductoDAO() throws Exception {
@@ -34,7 +33,7 @@ public class ProductoDAO {
 
     }
    public int insertar(Producto lo_producto) throws ClassNotFoundException, SQLException  {
-               
+            PreparedStatement ps=null;   
         ps= connection.prepareStatement("insert into producto(Codigo_Presupuestario,"
                     + "Nombre,Unidad,Descripcion,Precio,Cantidad,Estado,Marca,Fecha_Entrada,Ubicacion"
                     + ",Tipo_Producto,Garantia,Proveedor)values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -59,7 +58,7 @@ public class ProductoDAO {
                 return r;
 }
  public int eliminar(int id) throws ClassNotFoundException, SQLException  {
- 
+ PreparedStatement ps=null;
          ps=connection.prepareStatement("delete from producto where Codigo_Producto= ?");
          ps.setInt(1, id);
          
@@ -68,33 +67,19 @@ public class ProductoDAO {
         return r;
  }
   public int actualizar(Producto lo_producto) throws ClassNotFoundException, SQLException  {
-  
+  PreparedStatement ps=null;
                 ps= connection.prepareStatement("update producto set "
-                        + "Codigo_Presupuestario='?' "
-                        + ",Nombre='?' "
-                        + ",Unidad='?' "
-                        + ",Descripcion='?'"
-                        + ",Precio='?'  "
-                        + ",Cantidad='?'  "
-                        + ",Marca='?'  "
-                        + ",Ubicacion='?'  "
-                        + ",Tipo_Producto='?'  "
-                        + ",Garantia='?'  "
-                        + ",Proveedor='?'  "
-                        + "where getCodigo_Producto= ?");
-                
-                ps.setString(1,lo_producto.getCodigo_Presupuestario());
-                ps.setString(2,lo_producto.getNombre());
-                ps.setString(3,lo_producto.getUnidad());
-                ps.setString(4,lo_producto.getDescripcion());
-                ps.setString(5,lo_producto.getPrecio());           
-                ps.setString(6,lo_producto.getCantidad());
-                ps.setString(7,lo_producto.getMarca());
-                ps.setString(8,lo_producto.getUbicacion());
-                ps.setString(9,lo_producto.getTipo_Producto());
-                ps.setString(10,lo_producto.getGarantia());
-                ps.setString(11,lo_producto.getProveedor());
-                ps.setString(12,lo_producto.getCodigo_Producto());
+                        + "Codigo_Presupuestario='"+lo_producto.getCodigo_Presupuestario()+"' "
+                        + ",Nombre='"+lo_producto.getNombre()+"' "
+                        + ",Unidad='"+lo_producto.getUnidad()+"' "
+                        + ",Descripcion='"+lo_producto.getDescripcion()+"'"
+                        + ",Precio='"+lo_producto.getPrecio()+"'  "    
+                        + ",Marca='"+lo_producto.getMarca()+"'  "
+                        + ",Ubicacion='"+lo_producto.getUbicacion()+"'  "
+                        + ",Tipo_Producto='"+lo_producto.getTipo_Producto()+"'  "
+                        + ",Garantia='"+lo_producto.getGarantia()+"'  "
+                        + ",Proveedor='"+lo_producto.getProveedor()+"'  "
+                        + "where Codigo_Producto= "+lo_producto.getCodigo_Producto()+"");            
              
             r= ps.executeUpdate();
             ps.close();
@@ -104,10 +89,11 @@ public class ProductoDAO {
   
   public ArrayList<Producto> listaProductosActivos( ) {
         ArrayList<Producto> productos = new ArrayList<Producto>();
-        try {
+        try {PreparedStatement ps=null;
             ps=connection.prepareStatement("select * from producto where Estado='Activo'");
-            resultSet = ps.executeQuery();
+                   ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
+                Producto producto = new Producto();
                 producto.setCodigo_Presupuestario(resultSet.getString("Codigo_Presupuestario"));
                 producto.setCodigo_Producto(resultSet.getString("Codigo_Producto"));
                 producto.setNombre(resultSet.getString("Nombre"));
@@ -134,10 +120,11 @@ public class ProductoDAO {
   
   public ArrayList<Producto> listaProductosInactivos( ) {
         ArrayList<Producto> productos = new ArrayList<Producto>();
-        try {
+        try {PreparedStatement ps=null;
             ps=connection.prepareStatement("select * from producto where Estado='Desecho' and Cantidad != '0'");
-             resultSet = ps.executeQuery();
+            ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
+                Producto producto = new Producto();
                 producto.setCodigo_Presupuestario(resultSet.getString("Codigo_Presupuestario"));
                 producto.setCodigo_Producto(resultSet.getString("Codigo_Producto"));
                 producto.setNombre(resultSet.getString("Nombre"));
@@ -161,24 +148,25 @@ public class ProductoDAO {
         }
 
     }
-  public int Activar_Producto(int Codigo_Producto) throws SQLException{
+  public int Activar_Producto(int Codigo_Producto) throws SQLException{PreparedStatement ps=null;
   ps= connection.prepareStatement("update producto set Estado='Activo' where Codigo_Producto="+Codigo_Producto+"");
    r=ps.executeUpdate();
   ps.close();
         return r;
   }
-   public int Desechar_Producto(int Codigo_Producto) throws SQLException{
+   public int Desechar_Producto(int Codigo_Producto) throws SQLException{PreparedStatement ps=null;
    ps= connection.prepareStatement("update producto set Estado='Desecho' where Codigo_Producto="+Codigo_Producto+"");
    r=ps.executeUpdate();
         return r;
   }
-  public ArrayList<Producto> listaUsuariosFiltrado(String Codigo_Producto) {
+  public ArrayList<Producto> listaUsuariosFiltrado(String Codigo_Producto) {PreparedStatement ps=null;
         ArrayList<Producto> productos = new ArrayList<Producto>();
         try {
             ps=connection.prepareStatement("select * from producto where Codigo_Producto="+Codigo_Producto);
 
-             resultSet = ps.executeQuery();
+            ResultSet resultSet = ps.executeQuery();
              while (resultSet.next()) {
+                 Producto producto = new Producto();
                 producto.setCodigo_Presupuestario(resultSet.getString("Codigo_Presupuestario"));
                 producto.setCodigo_Producto(resultSet.getString("Codigo_Producto"));
                 producto.setNombre(resultSet.getString("Nombre"));
@@ -203,13 +191,13 @@ public class ProductoDAO {
         }
 
     }
-   public int Actualizar_Cantidad(String Cantidad,String Codigo_Producto) throws SQLException{
+   public int Actualizar_Cantidad(String Cantidad,String Codigo_Producto) throws SQLException{PreparedStatement ps=null;
 ps= connection.prepareStatement("update producto set Cantidad="+Cantidad+"where Codigo_Producto="+Codigo_Producto+"");
  r=ps.executeUpdate();
   ps.close();
         return r;
   }
-     public int ContadorProductos() throws SQLException{
+     public int ContadorProductos() throws SQLException{PreparedStatement ps=null;
            int cont=0;
            ps= connection.prepareStatement("select * from Producto where Estado='Activo'");
            ResultSet rs=ps.executeQuery();

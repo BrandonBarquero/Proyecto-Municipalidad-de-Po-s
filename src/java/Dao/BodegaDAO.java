@@ -24,7 +24,7 @@ public class BodegaDAO {
     int r=0;
     private final Connection connection;
     ResultSet resultSet=null;
-    Bodega bodega = new Bodega();
+  
     
         //Metodos
      public BodegaDAO() throws Exception {
@@ -53,8 +53,9 @@ public class BodegaDAO {
 
              resultSet = ps.executeQuery();
             while (resultSet.next()) {
-               
+                 Bodega bodega = new Bodega();
                 bodega.setNombre_Bodega(resultSet.getString("Nombre_Bodega"));
+                 bodega.setId_Bodega(resultSet.getInt("Id_Bodega"));
                 
                 bodegas.add(bodega);
             }
@@ -75,7 +76,10 @@ public class BodegaDAO {
 
             resultSet = ps.executeQuery();
             while (resultSet.next()) {
+                  Bodega bodega = new Bodega();
             bodega.setNombre_Bodega(resultSet.getString("Nombre_Bodega"));
+            bodega.setId_Bodega(resultSet.getInt("Id_Bodega"));
+
              bodegas.add(bodega);
             }ps.close();
             resultSet.close();
