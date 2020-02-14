@@ -1,15 +1,19 @@
-package Servlets;
+package Servlets.Inserciones;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import Dao.UsuarioDAO;
-import Entidades.Usuario;
+
+import Dao.BodegaDAO;
+import Dao.ProductoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,8 +26,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Allan
  */
-@WebServlet(urlPatterns = {"/IngresoUsuario"})
-public class IngresoUsuario extends HttpServlet {
+@WebServlet(urlPatterns = {"/IngresoBodega"})
+public class IngresoBodega extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,34 +40,23 @@ public class IngresoUsuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
+      String lc_nombreTraidadelInput=request.getParameter("nombre");           
+         
       
-            String lc_cedulaTraidadelInput=request.getParameter("Cedula");
-            String lc_nombreTraidadelInput=request.getParameter("Nombre");
-            String lc_CorreoTraidadelInput=request.getParameter("correo");
-            String lc_TelefonoTraidadelInput=request.getParameter("Telefono");
-            String lc_RolTraidadelInput=request.getParameter("Rol");
-            String lc_EstadoTraidadelInput=request.getParameter("Estado");
-            String lc_contrasenaTraidadelInput=request.getParameter("Contrasena");
+       BodegaDAO bodegadao =new BodegaDAO();
             
+             int ln_r=bodegadao.insertar(lc_nombreTraidadelInput);
             
-            Usuario usuario = new Usuario(lc_cedulaTraidadelInput,lc_nombreTraidadelInput,lc_CorreoTraidadelInput,lc_TelefonoTraidadelInput,lc_RolTraidadelInput,lc_EstadoTraidadelInput,lc_contrasenaTraidadelInput);
-
-            UsuarioDAO usariodao =new UsuarioDAO();
-            
-             int ln_r=usariodao.insertar(usuario);
-           
-            
+      
                 if(ln_r>=1){
-                response.sendRedirect("ListarUsuarios.jsp");
+                response.sendRedirect("ListarBodegas.jsp");
                 
                 }else {
                 out.println("<h1> Error</h1>");
                             response.sendRedirect("PaginaError.jsp");
                 }
                 
-          
-            
-        
+           
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -81,7 +74,7 @@ public class IngresoUsuario extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoBodega.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -99,7 +92,7 @@ public class IngresoUsuario extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoBodega.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -1,16 +1,14 @@
-package Servlets;
-
+package Servlets.Inserciones;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-import Dao.ProductoDAO;
 import Dao.UsuarioDAO;
-import Entidades.Producto;
+import Entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Allan
  */
-@WebServlet(urlPatterns = {"/IngresoProducto"})
-public class IngresoProducto extends HttpServlet {
+@WebServlet(urlPatterns = {"/IngresoUsuario"})
+public class IngresoUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,41 +36,34 @@ public class IngresoProducto extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-            PrintWriter out = response.getWriter();
+      
+            String lc_cedulaTraidadelInput=request.getParameter("Cedula");
+            String lc_nombreTraidadelInput=request.getParameter("Nombre");
+            String lc_CorreoTraidadelInput=request.getParameter("correo");
+            String lc_TelefonoTraidadelInput=request.getParameter("Telefono");
+            String lc_RolTraidadelInput=request.getParameter("Rol");
+            String lc_EstadoTraidadelInput=request.getParameter("Estado");
+            String lc_contrasenaTraidadelInput=request.getParameter("Contrasena");
             
-            String Codigo_Producto=request.getParameter("Codigo_Producto");
-            String Codigo_Presupuestario=request.getParameter("Presupuestario");
-            String Nombre=request.getParameter("nombre");
-            String Unidad=request.getParameter("Unidad");
-            String Descripcion=request.getParameter("Descripcion");
-            String Precio=request.getParameter("Precio");
-            String Cantidad=request.getParameter("Cantidad");
-            String Marca=request.getParameter("Marca");
-            String Fecha_Entrada=request.getParameter("Fecha");
-            String Ubicacion=request.getParameter("Ubicacion");
-            String Tipo_Producto=request.getParameter("Tipo");
-            String Garantia=request.getParameter("Garantia");
-            String Proveedor=request.getParameter("Proveedor");
             
-            Producto producto = new Producto(Codigo_Producto,Codigo_Presupuestario,Nombre,Unidad,Descripcion,Precio
-                    ,Cantidad,Marca,Fecha_Entrada,Ubicacion,Tipo_Producto,Garantia,Proveedor);
+            Usuario usuario = new Usuario(lc_cedulaTraidadelInput,lc_nombreTraidadelInput,lc_CorreoTraidadelInput,lc_TelefonoTraidadelInput,lc_RolTraidadelInput,lc_EstadoTraidadelInput,lc_contrasenaTraidadelInput);
+
+            UsuarioDAO usariodao =new UsuarioDAO();
             
-             ProductoDAO Productodao =new ProductoDAO();
+             int ln_r=usariodao.insertar(usuario);
+           
             
-             int ln_r=Productodao.insertar(producto);
-            
-               
-               
                 if(ln_r>=1){
-                response.sendRedirect("ListarProductos.jsp");
+                response.sendRedirect("ListarUsuarios.jsp");
                 
                 }else {
                 out.println("<h1> Error</h1>");
                             response.sendRedirect("PaginaError.jsp");
                 }
                 
-           
+          
             
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -90,7 +81,7 @@ public class IngresoProducto extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -108,7 +99,7 @@ public class IngresoProducto extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -1,3 +1,7 @@
+<%@page import="Entidades.Tipo_Producto"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Dao.Tipo_ProductoDAO"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -28,24 +32,21 @@
             </div>
         </div>
       <%
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-         ResultSet lu_rs;
-         String lc_id=request.getParameter("Id_Tipo_Producto");
-         lu_ps=lu_con.prepareStatement("select * from Tipo_Producto where Id_Tipo_Producto="+lc_id);
-         lu_rs=lu_ps.executeQuery();
-         while(lu_rs.next()){%>
+           String lc_id=request.getParameter("Id_Tipo_Producto");
+         Tipo_ProductoDAO asd = new Tipo_ProductoDAO();
+        ArrayList<Tipo_Producto> a2=  asd.listaTipo_ProductosFiltrado(lc_id);
+          
+          %>
 
         <div class="container-fluid">
             <div class="container-flat-form">
                 <div class="title-flat-form title-flat-blue">Modificar el tipo de producto</div>
-                <form name="modificarr" action="" method="post" autocomplete="off">
+                <form name="modificarr" action="ModificarTipoProducto" method="post" autocomplete="off">
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                             <div>
                                 <label style="  top:-20px; font-size:17px;font-weight: 700;color:#333;font-weight: normal;">ID</label>
-                                <input name="id" value="<%=lu_rs.getString("Id_Tipo_Producto")%>" type="text" class="material-control tooltips-general input-check-user" required="" maxlength="20" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1,20}" data-toggle="tooltip" data-placement="top" readonly="">
+                                <input name="id" value="<%=a2.get(0).getId_Tipo_Producto()%>" type="text" class="material-control tooltips-general input-check-user" required="" maxlength="20" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1,20}" data-toggle="tooltip" data-placement="top" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                
@@ -53,12 +54,11 @@
                                 <br><br>
 
                             <div class="group-material">
-                                <input name="nombre" value="<%=lu_rs.getString("Nombre_Tipo_Producto")%>" type="text" class="material-control tooltips-general" required="" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" data-toggle="tooltip" data-placement="top" >
+                                <input name="nombre" value="<<%=a2.get(0).getNombre_Tipo_Producto()%>" type="text" class="material-control tooltips-general" required="" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" data-toggle="tooltip" data-placement="top" >
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre tipo producto</label>
                             </div>
-<% } %>
                             <p class="text-center">
                                 <button type="reset" class="btn btn-info" style="margin-right: 20px;"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>
                                  <button type="submit" data-placement="bottom" class="btn btn-primary modificar"><i class="zmdi zmdi-refresh"></i> &nbsp;&nbsp; Modificar</button>
@@ -79,29 +79,3 @@
     </div>
 </body>
 </html>
-<%
-            
-            String lc_id2=request.getParameter("id");
-            String nombre=request.getParameter("nombre");
-      
-            
-            int r;
-            try{
-                
-                if(lc_id2!=null&&nombre!=null){
-                
-                 lu_ps= lu_con.prepareStatement("update Tipo_Producto set "
-                         + "Nombre_Tipo_Producto='"+nombre
-                      
-                         
-                                 + "' where Id_Tipo_Producto="+lc_id+"");
-                lu_ps.executeUpdate();
-                response.sendRedirect("ListarTipoProducto.jsp");
-                
-                
-                }
-                
-            }catch(Exception lu_e){
-            out.println("Error"+lu_e.getMessage());
-            }
-            %>

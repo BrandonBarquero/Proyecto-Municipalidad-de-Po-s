@@ -7,6 +7,7 @@ package Dao;
 
 import Entidades.Departamento;
 import Entidades.Producto;
+import Entidades.Tipo_Producto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -61,4 +62,33 @@ public class DepartamentoDAO {
         }
 
     }   
+        public ArrayList<Departamento> listaDepartamentosFiltrado( String id) {
+        ArrayList<Departamento> departamentos = new ArrayList<Departamento>();
+        try {
+            PreparedStatement ps;
+            ps=connection.prepareStatement("select * from Departamento where IdDepartamento="+id);
+
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                Departamento departamento = new Departamento();
+                departamento.setNombreD(resultSet.getString("NombreD"));
+                
+                departamentos.add(departamento);
+            }
+            return departamentos;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }  
+         public int actualizar(Departamento departamento) throws ClassNotFoundException, SQLException  {
+         PreparedStatement lu_ps;
+             int ln_r3;
+                lu_ps= connection.prepareStatement("update Departamento set "
+                        + "NombreD='"+departamento.getNombreD()+"' "
+                        + "where IdDepartamento='"+departamento.getIdDepartamento()+"'");
+            ln_r3= lu_ps.executeUpdate();
+   return ln_r3;
+  }
 }

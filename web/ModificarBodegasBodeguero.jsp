@@ -1,3 +1,6 @@
+<%@page import="Dao.BodegaDAO"%>
+<%@page import="Entidades.Bodega"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -18,15 +21,12 @@
               <h1 class="all-tittles">SIM<small> Modificar Bodega</small></h1>
             </div>
         </div>
- <%
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-         ResultSet lu_rs;
-         String ln_id=request.getParameter("Id_Bodega");
-         lu_ps=lu_con.prepareStatement("select * from Bodega where Id_Bodega="+ln_id);
-         lu_rs=lu_ps.executeQuery();
-         while(lu_rs.next()){%>
+<%
+          String ln_id=request.getParameter("Codigo_Producto");
+         BodegaDAO asd = new BodegaDAO();
+        ArrayList<Bodega> a2=  asd.listaBodegasFiltrado(ln_id);
+          
+          %>
         <div class="container-fluid"  style="margin: 50px 0;">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -41,12 +41,12 @@
         <div class="container-fluid">
             <div class="container-flat-form">
                 <div class="title-flat-form title-flat-blue">Modificar Bodega</div>
-                <form name="modificarr" autocomplete="off">
+                <form action="ModificarBodegasBodegero" name="modificarr" autocomplete="off">
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                                <div>
                                    <label style="   top:-20px;font-size:17px;font-weight: 700;color:#333;font-weight: normal;">ID Bodega</label>
-                                   <input value="<%=lu_rs.getString("Id_Bodega")%>" name="id" type="text" class="material-control tooltips-general input-check-user"  readonly>
+                                   <input value="<%=a2.get(0).getId_Bodega()%>" name="id" type="text" class="material-control tooltips-general input-check-user"  readonly>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                               
@@ -54,7 +54,7 @@
                            <br><br>
 
                                <div class="group-material">
-                                   <input value="<%=lu_rs.getString("Nombre_Bodega")%>" name="nombre" type="text" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" class="material-control tooltips-general"  required="">
+                                   <input value="<%=a2.get(0).getNombre_Bodega()%>" name="nombre" type="text" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" class="material-control tooltips-general"  required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre de la Bodega</label>
@@ -81,28 +81,4 @@
     </div>
 </body>
 </html>
-            <%
-            String id=request.getParameter("id");
-            String nombre=request.getParameter("nombre");
-      
-            
-            int r;
-            try{
-                
-                if(id!=null&&nombre!=null){
-                
-                 lu_ps= lu_con.prepareStatement("update Bodega set "
-                         + "Nombre_Bodega='"+nombre
-                      
-                         
-                                 + "' where Id_Bodega="+id+"");
-                lu_ps.executeUpdate();
-                response.sendRedirect("ListarBodegasBodeguero.jsp");
-                
-                
-                }
-                
-            }catch(Exception lu_e){
-            out.println("Error"+lu_e.getMessage());
-            }
-            %>
+          

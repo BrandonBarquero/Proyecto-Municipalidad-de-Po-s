@@ -1,4 +1,4 @@
-package Servlets;
+package Servlets.Inserciones;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,13 +6,12 @@ package Servlets;
  * and open the template in the editor.
  */
 
-import Dao.BodegaDAO;
+import Dao.ProductoDAO;
+import Dao.UsuarioDAO;
+import Entidades.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,10 +22,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author barqu
+ * @author Allan
  */
-@WebServlet(urlPatterns = {"/IngresoBodegaBodeguero"})
-public class IngresoBodegaBodeguero extends HttpServlet {
+@WebServlet(urlPatterns = {"/IngresoProducto"})
+public class IngresoProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,22 +38,41 @@ public class IngresoBodegaBodeguero extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-      
-        
-        
-         String lc_nombreTraidadelInput=request.getParameter("nombre");           
-         BodegaDAO bodegadao =new BodegaDAO();
+            PrintWriter out = response.getWriter();
             
-         int ln_r=bodegadao.insertar(lc_nombreTraidadelInput);
+            String Codigo_Producto=request.getParameter("Codigo_Producto");
+            String Codigo_Presupuestario=request.getParameter("Presupuestario");
+            String Nombre=request.getParameter("nombre");
+            String Unidad=request.getParameter("Unidad");
+            String Descripcion=request.getParameter("Descripcion");
+            String Precio=request.getParameter("Precio");
+            String Cantidad=request.getParameter("Cantidad");
+            String Marca=request.getParameter("Marca");
+            String Fecha_Entrada=request.getParameter("Fecha");
+            String Ubicacion=request.getParameter("Ubicacion");
+            String Tipo_Producto=request.getParameter("Tipo");
+            String Garantia=request.getParameter("Garantia");
+            String Proveedor=request.getParameter("Proveedor");
             
-      
+            Producto producto = new Producto(Codigo_Producto,Codigo_Presupuestario,Nombre,Unidad,Descripcion,Precio
+                    ,Cantidad,Marca,Fecha_Entrada,Ubicacion,Tipo_Producto,Garantia,Proveedor);
+            
+             ProductoDAO Productodao =new ProductoDAO();
+            
+             int ln_r=Productodao.insertar(producto);
+            
+               
+               
                 if(ln_r>=1){
-                  response.sendRedirect("ListarBodegasBodeguero.jsp");
+                response.sendRedirect("ListarProductos.jsp");
+                
                 }else {
                 out.println("<h1> Error</h1>");
-                            response.sendRedirect("PaginaErrorBodeguero.jsp");
+                            response.sendRedirect("PaginaError.jsp");
                 }
                 
+           
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -72,7 +90,7 @@ public class IngresoBodegaBodeguero extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoBodegaBodeguero.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -90,7 +108,7 @@ public class IngresoBodegaBodeguero extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoBodegaBodeguero.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

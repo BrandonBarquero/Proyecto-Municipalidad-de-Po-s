@@ -1,4 +1,4 @@
-package Servlets;
+package Servlets.Inserciones;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,15 +6,14 @@ package Servlets;
  * and open the template in the editor.
  */
 
-import Dao.BodegaDAO;
 import Dao.DepartamentoDAO;
+import Dao.Tipo_ProductoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -27,8 +26,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Allan
  */
-@WebServlet(urlPatterns = {"/EliminarDepartamento"})
-public class EliminarDepartamento extends HttpServlet {
+@WebServlet(urlPatterns = {"/IngresoTipoProducto"})
+public class IngresoTipoProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,24 +39,23 @@ public class EliminarDepartamento extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
-
-       
-         int ln_id=Integer.parseInt(request.getParameter("IdDepartamento"));
-        
-          DepartamentoDAO departamentodao =new DepartamentoDAO();
+            throws ServletException, IOException, Exception {
+   
+            String lc_nombreTraidadelInput=request.getParameter("nombre");           
             
-             int ln_r=departamentodao.Eliminar_Departamento(ln_id);
+            Tipo_ProductoDAO tipo_ProductoDAO =new Tipo_ProductoDAO();
             
-               
-               
+         int ln_r=tipo_ProductoDAO.insertar(lc_nombreTraidadelInput);
+            
+            
                 if(ln_r>=1){
-                 response.sendRedirect("ListarDepartamentos.jsp");
+                response.sendRedirect("ListarTipoProducto.jsp");
                 
                 }else {
                 out.println("<h1> Error</h1>");
                             response.sendRedirect("PaginaError.jsp");
                 }
+                
          
     }
 
@@ -75,12 +73,8 @@ public class EliminarDepartamento extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -97,12 +91,8 @@ public class EliminarDepartamento extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            Logger.getLogger(EliminarDepartamento.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

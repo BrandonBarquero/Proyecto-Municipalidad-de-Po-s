@@ -1,9 +1,14 @@
+package Servlets.Modificardores;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Dao.ProductoDAO;
+import Dao.Tipo_ProductoDAO;
+import Entidades.Tipo_Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -33,36 +38,25 @@ public class ModificarTipoProducto extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
-     String lc_id=request.getParameter("id");
+            throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
+            String lc_id=request.getParameter("id");
             String lc_nombre=request.getParameter("nombre");
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-         ResultSet lu_rs;
-       
-         lu_ps=lu_con.prepareStatement("select * from Tipo_Producto where Id_Tipo_Producto="+lc_id);
-         lu_rs=lu_ps.executeQuery();
+        int entero = Integer.parseInt(lc_id);
+            Tipo_Producto tipoproducto = new Tipo_Producto(entero,lc_nombre);
+             Tipo_ProductoDAO TipoProductodao =new Tipo_ProductoDAO();
             
-            int r;
-            try{
-                
-                if(lc_nombre!=null&&lc_id!=null){
-                
-                 lu_ps= lu_con.prepareStatement("update Tipo_Producto set "
-                         + "Nombre_Tipo_Producto='"+lc_nombre
-                      
-                         
-                                 + " where Id_Tipo_Producto="+lc_id+"");
-                lu_ps.executeUpdate();
+             int ln_r=TipoProductodao.actualizar(tipoproducto);
+            
+               
+               
+                if(ln_r>=1){
                 response.sendRedirect("ListarTipoProducto.jsp");
                 
-                
+                }else {
+                out.println("<h1> Error</h1>");
+                            response.sendRedirect("PaginaError.jsp");
                 }
-                
-            }catch(Exception lu_e){
-            out.println("Error"+lu_e.getMessage());
-            }
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -83,6 +77,8 @@ public class ModificarTipoProducto extends HttpServlet {
             Logger.getLogger(ModificarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ModificarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(ModificarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -102,6 +98,8 @@ public class ModificarTipoProducto extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ModificarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(ModificarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(ModificarTipoProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

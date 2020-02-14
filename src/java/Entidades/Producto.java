@@ -61,6 +61,22 @@ public class Producto{
 
     }
 
+    public Producto(String Codigo_Producto, String Codigo_Presupuestario, String Nombre, 
+            String Unidad, String Descripcion, String Precio, String Marca, 
+            String Fecha_Entrada, String Ubicacion, String Tipo_Producto, String Garantia, String Proveedor) {
+         this.Codigo_Producto = Codigo_Producto;
+        this.Codigo_Presupuestario = Codigo_Presupuestario;
+        this.Nombre = Nombre;
+        this.Unidad = Unidad;
+        this.Descripcion = Descripcion;
+        this.Precio = Precio;
+        this.Marca = Marca;
+        this.Fecha_Entrada = Fecha_Entrada;
+        this.Ubicacion = Ubicacion;
+        this.Tipo_Producto = Tipo_Producto;
+        this.Garantia = Garantia;
+        this.Proveedor = Proveedor;    }
+
     public String getCodigo_Producto() {
         return Codigo_Producto;
     }

@@ -108,18 +108,3 @@
     </div>
 </body>
 </html>      
-    <script type="text/javascript">
-    
-    function validarContrasena(primero, segunda){
-    var primera = document.getElementById('Contrasena').value;
-    var segunda = document.getElementById('password').value;
- 
-    if(primera !== segunda){
-        alert("La contraseñas no coinciden, vuelva a introducir la contraseña.");
-        return false;
-    }
-    else{
-        return true;
-    }
-    }
-</script>

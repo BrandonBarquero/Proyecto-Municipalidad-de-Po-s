@@ -63,4 +63,34 @@ public class BodegaDAO {
         }
 
     } 
+            
+              public ArrayList<Bodega> listaBodegasFiltrado(String ID ) {
+        ArrayList<Bodega> bodegas = new ArrayList<Bodega>();
+        try {
+            PreparedStatement ps;
+            ps=connection.prepareStatement("select * from Bodega where Id_Bodega="+ID);
+
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                Bodega bodega = new Bodega();
+                bodega.setNombre_Bodega(resultSet.getString("Nombre_Bodega"));
+                
+                bodegas.add(bodega);
+            }
+            return bodegas;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    } 
+         public int actualizar(Bodega bodega) throws ClassNotFoundException, SQLException  {
+         PreparedStatement lu_ps;
+             int ln_r3;
+                lu_ps= connection.prepareStatement("update Bodega set "
+                        + "Nombre_Bodega='"+bodega.getNombre_Bodega()+"' "
+                        + "where Id_Bodega='"+bodega.getId_Bodega()+"'");
+            ln_r3= lu_ps.executeUpdate();
+   return ln_r3;
+  }
 }

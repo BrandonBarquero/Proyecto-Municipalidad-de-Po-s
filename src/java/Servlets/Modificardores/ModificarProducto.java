@@ -1,4 +1,4 @@
-package Servlets;
+package Servlets.Modificardores;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,13 +6,16 @@ package Servlets;
  * and open the template in the editor.
  */
 
-import Dao.Tipo_ProductoDAO;
+import Dao.ProductoDAO;
+import Entidades.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,10 +26,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author barqu
+ * @author Allan
  */
-@WebServlet(urlPatterns = {"/IngresoTipoProductoBodeguero"})
-public class IngresoTipoProductoBodeguero extends HttpServlet {
+@WebServlet(urlPatterns = {"/ModificarProducto"})
+public class ModificarProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,21 +41,35 @@ public class IngresoTipoProductoBodeguero extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
-       String lc_nombreTraidadelInput=request.getParameter("nombre");           
-                Tipo_ProductoDAO tipo_ProductoDAO =new Tipo_ProductoDAO();
-            
-         int ln_r=tipo_ProductoDAO.insertar(lc_nombreTraidadelInput);
-            
-            
-                if(ln_r>=1){
-                response.sendRedirect("ListarTipoProductoBodeguero.jsp");
+            throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
+     
+        
+            String lc_Codigo_P=request.getParameter("Codigo_P");
+            String lc_Codigo=request.getParameter("Codigo");
+            String lc_Nombre=request.getParameter("Nombre");
+            String lc_Unidad=request.getParameter("Unidad");
+            String lc_Descripcion=request.getParameter("Descripcion");
+            String lc_Precio=request.getParameter("Precio");
+            String lc_marca=request.getParameter("Marca");
+            String lc_fecha=request.getParameter("Fecha");
+            String lc_entrada=request.getParameter("Entrada");
+            String lc_ubicacion=request.getParameter("Ubicacion");
+            String lc_tipo=request.getParameter("Tipo");
+            String lc_Proveedor=request.getParameter("Proveedor");
+          Producto producto = new Producto( lc_Codigo_P,  lc_Codigo,  lc_Nombre,  lc_Unidad,  lc_Descripcion,  lc_Precio, 
+                   lc_marca,  lc_entrada,  lc_ubicacion,  lc_tipo,  lc_fecha,  lc_Proveedor); 
+        
+          ProductoDAO productodao = new ProductoDAO();
+          int ln_r=productodao.actualizar(producto);
+           if(ln_r>=1){
+                response.sendRedirect("ListarProductos.jsp");
                 
                 }else {
                 out.println("<h1> Error</h1>");
-                            response.sendRedirect("PaginaErrorBodeguero.jsp");
+                            response.sendRedirect("PaginaError.jsp");
                 }
-        ;
+            
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -69,8 +86,12 @@ public class IngresoTipoProductoBodeguero extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ModificarProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarProducto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoTipoProductoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -87,8 +108,12 @@ public class IngresoTipoProductoBodeguero extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ModificarProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarProducto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoTipoProductoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

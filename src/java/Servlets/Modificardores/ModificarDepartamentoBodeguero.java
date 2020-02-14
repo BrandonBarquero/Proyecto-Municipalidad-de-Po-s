@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package Servlets.Modificardores;
 
-import Dao.UsuarioDAO;
-import Entidades.Usuario;
+import Dao.DepartamentoDAO;
+import Entidades.Departamento;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Allan
  */
-@WebServlet(name = "ModificarUsuario", urlPatterns = {"/ModificarUsuario"})
-public class ModificarUsuario extends HttpServlet {
+@WebServlet(name = "ModificarDepartamentoBodeguero", urlPatterns = {"/ModificarDepartamentoBodeguero"})
+public class ModificarDepartamentoBodeguero extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,23 +36,18 @@ public class ModificarUsuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-        
-        
-            String lc_cedulaTraidadelInput=request.getParameter("Cedula");
-            String lc_nombreTraidadelInput=request.getParameter("Nombre");
-            String lc_CorreoTraidadelInput=request.getParameter("Correo");
-            String lc_TelefonoTraidadelInput=request.getParameter("Telefono");
-            String lc_RolTraidadelInput=request.getParameter("Rol");
-            String lc_EstadoTraidadelInput=request.getParameter("Estado");
+       String lc_id=request.getParameter("id");
+            String lc_nombre=request.getParameter("nombre");
+        int entero = Integer.parseInt(lc_id);
+            Departamento departamento = new Departamento(entero,lc_nombre);
+             DepartamentoDAO departamentodao =new DepartamentoDAO();
             
-            Usuario usuario = new Usuario(lc_cedulaTraidadelInput,lc_nombreTraidadelInput,lc_CorreoTraidadelInput,lc_TelefonoTraidadelInput,lc_RolTraidadelInput,lc_EstadoTraidadelInput);
-
-             UsuarioDAO usariodao =new UsuarioDAO();
-             int ln_r=usariodao.actualizar(usuario);
-           
+             int ln_r=departamentodao.actualizar(departamento);
             
+               
+               
                 if(ln_r>=1){
-                response.sendRedirect("ListarUsuarios.jsp");
+                response.sendRedirect("ListarDepartamentosBodeguero.jsp");
                 
                 }else {
                 out.println("<h1> Error</h1>");
@@ -75,7 +70,7 @@ public class ModificarUsuario extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ModificarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarDepartamentoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -93,7 +88,7 @@ public class ModificarUsuario extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ModificarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarDepartamentoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

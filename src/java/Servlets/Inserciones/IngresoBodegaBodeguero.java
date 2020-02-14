@@ -1,4 +1,4 @@
-package Servlets;
+package Servlets.Inserciones;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,7 +6,7 @@ package Servlets;
  * and open the template in the editor.
  */
 
-import Dao.DepartamentoDAO;
+import Dao.BodegaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -25,8 +25,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author barqu
  */
-@WebServlet(urlPatterns = {"/IngresoDepartamentoBodeguero"})
-public class IngresoDepartamentoBodeguero extends HttpServlet {
+@WebServlet(urlPatterns = {"/IngresoBodegaBodeguero"})
+public class IngresoBodegaBodeguero extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,26 +39,22 @@ public class IngresoDepartamentoBodeguero extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-        String lc_nombreTraidadelInput=request.getParameter("nombre");           
-           
+      
         
-           DepartamentoDAO departamentodao =new DepartamentoDAO();
+        
+         String lc_nombreTraidadelInput=request.getParameter("nombre");           
+         BodegaDAO bodegadao =new BodegaDAO();
             
-         int ln_r=departamentodao.insertar(lc_nombreTraidadelInput);
+         int ln_r=bodegadao.insertar(lc_nombreTraidadelInput);
             
       
                 if(ln_r>=1){
-                response.sendRedirect("ListarDepartamentosBodeguero.jsp");
-                
+                  response.sendRedirect("ListarBodegasBodeguero.jsp");
                 }else {
                 out.println("<h1> Error</h1>");
                             response.sendRedirect("PaginaErrorBodeguero.jsp");
                 }
-        
-        
-        
                 
-               
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -76,7 +72,7 @@ public class IngresoDepartamentoBodeguero extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoDepartamentoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoBodegaBodeguero.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -94,7 +90,7 @@ public class IngresoDepartamentoBodeguero extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoDepartamentoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoBodegaBodeguero.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

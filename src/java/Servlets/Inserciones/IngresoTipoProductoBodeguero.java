@@ -1,4 +1,4 @@
-package Servlets;
+package Servlets.Inserciones;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,12 +6,13 @@ package Servlets;
  * and open the template in the editor.
  */
 
-import Dao.BodegaDAO;
-import Dao.DepartamentoDAO;
+import Dao.Tipo_ProductoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,10 +23,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Allan
+ * @author barqu
  */
-@WebServlet(urlPatterns = {"/IngresoDepartamento"})
-public class IngresoDepartamento extends HttpServlet {
+@WebServlet(urlPatterns = {"/IngresoTipoProductoBodeguero"})
+public class IngresoTipoProductoBodeguero extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,20 +39,20 @@ public class IngresoDepartamento extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-        String lc_nombreTraidadelInput=request.getParameter("nombre");           
+       String lc_nombreTraidadelInput=request.getParameter("nombre");           
+                Tipo_ProductoDAO tipo_ProductoDAO =new Tipo_ProductoDAO();
             
-      DepartamentoDAO departamentodao =new DepartamentoDAO();
+         int ln_r=tipo_ProductoDAO.insertar(lc_nombreTraidadelInput);
             
-         int ln_r=departamentodao.insertar(lc_nombreTraidadelInput);
             
-      
                 if(ln_r>=1){
-                response.sendRedirect("ListarDepartamentos.jsp");
+                response.sendRedirect("ListarTipoProductoBodeguero.jsp");
                 
                 }else {
                 out.println("<h1> Error</h1>");
-                            response.sendRedirect("PaginaError.jsp");
+                            response.sendRedirect("PaginaErrorBodeguero.jsp");
                 }
+        ;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -69,7 +70,7 @@ public class IngresoDepartamento extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoDepartamento.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoTipoProductoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -87,7 +88,7 @@ public class IngresoDepartamento extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(IngresoDepartamento.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresoTipoProductoBodeguero.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
