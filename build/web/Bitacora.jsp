@@ -1,3 +1,5 @@
+<%@page import="Entidades.Entrada_Productos"%>
+<%@page import="Dao.ProductoDAO"%>
 <%@page import="Entidades.Salida_Producto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Dao.Salida_ProductoDAO"%>
@@ -14,8 +16,8 @@
   
   <%
         
-           Salida_ProductoDAO asd = new Salida_ProductoDAO();
-         ArrayList<Salida_Producto> asd2=  asd.listaSalida_Productos();
+           ProductoDAO asd = new ProductoDAO();
+         ArrayList<Entrada_Productos> asd2=  asd.listarEntradaProductos();
  
         %>
 
@@ -63,11 +65,11 @@
                                     <table id="datos" class="table table-hover text-center">
                                         <thead>
                                             <tr class="success">
-                                                <th class="text-center">Departamento</th>
-                                                <th class="text-center">Responsable</th>
-                                                <th class="text-center">Fecha de Salida</th>
                                                 <th class="text-center">Código de producto</th>
-                                                <th class="text-center">Cantidad de salida</th>
+                                                <th class="text-center">Nombre</th>
+                                                <th class="text-center">Cantidad</th>
+                                                <th class="text-center">Fecha de entrada</th>
+                                                <th class="text-center">Responsable</th>
                                               
 
 
@@ -76,11 +78,12 @@
                                         <tbody>
                                              <%   for(int x=0;x<asd2.size();x++){   %>
                                             <tr>
-                                                <td><%=asd2.get(x).getDepartamento()%></td>
-                                                <td><%=asd2.get(x).getResponsable()%></td>
-                                                <td><%=asd2.get(x).getFecha_Salida()%></td>
                                                 <td><%=asd2.get(x).getCodigo_Producto()%></td>
-                                                <td><%=asd2.get(x).getCantidad_Salida()%></td>
+                                                <td><%=asd2.get(x).getNombre()%></td>
+                                                  <td><%=asd2.get(x).getCantidad()%></td>
+                                                <td><%=asd2.get(x).getFecha_Entrada()%></td>
+                                                <td><%=asd2.get(x).getResponsable()%></td>
+                                            
                                             </tr>
  <!--TR EXTRA-->                                  
                                             <tr style="align-items: center" class='noSearch hide'>

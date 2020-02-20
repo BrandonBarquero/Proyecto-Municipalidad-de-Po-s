@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Entidades.Devoluciones;
 import Entidades.Entrada_Productos;
 import Entidades.Producto;
 import Entidades.Usuario;
@@ -103,6 +104,31 @@ public class ProductoDAO {
             ps.close();
    return r;
   }
+         ResultSet resultSet = null;
+          PreparedStatement ps=null;
+          
+      public ArrayList<Entrada_Productos> listarEntradaProductos( ) {
+        ArrayList<Entrada_Productos> entrada = new ArrayList<Entrada_Productos>();
+        try {
+            ps=connection.prepareStatement("select * from Entrada_Producto");
+             resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                Entrada_Productos entradas = new Entrada_Productos();
+                entradas.setCodigo_Producto(resultSet.getString("Codigo_Producto"));
+                entradas.setNombre(resultSet.getString("nombre"));
+                entradas.setCantidad(resultSet.getString("Cantidad"));
+                entradas.setFecha_Entrada(resultSet.getString("Fecha"));
+                entradas.setResponsable(resultSet.getString("Responsable"));
+                entrada.add(entradas);
+            }ps.close();
+            resultSet.close();
+            return entrada;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
   
   
   public ArrayList<Producto> listaProductosActivos( ) {
