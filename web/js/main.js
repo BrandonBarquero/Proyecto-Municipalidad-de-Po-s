@@ -47,6 +47,23 @@ $(document).ready(function(){
         });  
     });
     
+       $('.inactivar').on('click', function(e){
+        e.preventDefault();
+        var LinkExitSystem=$(this).attr("data-href");
+        swal({
+            title: "Inactivar Usuario",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#D3322D",
+            confirmButtonText: "Confirmar",
+            cancelButtonText: "Cancelar",
+            animation: "slide-from-top",
+            closeOnConfirm: false 
+        },function(){
+            window.location=LinkExitSystem; 
+        });  
+    });
+    
       $('.insertar').on('click', function(e){
         e.preventDefault();
         swal({

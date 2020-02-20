@@ -91,7 +91,7 @@
                        
 
                             <p class="text-center">
-                                <button type="submit" d><i ></i> &nbsp;&nbsp; Modificar</button>
+                                <button class="btn btn-success" type="submit" d><i ></i>Modificar</button>
                             </p> 
                        </div>
                    </div>

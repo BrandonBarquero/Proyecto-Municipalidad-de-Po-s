@@ -69,7 +69,7 @@
                                                 <th class="text-center">Rol</th>
 
                                                 <th class="text-center">Modificar Usuario</th>
-                                                <th class="text-center">Eliminar Usuario</th>
+                                                <th class="text-center">Inactivar Usuario</th>
 
                                             </tr>
                                         </thead>
@@ -88,7 +88,7 @@
                          if(ListaUsuarios.get(x).getRol().equals("2")){%> <td>Bodeguero </td> <%}%>
 
                      <td><a href="ModificarUsuario.jsp?Cedula=<%=ListaUsuarios.get(x).getCedula()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
-                    <td><a href="DesactivarUsuario?Cedula=<%=ListaUsuarios.get(x).getCedula()%>"><button data-href="DesactivarUsuario?Cedula=<%=ListaUsuarios.get(x).getCedula()%>" data-placement="bottom" class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td> 
+                    <td><a href="DesactivarUsuario?Cedula=<%=ListaUsuarios.get(x).getCedula()%>"><button data-href="DesactivarUsuario?Cedula=<%=ListaUsuarios.get(x).getCedula()%>" data-placement="bottom" class="btn btn-danger inactivar"><i class="zmdi zmdi-delete"></i></button></td> 
                      </tr>
                      <% } %>
                      
