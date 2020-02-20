@@ -63,7 +63,7 @@ public class IngresoProducto extends HttpServlet {
             
              ProductoDAO lo_productodao =new ProductoDAO();
              
-             Entrada_Productos entrada= new Entrada_Productos(la_codigoProducto,la_nombre,la_cantidad,ld_fechaEntrada,lc_Usuario2);
+             Entrada_Productos entrada= new Entrada_Productos(la_codigoPresupuestario,la_nombre,la_cantidad,ld_fechaEntrada,lc_Usuario2);
              
                ProductoDAO lo_productodao2 =new ProductoDAO();
              

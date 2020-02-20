@@ -65,7 +65,7 @@
                                     <table id="datos" class="table table-hover text-center">
                                         <thead>
                                             <tr class="success">
-                                                <th class="text-center">Código de producto</th>
+                                                <th class="text-center">Código presupuestario</th>
                                                 <th class="text-center">Nombre</th>
                                                 <th class="text-center">Cantidad</th>
                                                 <th class="text-center">Fecha de entrada</th>
