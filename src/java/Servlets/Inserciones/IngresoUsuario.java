@@ -50,20 +50,24 @@ public class IngresoUsuario extends HttpServlet {
 
             UsuarioDAO lo_usariodao =new UsuarioDAO();
             
-             int ln_var=lo_usariodao.insertar(lo_usuario);
-           
             
+                     try{
+             int ln_var=lo_usariodao.insertar(lo_usuario);
+             
                 if(ln_var>=1){
                 response.sendRedirect("ListarUsuarios.jsp");
                 
                 }else {
                 out.println("<h1> Error</h1>");
-                            response.sendRedirect("PaginaError.jsp");
                 }
                 
-          
-            
-        
+                  }catch(IOException | ClassNotFoundException | SQLException lu_e){
+            out.println("Error"+lu_e.getMessage());
+              out.println("<h1> Error</h1>");
+              
+              response.sendRedirect("ErrorUsuario.jsp?Cedula="+la_cedulaInsertada+"&Nombre="+la_nombreInsertado+"&Correo="+la_correoInsertado+"&Telefono="+la_telefonoInsertado);
+            }
+ 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
