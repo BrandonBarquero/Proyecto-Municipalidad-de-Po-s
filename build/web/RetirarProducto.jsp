@@ -13,14 +13,16 @@
 </head>
 <body>
     <script>
-        function cal() {
+         function cal() {
             try {
                 var a = parseInt(document.retiro.disponible.value),
                 b = parseInt(document.retiro.cantidadRetirar.value);
                 if((a-b) >= 0){
                     document.retiro.suma.value = a - b;
-                }else
-                    alert("No se puede retirar mas productos de los que existen disponibles.");
+                }else{
+                    document.retiro.suma.value ="Valor negativo";
+                    alert("No se puede retirar mas partes de los que existen disponibles.");
+                }    
             } catch (e) {
                 
             }
@@ -69,7 +71,7 @@
 
                             <div>
                                 <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Cantidad disponible</label>
-                                <input onchange="cal();" id="disponible" name="disponible" readonly value="<%=ln_id2%>" type="number" class="tooltips-general material-control" required="">
+                                <input readonly="" onchange="cal();" id="disponible" name="disponible" readonly value="<%=ln_id2%>" type="text" class="tooltips-general material-control" required="">
                             </div>
                                     
                             <br><br>
@@ -80,13 +82,13 @@
                             </div>
 
                             <div class="group-material">
-                                <input id="suma" name="suma" type="number" class="tooltips-general material-control" required="" readonly="">
+                                <input readonly="" id="suma" name="suma" type="text" class="tooltips-general material-control" required="" readonly="">
                                 <label  style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Nueva cantidad disponible</label>
                             </div>
 
                             <div>
                                 <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código de producto</label>               
-                                <input value="<%=ln_id%>" readonly="" id="codigoProducto" name="codigoProducto" type="number" class="tooltips-general material-control" required="">
+                                <input readonly="" value="<%=ln_id%>" readonly="" id="codigoProducto" name="codigoProducto" type="text" class="tooltips-general material-control" required="">
                             </div>
                                 
                             <br><br>

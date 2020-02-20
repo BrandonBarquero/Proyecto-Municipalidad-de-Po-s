@@ -16,12 +16,11 @@
    <script>
        function cal(){
            try{
-               var a = parseInt(document.dev.cantidad.value),
-               b = parseInt(document.dev.cantidad1.value);
-               if((a-b) >= 0){
+               var a = parseInt(document.dev.cantidadActual.value),
+               b = parseInt(document.dev.cantidadIngreso.value);
+               if((a+b) >= 0){
                    document.dev.cantidadFinal.value = a + b;
-               }else
-                   alert("No se puede devolver mas productos de los que existen disponibles.");
+               }
            }catch (e) {
                
            }
@@ -92,14 +91,14 @@ lc_sAhora += "-"+ln_dia;
 
                            <div class="group-material">
                                <label style=" top:-20px; font-size:17px; font-weight: 700; color:#333; font-weight: normal;"> Cantidad actual </label>
-                               <input class="tooltips-general material-control" value="<%=ln_id2%>" onchange="cal();" id="cantidadActual" name="cantidadActual" type="number"  required="" readonly>
+                               <input readonly="" class="tooltips-general material-control" value="<%=ln_id2%>" onchange="cal();" id="cantidadActual" name="cantidadActual" type="text"  required="" readonly>
                            </div>
                            <div class="group-material">
-                               <input  class="tooltips-general material-control" id="cantidadIngreso" onchange="cal();" min="1" pattern="[0-9]{1,20}" name="cantidadIngreso" type="number" required="">
+                               <input onchange="cal();"  class="tooltips-general material-control" id="cantidadIngreso" name="cantidadIngreso"  min="1" pattern="[0-9]{1,20}" name="cantidadIngreso" type="number" required="">
                                <label> Cantidad de ingreso </label>
                            </div>
                            <div class="group-material">
-                               <input class="tooltips-general material-control" id="cantidadFinal" name="cantidadFinal" type="number"  required="">
+                               <input readonly="" class="tooltips-general material-control" id="cantidadFinal" name="cantidadFinal" type="text"  required="">
                                <label  style=" top:-20px; font-size:17px; font-weight: 700; color:#333; font-weight: normal;"> Cantidad final </label>
                            </div>
                              

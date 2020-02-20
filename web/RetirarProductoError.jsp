@@ -1,3 +1,9 @@
+<%-- 
+    Document   : RetirarProductoError
+    Created on : 20-feb-2020, 10:50:36
+    Author     : barqu
+--%>
+
 <%@page import="Entidades.Departamento"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.ArrayList"%>
@@ -31,8 +37,9 @@
         
         <%
   
-         int ln_id=Integer.parseInt(request.getParameter("Codigo_Producto"));
-         int ln_id2=Integer.parseInt(request.getParameter("Cantidad"));
+         String codigoProducto= request.getParameter("codigoProducto");
+         String disponible= request.getParameter("disponible");
+
                 
       DepartamentoDAO asd = new DepartamentoDAO();
         ArrayList<Departamento> a2=  asd.listaDepartamentos();
@@ -49,7 +56,7 @@
               <h1 class="all-tittles">SIM<small> Retirar Producto</small></h1>
             </div>
         </div>
-
+<h3 style="text-align: center; color: red; ">Ingrese una cantidad a retirar positiva </h3>
         <div class="container-fluid"  style="margin: 50px 0;">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -71,7 +78,7 @@
 
                             <div>
                                 <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Cantidad disponible</label>
-                                <input readonly="" onchange="cal();" id="disponible" name="disponible" readonly value="<%=ln_id2%>" type="text" class="tooltips-general material-control" required="">
+                                <input readonly="" onchange="cal();" id="disponible" name="disponible" readonly value="<%=disponible%>" type="text" class="tooltips-general material-control" required="">
                             </div>
                                     
                             <br><br>
@@ -88,7 +95,7 @@
 
                             <div>
                                 <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código de producto</label>               
-                                <input readonly="" value="<%=ln_id%>" readonly="" id="codigoProducto" name="codigoProducto" type="text" class="tooltips-general material-control" required="">
+                                <input readonly="" value="<%=codigoProducto%>" readonly="" id="codigoProducto" name="codigoProducto" type="text" class="tooltips-general material-control" required="">
                             </div>
                                 
                             <br><br>

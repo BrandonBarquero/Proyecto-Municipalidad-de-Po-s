@@ -48,6 +48,12 @@ public class SalidaProducto extends HttpServlet {
             String ld_date=request.getParameter("date");
             String la_departamento=request.getParameter("departamento");
             String la_nuevaCantidad=request.getParameter("cantidadRetirar");
+            String la_disponible=request.getParameter("disponible");
+            
+              String la_Suma=request.getParameter("suma");
+              if (la_Suma.equals("Valor negativo")){
+                response.sendRedirect("RetirarProductoError.jsp?codigoProducto="+ln_codigoProducto+"&disponible="+la_disponible);
+                }
         
           int ln_numero = Integer.parseInt(la_suma);
           
