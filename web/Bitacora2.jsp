@@ -1,3 +1,9 @@
+<%-- 
+    Document   : Bitacora2
+    Created on : 20-feb-2020, 14:50:35
+    Author     : barqu
+--%>
+
 <%@page import="Entidades.Salida_Producto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Dao.Salida_ProductoDAO"%>
@@ -42,45 +48,16 @@
             <div class="row">
                 <div class="col-xs-12 lead">
                     <ol class="breadcrumb">
-                      <li class="active">Entradas</li>
-                      <li><a href="Bitacora2.jsp">Salidas</a></li>
-                      <li><a href="Bitacora3.jsp">Devoluciones</a></li>
+                         <li><a href="Bitacora.jsp">Entradas</a></li>
+                      <li class="active">Salidas</li>
+                           <li><a href="Bitacora3.jsp">Devoluciones</a></li>
                     </ol>
                 </div>
             </div>
         </div>
 
 
-                    <div class="container-fluid">
-                        <section id="cd-timeline" class="cd-container">
-                            <div class="cd-timeline-block">
-                                <div class="cd-timeline-img">
-                                    <img src="assets/img/user.png" alt="user-picture">
-                                </div>
-                                <div class="cd-timeline-content">
-                                    <h4 class="text-center"><i class="zmdi zmdi-assignment-account"></i> Miguel Eduardo Murillo (Proveeduría)</h4>
-                                    <p class="text-center">
-                                        <i class="zmdi zmdi-file-text"></i> Movimiento: <em>Ingreso de producto (A205)</em>
-                                    </p>
-                                    <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 10/07/2019</span>
-                                </div>
-                            </div>
-
-                            <div class="cd-timeline-block">
-                                <div class="cd-timeline-img">
-                                    <img src="assets/img/user.png" alt="user-picture">
-                                </div>
-                                <div class="cd-timeline-content">
-                     <h4 class="text-center"><i class="zmdi zmdi-assignment-account"></i> Carlos Murillo (Bodeguero)</h4>
-                                    <p class="text-center">
-             <i class="zmdi zmdi-file-text"></i> Movimiento: <em>Salida de producto (A205)</em>
-                                    </p>
-                                    <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 12/07/2019</span>
-                                </div>
-                            </div>
-
-                        </section>
-                    </div>
+                 
 
        <div class="table-responsive">
                                     <table id="datos" class="table table-hover text-center">

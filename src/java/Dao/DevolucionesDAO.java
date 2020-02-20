@@ -6,10 +6,13 @@
 package Dao;
 
 import Entidades.Devoluciones;
+import Entidades.Salida_Producto;
 import Entidades.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,7 +21,7 @@ import java.sql.SQLException;
 public class DevolucionesDAO {
      private final Connection connection;
       PreparedStatement ps=null;
-     
+       ResultSet resultSet = null;
      
      
      public DevolucionesDAO() throws Exception {
@@ -42,4 +45,28 @@ public class DevolucionesDAO {
       
                 return r;
    }
+       
+            public ArrayList<Devoluciones> listaDevoluciones( ) {
+        ArrayList<Devoluciones> Devoluciones = new ArrayList<Devoluciones>();
+        try {
+            ps=connection.prepareStatement("select * from Devoluciones");
+             resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                Devoluciones Devolucion = new Devoluciones();
+                Devolucion.setFecha_Devolucion(resultSet.getString("Fecha_Devolucion"));
+                Devolucion.setCodigo_Producto(resultSet.getString("Codigo_Producto"));
+                Devolucion.setResponsable(resultSet.getString("Responsable"));
+                Devolucion.setDepartamento(resultSet.getString("Departamento"));
+                 Devolucion.setMotivo(resultSet.getString("Motivo"));
+                Devolucion.setCantidad(resultSet.getInt("Cantidad"));
+                Devoluciones.add(Devolucion);
+            }ps.close();
+            resultSet.close();
+            return Devoluciones;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
 }
