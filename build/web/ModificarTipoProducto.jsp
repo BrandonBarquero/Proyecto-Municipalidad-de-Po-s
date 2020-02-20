@@ -54,7 +54,7 @@
                                 <br><br>
 
                             <div class="group-material">
-                                <input name="nombre" value="<<%=a2.get(0).getNombre_Tipo_Producto()%>" type="text" class="material-control tooltips-general" required="" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" data-toggle="tooltip" data-placement="top" >
+                                <input name="nombre" value="<%=a2.get(0).getNombre_Tipo_Producto()%>" type="text" class="material-control tooltips-general" required="" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" data-toggle="tooltip" data-placement="top" >
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre tipo producto</label>
