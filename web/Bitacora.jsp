@@ -49,38 +49,15 @@
                 </div>
             </div>
         </div>
+         
+                   <div class="md-form mt-0">
+  <input style="width: 25%; margin-left: 10px" id="searchTerm" onkeyup="doSearch()" class="form-control" type="text" placeholder="Buscar" aria-label="Search">
+</div>
+         
+         <br>
 
 
-                    <div class="container-fluid">
-                        <section id="cd-timeline" class="cd-container">
-                            <div class="cd-timeline-block">
-                                <div class="cd-timeline-img">
-                                    <img src="assets/img/user.png" alt="user-picture">
-                                </div>
-                                <div class="cd-timeline-content">
-                                    <h4 class="text-center"><i class="zmdi zmdi-assignment-account"></i> Miguel Eduardo Murillo (Proveeduría)</h4>
-                                    <p class="text-center">
-                                        <i class="zmdi zmdi-file-text"></i> Movimiento: <em>Ingreso de producto (A205)</em>
-                                    </p>
-                                    <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 10/07/2019</span>
-                                </div>
-                            </div>
-
-                            <div class="cd-timeline-block">
-                                <div class="cd-timeline-img">
-                                    <img src="assets/img/user.png" alt="user-picture">
-                                </div>
-                                <div class="cd-timeline-content">
-                     <h4 class="text-center"><i class="zmdi zmdi-assignment-account"></i> Carlos Murillo (Bodeguero)</h4>
-                                    <p class="text-center">
-             <i class="zmdi zmdi-file-text"></i> Movimiento: <em>Salida de producto (A205)</em>
-                                    </p>
-                                    <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 12/07/2019</span>
-                                </div>
-                            </div>
-
-                        </section>
-                    </div>
+                   
 
        <div class="table-responsive">
                                     <table id="datos" class="table table-hover text-center">
@@ -113,6 +90,38 @@
 
 
                                     </table>
+
+
+ <div class="container-fluid">
+                        <section id="cd-timeline" class="cd-container">
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img">
+                                    <img src="assets/img/user.png" alt="user-picture">
+                                </div>
+                                <div class="cd-timeline-content">
+                                    <h4 class="text-center"><i class="zmdi zmdi-assignment-account"></i> Miguel Eduardo Murillo (Proveeduría)</h4>
+                                    <p class="text-center">
+                                        <i class="zmdi zmdi-file-text"></i> Movimiento: <em>Ingreso de producto (A205)</em>
+                                    </p>
+                                    <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 10/07/2019</span>
+                                </div>
+                            </div>
+
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img">
+                                    <img src="assets/img/user.png" alt="user-picture">
+                                </div>
+                                <div class="cd-timeline-content">
+                     <h4 class="text-center"><i class="zmdi zmdi-assignment-account"></i> Carlos Murillo (Bodeguero)</h4>
+                                    <p class="text-center">
+             <i class="zmdi zmdi-file-text"></i> Movimiento: <em>Salida de producto (A205)</em>
+                                    </p>
+                                    <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 12/07/2019</span>
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
                                 </div>
 
 

@@ -56,7 +56,11 @@
             </div>
         </div>
 
-
+          <div class="md-form mt-0">
+  <input style="width: 25%; margin-left: 10px" id="searchTerm" onkeyup="doSearch()" class="form-control" type="text" placeholder="Buscar" aria-label="Search">
+</div>
+         
+         <br>
                  
 
        <div class="table-responsive">
