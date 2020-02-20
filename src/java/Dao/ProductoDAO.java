@@ -59,17 +59,17 @@ public class ProductoDAO {
                 return r;
 }
    
-      public int insertar2(Entrada_Productos lo_producto) throws ClassNotFoundException, SQLException  {
+      public int insertar2(Entrada_Productos lo_producto2) throws ClassNotFoundException, SQLException  {
             PreparedStatement ps=null;   
         ps= connection.prepareStatement("insert into Entrada_Producto(Codigo_Producto,"
                     + "nombre,Cantidad,Fecha,Responsable)values(?,?,?,?,?)");
 
                 
-                ps.setString(1,lo_producto.getCodigo_Producto());
-                ps.setString(2,lo_producto.getNombre());
-                ps.setString(3,lo_producto.getCantidad());
-                ps.setString(4,lo_producto.getFecha_Entrada());
-                ps.setString(5,lo_producto.getResponsable());           
+                ps.setString(1,lo_producto2.getCodigo_Producto());
+                ps.setString(2,lo_producto2.getNombre());
+                ps.setString(3,lo_producto2.getCantidad());
+                ps.setString(4,lo_producto2.getFecha_Entrada());
+                ps.setString(5,lo_producto2.getResponsable());           
                 r=ps.executeUpdate();
                 ps.close();
       
