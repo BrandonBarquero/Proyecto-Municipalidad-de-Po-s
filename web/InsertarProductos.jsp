@@ -23,6 +23,9 @@
          lu_rs3=lu_ps3.executeQuery();
          lu_ps4=lu_con.prepareStatement("select * from Bodega");
          lu_rs4=lu_ps4.executeQuery();
+         
+  String Usuario2=(String) session.getAttribute("ADMI");
+          String asd=(String) session.getAttribute("subscribed");
         
        %>
          <jsp:include page="Header.jsp"/>

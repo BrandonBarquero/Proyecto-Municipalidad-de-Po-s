@@ -22,6 +22,7 @@ public class Producto{
         private String Tipo_Producto;
         private String Garantia;
         private String Proveedor;
+
         
     public Producto() {
     }

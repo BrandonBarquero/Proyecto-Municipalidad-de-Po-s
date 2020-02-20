@@ -8,6 +8,7 @@ package Servlets.Inserciones;
 
 import Dao.ProductoDAO;
 import Dao.UsuarioDAO;
+import Entidades.Entrada_Productos;
 import Entidades.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,7 +41,9 @@ public class IngresoProducto extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
             PrintWriter out = response.getWriter();
-            
+            HttpSession session= request.getSession(true);
+             String lc_Usuario2=(String) session.getAttribute("Nombre");
+             
             String la_codigoProducto=request.getParameter("Codigo_Producto");
             String la_codigoPresupuestario=request.getParameter("Presupuestario");
             String la_nombre=request.getParameter("nombre");
@@ -58,12 +62,19 @@ public class IngresoProducto extends HttpServlet {
                     ,la_cantidad,la_marca,ld_fechaEntrada,la_ubicacion,la_tipoProducto,la_garantia,la_proveedor);
             
              ProductoDAO lo_productodao =new ProductoDAO();
+             
+             Entrada_Productos entrada= new Entrada_Productos(la_codigoProducto,la_nombre,la_cantidad,ld_fechaEntrada,lc_Usuario2);
+             
+               ProductoDAO lo_productodao2 =new ProductoDAO();
+             
             
              int ln_var=lo_productodao.insertar(lo_producto);
             
-               
+               lo_productodao2.insertar2(entrada);
                
                 if(ln_var>=1){
+                        String as="hola";
+                     request.setAttribute("subscribed",as);
                 response.sendRedirect("ListarProductos.jsp");
                 
                 }else {
