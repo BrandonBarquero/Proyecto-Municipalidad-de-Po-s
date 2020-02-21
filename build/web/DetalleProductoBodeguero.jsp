@@ -10,6 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+         <%
+              String Usuario2=(String) session.getAttribute("user2");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
+           
+           %>
              <%
       
          String ln_id=request.getParameter("Codigo_Producto");

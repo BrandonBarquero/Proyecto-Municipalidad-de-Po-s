@@ -10,12 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-     <%String lc_Usuario2=(String) session.getAttribute("user2");
-          
-          if(lc_Usuario2 == null){
-           request.getRequestDispatcher("Error").forward(request, response);
-          
-          }%>
          <%
          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
          Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
@@ -26,7 +20,14 @@
          lu_rs=lu_ps.executeQuery();%>
        <jsp:include page="HeaderBodeguero.jsp"/>
 
-
+     <%
+              String Usuario2=(String) session.getAttribute("user2");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
+           
+           %>
 
   
 

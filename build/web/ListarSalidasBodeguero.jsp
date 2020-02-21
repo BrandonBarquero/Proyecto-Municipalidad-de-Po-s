@@ -4,6 +4,15 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
+
+     <%
+              String Usuario2=(String) session.getAttribute("user2");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
+           
+           %>
 <html lang="es">
 <head>
     <title>Salida de Producto</title>
@@ -13,12 +22,7 @@
 <body>
        
 
-  <%String lc_Usuario2=(String) session.getAttribute("user2");
-          
-          if(lc_Usuario2 == null){
-           request.getRequestDispatcher("Error").forward(request, response);
-          
-          }%>
+
          <%
          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
          Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");

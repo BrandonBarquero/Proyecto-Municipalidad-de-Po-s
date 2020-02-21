@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-           <%String lc_Usuario2=(String) session.getAttribute("user2");
+           <%
+                 String Usuario2=(String) session.getAttribute("user2");
           
-          if(lc_Usuario2 == null){
-           request.getRequestDispatcher("Error").forward(request, response);
-          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
           }
            int ln_x=0;
                 int ln_x2=0;

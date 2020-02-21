@@ -28,7 +28,11 @@
 </script>
         
         <%
-       
+          String Usuario2=(String) session.getAttribute("user");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
          String ln_id=request.getParameter("Codigo_Producto");
          String ln_id2=request.getParameter("Cantidad");
       DepartamentoDAO asd = new DepartamentoDAO();

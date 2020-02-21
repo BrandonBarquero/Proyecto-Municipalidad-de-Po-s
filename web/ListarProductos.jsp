@@ -3,6 +3,15 @@
 <%@page import="Dao.ProductoDAO"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
+
+     <%
+              String Usuario2=(String) session.getAttribute("user");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
+           
+           %>
 <html lang="es">
 <head>
     <title>Lista Productos</title>
@@ -10,13 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-     <%String lc_Usuario2=(String) session.getAttribute("user");
-          
-          if(lc_Usuario2 == null){
-           request.getRequestDispatcher("Error").forward(request, response);
-          
-          }
-     
+     <%
         ProductoDAO asd = new ProductoDAO();
         ArrayList<Producto> a2=  asd.listaProductosActivos();
      

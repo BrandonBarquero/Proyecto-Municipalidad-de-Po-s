@@ -28,6 +28,15 @@
             }
         }
 </script>
+
+     <%
+              String Usuario2=(String) session.getAttribute("user");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
+           
+           %>
         
         <%
   

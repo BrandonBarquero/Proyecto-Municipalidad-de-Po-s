@@ -1,5 +1,14 @@
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
+
+     <%
+              String Usuario2=(String) session.getAttribute("user2");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
+           
+           %>
 <html lang="es">
 <head>
     <title>Lista Tipos de Productos</title>

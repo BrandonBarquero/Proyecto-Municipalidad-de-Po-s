@@ -6,6 +6,15 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+     <%
+              String Usuario2=(String) session.getAttribute("user2");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
+           
+           %>
 <html>
     <head>
       <title>Inicio</title>

@@ -19,7 +19,11 @@
   <jsp:include page="Header.jsp"/>
   
   <%
-        
+           String Usuario2=(String) session.getAttribute("user");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
            Salida_ProductoDAO asd = new Salida_ProductoDAO();
          ArrayList<Salida_Producto> asd2=  asd.listaSalida_Productos();
  

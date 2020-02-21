@@ -11,7 +11,11 @@
 </head>
 <body>
              <%
-      
+         String Usuario2=(String) session.getAttribute("user");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
          String ln_id=request.getParameter("Codigo_Producto");
        ProductoDAO asd = new ProductoDAO();
         ArrayList<Producto> a2=  asd.listaUsuariosFiltrado(ln_id);

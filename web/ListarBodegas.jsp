@@ -14,6 +14,15 @@
               <%
         BodegaDAO asd = new BodegaDAO();
         ArrayList<Bodega> a2=  asd.listaBodegas();%>
+        
+             <%
+              String Usuario2=(String) session.getAttribute("user");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
+           
+           %>
          <jsp:include page="Header.jsp"/>
 
 

@@ -11,6 +11,15 @@
 <%@page import="java.util.Calendar"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
+
+     <%
+              String Usuario2=(String) session.getAttribute("user");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
+           
+           %>
 <html lang="es">
 <head>
     <title>Retirar Producto</title>

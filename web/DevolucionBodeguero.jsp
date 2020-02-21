@@ -12,6 +12,15 @@
 </head>
 <body>
         <jsp:include page="HeaderBodeguero.jsp"/>
+        
+             <%
+              String Usuario2=(String) session.getAttribute("user2");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
+           
+           %>
 
    <script>function cal() {
   try {

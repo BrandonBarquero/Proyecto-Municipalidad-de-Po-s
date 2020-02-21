@@ -14,7 +14,15 @@
          <%
         DepartamentoDAO asd = new DepartamentoDAO();
         ArrayList<Departamento> a2=  asd.listaDepartamentos();%>
-         
+        
+              <%
+              String Usuario2=(String) session.getAttribute("user");
+          
+          if(Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
+           
+           %>
          <jsp:include page="Header.jsp"/>
 
 
