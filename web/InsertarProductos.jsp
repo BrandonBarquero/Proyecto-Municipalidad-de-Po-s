@@ -24,7 +24,7 @@
          lu_ps4=lu_con.prepareStatement("select * from Bodega");
          lu_rs4=lu_ps4.executeQuery();
          
-  String Usuario2=(String) session.getAttribute("ADMI");
+          String Usuario2=(String) session.getAttribute("ADMI");
           String asd=(String) session.getAttribute("subscribed");
         
        %>
@@ -81,7 +81,7 @@
                             </div>
 
                             <div class="group-material">
-                                <input id="Unidad" name="Unidad" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí la unidad del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la unidad o del producto">
+                                <input id="Unidad" name="Unidad" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí la unidad del producto" required="" maxlength="6" data-toggle="tooltip" data-placement="top" title="Escribe la unidad o del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Unidad</label>
