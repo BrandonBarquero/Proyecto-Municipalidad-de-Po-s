@@ -8,6 +8,7 @@ package Servlets.Inserciones;
 
 import Dao.DepartamentoDAO;
 import Dao.Tipo_ProductoDAO;
+import Services.Tipo_ProductoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -43,7 +44,7 @@ public class IngresoTipoProducto extends HttpServlet {
    
             String la_nombretipoproducto=request.getParameter("nombre");           
             
-            Tipo_ProductoDAO lo_tipoProductoDAO =new Tipo_ProductoDAO();
+            Tipo_ProductoService lo_tipoProductoDAO =new Tipo_ProductoService();
             
          int ln_var=lo_tipoProductoDAO.insertar(la_nombretipoproducto);
             

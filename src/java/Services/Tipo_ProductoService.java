@@ -24,6 +24,8 @@ public class Tipo_ProductoService implements ServiceTipo_ProductoManager{
         this.daoTipo_producto = new Tipo_ProductoDAO();
     }
     
+    @Override 
+    
     public int Eliminar_Tipo_Producto(int Id_Tipo_Producto){
         try {
             return daoTipo_producto.Eliminar_Tipo_Producto(Id_Tipo_Producto);
@@ -32,6 +34,7 @@ public class Tipo_ProductoService implements ServiceTipo_ProductoManager{
         }
         return 0;
     }
+        @Override 
    public  int insertar(String tipo_Producto){
         try {
             return daoTipo_producto.insertar(tipo_Producto);
@@ -42,13 +45,16 @@ public class Tipo_ProductoService implements ServiceTipo_ProductoManager{
         }
         return 0;
    }
+       @Override 
    public  ArrayList<Tipo_Producto> listaTipo_ProductosFiltrado(String nombre){
        return daoTipo_producto.listaTipo_ProductosFiltrado(nombre);
    }
+       @Override 
    
    public  ArrayList<Tipo_Producto> listaTipo_Productos(){
        return daoTipo_producto.listaTipo_Productos();
    }
+       @Override 
    
    public int actualizar(Tipo_Producto tipo_Producto){
         try {

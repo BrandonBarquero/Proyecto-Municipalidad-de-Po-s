@@ -8,6 +8,7 @@ package Servlets.Eliminaciones;
 
 import Dao.DepartamentoDAO;
 import Dao.Tipo_ProductoDAO;
+import Services.Tipo_ProductoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -41,7 +42,7 @@ public class EliminarTipoProducto extends HttpServlet {
         
          int ln_idtipoproducto=Integer.parseInt(request.getParameter("Id_Tipo_Producto"));
          
-          Tipo_ProductoDAO lo_tipoProductodao =new Tipo_ProductoDAO();
+          Tipo_ProductoService lo_tipoProductodao =new Tipo_ProductoService();
           
              int ln_var=lo_tipoProductodao.Eliminar_Tipo_Producto(ln_idtipoproducto);
                 if(ln_var>=1){

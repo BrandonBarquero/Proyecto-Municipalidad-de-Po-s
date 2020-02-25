@@ -9,6 +9,7 @@ package Servlets.Modificardores;
 import Dao.ProductoDAO;
 import Dao.Tipo_ProductoDAO;
 import Entidades.Tipo_Producto;
+import Services.Tipo_ProductoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -44,7 +45,7 @@ public class ModificarTipoProducto extends HttpServlet {
             String la_nombreTipoProducto=request.getParameter("nombre");
             int ln_numero = Integer.parseInt(la_idTipoProducto);
             Tipo_Producto lo_tipoproducto = new Tipo_Producto(ln_numero,la_nombreTipoProducto);
-             Tipo_ProductoDAO lo_tipoProductodao =new Tipo_ProductoDAO();
+             Tipo_ProductoService lo_tipoProductodao =new Tipo_ProductoService();
             
              int ln_var=lo_tipoProductodao.actualizar(lo_tipoproducto);
             
