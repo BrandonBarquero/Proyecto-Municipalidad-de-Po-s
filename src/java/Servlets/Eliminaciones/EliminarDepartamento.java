@@ -8,6 +8,7 @@ package Servlets.Eliminaciones;
 
 import Dao.BodegaDAO;
 import Dao.DepartamentoDAO;
+import Services.DepartamentoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -45,7 +46,7 @@ public class EliminarDepartamento extends HttpServlet {
        
          int ln_iddepartamento=Integer.parseInt(request.getParameter("IdDepartamento"));
         
-          DepartamentoDAO lo_departamentodao =new DepartamentoDAO();
+          DepartamentoService lo_departamentodao =new DepartamentoService();
             
              int ln_var=lo_departamentodao.Eliminar_Departamento(ln_iddepartamento);
             

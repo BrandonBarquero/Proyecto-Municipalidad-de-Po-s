@@ -30,7 +30,7 @@ public class DepartamentoService implements ServiceDepartamentoManager{
     }
     
     
-    
+    @Override
     public int Eliminar_Departamento(int IdDepartamento){
         try {
             return daoDepartamento.Eliminar_Departamento(IdDepartamento);
@@ -39,6 +39,8 @@ public class DepartamentoService implements ServiceDepartamentoManager{
         }
         return 0;
     }
+    
+        @Override
      public int insertar(String nombre){
         try {
             return daoDepartamento.insertar(nombre);
@@ -49,14 +51,16 @@ public class DepartamentoService implements ServiceDepartamentoManager{
         }
         return 0;
      }
+         @Override
      public ArrayList<Departamento> listaDepartamentos( ){
             return daoDepartamento.listaDepartamentos();
      }
+         @Override
      public ArrayList<Departamento> listaDepartamentosFiltrado( String id){
         
             return daoDepartamento.listaDepartamentosFiltrado(id);
      }
-     
+         @Override
      public int actualizar(Departamento departamento){
         try {
             return daoDepartamento.actualizar(departamento);

@@ -43,7 +43,7 @@ public class IngresoDepartamentoBodeguero extends HttpServlet {
         String la_nombrebodega=request.getParameter("nombre");           
            
         
-           DepartamentoDAO lo_departamentodao =new DepartamentoDAO();
+           DepartamentoService lo_departamentodao =new DepartamentoService();
             
          int ln_var=lo_departamentodao.insertar(la_nombrebodega);
             

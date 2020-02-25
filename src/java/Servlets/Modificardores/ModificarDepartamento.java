@@ -9,6 +9,7 @@ import Dao.DepartamentoDAO;
 import Dao.Tipo_ProductoDAO;
 import Entidades.Departamento;
 import Entidades.Tipo_Producto;
+import Services.DepartamentoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -43,7 +44,7 @@ public class ModificarDepartamento extends HttpServlet {
         String la_nombreDepartamento=request.getParameter("nombre");
         int ln_numero = Integer.parseInt(la_idDepartamento);
             Departamento lo_departamento = new Departamento(ln_numero,la_nombreDepartamento);
-             DepartamentoDAO lo_departamentodao =new DepartamentoDAO();
+             DepartamentoService lo_departamentodao =new DepartamentoService();
             
              int ln_var=lo_departamentodao.actualizar(lo_departamento);
             
