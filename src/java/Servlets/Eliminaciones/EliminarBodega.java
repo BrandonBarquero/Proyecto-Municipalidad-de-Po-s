@@ -8,6 +8,7 @@ package Servlets.Eliminaciones;
 
 import Dao.BodegaDAO;
 import Dao.ProductoDAO;
+import Services.BodegaService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -45,7 +46,7 @@ public class EliminarBodega extends HttpServlet {
        
          int ln_iddebodega=Integer.parseInt(request.getParameter("Id_Bodega"));
         
-          BodegaDAO lo_bodegadao =new BodegaDAO();
+          BodegaService lo_bodegadao =new BodegaService();
             
              int ln_var=lo_bodegadao.Eliminar_Bodega(ln_iddebodega);
             

@@ -9,6 +9,7 @@ package Servlets;
 import Dao.DevolucionesDAO;
 import Dao.ProductoDAO;
 import Entidades.Devoluciones;
+import Services.DevolucionesService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -55,7 +56,7 @@ public class Devolver_ProductoBodeguero extends HttpServlet {
             
             Devoluciones lo_devolucion= new Devoluciones(ld_fecha,la_motivo,ln_cantidad,la_responsable,ln_codigoProducto,la_departamento);
            
-            DevolucionesDAO lo_devolucionesdao=new DevolucionesDAO();
+            DevolucionesService lo_devolucionesdao=new DevolucionesService();
             int ln_numero=lo_devolucionesdao.insertar(lo_devolucion);
           
 

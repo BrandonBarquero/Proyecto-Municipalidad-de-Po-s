@@ -8,6 +8,7 @@ package Servlets.Inserciones;
 
 import Dao.BodegaDAO;
 import Dao.ProductoDAO;
+import Services.BodegaService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -44,7 +45,7 @@ public class IngresoBodega extends HttpServlet {
       String la_nombrebodega=request.getParameter("nombre");           
          
       
-       BodegaDAO lo_bodegadao =new BodegaDAO();
+       BodegaService lo_bodegadao =new BodegaService();
             
              int ln_var=lo_bodegadao.insertar(la_nombrebodega);
             

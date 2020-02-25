@@ -28,6 +28,7 @@ public class BodegaService implements ServiceBodegaManager{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
     public int Eliminar_Bodega(int Id_Bodega) {
         
         try {
@@ -52,7 +53,7 @@ public class BodegaService implements ServiceBodegaManager{
         return 0; 
     }
 
-    
+      @Override
     public ArrayList<Bodega> listaBodegas() {
         return daoBodega.listaBodegas();
         }

@@ -9,6 +9,7 @@ import Dao.BodegaDAO;
 import Dao.DepartamentoDAO;
 import Entidades.Bodega;
 import Entidades.Departamento;
+import Services.BodegaService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -44,7 +45,7 @@ public class ModificarBodegas extends HttpServlet {
             
             int ln_numero = Integer.parseInt(la_idBodega);
             Bodega lo_bodega = new Bodega(ln_numero,la_nombreBodega);
-            BodegaDAO lo_bodegadao =new BodegaDAO();
+            BodegaService lo_bodegadao =new BodegaService();
             
             int ln_var=lo_bodegadao.actualizar(lo_bodega);
             
