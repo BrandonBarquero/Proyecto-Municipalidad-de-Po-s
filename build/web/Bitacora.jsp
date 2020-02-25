@@ -1,3 +1,4 @@
+<%@page import="Services.ProductoService"%>
 <%@page import="Entidades.Entrada_Productos"%>
 <%@page import="Dao.ProductoDAO"%>
 <%@page import="Entidades.Salida_Producto"%>
@@ -20,7 +21,7 @@
           if(Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
-           ProductoDAO asd = new ProductoDAO();
+           ProductoService asd = new ProductoService();
          ArrayList<Entrada_Productos> asd2=  asd.listarEntradaProductos();
  
         %>

@@ -1,3 +1,4 @@
+<%@page import="Services.UsuarioService"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Entidades.Usuario"%>
 <%@page import="Dao.UsuarioDAO"%>
@@ -11,7 +12,7 @@
 </head>
 <body>
 <%
-       UsuarioDAO daousuario=new UsuarioDAO();
+       UsuarioService daousuario=new UsuarioService();
        ArrayList<Usuario> ListaUsuarios=  daousuario.listaUsuarios();
 %>
 

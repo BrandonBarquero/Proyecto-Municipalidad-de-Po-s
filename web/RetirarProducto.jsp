@@ -1,3 +1,4 @@
+<%@page import="Services.DepartamentoService"%>
 <%@page import="Entidades.Departamento"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.ArrayList"%>
@@ -43,7 +44,7 @@
          int ln_id=Integer.parseInt(request.getParameter("Codigo_Producto"));
          int ln_id2=Integer.parseInt(request.getParameter("Cantidad"));
                 
-      DepartamentoDAO asd = new DepartamentoDAO();
+      DepartamentoService asd = new DepartamentoService();
         ArrayList<Departamento> a2=  asd.listaDepartamentos();
         
         

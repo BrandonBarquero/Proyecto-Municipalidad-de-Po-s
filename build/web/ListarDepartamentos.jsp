@@ -1,3 +1,4 @@
+<%@page import="Services.DepartamentoService"%>
 <%@page import="Entidades.Departamento"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.ArrayList"%>
@@ -12,7 +13,7 @@
 </head>
 <body>
          <%
-        DepartamentoDAO asd = new DepartamentoDAO();
+        DepartamentoService asd = new DepartamentoService();
         ArrayList<Departamento> a2=  asd.listaDepartamentos();%>
         
               <%

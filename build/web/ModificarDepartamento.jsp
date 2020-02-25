@@ -1,3 +1,4 @@
+<%@page import="Services.DepartamentoService"%>
 <%@page import="Entidades.Departamento"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Dao.DepartamentoDAO"%>
@@ -21,7 +22,7 @@
    
          <%
            String ln_id=request.getParameter("IdDepartamento");
-         DepartamentoDAO asd = new DepartamentoDAO();
+         DepartamentoService asd = new DepartamentoService();
         ArrayList<Departamento> a2=  asd.listaDepartamentosFiltrado(ln_id);
           
           %>

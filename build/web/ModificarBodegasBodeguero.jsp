@@ -1,3 +1,4 @@
+<%@page import="Services.BodegaService"%>
 <%@page import="Dao.BodegaDAO"%>
 <%@page import="Entidades.Bodega"%>
 <%@page import="java.util.ArrayList"%>
@@ -32,7 +33,7 @@
         </div>
 <%
           String ln_id=request.getParameter("Id_Bodega");
-         BodegaDAO asd = new BodegaDAO();
+         BodegaService asd = new BodegaService();
         ArrayList<Bodega> a2=  asd.listaBodegasFiltrado(ln_id);
           
           %>

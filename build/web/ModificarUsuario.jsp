@@ -1,3 +1,4 @@
+<%@page import="Services.UsuarioService"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Entidades.Usuario"%>
 <%@page import="Dao.UsuarioDAO"%>
@@ -28,7 +29,7 @@
             </div>
         </div>
      <%
-     UsuarioDAO usuariodao=new UsuarioDAO();
+     UsuarioService usuariodao=new UsuarioService();
       String Cedula=request.getParameter("Cedula");
      ArrayList<Usuario> ListaUsuarios=  usuariodao.listaUsuariosFiltrado(Cedula);
      

@@ -1,3 +1,5 @@
+<%@page import="Services.ProductoService"%>
+<%@page import="Services.UsuarioService"%>
 <%@page import="Dao.ProductoDAO"%>
 <%@page import="Dao.UsuarioDAO"%>
 <!DOCTYPE html>
@@ -18,8 +20,8 @@
            int ln_x=0;
                 int ln_x2=0;
                 int ln_x3=0;
-              UsuarioDAO daousuario= new UsuarioDAO();
-              ProductoDAO daoproducto= new ProductoDAO();
+              UsuarioService daousuario= new UsuarioService();
+              ProductoService daoproducto= new ProductoService();
               
 
                ln_x=daousuario.ContadorAdmins();

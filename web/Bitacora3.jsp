@@ -4,6 +4,7 @@
     Author     : barqu
 --%>
 
+<%@page import="Services.DevolucionesService"%>
 <%@page import="Entidades.Devoluciones"%>
 <%@page import="Dao.DevolucionesDAO"%>
 <%@page import="Entidades.Salida_Producto"%>
@@ -26,7 +27,7 @@
           if(Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
-           DevolucionesDAO asd = new DevolucionesDAO();
+           DevolucionesService asd = new DevolucionesService();
          ArrayList<Devoluciones> asd2=  asd.listaDevoluciones();
  
         %>

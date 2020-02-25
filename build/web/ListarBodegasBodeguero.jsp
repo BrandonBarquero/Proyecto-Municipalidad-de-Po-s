@@ -1,3 +1,4 @@
+<%@page import="Services.BodegaService"%>
 <%@page import="Entidades.Bodega"%>
 <%@page import="Dao.BodegaDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -21,7 +22,7 @@
 </head>
 <body>
               <%
-        BodegaDAO asd = new BodegaDAO();
+        BodegaService asd = new BodegaService();
         ArrayList<Bodega> a2=  asd.listaBodegas();%>
          <jsp:include page="HeaderBodeguero.jsp"/>
 

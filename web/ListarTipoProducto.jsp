@@ -1,3 +1,4 @@
+<%@page import="Services.Tipo_ProductoService"%>
 <%@page import="Entidades.Tipo_Producto"%>
 <%@page import="Dao.Tipo_ProductoDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -14,7 +15,7 @@
 </head>
 <body>
           <%
-         Tipo_ProductoDAO asd = new Tipo_ProductoDAO();
+         Tipo_ProductoService asd = new Tipo_ProductoService();
         ArrayList<Tipo_Producto> a2=  asd.listaTipo_Productos();
           
           %>

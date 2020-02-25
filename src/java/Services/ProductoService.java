@@ -134,6 +134,12 @@ public class ProductoService implements ServiceProductoManager {
         }
         return 0;
     }
+    
+     @Override
+    public ArrayList<Entrada_Productos> listarEntradaProductos( ){
+        return daoProducto.listarEntradaProductos();
+    }
+    
 //
 //    public boolean actualizar(Producto producto) {
 //        return daoProducto.actualizar(producto);

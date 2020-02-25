@@ -25,5 +25,6 @@ interface ServiceProductoManager extends ServiceProducto{
     public ArrayList<Producto> listaUsuariosFiltrado(String Codigo_Producto);
     public int Actualizar_Cantidad(String Cantidad,String Codigo_Producto);
     public int ContadorProductos();
+    public ArrayList<Entrada_Productos> listarEntradaProductos();
 //	    public ArrayList<Producto> consultar();
 }

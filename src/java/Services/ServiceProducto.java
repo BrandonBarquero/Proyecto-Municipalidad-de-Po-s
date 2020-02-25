@@ -25,5 +25,6 @@ interface ServiceProducto {
     ArrayList<Producto> listaUsuariosFiltrado(String Codigo_Producto);
     int Actualizar_Cantidad(String Cantidad,String Codigo_Producto);
     int ContadorProductos();
+    ArrayList<Entrada_Productos> listarEntradaProductos();
 //    ArrayList<Producto> consultar();
 }

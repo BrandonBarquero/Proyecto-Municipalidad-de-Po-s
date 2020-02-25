@@ -1,3 +1,4 @@
+<%@page import="Services.ProductoService"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Entidades.Producto"%>
 <%@page import="Dao.ProductoDAO"%>
@@ -17,7 +18,7 @@
            response.sendRedirect("Error.jsp");
           }
          String ln_id=request.getParameter("Codigo_Producto");
-       ProductoDAO asd = new ProductoDAO();
+       ProductoService asd = new ProductoService();
         ArrayList<Producto> a2=  asd.listaUsuariosFiltrado(ln_id);
 
         %>

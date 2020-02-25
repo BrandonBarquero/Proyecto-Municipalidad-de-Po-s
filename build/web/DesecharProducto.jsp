@@ -1,3 +1,4 @@
+<%@page import="Services.ProductoService"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Entidades.Producto"%>
 <%@page import="Dao.ProductoDAO"%>
@@ -16,7 +17,7 @@
            response.sendRedirect("Error.jsp");
           }
         
-       ProductoDAO asd = new ProductoDAO();
+       ProductoService asd = new ProductoService();
         ArrayList<Producto> a2=  asd.listaProductosInactivos();
 
          
