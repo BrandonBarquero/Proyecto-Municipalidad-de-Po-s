@@ -7,6 +7,7 @@ package Servlets.Modificardores;
 
 import Dao.UsuarioDAO;
 import Entidades.Usuario;
+import Services.UsuarioService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -47,7 +48,7 @@ public class ModificarUsuario extends HttpServlet {
             
             Usuario lo_usuario = new Usuario(la_cedulaUsuario,la_nombreUsuario,la_correoUsuario,la_telefonoUsuario,la_rolUsuario,la_estadoUsuario);
 
-             UsuarioDAO lo_usariodao =new UsuarioDAO();
+             UsuarioService lo_usariodao =new UsuarioService();
              int ln_var=lo_usariodao.actualizar(lo_usuario);
            
             

@@ -6,6 +6,7 @@ package Servlets.Inserciones;
  */
 import Dao.UsuarioDAO;
 import Entidades.Usuario;
+import Services.UsuarioService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -48,7 +49,7 @@ public class IngresoUsuario extends HttpServlet {
             
             Usuario lo_usuario = new Usuario(la_cedulaInsertada,la_nombreInsertado,la_correoInsertado,la_telefonoInsertado,la_rolInsertado,la_estadoInsertado,la_contrasenaInsertada);
 
-            UsuarioDAO lo_usariodao =new UsuarioDAO();
+            UsuarioService lo_usariodao =new UsuarioService();
             
             
                      try{
@@ -61,7 +62,7 @@ public class IngresoUsuario extends HttpServlet {
                 out.println("<h1> Error</h1>");
                 }
                 
-                  }catch(IOException | ClassNotFoundException | SQLException lu_e){
+                  }catch(IOException lu_e){
             out.println("Error"+lu_e.getMessage());
               out.println("<h1> Error</h1>");
               

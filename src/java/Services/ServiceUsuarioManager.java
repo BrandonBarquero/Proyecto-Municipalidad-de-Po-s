@@ -7,6 +7,7 @@ package Services;
 
 import Entidades.Producto;
 import Entidades.Usuario;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +16,11 @@ import Entidades.Usuario;
 interface ServiceUsuarioManager extends ServiceUsuario{
     public int insertar(Usuario usuario);
     public int actualizar(Usuario usuario);
-    public int eliminar(int id);
-//	    public ArrayList<Producto> consultar();
+    public String SelecionarNombre(String Cedula);
+    public int ContadorAdmins();
+    public int ContadorBodeguero();
+    public ArrayList<Usuario> listaUsuarios( );
+    public ArrayList<Usuario> listaUsuariosInactivos( );
+    public ArrayList<Usuario> listaUsuariosFiltrado(String Cedula);
+    public int Desactivar_Usuario(int Cedula);
 }

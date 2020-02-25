@@ -8,6 +8,7 @@ package Servlets;
 
 import Dao.UsuarioDAO;
 import Entidades.Usuario;
+import Services.UsuarioService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -44,7 +45,7 @@ public class DesactivarUsuario extends HttpServlet {
       
            int ln_cedulaUsuario=Integer.parseInt(request.getParameter("Cedula"));
          
-           UsuarioDAO lo_usariodao =new UsuarioDAO();
+           UsuarioService lo_usariodao =new UsuarioService();
            int ln_cedula=lo_usariodao.Desactivar_Usuario(ln_cedulaUsuario);      
            if(ln_cedula>=1){
                response.sendRedirect("ListarUsuarios.jsp");
