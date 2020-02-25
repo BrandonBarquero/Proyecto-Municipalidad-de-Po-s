@@ -6,6 +6,7 @@
 package Services;
 
 import Entidades.Devoluciones;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,5 +15,6 @@ import Entidades.Devoluciones;
 public interface ServiceDevolucionesManager extends ServiceDevoluciones{
     
     public int insertar(Devoluciones devoluciones);
+     public ArrayList<Devoluciones> listaDevoluciones( );
     
 }

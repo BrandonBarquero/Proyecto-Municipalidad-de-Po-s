@@ -8,6 +8,7 @@ package Services;
 import Dao.DevolucionesDAO;
 import Entidades.Devoluciones;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,6 +27,9 @@ public class DevolucionesService implements ServiceDevolucionesManager{
     public DevolucionesService() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
+    @Override
     
     public int insertar(Devoluciones devoluciones){
         try {
@@ -37,4 +41,11 @@ public class DevolucionesService implements ServiceDevolucionesManager{
         }
         return 0;
     }
+    
+        @Override
+      public ArrayList<Devoluciones> listaDevoluciones( ) {
+          return daoDevolucion.listaDevoluciones();
+      }
+    
+    
 }

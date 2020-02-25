@@ -6,6 +6,7 @@
 package Services;
 
 import Entidades.Devoluciones;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,4 +15,5 @@ import Entidades.Devoluciones;
  interface ServiceDevoluciones {
     
      int insertar(Devoluciones devoluciones);
+     ArrayList<Devoluciones> listaDevoluciones( );
 }
