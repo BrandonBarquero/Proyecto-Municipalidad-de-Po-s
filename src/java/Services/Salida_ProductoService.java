@@ -19,14 +19,15 @@ import java.util.logging.Logger;
 public class Salida_ProductoService implements ServiceSalida_ProductoManager{
     
     private final Salida_ProductoDAO daoSalida_producto;
-
+    
    public Salida_ProductoService() throws Exception {
         this.daoSalida_producto = new Salida_ProductoDAO();
     }
-    
+        @Override
     public ArrayList<Salida_Producto> listaSalida_Productos( ){
         return daoSalida_producto.listaSalida_Productos();
     }
+        @Override
     public int insertar(Salida_Producto dalida_producto){
         try {
             return daoSalida_producto.insertar(dalida_producto);

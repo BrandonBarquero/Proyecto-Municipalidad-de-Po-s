@@ -4,6 +4,7 @@
     Author     : barqu
 --%>
 
+<%@page import="Services.Salida_ProductoService"%>
 <%@page import="Entidades.Salida_Producto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Dao.Salida_ProductoDAO"%>
@@ -24,7 +25,7 @@
           if(Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
-           Salida_ProductoDAO asd = new Salida_ProductoDAO();
+           Salida_ProductoService asd = new Salida_ProductoService();
          ArrayList<Salida_Producto> asd2=  asd.listaSalida_Productos();
  
         %>
