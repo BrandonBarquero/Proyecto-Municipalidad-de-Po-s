@@ -20,12 +20,8 @@ public class BodegaService implements ServiceBodegaManager{
     
     private final BodegaDAO daoBodega;
 
-    public BodegaService(BodegaDAO daoBodega) {
-        this.daoBodega = daoBodega;
-    }
-
-    public BodegaService() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public BodegaService() throws Exception {
+        this.daoBodega = new BodegaDAO();
     }
 
     @Override

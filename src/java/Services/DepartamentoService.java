@@ -21,14 +21,11 @@ public class DepartamentoService implements ServiceDepartamentoManager{
     
     private final DepartamentoDAO daoDepartamento;
 
-    public DepartamentoService(DepartamentoDAO daoDepartamento) {
-        this.daoDepartamento = daoDepartamento;
+   public DepartamentoService() throws Exception {
+        this.daoDepartamento = new DepartamentoDAO();
     }
 
-    public DepartamentoService() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+ 
     
     @Override
     public int Eliminar_Departamento(int IdDepartamento){

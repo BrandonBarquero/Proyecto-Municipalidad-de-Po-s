@@ -20,12 +20,8 @@ public class DevolucionesService implements ServiceDevolucionesManager{
     
     private final DevolucionesDAO daoDevolucion;
 
-    public DevolucionesService(DevolucionesDAO daoDevolucion) {
-        this.daoDevolucion = daoDevolucion;
-    }
-
-    public DevolucionesService() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       public DevolucionesService() throws Exception {
+        this.daoDevolucion = new DevolucionesDAO();
     }
 
 
