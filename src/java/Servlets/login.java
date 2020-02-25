@@ -9,6 +9,7 @@ package Servlets;
 import Dao.LoginDAO;
 import Dao.UsuarioDAO;
 import Entidades.Usuario;
+import Services.Loginsv;
 import Services.UsuarioService;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -46,14 +47,14 @@ public class login extends HttpServlet {
      
       String la_cedula=request.getParameter("txtCedula2");
       String la_contrasenatraidadelinput=request.getParameter("txtContrasena2");
-      LoginDAO lo_objetooperaciones= new LoginDAO();
+      Loginsv lo_objetooperaciones= new Loginsv();
       UsuarioService lo_usuariodao = new UsuarioService();
       Usuario lo_usuario = new Usuario(la_cedula, la_contrasenatraidadelinput);
       HttpSession session=request.getSession();
       
       
       
-      switch(lo_objetooperaciones.loguear(lo_usuario)){
+      switch(lo_objetooperaciones.validarLogin(lo_usuario)){
           
       case 1:{
       session.setAttribute("user",la_cedula);

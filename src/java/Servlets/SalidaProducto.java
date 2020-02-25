@@ -10,6 +10,7 @@ import Dao.ProductoDAO;
 import Dao.Salida_ProductoDAO;
 import Entidades.Producto;
 import Entidades.Salida_Producto;
+import Services.ProductoService;
 import Services.Salida_ProductoService;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.IOException;
@@ -61,7 +62,7 @@ public class SalidaProducto extends HttpServlet {
            Salida_Producto lo_salidaProducto = new Salida_Producto(ld_date,la_departamento,ln_numero,ln_codigoProducto,la_resta);
             
              Salida_ProductoService lo_salidaProductodao =new Salida_ProductoService();
-             ProductoDAO lo_productodao =new ProductoDAO();
+             ProductoService lo_productodao =new ProductoService();
              
              int ln_var=lo_salidaProductodao.insertar(lo_salidaProducto);
     
