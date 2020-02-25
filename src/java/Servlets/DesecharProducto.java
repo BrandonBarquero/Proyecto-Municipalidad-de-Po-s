@@ -7,6 +7,7 @@ package Servlets;
  */
 
 import Dao.ProductoDAO;
+import Services.ProductoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -40,7 +41,7 @@ public class DesecharProducto extends HttpServlet {
          
             int ln_codigoProducto=Integer.parseInt(request.getParameter("Codigo_Producto"));
        
-            ProductoDAO lo_Productodao = new ProductoDAO();
+            ProductoService lo_Productodao = new ProductoService();
             
             int ln_idCodigo=lo_Productodao.Desechar_Producto(ln_codigoProducto);
             

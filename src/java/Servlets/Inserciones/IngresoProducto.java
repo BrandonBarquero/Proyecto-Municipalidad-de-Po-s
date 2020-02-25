@@ -10,6 +10,7 @@ import Dao.ProductoDAO;
 import Dao.UsuarioDAO;
 import Entidades.Entrada_Productos;
 import Entidades.Producto;
+import Services.ProductoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
@@ -61,11 +62,11 @@ public class IngresoProducto extends HttpServlet {
             Producto lo_producto = new Producto(la_codigoProducto,la_codigoPresupuestario,la_nombre,la_unidad,la_descripcion,la_precio
                     ,la_cantidad,la_marca,ld_fechaEntrada,la_ubicacion,la_tipoProducto,la_garantia,la_proveedor);
             
-             ProductoDAO lo_productodao =new ProductoDAO();
+             ProductoService lo_productodao =new ProductoService();
              
              Entrada_Productos entrada= new Entrada_Productos(la_codigoPresupuestario,la_nombre,la_cantidad,ld_fechaEntrada,lc_Usuario2);
              
-               ProductoDAO lo_productodao2 =new ProductoDAO();
+               ProductoService lo_productodao2 =new ProductoService();
              
             
              int ln_var=lo_productodao.insertar(lo_producto);

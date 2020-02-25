@@ -60,22 +60,7 @@ public class ProductoDAO {
                 return r;
 }
    
-      public int insertar2(Entrada_Productos lo_producto2) throws ClassNotFoundException, SQLException  {
-            PreparedStatement ps=null;   
-        ps= connection.prepareStatement("insert into Entrada_Producto(Codigo_Producto,"
-                    + "nombre,Cantidad,Fecha,Responsable)values(?,?,?,?,?)");
-
-                
-                ps.setString(1,lo_producto2.getCodigo_Producto());
-                ps.setString(2,lo_producto2.getNombre());
-                ps.setString(3,lo_producto2.getCantidad());
-                ps.setString(4,lo_producto2.getFecha_Entrada());
-                ps.setString(5,lo_producto2.getResponsable());           
-                r=ps.executeUpdate();
-                ps.close();
-      
-                return r;
-}
+ 
  public int eliminar(int id) throws ClassNotFoundException, SQLException  {
  PreparedStatement ps=null;
          ps=connection.prepareStatement("delete from producto where Codigo_Producto= ?");
@@ -253,9 +238,26 @@ ps= connection.prepareStatement("update producto set Cantidad="+Cantidad+"where 
              return cont;
   
   }
+
+  
      
   
      
-     
+     public int insertar2(Entrada_Productos lo_producto2) throws ClassNotFoundException, SQLException  {
+            PreparedStatement ps=null;   
+        ps= connection.prepareStatement("insert into Entrada_Producto(Codigo_Producto,"
+                    + "nombre,Cantidad,Fecha,Responsable)values(?,?,?,?,?)");
+
+                
+                ps.setString(1,lo_producto2.getCodigo_Producto());
+                ps.setString(2,lo_producto2.getNombre());
+                ps.setString(3,lo_producto2.getCantidad());
+                ps.setString(4,lo_producto2.getFecha_Entrada());
+                ps.setString(5,lo_producto2.getResponsable());           
+                r=ps.executeUpdate();
+                ps.close();
+      
+                return r;
+}
      
 }

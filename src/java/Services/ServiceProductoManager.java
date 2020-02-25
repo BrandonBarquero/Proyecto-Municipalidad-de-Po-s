@@ -5,6 +5,7 @@
  */
 package Services;
 
+import Entidades.Entrada_Productos;
 import Entidades.Producto;
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
  */
 interface ServiceProductoManager extends ServiceProducto{
     public int insertar(Producto producto);
+    public int insertar2(Entrada_Productos producto);
     public int actualizar(Producto producto);
     public int eliminar(int id);
     public ArrayList<Producto> listaProductosActivos( );
