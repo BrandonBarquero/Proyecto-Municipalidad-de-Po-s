@@ -62,7 +62,7 @@ public class Producto{
 
     }
 
-    public Producto(String Codigo_Producto, String Codigo_Presupuestario, String Nombre, 
+    public Producto(String Codigo_Presupuestario, String  Codigo_Producto, String Nombre, 
             String Unidad, String Descripcion, String Precio, String Marca, 
             String Fecha_Entrada, String Ubicacion, String Tipo_Producto, String Garantia, String Proveedor) {
          this.Codigo_Producto = Codigo_Producto;

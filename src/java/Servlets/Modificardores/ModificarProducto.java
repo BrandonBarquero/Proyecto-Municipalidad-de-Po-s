@@ -57,17 +57,18 @@ public class ModificarProducto extends HttpServlet {
             String la_ubicacion=request.getParameter("Ubicacion");
             String la_tipo=request.getParameter("Tipo");
             String la_proveedor=request.getParameter("Proveedor");
-          Producto lo_producto = new Producto(la_codigoPresupuestario,  la_codigoProducto,  la_nombreProducto,  la_unidad,  la_descripcion,  la_precioProducto, 
+          Producto lo_producto = new Producto
+        (la_codigoPresupuestario,  la_codigoProducto,  la_nombreProducto,  la_unidad,  la_descripcion,  la_precioProducto, 
                    la_marcaProducto,  la_entrada,  la_ubicacion,  la_tipo,  la_fecha,  la_proveedor); 
         
-          ProductoService lo_productodao = new ProductoService();
+          ProductoDAO lo_productodao = new ProductoDAO();
           int ln_var=lo_productodao.actualizar(lo_producto);
            if(ln_var>=1){
                 response.sendRedirect("ListarProductos.jsp");
                 
                 }else {
                 out.println("<h1> Error</h1>");
-                            response.sendRedirect("PaginaError.jsp");
+                 response.sendRedirect("PaginaError.jsp");
                 }
             
             
