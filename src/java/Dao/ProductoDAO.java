@@ -177,6 +177,38 @@ public class ProductoDAO {
         }
 
     }
+  
+   public ArrayList<Producto> ListaProductosSalida( ) {
+        ArrayList<Producto> productos = new ArrayList<Producto>();
+        try {PreparedStatement ps=null;
+            ps=connection.prepareStatement("select * from producto where Estado='Activo' and Cantidad = '0'");
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                Producto producto = new Producto();
+                producto.setCodigo_Presupuestario(resultSet.getString("Codigo_Presupuestario"));
+                producto.setCodigo_Producto(resultSet.getString("Codigo_Producto"));
+                producto.setNombre(resultSet.getString("Nombre"));
+                producto.setUnidad(resultSet.getString("Unidad"));
+                producto.setDescripcion(resultSet.getString("Descripcion"));
+                producto.setPrecio(resultSet.getString("Precio"));
+                producto.setCantidad(resultSet.getString("Cantidad"));
+                producto.setMarca(resultSet.getString("Marca"));
+                producto.setFecha_Entrada(resultSet.getString("Fecha_Entrada"));
+                producto.setUbicacion(resultSet.getString("Ubicacion"));
+                producto.setTipo_Producto(resultSet.getString("Tipo_Producto"));
+                producto.setGarantia(resultSet.getString("Garantia"));
+                producto.setProveedor(resultSet.getString("Proveedor"));
+                productos.add(producto);
+            }
+            ps.close();
+            resultSet.close();
+            return productos;
+        } catch (SQLException ex) {
+            return null;
+        }
+
+    }
+  
   public int Activar_Producto(int Codigo_Producto) throws SQLException{PreparedStatement ps=null;
   ps= connection.prepareStatement("update producto set Estado='Activo' where Codigo_Producto="+Codigo_Producto+"");
    r=ps.executeUpdate();

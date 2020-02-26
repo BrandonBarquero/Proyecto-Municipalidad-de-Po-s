@@ -1,3 +1,7 @@
+<%@page import="Entidades.Producto"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Services.ProductoService"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,13 +23,9 @@
            %>
            
          <%
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-         ResultSet lu_rs;
-         
-         lu_ps=lu_con.prepareStatement("select * from producto where Estado='Activo' and Cantidad = '0'");
-         lu_rs=lu_ps.executeQuery();%>
+               ProductoService asd = new ProductoService();
+        ArrayList<Producto> a2=  asd.ListaProductosSalida();
+%>
 
      <jsp:include page="Header.jsp"/>
 

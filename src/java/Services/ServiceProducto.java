@@ -20,6 +20,7 @@ interface ServiceProducto {
     int actualizar(Producto producto);
     ArrayList<Producto> listaProductosActivos( );
     ArrayList<Producto> listaProductosInactivos( );
+    ArrayList<Producto> ListaProductosSalida();
     int Activar_Producto(int Codigo_Producto) ;
     int Desechar_Producto(int Codigo_Producto);
     ArrayList<Producto> listaUsuariosFiltrado(String Codigo_Producto);

@@ -43,6 +43,12 @@ public class ProductoService implements ServiceProductoManager {
         
       
     }
+    
+    @Override
+        public ArrayList<Producto> ListaProductosSalida( ){
+        return daoProducto.ListaProductosSalida();
+    }
+    
  @Override
     public int actualizar(Producto producto) {
      

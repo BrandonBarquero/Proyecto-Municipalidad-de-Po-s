@@ -20,6 +20,7 @@ interface ServiceProductoManager extends ServiceProducto{
     public int eliminar(int id);
     public ArrayList<Producto> listaProductosActivos( );
     public ArrayList<Producto> listaProductosInactivos( );
+    public  ArrayList<Producto> ListaProductosSalida();
     public int Activar_Producto(int Codigo_Producto) ;
     public int Desechar_Producto(int Codigo_Producto);
     public ArrayList<Producto> listaUsuariosFiltrado(String Codigo_Producto);
