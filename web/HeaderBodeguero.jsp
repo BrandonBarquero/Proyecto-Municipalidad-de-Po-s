@@ -69,7 +69,7 @@
                    <li style="color:#fff; cursor:default;">
                     <span class="all-tittles"><%=lc_Usuario2%></span>
                 </li>
-                <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
+                <li  class="tooltips-general exit-system-button" data-href="CerrarSesion" data-placement="bottom" title="Salir del sistema">
                     <i class="zmdi zmdi-power"></i>
                 </li>
                 <li  class="tooltips-general btn-help" data-placement="bottom" title="Ayuda">
