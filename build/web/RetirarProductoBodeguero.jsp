@@ -1,3 +1,4 @@
+<%@page import="Services.DepartamentoService"%>
 <%@page import="Entidades.Departamento"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Dao.DepartamentoDAO"%>

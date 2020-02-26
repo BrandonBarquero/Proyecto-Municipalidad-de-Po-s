@@ -1,3 +1,6 @@
+<%@page import="Entidades.Departamento"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Services.DepartamentoService"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -36,17 +39,10 @@
 }</script>
         
         <%
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-         ResultSet lu_rs;
-         String ln_id=request.getParameter("Codigo_Producto");
-        String ln_id2=request.getParameter("cantidad");
-                
-         lu_ps=lu_con.prepareStatement("select * from Departamento");
-         lu_rs=lu_ps.executeQuery();
-        
-        
+           String ln_id=request.getParameter("Codigo_Producto");
+         String ln_id2=request.getParameter("Cantidad");
+      DepartamentoService asd = new DepartamentoService();
+        ArrayList<Departamento> a2=  asd.listaDepartamentos();
          %>
 
    
@@ -138,8 +134,8 @@ lc_sAhora += "-"+ln_dia;
                              <div class="group-material">
                                 <span>Departamento</span>
                                 <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
-                                      <%    while(lu_rs.next()){   %>
-                 <option  value="<%=lu_rs.getString("NombreD")%>"><%=lu_rs.getString("NombreD")%> </option>
+                                      <% for(int x=0;x<a2.size();x++){ %>
+                 <option  value="<%=a2.get(x).getNombreD()%>"><%=a2.get(x).getNombreD()%> </option>
                  
                      <% } %>
                                 </select>

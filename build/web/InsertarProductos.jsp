@@ -1,3 +1,8 @@
+<%@page import="Entidades.Tipo_Producto"%>
+<%@page import="Services.Tipo_ProductoService"%>
+<%@page import="Entidades.Bodega"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Services.BodegaService"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
@@ -19,20 +24,12 @@
           %>
     
     <%
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps3;
-          
-         ResultSet lu_rs3;
-        PreparedStatement lu_ps4;
-          
-         ResultSet lu_rs4;
-             
-         lu_ps3=lu_con.prepareStatement("select * from Tipo_Producto");
-         lu_rs3=lu_ps3.executeQuery();
-         lu_ps4=lu_con.prepareStatement("select * from Bodega");
-         lu_rs4=lu_ps4.executeQuery();
-
+ BodegaService asd = new BodegaService();
+        ArrayList<Bodega> bodega=  asd.listaBodegas();
+        
+Tipo_ProductoService TPS = new Tipo_ProductoService();
+ ArrayList<Tipo_Producto> tipoProducto= TPS.listaTipo_Productos();
+        
        %>
          <jsp:include page="Header.jsp"/>
 
@@ -161,8 +158,9 @@ lc_sAhora += "-"+ln_dia;
                                 <span>Ubicación</span>
                                 <select id="Ubicacion" name="Ubicacion" class="tooltips-general material-control" data-toggle="tooltip" data-placement="top" title="Elige la ubicación del producto">
                                 <option value="" disabled="" selected="">Selecciona una bodega</option>
-                                    <%    while(lu_rs4.next()){   %>
-                                   <option  value="<%=lu_rs4.getString("Nombre_Bodega")%>"><%=lu_rs4.getString("Nombre_Bodega")%> </option> <% } %>
+                              <% for(int x=0;x<bodega.size();x++){ %>
+                                    <option  value="<%=bodega.get(x).getNombre_Bodega()%>"><%=bodega.get(x).getNombre_Bodega()%> </option>
+                                            <% } %>
                                 </select>
                             </div>
 
@@ -170,8 +168,9 @@ lc_sAhora += "-"+ln_dia;
                                 <span>Tipo Producto</span>
                                 <select id="Tipo" name="Tipo" class="tooltips-general material-control" data-toggle="tooltip" data-placement="top" title="Elige la ubicación del producto">
                                 <option value="" disabled="" selected="">Selecciona un tipo Producto</option>
-                                    <%    while(lu_rs3.next()){   %>
-                                   <option  value="<%=lu_rs3.getString("Nombre_Tipo_Producto")%>"><%=lu_rs3.getString("Nombre_Tipo_Producto")%> </option> <% } %>
+                                   <% for(int x=0;x<bodega.size();x++){ %>
+                                     <option  value="<%=tipoProducto.get(x).getNombre_Tipo_Producto()%>"><%=tipoProducto.get(x).getNombre_Tipo_Producto()%> </option>
+                                           <% } %>
                                 </select>
                             </div>
                         
