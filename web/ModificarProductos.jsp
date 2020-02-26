@@ -1,3 +1,8 @@
+<%@page import="Entidades.Tipo_Producto"%>
+<%@page import="Services.Tipo_ProductoService"%>
+<%@page import="Entidades.Bodega"%>
+<%@page import="Services.BodegaService"%>
+<%@page import="Services.ProductoService"%>
 <%@page import="Entidades.Producto"%>
 <%@page import="Dao.ProductoDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -22,6 +27,21 @@
           }
            
            %>
+           
+           
+                    <%
+          String ln_id=request.getParameter("Codigo_Producto");
+         ProductoService asd = new ProductoService();
+        ArrayList<Producto> a2=  asd.listaUsuariosFiltrado(ln_id);
+          
+
+ BodegaService BD = new BodegaService();
+        ArrayList<Bodega> bodega=  BD.listaBodegas();
+        
+Tipo_ProductoService TPS = new Tipo_ProductoService();
+ ArrayList<Tipo_Producto> tipoProducto= TPS.listaTipo_Productos();
+          %>
+          
          <!--Inicio Cuerpo PÃ¡gina-->
     
         <div class="container">
@@ -40,12 +60,7 @@
                 </div>
             </div>
         </div> 
-         <%
-          String ln_id=request.getParameter("Codigo_Producto");
-         ProductoDAO asd = new ProductoDAO();
-        ArrayList<Producto> a2=  asd.listaUsuariosFiltrado(ln_id);
-          
-          %>
+
         <div class="container-fluid">
             <form name="modificarr" action="ModificarProducto"  autocomplete="off">
                 
@@ -124,19 +139,25 @@
                                 <label>Fecha de entrada</label>
                             </div>
 
-                            <div class="group-material">
-                                <input id="Ubicacion" name="Ubicacion" value="<%=a2.get(0).getUbicacion()%>" type="text" class="tooltips-general material-control" required="">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Ubicación</label>
+                           <div class="group-material">
+                                <span>Ubicación</span>
+                                <select id="Ubicacion" name="Ubicacion" class="tooltips-general material-control" data-toggle="tooltip" data-placement="top" title="Elige la ubicación del producto">
+                                <option value="" disabled="" selected="">Selecciona una bodega</option>
+                              <% for(int x=0;x<bodega.size();x++){ %>
+                                    <option  value="<%=bodega.get(x).getNombre_Bodega()%>"><%=bodega.get(x).getNombre_Bodega()%> </option>
+                                            <% } %>
+                                </select>
                             </div>
 
 
-                            <div class="group-material">
-                                <input id="tipo" name="Tipo" value="<%=a2.get(0).getTipo_Producto()%>" type="text" class="tooltips-general material-control" required="">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Tipo Producto</label>
+                                 <div class="group-material">
+                                <span>Tipo Producto</span>
+                                <select id="Tipo" name="Tipo" class="tooltips-general material-control" data-toggle="tooltip" data-placement="top" title="Elige la ubicación del producto">
+                                <option value="" disabled="" selected="">Selecciona un tipo Producto</option>
+                                   <% for(int x=0;x<bodega.size();x++){ %>
+                                     <option  value="<%=tipoProducto.get(x).getNombre_Tipo_Producto()%>"><%=tipoProducto.get(x).getNombre_Tipo_Producto()%> </option>
+                                           <% } %>
+                                </select>
                             </div>
                                  <div class="group-material">
                                 <input id="tipo" name="Proveedor" value="<%=a2.get(0).getProveedor()%>" type="text" class="tooltips-general material-control" required="">
