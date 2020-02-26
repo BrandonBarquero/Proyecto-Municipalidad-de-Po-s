@@ -45,7 +45,7 @@ public class ModificarTipoProducto extends HttpServlet {
             String la_nombreTipoProducto=request.getParameter("nombre");
             int ln_numero = Integer.parseInt(la_idTipoProducto);
             Tipo_Producto lo_tipoproducto = new Tipo_Producto(ln_numero,la_nombreTipoProducto);
-             Tipo_ProductoService lo_tipoProductodao =new Tipo_ProductoService();
+             Tipo_ProductoDAO lo_tipoProductodao =new Tipo_ProductoDAO();
             
              int ln_var=lo_tipoProductodao.actualizar(lo_tipoproducto);
             

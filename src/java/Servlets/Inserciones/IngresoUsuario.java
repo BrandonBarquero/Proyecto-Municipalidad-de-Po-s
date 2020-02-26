@@ -60,6 +60,8 @@ public class IngresoUsuario extends HttpServlet {
                 
                 }else {
                 out.println("<h1> Error</h1>");
+                   response.sendRedirect("ErrorUsuario.jsp?Cedula="+la_cedulaInsertada+"&Nombre="+la_nombreInsertado+"&Correo="+la_correoInsertado+"&Telefono="+la_telefonoInsertado);
+
                 }
                 
                   }catch(IOException lu_e){
