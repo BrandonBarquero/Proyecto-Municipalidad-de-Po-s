@@ -46,20 +46,20 @@ public class login extends HttpServlet {
      // variables
      
       String la_cedula=request.getParameter("txtCedula2");
-      String la_contrasenatraidadelinput=request.getParameter("txtContrasena2");
-      Loginsv lo_objetooperaciones= new Loginsv();
+      String la_contrasenaTraidaDelInput=request.getParameter("txtContrasena2");
+      Loginsv lo_objetoOperaciones= new Loginsv();
       UsuarioService lo_usuariodao = new UsuarioService();
-      Usuario lo_usuario = new Usuario(la_cedula, la_contrasenatraidadelinput);
+      Usuario lo_usuario = new Usuario(la_cedula, la_contrasenaTraidaDelInput);
       HttpSession session=request.getSession();
       
       
       
-      switch(lo_objetooperaciones.validarLogin(lo_usuario)){
+      switch(lo_objetoOperaciones.validarLogin(lo_usuario)){
           
       case 1:{
       session.setAttribute("user",la_cedula);
       session.setAttribute("nivel","1");
-      String Nombreusuario=lo_usuariodao.SelecionarNombre(la_cedula);
+      String Nombreusuario=lo_usuariodao.selecionarNombre(la_cedula);
       session.setAttribute("user5",Nombreusuario);
       response.sendRedirect("home.jsp");
       break;}
@@ -67,7 +67,7 @@ public class login extends HttpServlet {
       case 2:{ 
       session.setAttribute("user2",la_cedula);
       session.setAttribute("nivel","2");
-      String Nombreusuario=lo_usuariodao.SelecionarNombre(la_cedula);
+      String Nombreusuario=lo_usuariodao.selecionarNombre(la_cedula);
       session.setAttribute("user6",Nombreusuario);
       response.sendRedirect("homeBodeguero.jsp");
       break;}

@@ -5,15 +5,15 @@
  */
 package Services;
 
-import Entidades.Salida_Producto;
+import Entidades.SalidaProducto;
 import java.util.ArrayList;
 
 /**
  *
  * @author Manfred González C
  */
- interface ServiceSalida_Producto {
+public interface ServiceSalidaProductoManager extends ServiceSalidaProducto{
     
-    ArrayList<Salida_Producto> listaSalida_Productos( );
-    int insertar(Salida_Producto dalida_producto);
+    public ArrayList<SalidaProducto> listaSalidaProductos();
+    public int insertar(SalidaProducto to_salidaProducto);
 }

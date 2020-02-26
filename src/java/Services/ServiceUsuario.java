@@ -14,13 +14,13 @@ import java.util.ArrayList;
  * @author Allan
  */
 public interface ServiceUsuario {
-    int insertar(Usuario usuario);
-    String SelecionarNombre(String Cedula);
-    int ContadorAdmins();
-    int ContadorBodeguero();
+    int insertar(Usuario to_usuario);
+    String selecionarNombre(String ta_Cedula);
+    int contadorAdmins();
+    int contadorBodeguero();
     ArrayList<Usuario> listaUsuarios( );
     ArrayList<Usuario> listaUsuariosInactivos( );
-    ArrayList<Usuario> listaUsuariosFiltrado(String Cedula);
-    int Desactivar_Usuario(int Cedula);
+    ArrayList<Usuario> listaUsuariosFiltrado(String ta_Cedula);
+    int desactivarUsuario(int tn_Cedula);
 //    ArrayList<Producto> consultar();
 }

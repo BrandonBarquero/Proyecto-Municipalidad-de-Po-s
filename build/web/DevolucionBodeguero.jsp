@@ -17,9 +17,9 @@
         <jsp:include page="HeaderBodeguero.jsp"/>
         
              <%
-              String Usuario2=(String) session.getAttribute("user2");
+              String la_Usuario2=(String) session.getAttribute("user2");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -27,10 +27,10 @@
 
    <script>function cal() {
   try {
-    var a = parseInt(document.f.disponible.value),
-        b = parseInt(document.f.nuevo.value);
-    if((a-b) >= 0){
-            document.f.sum.value = a + b;
+    var ln_a = parseInt(document.f.disponible.value),
+        ln_b = parseInt(document.f.nuevo.value);
+    if((ln_a-ln_b) >= 0){
+            document.f.sum.value = ln_a + ln_b;
         }else
             alert("La resta es negativa");
     
@@ -40,10 +40,10 @@
         
         <%
            String ln_id=request.getParameter("Codigo_Producto");
-         String ln_id2=request.getParameter("Cantidad");
-      DepartamentoService asd = new DepartamentoService();
-        ArrayList<Departamento> a2=  asd.listaDepartamentos();
-         %>
+           String ln_id2=request.getParameter("Cantidad");
+           DepartamentoService lo_departamentoService = new DepartamentoService();
+           ArrayList<Departamento> la_var = lo_departamentoService.listaDepartamentos();
+        %>
 
    
 
@@ -134,8 +134,8 @@ lc_sAhora += "-"+ln_dia;
                              <div class="group-material">
                                 <span>Departamento</span>
                                 <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
-                                      <% for(int x=0;x<a2.size();x++){ %>
-                 <option  value="<%=a2.get(x).getNombreD()%>"><%=a2.get(x).getNombreD()%> </option>
+                                      <% for(int ln_x=0;ln_x<la_var.size();ln_x++){ %>
+                 <option  value="<%=la_var.get(ln_x).getNombreD()%>"><%=la_var.get(ln_x).getNombreD()%> </option>
                  
                      <% } %>
                                 </select>

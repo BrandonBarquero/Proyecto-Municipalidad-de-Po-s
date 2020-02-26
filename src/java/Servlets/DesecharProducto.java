@@ -43,7 +43,7 @@ public class DesecharProducto extends HttpServlet {
        
             ProductoService lo_Productodao = new ProductoService();
             
-            int ln_idCodigo=lo_Productodao.Desechar_Producto(ln_codigoProducto);
+            int ln_idCodigo=lo_Productodao.desecharProducto(ln_codigoProducto);
             
                
                

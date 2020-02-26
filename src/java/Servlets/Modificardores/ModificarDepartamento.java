@@ -6,9 +6,9 @@
 package Servlets.Modificardores;
 
 import Dao.DepartamentoDAO;
-import Dao.Tipo_ProductoDAO;
+import Dao.TipoProductoDAO;
 import Entidades.Departamento;
-import Entidades.Tipo_Producto;
+import Entidades.TipoProducto;
 import Services.DepartamentoService;
 import java.io.IOException;
 import java.io.PrintWriter;

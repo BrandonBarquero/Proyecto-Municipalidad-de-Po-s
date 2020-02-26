@@ -70,7 +70,7 @@ public class Devolver_ProductoBodeguero extends HttpServlet {
 
             ProductoDAO lo_productodao =new ProductoDAO();
             
-            lo_productodao.Actualizar_Cantidad(la_suma,lc_codigo);
+            lo_productodao.actualizarCantidad(la_suma,lc_codigo);
                 
                 }
 

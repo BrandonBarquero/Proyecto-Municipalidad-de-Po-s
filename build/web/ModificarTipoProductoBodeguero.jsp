@@ -1,14 +1,14 @@
-<%@page import="Entidades.Tipo_Producto"%>
+<%@page import="Entidades.TipoProducto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Dao.Tipo_ProductoDAO"%>
+<%@page import="Dao.TipoProductoDAO"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 
      <%
-              String Usuario2=(String) session.getAttribute("user2");
+              String la_Usuario2=(String) session.getAttribute("user2");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -41,9 +41,9 @@
             </div>
         </div>
         <%
-           String lc_id=request.getParameter("Id_Tipo_Producto");
-         Tipo_ProductoDAO asd = new Tipo_ProductoDAO();
-        ArrayList<Tipo_Producto> a2=  asd.listaTipo_ProductosFiltrado(lc_id);
+            String lc_id=request.getParameter("Id_Tipo_Producto");
+            TipoProductoDAO lo_tipoProductoDAO = new TipoProductoDAO();
+            ArrayList<TipoProducto> lu_var = lo_tipoProductoDAO.listaTipoProductosFiltrado(lc_id);
           
           %>
 
@@ -55,7 +55,7 @@
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                                <div>
                                    <label style="  top:-20px; font-size:17px;font-weight: 700;color:#333;font-weight: normal;">ID</label>
-                                   <input name="id" value="<%=a2.get(0).getId_Tipo_Producto()%>" type="text" class="material-control tooltips-general input-check-user" required="" readonly="" maxlength="20" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1,20}" data-toggle="tooltip" data-placement="top">
+                                   <input name="id" value="<%=lu_var.get(0).getIdTipoProducto()%>" type="text" class="material-control tooltips-general input-check-user" required="" readonly="" maxlength="20" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ]{1,20}" data-toggle="tooltip" data-placement="top">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                
@@ -63,7 +63,7 @@
                                 <br><br>
 
                                <div class="group-material">
-                                   <input name="nombre" value="<%=a2.get(0).getNombre_Tipo_Producto()%>" type="text" class="material-control tooltips-general" required="" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" data-toggle="tooltip" data-placement="top" >
+                                   <input name="nombre" value="<%=lu_var.get(0).getNombreTipoProducto()%>" type="text" class="material-control tooltips-general" required="" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" data-toggle="tooltip" data-placement="top" >
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre tipo producto</label>

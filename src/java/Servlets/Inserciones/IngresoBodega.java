@@ -42,12 +42,12 @@ public class IngresoBodega extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         
-      String la_nombrebodega=request.getParameter("nombre");           
+      String la_nombreBodega=request.getParameter("nombre");           
          
       
        BodegaService lo_bodegadao =new BodegaService();
             
-             int ln_var=lo_bodegadao.insertar(la_nombrebodega);
+             int ln_var=lo_bodegadao.insertar(la_nombreBodega);
             
       
                 if(ln_var>=1){

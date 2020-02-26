@@ -12,21 +12,21 @@
 </head>
 <body>
            <%
-                 String Usuario2=(String) session.getAttribute("user2");
+                 String la_Usuario2=(String) session.getAttribute("user2");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            int ln_x=0;
                 int ln_x2=0;
                 int ln_x3=0;
-              UsuarioService daousuario= new UsuarioService();
-              ProductoService daoproducto= new ProductoService();
+              UsuarioService lo_daousuario= new UsuarioService();
+              ProductoService lo_daoproducto= new ProductoService();
               
 
-               ln_x=daousuario.ContadorAdmins();
-               ln_x2=daousuario.ContadorBodeguero();
-               ln_x3=daoproducto.ContadorProductos();
+               ln_x=lo_daousuario.contadorAdmins();
+               ln_x2=lo_daousuario.contadorBodeguero();
+               ln_x3=lo_daoproducto.contadorProductos();
 
          %>
     

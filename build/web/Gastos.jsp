@@ -9,9 +9,9 @@
         <jsp:include page="Header.jsp"/>
 
      <%
-              String Usuario2=(String) session.getAttribute("user");
+              String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            

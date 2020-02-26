@@ -1,9 +1,9 @@
 <%@page import="Services.ProductoService"%>
-<%@page import="Entidades.Entrada_Productos"%>
+<%@page import="Entidades.EntradaProductos"%>
 <%@page import="Dao.ProductoDAO"%>
-<%@page import="Entidades.Salida_Producto"%>
+<%@page import="Entidades.SalidaProducto"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Dao.Salida_ProductoDAO"%>
+<%@page import="Dao.SalidaProductoDAO"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,13 +16,13 @@
   <jsp:include page="Header.jsp"/>
   
   <%
-           String Usuario2=(String) session.getAttribute("user");
+           String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
-           ProductoService asd = new ProductoService();
-         ArrayList<Entrada_Productos> asd2=  asd.listarEntradaProductos();
+           ProductoService lo_productoService = new ProductoService();
+         ArrayList<EntradaProductos> lo_var = lo_productoService.listarEntradaProductos();
  
         %>
 
@@ -81,13 +81,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                             <%   for(int x=0;x<asd2.size();x++){   %>
+                                             <%   for(int x=0;x<lo_var.size();x++){   %>
                                             <tr>
-                                                <td><%=asd2.get(x).getCodigo_Producto()%></td>
-                                                <td><%=asd2.get(x).getNombre()%></td>
-                                                  <td><%=asd2.get(x).getCantidad()%></td>
-                                                <td><%=asd2.get(x).getFecha_Entrada()%></td>
-                                                <td><%=asd2.get(x).getResponsable()%></td>
+                                                <td><%=lo_var.get(x).getCodigoProducto()%></td>
+                                                <td><%=lo_var.get(x).getNombre()%></td>
+                                                  <td><%=lo_var.get(x).getCantidad()%></td>
+                                                <td><%=lo_var.get(x).getFechaEntrada()%></td>
+                                                <td><%=lo_var.get(x).getResponsable()%></td>
                                             
                                             </tr>
  <!--TR EXTRA-->                                  
@@ -99,10 +99,6 @@
 
                                     </table>
                                 </div>
-
-
-
-
 
            <!--Fin Cuerpo Página-->
 

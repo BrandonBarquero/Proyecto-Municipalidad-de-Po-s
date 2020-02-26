@@ -14,9 +14,9 @@
 <!DOCTYPE html>
 
      <%
-              String Usuario2=(String) session.getAttribute("user");
+              String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -31,10 +31,10 @@
     <script>
          function cal() {
             try {
-                var a = parseInt(document.retiro.disponible.value),
-                b = parseInt(document.retiro.cantidadRetirar.value);
-                if((a-b) >= 0){
-                    document.retiro.suma.value = a - b;
+                var la_a = parseInt(document.retiro.disponible.value),
+                la_b = parseInt(document.retiro.cantidadRetirar.value);
+                if((la_a-la_b) >= 0){
+                    document.retiro.suma.value = la_a - la_b;
                 }else{
                     document.retiro.suma.value ="Valor negativo";
                     alert("No se puede retirar mas partes de los que existen disponibles.");
@@ -47,12 +47,12 @@
         
         <%
   
-         String codigoProducto= request.getParameter("codigoProducto");
-         String disponible= request.getParameter("disponible");
+         String ln_codigoProducto = request.getParameter("codigoProducto");
+         String la_disponible = request.getParameter("disponible");
 
                 
-      DepartamentoService asd = new DepartamentoService();
-        ArrayList<Departamento> a2=  asd.listaDepartamentos();
+        DepartamentoService lo_departamentoService = new DepartamentoService();
+        ArrayList<Departamento> lu_var = lo_departamentoService.listaDepartamentos();
         
         
          %>
@@ -88,7 +88,7 @@
 
                             <div>
                                 <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Cantidad disponible</label>
-                                <input readonly="" onchange="cal();" id="disponible" name="disponible" readonly value="<%=disponible%>" type="text" class="tooltips-general material-control" required="">
+                                <input readonly="" onchange="cal();" id="disponible" name="disponible" readonly value="<%=la_disponible%>" type="text" class="tooltips-general material-control" required="">
                             </div>
                                     
                             <br><br>
@@ -105,7 +105,7 @@
 
                             <div>
                                 <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código de producto</label>               
-                                <input readonly="" value="<%=codigoProducto%>" readonly="" id="codigoProducto" name="codigoProducto" type="text" class="tooltips-general material-control" required="">
+                                <input readonly="" value="<%=ln_codigoProducto%>" readonly="" id="codigoProducto" name="codigoProducto" type="text" class="tooltips-general material-control" required="">
                             </div>
                                 
                             <br><br>
@@ -144,8 +144,8 @@ lc_sAhora += "-"+ln_dia;
                             <div class="group-material">
                                 <span>Departamento</span>
                                 <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
-                                        <% for(int x=0;x<a2.size();x++){ %>
-                 <option  value="<%=a2.get(x).getNombreD()%>"> <%=a2.get(x).getNombreD()%></option>
+                                        <% for(int ln_x=0;ln_x<lu_var.size();ln_x++){ %>
+                 <option  value="<%=lu_var.get(ln_x).getNombreD()%>"> <%=lu_var.get(ln_x).getNombreD()%></option>
                  
                      <% } %>
                                 </select>

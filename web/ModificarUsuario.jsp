@@ -14,9 +14,9 @@
         <jsp:include page="Header.jsp"/>
 
              <%
-              String Usuario2=(String) session.getAttribute("user");
+              String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -29,9 +29,9 @@
             </div>
         </div>
      <%
-     UsuarioService usuariodao=new UsuarioService();
-      String Cedula=request.getParameter("Cedula");
-     ArrayList<Usuario> ListaUsuarios=  usuariodao.listaUsuariosFiltrado(Cedula);
+        UsuarioService lo_usuariodao=new UsuarioService();
+        String la_Cedula=request.getParameter("Cedula");
+        ArrayList<Usuario> lo_ListaUsuarios = lo_usuariodao.listaUsuariosFiltrado(la_Cedula);
      
      %>
 <div class="container-fluid"  style="margin: 50px 0;">
@@ -55,26 +55,26 @@
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                            <div>
                                <label style="  top:-20px;font-size:17px;font-weight: 700;color:#333;font-weight: normal; ">C�dula</label>
-                               <input name="Cedula" value="<%=ListaUsuarios.get(0).getCedula()%>" type="text" class="material-control tooltips-general input-check-user" required="" readonly="">
+                               <input name="Cedula" value="<%=lo_ListaUsuarios.get(0).getCedula()%>" type="text" class="material-control tooltips-general input-check-user" required="" readonly="">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                            </div>
                                <br><br>
                                 <div class="group-material">
-                               <input name="Nombre" value="<%=ListaUsuarios.get(0).getNombre()%>" type="text" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,70}" class="material-control tooltips-general" required="">
+                               <input name="Nombre" value="<%=lo_ListaUsuarios.get(0).getNombre()%>" type="text" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,70}" class="material-control tooltips-general" required="">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                                <label>Nombre completo</label>
                            </div>
                            <div  class="group-material">
-                               <input name="Correo" value="<%=ListaUsuarios.get(0).getCorreo()%>"  type="email" maxlength="50" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" class="material-control tooltips-general" required="">
+                               <input name="Correo" value="<%=lo_ListaUsuarios.get(0).getCorreo()%>"  type="email" maxlength="50" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" class="material-control tooltips-general" required="">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                                <label>Email</label>
                            </div>
                                
                            <div class="group-material">
-                               <input name="Telefono" value="<%=ListaUsuarios.get(0).getTelefono()%>" type="text" maxlength="12" pattern="[0-9]{6,12}" class="material-control tooltips-general" required="">
+                               <input name="Telefono" value="<%=lo_ListaUsuarios.get(0).getTelefono()%>" type="text" maxlength="12" pattern="[0-9]{6,12}" class="material-control tooltips-general" required="">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                                <label>Tel�fono</label>

@@ -14,6 +14,6 @@ import java.util.ArrayList;
  */
  interface ServiceDevoluciones {
     
-     int insertar(Devoluciones devoluciones);
+     int insertar(Devoluciones to_devoluciones);
      ArrayList<Devoluciones> listaDevoluciones( );
 }

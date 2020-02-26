@@ -13,10 +13,10 @@
 </head>
 
     <%
-         String Cedula= request.getParameter("Cedula");
-         String Nombre= request.getParameter("Nombre");
-         String Correo= request.getParameter("Correo");
-         String Telefono= request.getParameter("Telefono");
+         String ln_Cedula= request.getParameter("Cedula");
+         String la_Nombre= request.getParameter("Nombre");
+         String la_Correo= request.getParameter("Correo");
+         String ln_Telefono= request.getParameter("Telefono");
         %>
 <body>
         <jsp:include page="Header.jsp"/>
@@ -60,20 +60,20 @@
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                            <div class="group-material">
-                               <input value="<%=Cedula%>" id="Cedula" name="Cedula" type="text" class="material-control tooltips-general input-check-user" placeholder="Cédula" required="" maxlength="10" pattern="[0-9]{9,10}" data-toggle="tooltip" data-placement="top" title="Cédula sin guiones ni espacios (9 o 10 dígitos">
+                               <input value="<%=ln_Cedula%>" id="Cedula" name="Cedula" type="text" class="material-control tooltips-general input-check-user" placeholder="Cédula" required="" maxlength="10" pattern="[0-9]{9,10}" data-toggle="tooltip" data-placement="top" title="Cédula sin guiones ni espacios (9 o 10 dígitos">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                                <label>Cédula</label>
                            </div>
                            <div class="group-material">
-                               <input value="<%=Correo%>" id="correo" name="correo" type="email" class="material-control tooltips-general" required="" placeholder="E-mail"  maxlength="50" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" data-toggle="tooltip" data-placement="top" title="Escriba el email">
+                               <input value="<%=la_Correo%>" id="correo" name="correo" type="email" class="material-control tooltips-general" required="" placeholder="E-mail"  maxlength="50" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" data-toggle="tooltip" data-placement="top" title="Escriba el email">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                                <label>Email</label>
                            </div>
 
                            <div class="group-material">
-                               <input value="<%=Telefono%>" id="Telefono" name="Telefono" type="text" class="material-control tooltips-general" required="" placeholder="Teléfono"  maxlength="12" pattern="[0-9]{6,12}" data-toggle="tooltip" data-placement="top" title="Solo se permiten números">
+                               <input value="<%=ln_Telefono%>" id="Telefono" name="Telefono" type="text" class="material-control tooltips-general" required="" placeholder="Teléfono"  maxlength="12" pattern="[0-9]{6,12}" data-toggle="tooltip" data-placement="top" title="Solo se permiten números">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                                <label>Teléfono</label>
@@ -96,7 +96,7 @@
                            </div>
                            
                            <div class="group-material">
-                               <input value="<%=Nombre%>" id="Nombre" name="Nombre" type="text" class="material-control tooltips-general" placeholder="Nombre completo" required="" maxlength="70" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" data-toggle="tooltip" data-placement="top" title="Escribe el nombre">
+                               <input value="<%=la_Nombre%>" id="Nombre" name="Nombre" type="text" class="material-control tooltips-general" placeholder="Nombre completo" required="" maxlength="70" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" data-toggle="tooltip" data-placement="top" title="Escribe el nombre">
                                <span class="highlight"></span>
                                <span class="bar"></span>
                                <label>Nombre completo</label>
@@ -141,15 +141,15 @@
     function confirmar(e) {
         if (!confirm('¿Desea agregar este usuario?')) e.preventDefault();
     };
-    for (var i = 0, l = elems.length; i < l; i++) {
-        elems[i].addEventListener('click', confirmIt, false);
+    for (var ln_i = 0, l = elems.length; ln_i < l; ln_i++) {
+        elems[ln_i].addEventListener('click', confirmIt, false);
     }
     
-    function validarContrasena(primero, segunda){
-    var primera = document.getElementById('Contrasena').value;
-    var segunda = document.getElementById('password').value;
+    function validarContrasena(pu_primero, pu_segunda){
+    var la_primera = document.getElementById('Contrasena').value;
+    var la_segunda = document.getElementById('password').value;
  
-    if(primera !== segunda){
+    if(la_primera !== la_segunda){
         alert("La contraseñas no coinciden, vuelva a introducir la contraseña.");
         return false;
     }

@@ -8,9 +8,9 @@
 <!DOCTYPE html>
 
      <%
-              String Usuario2=(String) session.getAttribute("user2");
+              String la_Usuario2=(String) session.getAttribute("user2");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            

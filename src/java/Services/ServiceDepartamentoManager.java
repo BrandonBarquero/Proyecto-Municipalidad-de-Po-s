@@ -14,9 +14,9 @@ import java.util.ArrayList;
  */
 public interface ServiceDepartamentoManager extends ServiceDepartamento {
     
-    public int Eliminar_Departamento(int IdDepartamento);
-     public int insertar(String nombre);
+    public int eliminarDepartamento(int tn_idDepartamento);
+     public int insertar(String ta_nombre);
      public ArrayList<Departamento> listaDepartamentos( );
-     public ArrayList<Departamento> listaDepartamentosFiltrado( String id);
-     public int actualizar(Departamento departamento);
+     public ArrayList<Departamento> listaDepartamentosFiltrado(String ta_id);
+     public int actualizar(Departamento to_departamento);
 }

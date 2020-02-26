@@ -6,8 +6,8 @@ package Servlets.Inserciones;
  * and open the template in the editor.
  */
 
-import Dao.Tipo_ProductoDAO;
-import Services.Tipo_ProductoService;
+import Dao.TipoProductoDAO;
+import Services.TipoProductoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -41,10 +41,10 @@ public class IngresoTipoProductoBodeguero extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         
-       String la_nombretipoproducto=request.getParameter("nombre");           
-                Tipo_ProductoService lo_tipoProductoDAO =new Tipo_ProductoService();
+       String la_nombreTipoProducto=request.getParameter("nombre");           
+                TipoProductoService lo_tipoProductoDAO =new TipoProductoService();
             
-         int ln_var=lo_tipoProductoDAO.insertar(la_nombretipoproducto);
+         int ln_var=lo_tipoProductoDAO.insertar(la_nombreTipoProducto);
             
             
                 if(ln_var>=1){

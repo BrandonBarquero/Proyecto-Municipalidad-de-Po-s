@@ -11,31 +11,31 @@ package Entidades;
  */
 public class Departamento {
     
-    private int IdDepartamento;
-    private String NombreD;
+    private int pn_IdDepartamento;
+    private String pn_nombreDepartamento;
 
     public Departamento() {
     }
 
-    public Departamento(int IdDepartamento, String NombreD) {
-        this.IdDepartamento = IdDepartamento;
-        this.NombreD = NombreD;
+    public Departamento(int tn_idDepartamento, String ta_nombreDepartamento) {
+        this.pn_IdDepartamento = tn_idDepartamento;
+        this.pn_nombreDepartamento = ta_nombreDepartamento;
     }
 
     public int getIdDepartamento() {
-        return IdDepartamento;
+        return pn_IdDepartamento;
     }
 
-    public void setIdDepartamento(int IdDepartamento) {
-        this.IdDepartamento = IdDepartamento;
+    public void setIdDepartamento(int tn_idDepartamento) {
+        this.pn_IdDepartamento = tn_idDepartamento;
     }
 
     public String getNombreD() {
-        return NombreD;
+        return pn_nombreDepartamento;
     }
 
-    public void setNombreD(String NombreD) {
-        this.NombreD = NombreD;
+    public void setNombreD(String ta_nombreDepartamento) {
+        this.pn_nombreDepartamento = ta_nombreDepartamento;
     }
     
     

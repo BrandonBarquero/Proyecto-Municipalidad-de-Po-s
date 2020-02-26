@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-  <title>Error de sesión</title>
+  <title>Error de sesi&oacute;n</title>
 
  
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

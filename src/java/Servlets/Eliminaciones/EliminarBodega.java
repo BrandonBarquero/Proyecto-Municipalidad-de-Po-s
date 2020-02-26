@@ -44,11 +44,11 @@ public class EliminarBodega extends HttpServlet {
             throws ServletException, IOException, SQLException, Exception {
       
        
-         int ln_iddebodega=Integer.parseInt(request.getParameter("Id_Bodega"));
+         int ln_idDeBodega=Integer.parseInt(request.getParameter("Id_Bodega"));
         
           BodegaService lo_bodegadao =new BodegaService();
             
-             int ln_var=lo_bodegadao.Eliminar_Bodega(ln_iddebodega);
+             int ln_var=lo_bodegadao.eliminarBodega(ln_idDeBodega);
             
                
                

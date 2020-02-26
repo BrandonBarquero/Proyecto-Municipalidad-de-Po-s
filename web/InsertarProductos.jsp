@@ -1,5 +1,5 @@
-<%@page import="Entidades.Tipo_Producto"%>
-<%@page import="Services.Tipo_ProductoService"%>
+<%@page import="Entidades.TipoProducto"%>
+<%@page import="Services.TipoProductoService"%>
 <%@page import="Entidades.Bodega"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Services.BodegaService"%>
@@ -15,21 +15,21 @@
 </head>
 <body>
      <%
-                 String Usuario2=(String) session.getAttribute("user");
-                 String UsuarioNombre = (String) session.getAttribute("user5");
+                 String la_Usuario2=(String) session.getAttribute("user");
+                 String la_UsuarioNombre = (String) session.getAttribute("user5");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
           
           %>
     
     <%
- BodegaService asd = new BodegaService();
-        ArrayList<Bodega> bodega=  asd.listaBodegas();
+        BodegaService lo_bodegaService = new BodegaService();
+        ArrayList<Bodega> lo_bodega = lo_bodegaService.listaBodegas();
         
-Tipo_ProductoService TPS = new Tipo_ProductoService();
- ArrayList<Tipo_Producto> tipoProducto= TPS.listaTipo_Productos();
+        TipoProductoService lo_tipoProductoService = new TipoProductoService();
+        ArrayList<TipoProducto> lo_tipoProducto = lo_tipoProductoService.listaTipoProductos();
         
        %>
          <jsp:include page="Header.jsp"/>
@@ -136,7 +136,7 @@ Tipo_ProductoService TPS = new Tipo_ProductoService();
                             
                             
                         
-                                 <input value="<%=UsuarioNombre%>" id="Responsable" name="Responsable"  type="hidden" class="tooltips-general material-control" >
+                                 <input value="<%=la_UsuarioNombre%>" id="Responsable" name="Responsable"  type="hidden" class="tooltips-general material-control" >
                      
                         
                  <% Calendar lu_ahora = Calendar.getInstance();
@@ -165,8 +165,8 @@ lc_sAhora += "-"+ln_dia;
                                 <span>Ubicación</span>
                                 <select id="Ubicacion" name="Ubicacion" class="tooltips-general material-control" data-toggle="tooltip" data-placement="top" title="Elige la ubicación del producto">
                                 <option value="" disabled="" selected="">Selecciona una bodega</option>
-                              <% for(int x=0;x<bodega.size();x++){ %>
-                                    <option  value="<%=bodega.get(x).getNombre_Bodega()%>"><%=bodega.get(x).getNombre_Bodega()%> </option>
+                              <% for(int ln_x=0;ln_x<lo_bodega.size();ln_x++){ %>
+                                    <option  value="<%=lo_bodega.get(ln_x).getNombreBodega()%>"><%=lo_bodega.get(ln_x).getNombreBodega()%> </option>
                                             <% } %>
                                 </select>
                             </div>
@@ -175,8 +175,8 @@ lc_sAhora += "-"+ln_dia;
                                 <span>Tipo Producto</span>
                                 <select id="Tipo" name="Tipo" class="tooltips-general material-control" data-toggle="tooltip" data-placement="top" title="Elige la ubicación del producto">
                                 <option value="" disabled="" selected="">Selecciona un tipo Producto</option>
-                                   <% for(int x=0;x<bodega.size();x++){ %>
-                                     <option  value="<%=tipoProducto.get(x).getNombre_Tipo_Producto()%>"><%=tipoProducto.get(x).getNombre_Tipo_Producto()%> </option>
+                                   <% for(int ln_x=0;ln_x<lo_bodega.size();ln_x++){ %>
+                                     <option  value="<%=lo_tipoProducto.get(ln_x).getNombreTipoProducto()%>"><%=lo_tipoProducto.get(ln_x).getNombreTipoProducto()%> </option>
                                            <% } %>
                                 </select>
                             </div>
@@ -205,15 +205,15 @@ lc_sAhora += "-"+ln_dia;
     function confirmar(e) {
         if (!confirm('¿Desea agregar este producto?')) e.preventDefault();
     };
-    for (var i = 0, l = elems.length; i < l; i++) {
-        elems[i].addEventListener('click', confirmIt, false);
+    for (var ln_i = 0, l = elems.length; ln_i < l; ln_i++) {
+        elems[ln_i].addEventListener('click', confirmIt, false);
     }
     
-    function validarFecha(primero, segunda){
-    var primera = document.getElementById('Garantia').value;
-    var segunda = document.getElementById('Fecha').value;
+    function validarFecha(pu_primero, pu_segunda){
+    var lu_primera = document.getElementById('Garantia').value;
+    var lu_segunda = document.getElementById('Fecha').value;
  
-    if(primera < segunda){
+    if(lu_primera < lu_segunda){
         alert("La fecha de entrada es mayor a la fecha de la garantia");
         return false;
     }//else if(primera === segunda) {

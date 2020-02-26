@@ -14,16 +14,16 @@
 </head>
 <body>
          <%
-           ProductoService asd = new ProductoService();
-        ArrayList<Producto> a2=  asd.listaProductosInactivos();
+           ProductoService lo_productoService = new ProductoService();
+        ArrayList<Producto> la_var = lo_productoService.listaProductosInactivos();
          
          %>
        <jsp:include page="HeaderBodeguero.jsp"/>
 
      <%
-              String Usuario2=(String) session.getAttribute("user2");
+              String la_Usuario2=(String) session.getAttribute("user2");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -87,19 +87,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>   <%   for(int x=0;x<a2.size();x++){   %>
+                                            <tr>   <%   for(int x=0;x<la_var.size();x++){   %>
                                                 
-                        <td><%=a2.get(x).getNombre()%> </td>                        
-                    <td><%=a2.get(x).getCodigo_Producto()%></td>
-                    <td><%=a2.get(x).getDescripcion()%> </td>
+                        <td><%=la_var.get(x).getNombre()%> </td>                        
+                    <td><%=la_var.get(x).getCodigoProducto()%></td>
+                    <td><%=la_var.get(x).getDescripcion()%> </td>
                   
                 
                           
                    
 
                                                 
-                      <td><a href="DetalleProductoBodeguero.jsp?Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
-                      <td><a href="ActivarProductoBodeguero?Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Activar producto"><i class="zmdi zmdi-refresh"></i></button></td>
+                      <td><a href="DetalleProductoBodeguero.jsp?Codigo_Producto=<%=la_var.get(x).getCodigoProducto()%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
+                      <td><a href="ActivarProductoBodeguero?Codigo_Producto=<%=la_var.get(x).getCodigoProducto()%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Activar producto"><i class="zmdi zmdi-refresh"></i></button></td>
    
          </tr><% }%>
                                         </tbody>

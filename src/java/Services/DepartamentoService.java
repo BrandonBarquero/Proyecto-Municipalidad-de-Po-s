@@ -19,18 +19,18 @@ import java.util.logging.Logger;
  */
 public class DepartamentoService implements ServiceDepartamentoManager{
     
-    private final DepartamentoDAO daoDepartamento;
+    private final DepartamentoDAO po_daoDepartamento;
 
    public DepartamentoService() throws Exception {
-        this.daoDepartamento = new DepartamentoDAO();
+        this.po_daoDepartamento = new DepartamentoDAO();
     }
 
  
     
     @Override
-    public int Eliminar_Departamento(int IdDepartamento){
+    public int eliminarDepartamento(int tn_idDepartamento){
         try {
-            return daoDepartamento.Eliminar_Departamento(IdDepartamento);
+            return po_daoDepartamento.eliminarDepartamento(tn_idDepartamento);
         } catch (SQLException ex) {
             Logger.getLogger(BodegaService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -38,9 +38,9 @@ public class DepartamentoService implements ServiceDepartamentoManager{
     }
     
         @Override
-     public int insertar(String nombre){
+     public int insertar(String ta_nombre){
         try {
-            return daoDepartamento.insertar(nombre);
+            return po_daoDepartamento.insertar(ta_nombre);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DepartamentoService.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -50,17 +50,17 @@ public class DepartamentoService implements ServiceDepartamentoManager{
      }
          @Override
      public ArrayList<Departamento> listaDepartamentos( ){
-            return daoDepartamento.listaDepartamentos();
+            return po_daoDepartamento.listaDepartamentos();
      }
          @Override
-     public ArrayList<Departamento> listaDepartamentosFiltrado( String id){
+     public ArrayList<Departamento> listaDepartamentosFiltrado(String ta_id){
         
-            return daoDepartamento.listaDepartamentosFiltrado(id);
+            return po_daoDepartamento.listaDepartamentosFiltrado(ta_id);
      }
          @Override
-     public int actualizar(Departamento departamento){
+     public int actualizar(Departamento to_departamento){
         try {
-            return daoDepartamento.actualizar(departamento);
+            return po_daoDepartamento.actualizar(to_departamento);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DepartamentoService.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

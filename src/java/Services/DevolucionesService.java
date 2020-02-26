@@ -18,18 +18,18 @@ import java.util.logging.Logger;
  */
 public class DevolucionesService implements ServiceDevolucionesManager{
     
-    private final DevolucionesDAO daoDevolucion;
+    private final DevolucionesDAO po_daoDevolucion;
 
        public DevolucionesService() throws Exception {
-        this.daoDevolucion = new DevolucionesDAO();
+        this.po_daoDevolucion = new DevolucionesDAO();
     }
 
 
     @Override
     
-    public int insertar(Devoluciones devoluciones){
+    public int insertar(Devoluciones to_devoluciones){
         try {
-            return daoDevolucion.insertar(devoluciones);
+            return po_daoDevolucion.insertar(to_devoluciones);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DevolucionesService.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -40,7 +40,7 @@ public class DevolucionesService implements ServiceDevolucionesManager{
     
         @Override
       public ArrayList<Devoluciones> listaDevoluciones( ) {
-          return daoDevolucion.listaDevoluciones();
+          return po_daoDevolucion.listaDevoluciones();
       }
     
     

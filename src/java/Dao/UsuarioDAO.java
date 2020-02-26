@@ -19,80 +19,80 @@ import java.util.ArrayList;
  * @author Allan
  */
 public class UsuarioDAO {
-    int r=0;
-    PreparedStatement ps= null;
-    private final Connection connection;
+    int ln_r=0;
+    PreparedStatement ll_ps= null;
+    private final Connection pl_connection;
    
-    ResultSet resultSet = null;
+    ResultSet ll_resultSet = null;
     public UsuarioDAO() throws Exception {
-        this.connection = new ConexionBD().getConnection();
+        this.pl_connection = new ConexionBD().getConnection();
 
     }
-   public int insertar(Usuario usuario) throws ClassNotFoundException, SQLException  {
+   public int insertar(Usuario to_usuario) throws ClassNotFoundException, SQLException  {
        
-                ps= connection.prepareStatement("insert into Usuario(Cedula,Nombre,Correo,Telefono,Rol,Estado,Contrasena)values(?,?,?,?,?,?,?)");
+                ll_ps= pl_connection.prepareStatement("insert into Usuario(Cedula,Nombre,Correo,Telefono,Rol,Estado,Contrasena)values(?,?,?,?,?,?,?)");
 
-                ps.setString(1,usuario.getCedula());
-                ps.setString(2,usuario.getNombre());
-                ps.setString(3,usuario.getCorreo());
-                ps.setString(4,usuario.getTelefono());
-                ps.setString(5,usuario.getRol());
-                ps.setString(6,usuario.getEstado());
-                ps.setString(7,usuario.getContrasena());
+                ll_ps.setString(1,to_usuario.getCedula());
+                ll_ps.setString(2,to_usuario.getNombre());
+                ll_ps.setString(3,to_usuario.getCorreo());
+                ll_ps.setString(4,to_usuario.getTelefono());
+                ll_ps.setString(5,to_usuario.getRol());
+                ll_ps.setString(6,to_usuario.getEstado());
+                ll_ps.setString(7,to_usuario.getContrasena());
                 
-                r=ps.executeUpdate();
-                ps.close(); 
+                ln_r=ll_ps.executeUpdate();
+                ll_ps.close(); 
       
-                return r;
+                return ln_r;
    }
-  public int actualizar(Usuario usuario) throws ClassNotFoundException, SQLException  {
+  public int actualizar(Usuario to_usuario) throws ClassNotFoundException, SQLException  {
           
             
-                ps= connection.prepareStatement("update Usuario set Nombre='"+usuario.getNombre()+"' "
-                        + ",Correo='"+usuario.getCorreo()+"'"
-                                + " ,Telefono='"+usuario.getTelefono()+"' "
-                                        + ",Rol='"+usuario.getRol()+"'"
-                                                + ",Estado='"+usuario.getEstado()+"'  "
-                                                        + "where Cedula='"+usuario.getCedula()+"'");
-            r= ps.executeUpdate();
-            ps.close();
-   return r;
+                ll_ps= pl_connection.prepareStatement("update Usuario set Nombre='"+to_usuario.getNombre()+"' "
+                        + ",Correo='"+to_usuario.getCorreo()+"'"
+                                + " ,Telefono='"+to_usuario.getTelefono()+"' "
+                                        + ",Rol='"+to_usuario.getRol()+"'"
+                                                + ",Estado='"+to_usuario.getEstado()+"'  "
+                                                        + "where Cedula='"+to_usuario.getCedula()+"'");
+            ln_r= ll_ps.executeUpdate();
+            ll_ps.close();
+   return ln_r;
   }
   
-  public String SelecionarNombre(String Cedula) throws SQLException{
-           String nombre1=null;
+  public String selecionarNombre(String ta_Cedula) throws SQLException{
+           String la_nombre1=null;
            
-             ps= connection.prepareStatement("select Nombre from Usuario where Cedula='"+Cedula+"'");
+             ll_ps= pl_connection.prepareStatement("select Nombre from Usuario where Cedula='"+ta_Cedula+"'");
 
-           ResultSet rs=ps.executeQuery();
-          while(rs.next()){ 
-           nombre1=  rs.getString("Nombre");
-          }ps.close();
-          return nombre1;
+           ResultSet ll_rs=ll_ps.executeQuery();
+          while(ll_rs.next()){ 
+           la_nombre1=  ll_rs.getString("Nombre");
+          }ll_ps.close();
+          return la_nombre1;
 
 }
   
   
-  public int ContadorAdmins() throws SQLException{
-           int cont=0;
+  public int contadorAdmins() throws SQLException{
+           int ln_cont=0;
           
-           ps= connection.prepareStatement("select * from Usuario where Rol='1' and Estado='Activo'");
-           ResultSet rs=ps.executeQuery();
-             while(rs.next()){ 
-                 cont=cont+1;
-             }ps.close();
-             return cont;
+           ll_ps= pl_connection.prepareStatement("select * from Usuario where Rol='1' and Estado='Activo'");
+           ResultSet ll_rs=ll_ps.executeQuery();
+             while(ll_rs.next()){ 
+                 ln_cont=ln_cont+1;
+             }ll_ps.close();
+             return ln_cont;
   
   }
-  public int ContadorBodeguero() throws SQLException{
-           int cont=0;
+  public int contadorBodeguero() throws SQLException{
+           int ln_cont=0;
            
-           ps= connection.prepareStatement("select * from Usuario where Rol='2' and Estado='Activo'");
-           ResultSet rs=ps.executeQuery();
-             while(rs.next()){ 
-                 cont=cont+1;
-             }ps.close();
-             return cont;
+           ll_ps= pl_connection.prepareStatement("select * from Usuario where Rol='2' and Estado='Activo'");
+           ResultSet ll_rs=ll_ps.executeQuery();
+             while(ll_rs.next()){ 
+                 ln_cont=ln_cont+1;
+             }ll_ps.close();
+             return ln_cont;
   
   }
   
@@ -100,22 +100,22 @@ public class UsuarioDAO {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         try {
            
-            ps=connection.prepareStatement("select * from Usuario where Estado='Activo'");
+            ll_ps=pl_connection.prepareStatement("select * from Usuario where Estado='Activo'");
 
-             resultSet = ps.executeQuery();
-            while (resultSet.next()) {
-                 Usuario usuario = new Usuario();
-                usuario.setCedula(resultSet.getString("Cedula"));
-                usuario.setContrasena(resultSet.getString("Contrasena"));
-                usuario.setNombre(resultSet.getString("Nombre"));
-                usuario.setCorreo(resultSet.getString("Correo"));
-                usuario.setRol(resultSet.getString("Rol"));
-                usuario.setTelefono(resultSet.getString("Telefono"));
-                usuario.setEstado(resultSet.getString("Estado"));
-                usuarios.add(usuario);
+             ll_resultSet = ll_ps.executeQuery();
+            while (ll_resultSet.next()) {
+                Usuario lo_usuario = new Usuario();
+                lo_usuario.setCedula(ll_resultSet.getString("Cedula"));
+                lo_usuario.setContrasena(ll_resultSet.getString("Contrasena"));
+                lo_usuario.setNombre(ll_resultSet.getString("Nombre"));
+                lo_usuario.setCorreo(ll_resultSet.getString("Correo"));
+                lo_usuario.setRol(ll_resultSet.getString("Rol"));
+                lo_usuario.setTelefono(ll_resultSet.getString("Telefono"));
+                lo_usuario.setEstado(ll_resultSet.getString("Estado"));
+                usuarios.add(lo_usuario);
             }
-            ps.close();
-            resultSet.close();
+            ll_ps.close();
+            ll_resultSet.close();
             return usuarios;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -128,20 +128,20 @@ public class UsuarioDAO {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         try {
           
-            ps=connection.prepareStatement("select * from Usuario where Estado='Inactivo'");
-             resultSet = ps.executeQuery();
-            while (resultSet.next()) {
-                 Usuario usuario = new Usuario();
-                usuario.setCedula(resultSet.getString("Cedula"));
-                usuario.setContrasena(resultSet.getString("Contrasena"));
-                usuario.setNombre(resultSet.getString("Nombre"));
-                usuario.setCorreo(resultSet.getString("Correo"));
-                usuario.setRol(resultSet.getString("Rol"));
-                usuario.setTelefono(resultSet.getString("Telefono"));
-                usuario.setEstado(resultSet.getString("Estado"));
-                usuarios.add(usuario);
-            }ps.close();
-            resultSet.close();
+            ll_ps=pl_connection.prepareStatement("select * from Usuario where Estado='Inactivo'");
+             ll_resultSet = ll_ps.executeQuery();
+            while (ll_resultSet.next()) {
+                Usuario lo_usuario = new Usuario();
+                lo_usuario.setCedula(ll_resultSet.getString("Cedula"));
+                lo_usuario.setContrasena(ll_resultSet.getString("Contrasena"));
+                lo_usuario.setNombre(ll_resultSet.getString("Nombre"));
+                lo_usuario.setCorreo(ll_resultSet.getString("Correo"));
+                lo_usuario.setRol(ll_resultSet.getString("Rol"));
+                lo_usuario.setTelefono(ll_resultSet.getString("Telefono"));
+                lo_usuario.setEstado(ll_resultSet.getString("Estado"));
+                usuarios.add(lo_usuario);
+            }ll_ps.close();
+            ll_resultSet.close();
             return usuarios;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -149,25 +149,25 @@ public class UsuarioDAO {
         }
 
     }
-  public ArrayList<Usuario> listaUsuariosFiltrado(String Cedula) {
+  public ArrayList<Usuario> listaUsuariosFiltrado(String ta_Cedula) {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         try {
             
-            ps=connection.prepareStatement("select * from Usuario where Cedula="+Cedula);
+            ll_ps=pl_connection.prepareStatement("select * from Usuario where Cedula="+ta_Cedula);
 
-             resultSet = ps.executeQuery();
-            while (resultSet.next()) {
-                Usuario usuario = new Usuario();
-                usuario.setCedula(resultSet.getString("Cedula"));
-                usuario.setContrasena(resultSet.getString("Contrasena"));
-                usuario.setNombre(resultSet.getString("Nombre"));
-                usuario.setCorreo(resultSet.getString("Correo"));
-                usuario.setRol(resultSet.getString("Rol"));
-                usuario.setTelefono(resultSet.getString("Telefono"));
-                usuario.setEstado(resultSet.getString("Estado"));
-                usuarios.add(usuario);
-            }ps.close();
-            resultSet.close();
+             ll_resultSet = ll_ps.executeQuery();
+            while (ll_resultSet.next()) {
+                Usuario lo_usuario = new Usuario();
+                lo_usuario.setCedula(ll_resultSet.getString("Cedula"));
+                lo_usuario.setContrasena(ll_resultSet.getString("Contrasena"));
+                lo_usuario.setNombre(ll_resultSet.getString("Nombre"));
+                lo_usuario.setCorreo(ll_resultSet.getString("Correo"));
+                lo_usuario.setRol(ll_resultSet.getString("Rol"));
+                lo_usuario.setTelefono(ll_resultSet.getString("Telefono"));
+                lo_usuario.setEstado(ll_resultSet.getString("Estado"));
+                usuarios.add(lo_usuario);
+            }ll_ps.close();
+            ll_resultSet.close();
             return usuarios;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -175,12 +175,12 @@ public class UsuarioDAO {
         }
 
     }
-   public int Desactivar_Usuario(int Cedula) throws SQLException{
+   public int desactivarUsuario(int tn_Cedula) throws SQLException{
 
-  ps= connection.prepareStatement("update Usuario set Estado='Inactivo' where Cedula="+Cedula+"");
-  int r=ps.executeUpdate();
-  ps.close();
-        return r;
+  ll_ps= pl_connection.prepareStatement("update Usuario set Estado='Inactivo' where Cedula="+tn_Cedula+"");
+  int ln_r=ll_ps.executeUpdate();
+  ll_ps.close();
+        return ln_r;
   }
 }
 

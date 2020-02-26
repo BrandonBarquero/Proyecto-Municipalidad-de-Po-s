@@ -6,9 +6,9 @@
 <!DOCTYPE html>
 
      <%
-              String Usuario2=(String) session.getAttribute("user2");
+              String la_Usuario2=(String) session.getAttribute("user2");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -21,8 +21,8 @@
 </head>
 <body> <%
            String ln_id=request.getParameter("IdDepartamento");
-         DepartamentoService asd = new DepartamentoService();
-        ArrayList<Departamento> a2=  asd.listaDepartamentosFiltrado(ln_id);
+           DepartamentoService lo_departamentoService = new DepartamentoService();
+           ArrayList<Departamento> lu_var = lo_departamentoService.listaDepartamentosFiltrado(ln_id);
           
           %>
        <jsp:include page="HeaderBodeguero.jsp"/>
@@ -56,7 +56,7 @@
                            
                                <div>
                                    <label style="   top:-20px;font-size:17px;font-weight: 700;color:#333;font-weight: normal;">ID Departamento</label>  
-                                   <input name="id" value="<%=a2.get(0).getNombreD()%>" type="text" class="material-control tooltips-general input-check-user" readonly >
+                                   <input name="id" value="<%=lu_var.get(0).getNombreD()%>" type="text" class="material-control tooltips-general input-check-user" readonly >
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                               
@@ -65,7 +65,7 @@
                            <br><br>
 
                                <div class="group-material">
-                                   <input  value="<%=a2.get(0).getIdDepartamento()%>>" name="nombre" type="text" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" class="material-control tooltips-general"  required="" >
+                                   <input  value="<%=lu_var.get(0).getIdDepartamento()%>>" name="nombre" type="text" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" class="material-control tooltips-general"  required="" >
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre del Departamento</label>

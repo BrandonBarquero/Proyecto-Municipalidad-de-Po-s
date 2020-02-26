@@ -9,9 +9,9 @@
 <!DOCTYPE html>
 
      <%
-              String Usuario2=(String) session.getAttribute("user2");
+              String la_Usuario2=(String) session.getAttribute("user2");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -24,8 +24,8 @@
 </head>
 <body>
      <%
-          ProductoService asd = new ProductoService();
-        ArrayList<Producto> a2=  asd.listaProductosActivos();%>
+          ProductoService lo_roductoService = new ProductoService();
+          ArrayList<Producto> lo_producto = lo_roductoService.listaProductosActivos();%>
     <jsp:include page="HeaderBodeguero.jsp"/>
 
 
@@ -85,20 +85,20 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr><% for(int x=0;x<a2.size();x++){ %>
+                                            <tr><% for(int ln_x=0;ln_x<lo_producto.size();ln_x++){ %>
                                                 
-                                                <td><%=a2.get(x).getNombre()%></td>                        
-                                                <td><%=a2.get(x).getCodigo_Producto()%></td>
-                                                <td><%=a2.get(x).getCantidad()%></td>
+                                                <td><%=lo_producto.get(ln_x).getNombre()%></td>                        
+                                                <td><%=lo_producto.get(ln_x).getCodigoProducto()%></td>
+                                                <td><%=lo_producto.get(ln_x).getCantidad()%></td>
                   
                 
                           
                    
 
-                                                <td><a href="DetalleProductoBodeguero.jsp?Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>                   
-                                                <td> <a href="DesecharProductoBodeguero?Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"><button data-href="DesecharProductoBodeguero?Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>" data-placement="bottom"   class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
-                                                <td> <a href="RetirarProductoBodeguero.jsp?Cantidad=<%=a2.get(x).getCantidad()%>&Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>" > <button type="submit" class="btn btn-warning tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-swap"></i></button></td>
-                                                <td><a href="DevolucionBodeguero.jsp??Cantidad=<%=a2.get(x).getCantidad()%>&Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"> <button type="submit" class="btn btn-primary tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-time-restore"></i></button></td>
+                                                <td><a href="DetalleProductoBodeguero.jsp?Codigo_Producto=<%=lo_producto.get(ln_x).getCodigoProducto()%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>                   
+                                                <td> <a href="DesecharProductoBodeguero?Codigo_Producto=<%=lo_producto.get(ln_x).getCodigoProducto()%>"><button data-href="DesecharProductoBodeguero?Codigo_Producto=<%=lo_producto.get(ln_x).getCodigoProducto()%>" data-placement="bottom"   class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
+                                                <td> <a href="RetirarProductoBodeguero.jsp?Cantidad=<%=lo_producto.get(ln_x).getCantidad()%>&Codigo_Producto=<%=lo_producto.get(ln_x).getCodigoProducto()%>" > <button type="submit" class="btn btn-warning tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-swap"></i></button></td>
+                                                <td><a href="DevolucionBodeguero.jsp??Cantidad=<%=lo_producto.get(ln_x).getCantidad()%>&Codigo_Producto=<%=lo_producto.get(ln_x).getCodigoProducto()%>"> <button type="submit" class="btn btn-primary tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-time-restore"></i></button></td>
                                             </tr>
                                                                <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>

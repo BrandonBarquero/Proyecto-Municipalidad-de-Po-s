@@ -7,9 +7,9 @@
 <%@page import="Services.DevolucionesService"%>
 <%@page import="Entidades.Devoluciones"%>
 <%@page import="Dao.DevolucionesDAO"%>
-<%@page import="Entidades.Salida_Producto"%>
+<%@page import="Entidades.SalidaProducto"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Dao.Salida_ProductoDAO"%>
+<%@page import="Dao.SalidaProductoDAO"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,13 +22,13 @@
   <jsp:include page="Header.jsp"/>
   
   <%
-           String Usuario2=(String) session.getAttribute("user");
+           String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
-           DevolucionesService asd = new DevolucionesService();
-         ArrayList<Devoluciones> asd2=  asd.listaDevoluciones();
+           DevolucionesService lo_devolucionesService = new DevolucionesService();
+         ArrayList<Devoluciones> la_var = lo_devolucionesService.listaDevoluciones();
  
         %>
 
@@ -86,14 +86,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                             <%   for(int x=0;x<asd2.size();x++){   %>
+                                             <%   for(int x=0;x<la_var.size();x++){   %>
                                             <tr>
-                                                <td><%=asd2.get(x).getDepartamento()%></td>
-                                                <td><%=asd2.get(x).getResponsable()%></td>
-                                                <td><%=asd2.get(x).getFecha_Devolucion()%></td>
-                                                <td><%=asd2.get(x).getCodigo_Producto()%></td>
-                                                 <td><%=asd2.get(x).getCantidad()%></td>
-                                                <td><%=asd2.get(x).getMotivo()%></td>
+                                                <td><%=la_var.get(x).getDepartamento()%></td>
+                                                <td><%=la_var.get(x).getResponsable()%></td>
+                                                <td><%=la_var.get(x).getFechaDevolucion()%></td>
+                                                <td><%=la_var.get(x).getCodigoProducto()%></td>
+                                                 <td><%=la_var.get(x).getCantidad()%></td>
+                                                <td><%=la_var.get(x).getMotivo()%></td>
                                             </tr>
  <!--TR EXTRA-->                                  
                                             <tr style="align-items: center" class='noSearch hide'>
@@ -104,11 +104,6 @@
 
                                     </table>
                                 </div>
-
-
-
-
-
            <!--Fin Cuerpo Página-->
 
 

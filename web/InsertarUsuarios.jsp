@@ -9,9 +9,9 @@
         <jsp:include page="Header.jsp"/>
 
      <%
-              String Usuario2=(String) session.getAttribute("user");
+              String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -134,15 +134,15 @@
     function confirmar(e) {
         if (!confirm('¿Desea agregar este usuario?')) e.preventDefault();
     };
-    for (var i = 0, l = elems.length; i < l; i++) {
-        elems[i].addEventListener('click', confirmIt, false);
+    for (var ln_i = 0, l = elems.length; ln_i < l; ln_i++) {
+        elems[ln_i].addEventListener('click', confirmIt, false);
     }
     
-    function validarContrasena(primero, segunda){
-    var primera = document.getElementById('Contrasena').value;
-    var segunda = document.getElementById('password').value;
+    function validarContrasena(pu_primero, pu_segunda){
+    var lu_primera = document.getElementById('Contrasena').value;
+    var lu_segunda = document.getElementById('password').value;
  
-    if(primera !== segunda){
+    if(lu_primera !== lu_segunda){
         alert("La contraseñas no coinciden, vuelva a introducir la contraseña.");
         return false;
     }

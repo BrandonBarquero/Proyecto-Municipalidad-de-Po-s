@@ -26,11 +26,11 @@ public class UsuarioService implements ServiceUsuarioManager{
 
    
     @Override
-    public int insertar(Usuario usuario) {
+    public int insertar(Usuario to_usuario) {
      
       
         try {
-            return usuarioDAO.insertar(usuario);
+            return usuarioDAO.insertar(to_usuario);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -41,13 +41,13 @@ public class UsuarioService implements ServiceUsuarioManager{
       
     }
    @Override
-    public int actualizar(Usuario usuario) {
+    public int actualizar(Usuario to_usuario) {
      
       
      
       
         try {
-            return usuarioDAO.actualizar(usuario);
+            return usuarioDAO.actualizar(to_usuario);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -57,27 +57,27 @@ public class UsuarioService implements ServiceUsuarioManager{
     }
 
        @Override
-    public String SelecionarNombre(String Cedula){
+    public String selecionarNombre(String to_cedula){
          try {
-             return usuarioDAO.SelecionarNombre(Cedula);
+             return usuarioDAO.selecionarNombre(to_cedula);
          } catch (SQLException ex) {
              Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
          }
          return "";
     }
        @Override
-    public int ContadorAdmins(){
+    public int contadorAdmins(){
          try {
-             return usuarioDAO.ContadorAdmins();
+             return usuarioDAO.contadorAdmins();
          } catch (SQLException ex) {
              Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
          }
          return 0;
     }
        @Override
-    public int ContadorBodeguero(){
+    public int contadorBodeguero(){
          try {
-             return usuarioDAO.ContadorBodeguero();
+             return usuarioDAO.contadorBodeguero();
          } catch (SQLException ex) {
              Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -92,22 +92,18 @@ public class UsuarioService implements ServiceUsuarioManager{
         return usuarioDAO.listaUsuariosInactivos();
     }
        @Override
-    public ArrayList<Usuario> listaUsuariosFiltrado(String Cedula){
-        return usuarioDAO.listaUsuariosFiltrado(Cedula);
+    public ArrayList<Usuario> listaUsuariosFiltrado(String ta_cedula){
+        return usuarioDAO.listaUsuariosFiltrado(ta_cedula);
     }
        @Override
-    public int Desactivar_Usuario(int Cedula){
+    public int desactivarUsuario(int tn_cedula){
          try {
-             return usuarioDAO.Desactivar_Usuario(Cedula);
+             return usuarioDAO.desactivarUsuario(tn_cedula);
          } catch (SQLException ex) {
              Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
          }
          return 0;
     }
-
-
-
-    
 
    
 }

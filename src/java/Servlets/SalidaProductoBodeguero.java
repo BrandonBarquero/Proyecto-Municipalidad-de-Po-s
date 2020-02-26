@@ -7,10 +7,10 @@ package Servlets;
  */
 
 import Dao.ProductoDAO;
-import Dao.Salida_ProductoDAO;
-import Entidades.Salida_Producto;
+import Dao.SalidaProductoDAO;
+import Entidades.SalidaProducto;
 import Services.ProductoService;
-import Services.Salida_ProductoService;
+import Services.SalidaProductoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -54,9 +54,9 @@ public class SalidaProductoBodeguero extends HttpServlet {
         
           int ln_numero = Integer.parseInt(la_suma);
           
-           Salida_Producto lo_salidaProducto = new Salida_Producto(ld_date,la_departamento,ln_numero,ln_codigoProducto,la_resta);
+           SalidaProducto lo_salidaProducto = new SalidaProducto(ld_date,la_departamento,ln_numero,ln_codigoProducto,la_resta);
             
-             Salida_ProductoService lo_salidaProductodao =new Salida_ProductoService();
+             SalidaProductoService lo_salidaProductodao =new SalidaProductoService();
              ProductoService lo_productodao =new ProductoService();
              int ln_var=lo_salidaProductodao.insertar(lo_salidaProducto);
 
@@ -69,7 +69,7 @@ public class SalidaProductoBodeguero extends HttpServlet {
            
                
                 if(la_nuevaCantidad!=null&&ln_codigo!=null){
-                int ln_p=lo_productodao.Actualizar_Cantidad(la_suma, ln_codigoProducto);
+                int ln_p=lo_productodao.actualizarCantidad(la_suma, ln_codigoProducto);
                  
                 response.sendRedirect("ListarProductos.jsp");
                 

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public interface ServiceDevolucionesManager extends ServiceDevoluciones{
     
-    public int insertar(Devoluciones devoluciones);
+    public int insertar(Devoluciones to_devoluciones);
      public ArrayList<Devoluciones> listaDevoluciones( );
     
 }

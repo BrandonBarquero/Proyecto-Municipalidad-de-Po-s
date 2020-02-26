@@ -43,10 +43,10 @@ public class IngresoBodegaBodeguero extends HttpServlet {
       
         
         
-         String la_nombrebodega=request.getParameter("nombre");           
+         String la_nombreBodega=request.getParameter("nombre");           
          BodegaService lo_bodegadao =new BodegaService();
             
-         int ln_var=lo_bodegadao.insertar(la_nombrebodega);
+         int ln_var=lo_bodegadao.insertar(la_nombreBodega);
             
       
                 if(ln_var>=1){

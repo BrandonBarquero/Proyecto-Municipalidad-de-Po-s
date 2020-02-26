@@ -14,10 +14,10 @@ import java.util.ArrayList;
  */
 interface ServiceBodega {
     
-    int Eliminar_Bodega(int Id_Bodega);
-    int insertar(String nombre);
+    int eliminarBodega(int tn_idBodega);
+    int insertar(String ta_nombre);
     ArrayList<Bodega> listaBodegas();
-    ArrayList<Bodega> listaBodegasFiltrado(String ID );
-    int actualizar(Bodega bodega);
+    ArrayList<Bodega> listaBodegasFiltrado(String ta_ID);
+    int actualizar(Bodega to_bodega);
     
 }

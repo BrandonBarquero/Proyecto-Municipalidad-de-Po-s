@@ -13,13 +13,13 @@
 </head>
 <body>
          <%
-        DepartamentoService asd = new DepartamentoService();
-        ArrayList<Departamento> a2=  asd.listaDepartamentos();%>
+        DepartamentoService lo_departamentoService = new DepartamentoService();
+        ArrayList<Departamento> lo_departamento = lo_departamentoService.listaDepartamentos();%>
         
               <%
-              String Usuario2=(String) session.getAttribute("user");
+              String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -85,15 +85,15 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                               <% for(int x=0;x<a2.size();x++){ %>
-                                                 <td><%=a2.get(x).getNombreD()%></td>
-                                                <td><%=a2.get(x).getIdDepartamento()%></td>
+                                               <% for(int ln_x=0;ln_x<lo_departamento.size();ln_x++){ %>
+                                                 <td><%=lo_departamento.get(ln_x).getNombreD()%></td>
+                                                <td><%=lo_departamento.get(ln_x).getIdDepartamento()%></td>
                                                
                               
 
                                                 
-                                                <td> <a href="ModificarDepartamento.jsp?IdDepartamento=<%=a2.get(x).getIdDepartamento()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
-                                                <td> <a href="EliminarDepartamento?IdDepartamento=<%=a2.get(x).getIdDepartamento()%>"><button data-href="EliminarDepartamento?IdDepartamento=<%=a2.get(x).getIdDepartamento()%>" data-placement="bottom"   class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
+                                                <td> <a href="ModificarDepartamento.jsp?IdDepartamento=<%=lo_departamento.get(ln_x).getIdDepartamento()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
+                                                <td> <a href="EliminarDepartamento?IdDepartamento=<%=lo_departamento.get(ln_x).getIdDepartamento()%>"><button data-href="EliminarDepartamento?IdDepartamento=<%=lo_departamento.get(ln_x).getIdDepartamento()%>" data-placement="bottom"   class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
                                             </tr>
                                                                  <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>

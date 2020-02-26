@@ -16,10 +16,10 @@
     <script>
          function cal() {
             try {
-                var a = parseInt(document.retiro.disponible.value),
-                b = parseInt(document.retiro.cantidadRetirar.value);
-                if((a-b) >= 0){
-                    document.retiro.suma.value = a - b;
+                var ln_a = parseInt(document.retiro.disponible.value),
+                ln_b = parseInt(document.retiro.cantidadRetirar.value);
+                if((ln_a-ln_b) >= 0){
+                    document.retiro.suma.value = ln_a - ln_b;
                 }else{
                     document.retiro.suma.value ="Valor negativo";
                     alert("No se puede retirar mas partes de los que existen disponibles.");
@@ -31,9 +31,9 @@
 </script>
 
      <%
-              String Usuario2=(String) session.getAttribute("user");
+              String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -44,8 +44,8 @@
          int ln_id=Integer.parseInt(request.getParameter("Codigo_Producto"));
          int ln_id2=Integer.parseInt(request.getParameter("Cantidad"));
                 
-      DepartamentoService asd = new DepartamentoService();
-        ArrayList<Departamento> a2=  asd.listaDepartamentos();
+        DepartamentoService lo_departamentoService = new DepartamentoService();
+        ArrayList<Departamento> lu_var = lo_departamentoService.listaDepartamentos();
         
         
          %>
@@ -137,8 +137,8 @@ lc_sAhora += "-"+ln_dia;
                             <div class="group-material">
                                 <span>Departamento</span>
                                 <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
-                                        <% for(int x=0;x<a2.size();x++){ %>
-                 <option  value="<%=a2.get(x).getNombreD()%>"> <%=a2.get(x).getNombreD()%></option>
+                                        <% for(int ln_x=0;ln_x<lu_var.size();ln_x++){ %>
+                 <option  value="<%=lu_var.get(ln_x).getNombreD()%>"> <%=lu_var.get(ln_x).getNombreD()%></option>
                  
                      <% } %>
                                 </select>

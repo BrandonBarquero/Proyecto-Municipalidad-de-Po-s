@@ -14,10 +14,10 @@ import java.util.ArrayList;
  */
  interface ServiceDepartamento {
     
-     int Eliminar_Departamento(int IdDepartamento);
-      int insertar(String nombre);
-      int actualizar(Departamento departamento);
+     int eliminarDepartamento(int tn_idDepartamento);
+      int insertar(String ta_nombre);
+      int actualizar(Departamento to_departamento);
       ArrayList<Departamento> listaDepartamentos( );
-      ArrayList<Departamento> listaDepartamentosFiltrado( String id);
+      ArrayList<Departamento> listaDepartamentosFiltrado(String ta_id);
       
 }

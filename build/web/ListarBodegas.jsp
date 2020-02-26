@@ -13,13 +13,13 @@
 </head>
 <body>
               <%
-        BodegaService asd = new BodegaService();
-        ArrayList<Bodega> a2=  asd.listaBodegas();%>
+                BodegaService lo_bodegaService = new BodegaService();
+                ArrayList<Bodega> lu_var = lo_bodegaService.listaBodegas();%>
         
              <%
-              String Usuario2=(String) session.getAttribute("user");
+              String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -85,14 +85,14 @@
                                         </thead>
                                         <tbody>
                                              <tr>
-                                               <% for(int x=0;x<a2.size();x++){ %>
-                                                <td><%=a2.get(x).getNombre_Bodega()%> </td>
-                                               <td><%=a2.get(x).getId_Bodega()%> </td>
+                                               <% for(int ln_x=0;ln_x<lu_var.size();ln_x++){ %>
+                                                <td><%=lu_var.get(ln_x).getNombreBodega()%> </td>
+                                               <td><%=lu_var.get(ln_x).getIdBodega()%> </td>
                                                 
 
                                                 
-                                                <td> <a href="ModificarBodegas.jsp?Id_Bodega=<%=a2.get(x).getId_Bodega()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
-                                                <td> <a href="EliminarBodega?Id_Bodega=<%=a2.get(x).getId_Bodega()%>"><button   data-href="EliminarBodega?Id_Bodega=<%=a2.get(x).getId_Bodega()%>" data-placement="bottom"   class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
+                                                <td> <a href="ModificarBodegas.jsp?Id_Bodega=<%=lu_var.get(ln_x).getIdBodega()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
+                                                <td> <a href="EliminarBodega?Id_Bodega=<%=lu_var.get(ln_x).getIdBodega()%>"><button   data-href="EliminarBodega?Id_Bodega=<%=lu_var.get(ln_x).getIdBodega()%>" data-placement="bottom"   class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
                                             </tr>
                                                                   <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>

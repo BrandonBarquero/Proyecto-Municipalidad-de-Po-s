@@ -18,17 +18,17 @@ import java.util.logging.Logger;
  */
 public class BodegaService implements ServiceBodegaManager{
     
-    private final BodegaDAO daoBodega;
+    private final BodegaDAO po_daoBodega;
 
     public BodegaService() throws Exception {
-        this.daoBodega = new BodegaDAO();
+        this.po_daoBodega = new BodegaDAO();
     }
 
     @Override
-    public int Eliminar_Bodega(int Id_Bodega) {
+    public int eliminarBodega(int tn_idBodega) {
         
         try {
-            return daoBodega.Eliminar_Bodega(Id_Bodega);
+            return po_daoBodega.eliminarBodega(tn_idBodega);
         } catch (SQLException ex) {
             Logger.getLogger(BodegaService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -37,10 +37,10 @@ public class BodegaService implements ServiceBodegaManager{
     }
 
     @Override
-    public int insertar(String nombre) {
+    public int insertar(String ta_nombre) {
       
     try {
-            return daoBodega.insertar(nombre);
+            return po_daoBodega.insertar(ta_nombre);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -51,20 +51,20 @@ public class BodegaService implements ServiceBodegaManager{
 
       @Override
     public ArrayList<Bodega> listaBodegas() {
-        return daoBodega.listaBodegas();
+        return po_daoBodega.listaBodegas();
         }
     
 
-    public ArrayList<Bodega> listaBodegasFiltrado(String ID) {
+    public ArrayList<Bodega> listaBodegasFiltrado(String ta_ID) {
     
-            return daoBodega.listaBodegasFiltrado(ID);
+            return po_daoBodega.listaBodegasFiltrado(ta_ID);
     }
 
     @Override
-    public int actualizar(Bodega bodega) {
+    public int actualizar(Bodega to_bodega) {
         
     try {
-            return daoBodega.actualizar(bodega);
+            return po_daoBodega.actualizar(to_bodega);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProductoService.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

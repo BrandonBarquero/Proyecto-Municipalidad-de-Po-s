@@ -16,16 +16,16 @@ import java.util.logging.Logger;
  * @author Allan
  */
 public class Loginsv implements ServiceLoginManager{
-       private final LoginDAO operaciones;
+       private final LoginDAO pu_operaciones;
 
     public Loginsv() throws Exception {
-        this.operaciones = new LoginDAO();
+        this.pu_operaciones = new LoginDAO();
     }
 
        @Override
-    public int validarLogin(Usuario usuario) {
+    public int validarLogin(Usuario po_usuario) {
            try {
-               return operaciones.loguear(usuario);
+               return pu_operaciones.loguear(po_usuario);
            } catch (SQLException ex) {
                Logger.getLogger(Loginsv.class.getName()).log(Level.SEVERE, null, ex);
            }

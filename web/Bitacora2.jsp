@@ -4,10 +4,10 @@
     Author     : barqu
 --%>
 
-<%@page import="Services.Salida_ProductoService"%>
-<%@page import="Entidades.Salida_Producto"%>
+<%@page import="Services.SalidaProductoService"%>
+<%@page import="Entidades.SalidaProducto"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Dao.Salida_ProductoDAO"%>
+<%@page import="Dao.SalidaProductoDAO"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,13 +20,13 @@
   <jsp:include page="Header.jsp"/>
   
   <%
-           String Usuario2=(String) session.getAttribute("user");
+           String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
-           Salida_ProductoService asd = new Salida_ProductoService();
-         ArrayList<Salida_Producto> asd2=  asd.listaSalida_Productos();
+           SalidaProductoService lo_salidaProductoService = new SalidaProductoService();
+         ArrayList<SalidaProducto> la_var = lo_salidaProductoService.listaSalidaProductos();
  
         %>
 
@@ -83,13 +83,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                             <%   for(int x=0;x<asd2.size();x++){   %>
+                                             <%   for(int x=0;x<la_var.size();x++){   %>
                                             <tr>
-                                                <td><%=asd2.get(x).getDepartamento()%></td>
-                                                <td><%=asd2.get(x).getResponsable()%></td>
-                                                <td><%=asd2.get(x).getFecha_Salida()%></td>
-                                                <td><%=asd2.get(x).getCodigo_Producto()%></td>
-                                                <td><%=asd2.get(x).getCantidad_Salida()%></td>
+                                                <td><%=la_var.get(x).getDepartamento()%></td>
+                                                <td><%=la_var.get(x).getResponsable()%></td>
+                                                <td><%=la_var.get(x).getFechaSalida()%></td>
+                                                <td><%=la_var.get(x).getCodigoProducto()%></td>
+                                                <td><%=la_var.get(x).getCantidadSalida()%></td>
                                             </tr>
  <!--TR EXTRA-->                                  
                                             <tr style="align-items: center" class='noSearch hide'>
@@ -100,10 +100,6 @@
 
                                     </table>
                                 </div>
-
-
-
-
 
            <!--Fin Cuerpo Página-->
 

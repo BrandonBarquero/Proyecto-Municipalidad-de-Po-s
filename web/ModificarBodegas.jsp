@@ -14,9 +14,9 @@
          <jsp:include page="Header.jsp"/>
 
      <%
-              String Usuario2=(String) session.getAttribute("user");
+              String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -30,8 +30,8 @@
         </div> String ln_id=request.getParameter("Id_Bodega");
  <%
           String ln_id=request.getParameter("Id_Bodega");
-         BodegaService asd = new BodegaService();
-        ArrayList<Bodega> a2=  asd.listaBodegasFiltrado(ln_id);
+          BodegaService lo_bodegaService = new BodegaService();
+          ArrayList<Bodega> lu_var = lo_bodegaService.listaBodegasFiltrado(ln_id);
           
           %>
         <div class="container-fluid"  style="margin: 50px 0;">
@@ -53,7 +53,7 @@
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                                <div>
                                    <label style="   top:-20px;font-size:17px;font-weight: 700;color:#333;font-weight: normal;">ID Bodega</label>
-                                   <input value="<%=a2.get(0).getId_Bodega()%>" name="id" type="text" class="material-control tooltips-general input-check-user"  readonly>
+                                   <input value="<%=lu_var.get(0).getIdBodega()%>" name="id" type="text" class="material-control tooltips-general input-check-user"  readonly>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                               
@@ -61,7 +61,7 @@
                            <br><br>
 
                                <div class="group-material">
-                                   <input value="<%=a2.get(0).getNombre_Bodega()%>" name="nombre" type="text" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" class="material-control tooltips-general"  required="">
+                                   <input value="<%=lu_var.get(0).getNombreBodega()%>" name="nombre" type="text" maxlength="70" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ 0-9]{1,70}" class="material-control tooltips-general"  required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre de la Bodega</label>

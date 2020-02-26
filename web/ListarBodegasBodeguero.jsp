@@ -7,9 +7,9 @@
 <!DOCTYPE html>
 
      <%
-              String Usuario2=(String) session.getAttribute("user2");
+              String la_Usuario2=(String) session.getAttribute("user2");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -22,8 +22,8 @@
 </head>
 <body>
               <%
-        BodegaService asd = new BodegaService();
-        ArrayList<Bodega> a2=  asd.listaBodegas();%>
+                BodegaService lo_bodegaService = new BodegaService();
+                ArrayList<Bodega> lu_var = lo_bodegaService.listaBodegas();%>
          <jsp:include page="HeaderBodeguero.jsp"/>
 
 
@@ -84,13 +84,13 @@
                                         </thead>
                                         <tbody>
                                              <tr>
-                                               <% for(int x=0;x<a2.size();x++){ %>
-                                                <td><%=a2.get(x).getNombre_Bodega()%> </td>
-                                               <td><%=a2.get(x).getId_Bodega()%> </td>
+                                               <% for(int ln_x=0;ln_x<lu_var.size();ln_x++){ %>
+                                                <td><%=lu_var.get(ln_x).getNombreBodega()%> </td>
+                                               <td><%=lu_var.get(ln_x).getIdBodega()%> </td>
                                                 
 
                                                 
-                                                <td> <a href="ModificarBodegasBodeguero.jsp?Id_Bodega=<%=a2.get(x).getId_Bodega()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
+                                                <td> <a href="ModificarBodegasBodeguero.jsp?Id_Bodega=<%=lu_var.get(ln_x).getIdBodega()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
                                             </tr>
                                                                   <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>

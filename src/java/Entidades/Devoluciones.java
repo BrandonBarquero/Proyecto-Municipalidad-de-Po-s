@@ -11,71 +11,71 @@ package Entidades;
  */
 public class Devoluciones {
     
-        private String Fecha_Devolucion;
-	private String Motivo;
-	private int Cantidad;
-	private String Responsable;
-	private String Codigo_Producto;
-	private String Departamento;
+        private String pa_fechaDevolucion;
+	private String pa_Motivo;
+	private int pn_Cantidad;
+	private String pa_Responsable;
+	private String pa_codigoProducto;
+	private String pa_Departamento;
 
     public Devoluciones() {
     }
 
-    public Devoluciones(String Fecha_Devolucion, String Motivo, int Cantidad, String Responsable, String Codigo_Producto, String Departamento) {
-        this.Fecha_Devolucion = Fecha_Devolucion;
-        this.Motivo = Motivo;
-        this.Cantidad = Cantidad;
-        this.Responsable = Responsable;
-        this.Codigo_Producto = Codigo_Producto;
-        this.Departamento = Departamento;
+    public Devoluciones(String ta_fechaDevolucion, String ta_Motivo, int tn_Cantidad, String ta_Responsable, String ta_codigoProducto, String ta_Departamento) {
+        this.pa_fechaDevolucion = ta_fechaDevolucion;
+        this.pa_Motivo = ta_Motivo;
+        this.pn_Cantidad = tn_Cantidad;
+        this.pa_Responsable = ta_Responsable;
+        this.pa_codigoProducto = ta_codigoProducto;
+        this.pa_Departamento = ta_Departamento;
     }
 
-    public String getFecha_Devolucion() {
-        return Fecha_Devolucion;
+    public String getFechaDevolucion() {
+        return pa_fechaDevolucion;
     }
 
-    public void setFecha_Devolucion(String Fecha_Devolucion) {
-        this.Fecha_Devolucion = Fecha_Devolucion;
+    public void setFechaDevolucion(String ta_fechaDevolucion) {
+        this.pa_fechaDevolucion = ta_fechaDevolucion;
     }
 
     public String getMotivo() {
-        return Motivo;
+        return pa_Motivo;
     }
 
-    public void setMotivo(String Motivo) {
-        this.Motivo = Motivo;
+    public void setMotivo(String ta_Motivo) {
+        this.pa_Motivo = ta_Motivo;
     }
 
     public int getCantidad() {
-        return Cantidad;
+        return pn_Cantidad;
     }
 
-    public void setCantidad(int Cantidad) {
-        this.Cantidad = Cantidad;
+    public void setCantidad(int tn_Cantidad) {
+        this.pn_Cantidad = tn_Cantidad;
     }
 
     public String getResponsable() {
-        return Responsable;
+        return pa_Responsable;
     }
 
-    public void setResponsable(String Responsable) {
-        this.Responsable = Responsable;
+    public void setResponsable(String ta_Responsable) {
+        this.pa_Responsable = ta_Responsable;
     }
 
-    public String getCodigo_Producto() {
-        return Codigo_Producto;
+    public String getCodigoProducto() {
+        return pa_codigoProducto;
     }
 
-    public void setCodigo_Producto(String Codigo_Producto) {
-        this.Codigo_Producto = Codigo_Producto;
+    public void setCodigoProducto(String ta_codigoProducto) {
+        this.pa_codigoProducto = ta_codigoProducto;
     }
 
     public String getDepartamento() {
-        return Departamento;
+        return pa_Departamento;
     }
 
-    public void setDepartamento(String Departamento) {
-        this.Departamento = Departamento;
+    public void setDepartamento(String ta_Departamento) {
+        this.pa_Departamento = ta_Departamento;
     }
         
         

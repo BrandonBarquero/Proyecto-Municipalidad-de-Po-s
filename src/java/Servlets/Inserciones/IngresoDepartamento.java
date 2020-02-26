@@ -40,11 +40,11 @@ public class IngresoDepartamento extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         
-        String la_nombredepartamento=request.getParameter("nombre");           
+        String la_nombreDepartamento=request.getParameter("nombre");           
             
       DepartamentoService lo_departamentodao =new DepartamentoService();
             
-         int ln_var=lo_departamentodao.insertar(la_nombredepartamento);
+         int ln_var=lo_departamentodao.insertar(la_nombreDepartamento);
             
       
                 if(ln_var>=1){

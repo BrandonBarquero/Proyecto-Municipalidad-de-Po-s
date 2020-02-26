@@ -8,7 +8,7 @@ package Servlets.Inserciones;
 
 import Dao.ProductoDAO;
 import Dao.UsuarioDAO;
-import Entidades.Entrada_Productos;
+import Entidades.EntradaProductos;
 import Entidades.Producto;
 import Services.ProductoService;
 import java.io.IOException;
@@ -65,7 +65,7 @@ public class IngresoProducto extends HttpServlet {
             
              ProductoService lo_productodao =new ProductoService();
              
-             Entrada_Productos entrada= new Entrada_Productos(la_codigoPresupuestario,la_nombre,la_cantidad,ld_fechaEntrada,lc_Usuario2);
+             EntradaProductos entrada= new EntradaProductos(la_codigoPresupuestario,la_nombre,la_cantidad,ld_fechaEntrada,lc_Usuario2);
              
                ProductoService lo_productodao2 =new ProductoService();
              

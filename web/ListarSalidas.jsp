@@ -14,18 +14,18 @@
        
 
      <%
-              String Usuario2=(String) session.getAttribute("user");
+              String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
            %>
            
          <%
-               ProductoService asd = new ProductoService();
-        ArrayList<Producto> a2=  asd.ListaProductosSalida();
-%>
+            ProductoService lo_productoService = new ProductoService();
+            ArrayList<Producto> lo_producto = lo_productoService.listaProductosSalida();
+         %>
 
      <jsp:include page="Header.jsp"/>
 
@@ -84,16 +84,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                       <tr><% for(int x=0;x<a2.size();x++){ %>
+                                       <tr><% for(int ln_x=0;ln_x<lo_producto.size();ln_x++){ %>
                                                 
-                             <td><%=a2.get(x).getNombre()%></td>                       
-                         <td><%=a2.get(x).getCodigo_Producto()%></td>
-                            <td><%=a2.get(x).getDescripcion()%></td>
+                             <td><%=lo_producto.get(ln_x).getNombre()%></td>                       
+                         <td><%=lo_producto.get(ln_x).getCodigoProducto()%></td>
+                            <td><%=lo_producto.get(ln_x).getDescripcion()%></td>
                   
                 
                           
-                                                <td><a href="DetalleProducto.jsp?Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
-                                                <td><a href="Devolucion.jsp?Cantidad=<%=a2.get(x).getCantidad()%>&Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"> <button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-time-restore"></i></button></td>
+                                                <td><a href="DetalleProducto.jsp?Codigo_Producto=<%=lo_producto.get(ln_x).getCodigoProducto()%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
+                                                <td><a href="Devolucion.jsp?Cantidad=<%=lo_producto.get(ln_x).getCantidad()%>&Codigo_Producto=<%=lo_producto.get(ln_x).getCodigoProducto()%>"> <button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-time-restore"></i></button></td>
                                             </tr>
                                                                    <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>

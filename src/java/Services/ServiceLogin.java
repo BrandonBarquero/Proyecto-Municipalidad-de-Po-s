@@ -12,5 +12,5 @@ import Entidades.Usuario;
  * @author Allan
  */
 interface ServiceLogin {
-    public int validarLogin(Usuario usuario);
+    public int validarLogin(Usuario to_usuario);
 }

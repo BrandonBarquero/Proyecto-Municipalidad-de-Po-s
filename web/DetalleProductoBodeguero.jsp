@@ -12,18 +12,18 @@
 </head>
 <body>
          <%
-              String Usuario2=(String) session.getAttribute("user2");
+              String la_Usuario2=(String) session.getAttribute("user2");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
            %>
              <%
       
-         String ln_id=request.getParameter("Codigo_Producto");
-       ProductoService asd = new ProductoService();
-        ArrayList<Producto> a2=  asd.listaUsuariosFiltrado(ln_id);
+         String la_id=request.getParameter("Codigo_Producto");
+       ProductoService lo_productoService = new ProductoService();
+        ArrayList<Producto> la_var = lo_productoService.listaUsuariosFiltrado(la_id);
 
         %>
             <jsp:include page="HeaderBodeguero.jsp"/>
@@ -54,11 +54,11 @@
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                             <legend><strong>Detalle Producto</strong></legend><br>
-                            <% for(int x=0;x<a2.size();x++){ %>
+                            <% for(int x=0;x<la_var.size();x++){ %>
 
                                 <div >
                                      <label style=" top:-20px; font-size:17px;font-weight:700; color: black;  font-weight: normal;">Código Presupuestario</label>
-                                    <input value="<%=a2.get(x).getCodigo_Presupuestario()%>" type="text" class="tooltips-general material-control" readonly="">
+                                    <input value="<%=la_var.get(x).getCodigoPresupuestario()%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                
@@ -66,7 +66,7 @@
 
                               <div >
                                   <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Nombre</label>
-                                <input value="<%=a2.get(x).getNombre()%>" type="text" class="tooltips-general material-control" readonly="">
+                                <input value="<%=la_var.get(x).getNombre()%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -74,7 +74,7 @@
 
                                 <div>
                                   <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Unidad</label>
-                                <input value="<%=a2.get(x).getUnidad()%>" type="text" class="tooltips-general material-control" readonly="">
+                                <input value="<%=la_var.get(x).getUnidad()%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -83,7 +83,7 @@
                                 <div>
 
                                  <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Descripción</label>
-                                <input value="<%=a2.get(x).getDescripcion()%>" type="text" class="tooltips-general material-control" readonly="">
+                                <input value="<%=la_var.get(x).getDescripcion()%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -91,7 +91,7 @@
 
                                 <div>
                                <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Precio</label>
-                                <input value="<%=a2.get(x).getPrecio()%>" type="text" class="tooltips-general material-control" readonly="">
+                                <input value="<%=la_var.get(x).getPrecio()%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                               
@@ -100,7 +100,7 @@
                                 <div>
 
                               <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Cantidad</label>
-                                <input value="<%=a2.get(x).getCantidad()%>" type="text" class="tooltips-general material-control" readonly="">
+                                <input value="<%=la_var.get(x).getCantidad()%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
@@ -109,7 +109,7 @@
                                 <div>
 
                             <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Marca</label>
-                                <input value="<%=a2.get(x).getMarca()%>" type="text" class="tooltips-general material-control" readonly="">
+                                <input value="<%=la_var.get(x).getMarca()%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                
@@ -118,7 +118,7 @@
                                 <div>
 
                            <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Proveedor</label>
-                                <input value="<%=a2.get(x).getProveedor()%>" type="text" class="tooltips-general material-control"  readonly="">
+                                <input value="<%=la_var.get(x).getProveedor()%>" type="text" class="tooltips-general material-control"  readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                               
@@ -127,7 +127,7 @@
 
                             <div>
                                   <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Fecha vencimiento de garantía</label>
-                                <input value="<%=a2.get(x).getFecha_Entrada()%>" type="text" class="tooltips-general material-control" readonly="">
+                                <input value="<%=la_var.get(x).getFechaEntrada()%>" type="text" class="tooltips-general material-control" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                               
@@ -135,14 +135,14 @@
 
                                 <div>
                                    <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Fecha de entrada</label> 
-                                <input value="<%=a2.get(x).getFecha_Entrada()%>" type="text" class="tooltips-general material-control"  readonly="">
+                                <input value="<%=la_var.get(x).getFechaEntrada()%>" type="text" class="tooltips-general material-control"  readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
                             </div>
                                     <div>
                                           <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Ubicación</label>
-                                <input value="<%=a2.get(x).getUbicacion()%>" type="text" class="tooltips-general material-control"  readonly="">
+                                <input value="<%=la_var.get(x).getUbicacion()%>" type="text" class="tooltips-general material-control"  readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                               
@@ -150,7 +150,7 @@
 
                                        <div>
                                          <label style=" top:-20px; font-size:17px;font-weight: 700; color:black; font-weight: normal;">Tipo de producto</label>  
-                                <input  value="<%=a2.get(x).getTipo_Producto()%>" type="text" class="tooltips-general material-control"  readonly="">
+                                <input  value="<%=la_var.get(x).getTipoProducto()%>" type="text" class="tooltips-general material-control"  readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 

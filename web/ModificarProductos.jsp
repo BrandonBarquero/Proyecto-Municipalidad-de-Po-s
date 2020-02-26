@@ -1,12 +1,12 @@
-<%@page import="Entidades.Tipo_Producto"%>
-<%@page import="Services.Tipo_ProductoService"%>
+<%@page import="Entidades.TipoProducto"%>
+<%@page import="Services.TipoProductoService"%>
 <%@page import="Entidades.Bodega"%>
 <%@page import="Services.BodegaService"%>
 <%@page import="Services.ProductoService"%>
 <%@page import="Entidades.Producto"%>
 <%@page import="Dao.ProductoDAO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Dao.Tipo_ProductoDAO"%>
+<%@page import="Dao.TipoProductoDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
@@ -19,28 +19,28 @@
 <body>
           <jsp:include page="Header.jsp"/>
 
-     <%
-              String Usuario2=(String) session.getAttribute("user");
+    <%
+              String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
-           %>
+    %>
            
            
-                    <%
+    <%
           String ln_id=request.getParameter("Codigo_Producto");
-         ProductoService asd = new ProductoService();
-        ArrayList<Producto> a2=  asd.listaUsuariosFiltrado(ln_id);
+          ProductoService lo_productoService = new ProductoService();
+          ArrayList<Producto> lu_var = lo_productoService.listaUsuariosFiltrado(ln_id);
           
 
- BodegaService BD = new BodegaService();
-        ArrayList<Bodega> bodega=  BD.listaBodegas();
+          BodegaService lo_bodegaService = new BodegaService();
+          ArrayList<Bodega> lo_bodega = lo_bodegaService.listaBodegas();
         
-Tipo_ProductoService TPS = new Tipo_ProductoService();
- ArrayList<Tipo_Producto> tipoProducto= TPS.listaTipo_Productos();
-          %>
+          TipoProductoService lo_tipoProductoService = new TipoProductoService();
+          ArrayList<TipoProducto> lo_tipoProducto = lo_tipoProductoService.listaTipoProductos();
+    %>
           
          <!--Inicio Cuerpo PÃ¡gina-->
     
@@ -73,14 +73,14 @@ Tipo_ProductoService TPS = new Tipo_ProductoService();
   
                             <div>
                                 <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código </label>   
-                                <input id="Codigo" name="Codigo" value="<%=a2.get(0).getCodigo_Producto()%>" type="text" class="tooltips-general material-control" required="" readonly="">
+                                <input id="Codigo" name="Codigo" value="<%=lu_var.get(0).getCodigoProducto()%>" type="text" class="tooltips-general material-control" required="" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 
                             </div>
                             <div>
                                 <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Codigo Presupuestario</label>
-                                <input id="Codigo_P" name="Codigo_P" value="<%=a2.get(0).getCodigo_Presupuestario()%>" type="text" class="tooltips-general material-control" required="" readonly="">
+                                <input id="Codigo_P" name="Codigo_P" value="<%=lu_var.get(0).getCodigoPresupuestario()%>" type="text" class="tooltips-general material-control" required="" readonly="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                
@@ -89,28 +89,28 @@ Tipo_ProductoService TPS = new Tipo_ProductoService();
                                 <br><br>
 
                             <div class="group-material">
-                                <input id="Nombre" name="Nombre" value="<%=a2.get(0).getNombre()%>" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
+                                <input id="Nombre" name="Nombre" value="<%=lu_var.get(0).getNombre()%>" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre</label>
                             </div>
 
                             <div class="group-material">
-                                <input id="Unidad" name="Unidad" value="<%=a2.get(0).getUnidad()%>" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
+                                <input id="Unidad" name="Unidad" value="<%=lu_var.get(0).getUnidad()%>" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Unidad</label>
                             </div>
 
                             <div class="group-material">
-                                <input name="Descripcion" id="Descripcion" value="<%=a2.get(0).getDescripcion()%>" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
+                                <input name="Descripcion" id="Descripcion" value="<%=lu_var.get(0).getDescripcion()%>" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Descripción</label>
                             </div>
 
                             <div class="group-material">
-                                <input id="Precio" name="Precio" value="<%=a2.get(0).getPrecio()%>" type="number" min="1" pattern="[0-9]{1,20}" maxlength="20" class="tooltips-general material-control" required="">
+                                <input id="Precio" name="Precio" value="<%=lu_var.get(0).getPrecio()%>" type="number" min="1" pattern="[0-9]{1,20}" maxlength="20" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Precio</label>
@@ -118,7 +118,7 @@ Tipo_ProductoService TPS = new Tipo_ProductoService();
 
 
                             <div class="group-material">
-                                <input id="Marca" name="Marca" value="<%=a2.get(0).getMarca()%>" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="" >
+                                <input id="Marca" name="Marca" value="<%=lu_var.get(0).getMarca()%>" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="" >
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Marca</label>
@@ -126,14 +126,14 @@ Tipo_ProductoService TPS = new Tipo_ProductoService();
 
 
                             <div class="group-material">
-                                <input id="Fecha" name="Fecha" value="<%=a2.get(0).getGarantia()%>" type="date" class="tooltips-general material-control" required="">
+                                <input id="Fecha" name="Fecha" value="<%=lu_var.get(0).getGarantia()%>" type="date" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Fecha vencimiento de garantía</label>
                             </div>
 
                            <div class="group-material">
-                               <input id="Entrada" name="Entrada" value="<%=a2.get(0).getFecha_Entrada()%>" type="date" class="tooltips-general material-control" required="">
+                               <input id="Entrada" name="Entrada" value="<%=lu_var.get(0).getFechaEntrada()%>" type="date" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Fecha de entrada</label>
@@ -143,8 +143,8 @@ Tipo_ProductoService TPS = new Tipo_ProductoService();
                                 <span>Ubicación</span>
                                 <select id="Ubicacion" name="Ubicacion" class="tooltips-general material-control" data-toggle="tooltip" data-placement="top" title="Elige la ubicación del producto">
                                 <option value="" disabled="" selected="">Selecciona una bodega</option>
-                              <% for(int x=0;x<bodega.size();x++){ %>
-                                    <option  value="<%=bodega.get(x).getNombre_Bodega()%>"><%=bodega.get(x).getNombre_Bodega()%> </option>
+                              <% for(int x=0;x<lo_bodega.size();x++){ %>
+                                    <option  value="<%=lo_bodega.get(x).getNombreBodega()%>"><%=lo_bodega.get(x).getNombreBodega()%> </option>
                                             <% } %>
                                 </select>
                             </div>
@@ -154,13 +154,13 @@ Tipo_ProductoService TPS = new Tipo_ProductoService();
                                 <span>Tipo Producto</span>
                                 <select id="Tipo" name="Tipo" class="tooltips-general material-control" data-toggle="tooltip" data-placement="top" title="Elige la ubicación del producto">
                                 <option value="" disabled="" selected="">Selecciona un tipo Producto</option>
-                                   <% for(int x=0;x<bodega.size();x++){ %>
-                                     <option  value="<%=tipoProducto.get(x).getNombre_Tipo_Producto()%>"><%=tipoProducto.get(x).getNombre_Tipo_Producto()%> </option>
+                                   <% for(int x=0;x<lo_bodega.size();x++){ %>
+                                     <option  value="<%=lo_tipoProducto.get(x).getNombreTipoProducto()%>"><%=lo_tipoProducto.get(x).getNombreTipoProducto()%> </option>
                                            <% } %>
                                 </select>
                             </div>
                                  <div class="group-material">
-                                <input id="tipo" name="Proveedor" value="<%=a2.get(0).getProveedor()%>" type="text" class="tooltips-general material-control" required="">
+                                <input id="tipo" name="Proveedor" value="<%=lu_var.get(0).getProveedor()%>" type="text" class="tooltips-general material-control" required="">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Proveedor</label>

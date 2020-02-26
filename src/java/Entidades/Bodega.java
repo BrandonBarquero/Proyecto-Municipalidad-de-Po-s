@@ -11,31 +11,31 @@ package Entidades;
  */
 public class Bodega {
     
-    private int Id_Bodega;
-    private String Nombre_Bodega;
+    private int pn_idBodega;
+    private String pa_nombreBodega;
 
     public Bodega() {
     }
 
-    public Bodega(int Id_Bodega, String Nombre_Bodega) {
-        this.Id_Bodega = Id_Bodega;
-        this.Nombre_Bodega = Nombre_Bodega;
+    public Bodega(int tn_idBodega, String ta_nombreBodega) {
+        this.pn_idBodega = tn_idBodega;
+        this.pa_nombreBodega = ta_nombreBodega;
     }
 
-    public int getId_Bodega() {
-        return Id_Bodega;
+    public int getIdBodega() {
+        return pn_idBodega;
     }
 
-    public void setId_Bodega(int Id_Bodega) {
-        this.Id_Bodega = Id_Bodega;
+    public void setIdBodega(int tn_idBodega) {
+        this.pn_idBodega = tn_idBodega;
     }
 
-    public String getNombre_Bodega() {
-        return Nombre_Bodega;
+    public String getNombreBodega() {
+        return pa_nombreBodega;
     }
 
-    public void setNombre_Bodega(String Nombre_Bodega) {
-        this.Nombre_Bodega = Nombre_Bodega;
+    public void setNombreBodega(String ta_nombreBodega) {
+        this.pa_nombreBodega = ta_nombreBodega;
     }
     
     

@@ -1,6 +1,6 @@
-<%@page import="Services.Tipo_ProductoService"%>
-<%@page import="Entidades.Tipo_Producto"%>
-<%@page import="Dao.Tipo_ProductoDAO"%>
+<%@page import="Services.TipoProductoService"%>
+<%@page import="Entidades.TipoProducto"%>
+<%@page import="Dao.TipoProductoDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Entidades.Producto"%>
 <%@page import="Entidades.Producto"%>
@@ -15,15 +15,15 @@
 </head>
 <body>
           <%
-         Tipo_ProductoService asd = new Tipo_ProductoService();
-        ArrayList<Tipo_Producto> a2=  asd.listaTipo_Productos();
+             TipoProductoService lo_tipoProductoService = new TipoProductoService();
+             ArrayList<TipoProducto> lo_tipoProducto = lo_tipoProductoService.listaTipoProductos();
           
           %>
  
                <%
-              String Usuario2=(String) session.getAttribute("user");
+              String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -98,14 +98,14 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <% for(int x=0;x<a2.size();x++){ %>
-                                                <td><%=a2.get(x).getNombre_Tipo_Producto()%></td>
-                                                <td><%=a2.get(x).getId_Tipo_Producto()%></td>
+                                                <% for(int ln_x=0;ln_x<lo_tipoProducto.size();ln_x++){ %>
+                                                <td><%=lo_tipoProducto.get(ln_x).getNombreTipoProducto()%></td>
+                                                <td><%=lo_tipoProducto.get(ln_x).getIdTipoProducto()%></td>
                               
 
                                                 
-                                                <td> <a href="ModificarTipoProducto.jsp?Id_Tipo_Producto=<%=a2.get(x).getId_Tipo_Producto()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
-                                                <td> <a href="EliminarTipoProducto?Id_Tipo_Producto=<%=a2.get(x).getId_Tipo_Producto()%>"><button data-href="EliminarTipoProducto?Id_Tipo_Producto=<%=a2.get(x).getId_Tipo_Producto()%>"  data-placement="bottom"    class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
+                                                <td> <a href="ModificarTipoProducto.jsp?Id_Tipo_Producto=<%=lo_tipoProducto.get(ln_x).getIdTipoProducto()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
+                                                <td> <a href="EliminarTipoProducto?Id_Tipo_Producto=<%=lo_tipoProducto.get(ln_x).getIdTipoProducto()%>"><button data-href="EliminarTipoProducto?Id_Tipo_Producto=<%=lo_tipoProducto.get(ln_x).getIdTipoProducto()%>"  data-placement="bottom"    class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
                                             </tr>
                                                        <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>

@@ -14,9 +14,9 @@ import java.util.ArrayList;
  */
 interface ServiceBodegaManager extends ServiceBodega{
     
-    public int Eliminar_Bodega(int Id_Bodega);
-    public int insertar(String nombre);
+    public int eliminarBodega(int tn_idBodega);
+    public int insertar(String ta_nombre);
     public ArrayList<Bodega> listaBodegas();
-    public ArrayList<Bodega> listaBodegasFiltrado(String ID );
-    public int actualizar(Bodega bodega);
+    public ArrayList<Bodega> listaBodegasFiltrado(String ta_ID);
+    public int actualizar(Bodega to_bodega);
 }

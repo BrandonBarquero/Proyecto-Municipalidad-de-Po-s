@@ -7,8 +7,8 @@ package Servlets.Eliminaciones;
  */
 
 import Dao.DepartamentoDAO;
-import Dao.Tipo_ProductoDAO;
-import Services.Tipo_ProductoService;
+import Dao.TipoProductoDAO;
+import Services.TipoProductoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -40,11 +40,11 @@ public class EliminarTipoProducto extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
         
-         int ln_idtipoproducto=Integer.parseInt(request.getParameter("Id_Tipo_Producto"));
+         int ln_idTipoProducto=Integer.parseInt(request.getParameter("Id_Tipo_Producto"));
          
-          Tipo_ProductoService lo_tipoProductodao =new Tipo_ProductoService();
+          TipoProductoService lo_tipoProductodao =new TipoProductoService();
           
-             int ln_var=lo_tipoProductodao.Eliminar_Tipo_Producto(ln_idtipoproducto);
+             int ln_var=lo_tipoProductodao.eliminarTipoProducto(ln_idTipoProducto);
                 if(ln_var>=1){
                 response.sendRedirect("ListarTipoProducto.jsp");
                 }else {

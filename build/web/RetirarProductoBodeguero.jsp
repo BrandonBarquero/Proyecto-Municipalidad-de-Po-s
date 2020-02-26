@@ -10,9 +10,9 @@
 <!DOCTYPE html>
 
      <%
-              String Usuario2=(String) session.getAttribute("user2");
+              String la_Usuario2=(String) session.getAttribute("user2");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -26,10 +26,10 @@
 <body>
     <script>function cal() {
   try {
-    var a = parseInt(document.f.disponible.value),
-        b = parseInt(document.f.cantidadRetirar.value);
-    if((a-b) >= 0){
-            document.f.suma.value = a - b;
+    var ln_a = parseInt(document.f.disponible.value),
+        ln_b = parseInt(document.f.cantidadRetirar.value);
+    if((ln_a-ln_b) >= 0){
+            document.f.suma.value = ln_a - ln_b;
         }else
             alert("La resta es negativa");
     
@@ -39,9 +39,9 @@
         
         <%
          int ln_id=Integer.parseInt(request.getParameter("Codigo_Producto"));
-        int ln_id2=Integer.parseInt(request.getParameter("Cantidad"));
-        DepartamentoService asd = new DepartamentoService();
-        ArrayList<Departamento> a2=  asd.listaDepartamentos();
+         int ln_id2=Integer.parseInt(request.getParameter("Cantidad"));
+         DepartamentoService lo_departamentoService = new DepartamentoService();
+         ArrayList<Departamento> lu_var = lo_departamentoService.listaDepartamentos();
          %>
         <jsp:include page="HeaderBodeguero.jsp"/>
 
@@ -134,8 +134,8 @@ lc_sAhora += "-"+ln_dia;
                             <div class="group-material">
                                 <span>Departamento</span>
                                 <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
-                                     <% for(int x=0;x<a2.size();x++){ %>
-                 <option  value="<%=a2.get(x).getNombreD()%>" </option>
+                                     <% for(int ln_x=0;ln_x<lu_var.size();ln_x++){ %>
+                 <option  value="<%=lu_var.get(ln_x).getNombreD()%>" </option>
                  
                      <% } %>
                                 </select>

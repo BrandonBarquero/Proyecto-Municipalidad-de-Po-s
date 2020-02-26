@@ -12,14 +12,14 @@
 </head>
 <body>
 <%
-       UsuarioService daousuario=new UsuarioService();
-       ArrayList<Usuario> ListaUsuarios=  daousuario.listaUsuariosInactivos();
+       UsuarioService lo_daousuario=new UsuarioService();
+       ArrayList<Usuario> lo_ListaUsuarios = lo_daousuario.listaUsuariosInactivos();
 %>
 
      <%
-              String Usuario2=(String) session.getAttribute("user");
+              String la_Usuario2=(String) session.getAttribute("user");
           
-          if(Usuario2 == null){
+          if(la_Usuario2 == null){
            response.sendRedirect("Error.jsp");
           }
            
@@ -83,20 +83,20 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-               <%    for(int x=0;x<ListaUsuarios.size();x++){   %>
+               <%    for(int ln_x=0;ln_x<lo_ListaUsuarios.size();ln_x++){   %>
                  <tr>
-                     <td><%=ListaUsuarios.get(x).getCedula()%> </td>
-                     <td><%=ListaUsuarios.get(x).getNombre()%> </td>
-                     <td><%=ListaUsuarios.get(x).getCorreo()%> </td>
-                     <td><%=ListaUsuarios.get(x).getTelefono()%> </td>
+                     <td><%=lo_ListaUsuarios.get(ln_x).getCedula()%> </td>
+                     <td><%=lo_ListaUsuarios.get(ln_x).getNombre()%> </td>
+                     <td><%=lo_ListaUsuarios.get(ln_x).getCorreo()%> </td>
+                     <td><%=lo_ListaUsuarios.get(ln_x).getTelefono()%> </td>
    
                      <% 
-                         if(ListaUsuarios.get(x).getRol().equals("1")){%> <td>Administrador </td> <%}%>
+                         if(lo_ListaUsuarios.get(ln_x).getRol().equals("1")){%> <td>Administrador </td> <%}%>
                          
                           <% 
-                         if(ListaUsuarios.get(x).getRol().equals("2")){%> <td>Bodeguero </td> <%}%>
+                         if(lo_ListaUsuarios.get(ln_x).getRol().equals("2")){%> <td>Bodeguero </td> <%}%>
 
-                     <td><a href="ModificarUsuario.jsp?Cedula=<%=ListaUsuarios.get(x).getCedula()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>              
+                     <td><a href="ModificarUsuario.jsp?Cedula=<%=lo_ListaUsuarios.get(ln_x).getCedula()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>              
                      </tr>
                      <% } %>
                      

@@ -44,11 +44,11 @@ public class EliminarDepartamento extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
 
        
-         int ln_iddepartamento=Integer.parseInt(request.getParameter("IdDepartamento"));
+         int ln_idDepartamento=Integer.parseInt(request.getParameter("IdDepartamento"));
         
           DepartamentoService lo_departamentodao =new DepartamentoService();
             
-             int ln_var=lo_departamentodao.Eliminar_Departamento(ln_iddepartamento);
+             int ln_var=lo_departamentodao.eliminarDepartamento(ln_idDepartamento);
             
                
                
