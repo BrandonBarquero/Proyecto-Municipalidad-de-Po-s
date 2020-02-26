@@ -93,7 +93,7 @@
                 
                           
                                                 <td><a href="DetalleProducto.jsp?Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
-                                                <td><a href="Devolucion.jsp?Cantidad=Cantidad=<%=a2.get(x).getCantidad()%>&Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"> <button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-time-restore"></i></button></td>
+                                                <td><a href="Devolucion.jsp?Cantidad=<%=a2.get(x).getCantidad()%>&Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"> <button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-time-restore"></i></button></td>
                                             </tr>
                                                                    <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>
