@@ -1,3 +1,6 @@
+<%@page import="Entidades.Tipo_Producto"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Services.Tipo_ProductoService"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 
@@ -17,13 +20,9 @@
 </head>
 <body>
           <%
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection lu_con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=inventario","test","root");
-         PreparedStatement lu_ps;
-         ResultSet lu_rs;
-         
-         lu_ps=lu_con.prepareStatement("select * from Tipo_Producto");
-         lu_rs=lu_ps.executeQuery();%>
+             Tipo_ProductoService asd = new Tipo_ProductoService();
+        ArrayList<Tipo_Producto> a2=  asd.listaTipo_Productos();
+          %>
  
            <jsp:include page="HeaderBodeguero.jsp"/>
 
@@ -86,13 +85,13 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <%    while(lu_rs.next()){   %>
-                                                <td><%=lu_rs.getString("Nombre_Tipo_Producto")%></td>
-                                                <td><%=lu_rs.getString("Id_Tipo_Producto")%></td>
+                                                                <% for(int x=0;x<a2.size();x++){ %>
+                                                 <td><%=a2.get(x).getNombre_Tipo_Producto()%></td>
+                                                  <td><%=a2.get(x).getId_Tipo_Producto()%></td>
                               
 
                                                 
-                                                <td> <a href="ModificarTipoProductoBodeguero.jsp?Id_Tipo_Producto=<%=lu_rs.getString("Id_Tipo_Producto")%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
+                                                <td> <a href="ModificarTipoProductoBodeguero.jsp?Id_Tipo_Producto=<%=a2.get(x).getId_Tipo_Producto()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
                                                 
                                             </tr>
                                                                  <!--TR EXTRA-->                                  
