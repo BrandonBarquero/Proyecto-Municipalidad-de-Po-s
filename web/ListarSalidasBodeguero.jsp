@@ -86,16 +86,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr><%    while(lu_rs.next()){   %>
+                                     <tr><% for(int x=0;x<a2.size();x++){ %>
                                                 
-                        <td><%=lu_rs.getString("Nombre")%> </td>                        
-                     <td><%=lu_rs.getString("Codigo_Producto")%> </td>
-                      <td><%=lu_rs.getString("Descripcion")%> </td>
+                             <td><%=a2.get(x).getNombre()%></td>                       
+                         <td><%=a2.get(x).getCodigo_Producto()%></td>
+                            <td><%=a2.get(x).getDescripcion()%></td>
+                  
                   
                 
                           
-                                                <td><a href="DetalleProductoBodeguero.jsp?Codigo_Producto=<%=lu_rs.getString("Codigo_Producto")%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
-                                                <td><a href="DevolucionBodeguero.jsp??Cantidad=<%=lu_rs.getString("cantidad")%>&Codigo_Producto=<%=lu_rs.getString("Codigo_Producto")%>"> <button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-time-restore"></i></button></td>
+                                                <td><a href="DetalleProductoBodeguero.jsp?Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"><button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title="Detalles del producto"><i class="zmdi zmdi-file-text"></i></button></td>
+                                                <td><a href="DevolucionBodeguero.jsp??Cantidad=<%=a2.get(x).getCantidad()%>&Codigo_Producto=<%=a2.get(x).getCodigo_Producto()%>"> <button type="submit" class="btn btn-info tooltips-general" data-toggle="tooltip" data-placement="top" title=""><i class="zmdi zmdi-time-restore"></i></button></td>
                                             </tr>
                                                                    <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>
