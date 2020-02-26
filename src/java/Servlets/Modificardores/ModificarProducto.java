@@ -61,7 +61,7 @@ public class ModificarProducto extends HttpServlet {
         (la_codigoPresupuestario,  la_codigoProducto,  la_nombreProducto,  la_unidad,  la_descripcion,  la_precioProducto, 
                    la_marcaProducto,  la_entrada,  la_ubicacion,  la_tipo,  la_fecha,  la_proveedor); 
         
-          ProductoDAO lo_productodao = new ProductoDAO();
+          ProductoService lo_productodao = new ProductoService();
           int ln_var=lo_productodao.actualizar(lo_producto);
            if(ln_var>=1){
                 response.sendRedirect("ListarProductos.jsp");
