@@ -43,7 +43,7 @@ public class IngresoProducto extends HttpServlet {
             throws ServletException, IOException, Exception {
             PrintWriter out = response.getWriter();
             HttpSession session= request.getSession(true);
-             String lc_Usuario2=(String) session.getAttribute("Nombre");
+            
              
             String la_codigoProducto=request.getParameter("Codigo_Producto");
             String la_codigoPresupuestario=request.getParameter("Presupuestario");
@@ -58,6 +58,7 @@ public class IngresoProducto extends HttpServlet {
             String la_tipoProducto=request.getParameter("Tipo");
             String la_garantia=request.getParameter("Garantia");
             String la_proveedor=request.getParameter("Proveedor");
+             String lc_Usuario2=request.getParameter("Responsable");
             
             Producto lo_producto = new Producto(la_codigoProducto,la_codigoPresupuestario,la_nombre,la_unidad,la_descripcion,la_precio
                     ,la_cantidad,la_marca,ld_fechaEntrada,la_ubicacion,la_tipoProducto,la_garantia,la_proveedor);

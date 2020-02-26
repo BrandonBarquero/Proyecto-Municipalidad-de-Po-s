@@ -16,6 +16,7 @@
 <body>
      <%
                  String Usuario2=(String) session.getAttribute("user");
+                 String UsuarioNombre = (String) session.getAttribute("user5");
           
           if(Usuario2 == null){
            response.sendRedirect("Error.jsp");
@@ -132,6 +133,12 @@ Tipo_ProductoService TPS = new Tipo_ProductoService();
                                 <span class="bar"></span>
                                 <label>Fecha vencimiento de garantía</label>
                             </div>
+                            
+                            
+                        
+                                 <input value="<%=UsuarioNombre%>" id="Responsable" name="Responsable"  type="hidden" class="tooltips-general material-control" >
+                     
+                        
                  <% Calendar lu_ahora = Calendar.getInstance();
 int ln_anyo = lu_ahora.get(Calendar.YEAR);
 int ln_mes = lu_ahora.get(Calendar.MONTH) +1;
