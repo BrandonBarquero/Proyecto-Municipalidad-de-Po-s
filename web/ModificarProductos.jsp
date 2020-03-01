@@ -78,6 +78,7 @@
                                 <span class="bar"></span>
                                 
                             </div>
+                                <br>
                             <div>
                                 <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Codigo Presupuestario</label>
                                 <input id="Codigo_P" name="Codigo_P" value="<%=lu_var.get(0).getCodigoPresupuestario()%>" type="text" class="tooltips-general material-control" required="" readonly="">
