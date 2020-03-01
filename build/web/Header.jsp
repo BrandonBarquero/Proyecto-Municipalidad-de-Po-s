@@ -78,7 +78,7 @@
         <img src="assets/img/user.png" alt="user-picture" class="img-responsive img-circle center-box">
                 </figure>
                    
-                <a href="UsuarioInfo.jsp">Dele aqui</a>
+             <!--   <a href="UsuarioInfo.jsp">Dele aqui</a> -->
              
                 
                 <li style="color:#fff; cursor:default;">

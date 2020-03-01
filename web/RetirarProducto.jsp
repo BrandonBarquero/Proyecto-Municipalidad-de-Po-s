@@ -78,7 +78,27 @@
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                             <legend><strong>Retirar Producto</strong></legend><br>
-
+                            
+                               <div>
+                                <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código de producto</label>               
+                                <input readonly="" value="<%=ln_id%>" readonly="" id="codigoProducto" name="codigoProducto" type="text" class="tooltips-general material-control" required="">
+                            </div>
+                            <br><br>
+                            
+                              <div class="group-material">
+                                <input id="responsable" name="responsable" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
+                                <label>Responsable</label>
+                            </div>
+                                
+                                  <div class="group-material">
+                                <span>Departamento</span>
+                                <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
+                                        <% for(int ln_x=0;ln_x<lu_var.size();ln_x++){ %>
+                 <option  value="<%=lu_var.get(ln_x).getNombreD()%>"> <%=lu_var.get(ln_x).getNombreD()%></option>
+                 
+                     <% } %>
+                                </select>
+ </div>
                             <div>
                                 <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Cantidad disponible</label>
                                 <input readonly="" onchange="cal();" id="disponible" name="disponible" readonly value="<%=ln_id2%>" type="text" class="tooltips-general material-control" required="">
@@ -95,19 +115,6 @@
                                 <input readonly="" id="suma" name="suma" type="text" class="tooltips-general material-control" required="" readonly="">
                                 <label  style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Nueva cantidad disponible</label>
                             </div>
-
-                            <div>
-                                <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código de producto</label>               
-                                <input readonly="" value="<%=ln_id%>" readonly="" id="codigoProducto" name="codigoProducto" type="text" class="tooltips-general material-control" required="">
-                            </div>
-                                
-                            <br><br>
-
-                            <div class="group-material">
-                                <input id="responsable" name="responsable" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
-                                <label>Responsable</label>
-                            </div>
-
             
                              <% Calendar ahora = Calendar.getInstance();
 int ln_anyo = ahora.get(Calendar.YEAR);
@@ -134,15 +141,8 @@ lc_sAhora += "-"+ln_dia;
           
 
 
-                            <div class="group-material">
-                                <span>Departamento</span>
-                                <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
-                                        <% for(int ln_x=0;ln_x<lu_var.size();ln_x++){ %>
-                 <option  value="<%=lu_var.get(ln_x).getNombreD()%>"> <%=lu_var.get(ln_x).getNombreD()%></option>
-                 
-                     <% } %>
-                                </select>
-                            </div>
+                      
+                           
                        
                             <p class="text-center">
                                 <button type="submit" class="btn btn-primary retirar"><i class="zmdi zmdi-format-valign-bottom"></i> &nbsp;&nbsp; Retirar Producto</button>
