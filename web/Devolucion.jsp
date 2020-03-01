@@ -85,7 +85,16 @@ lc_sAhora += "-"+ln_dia;
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                            <legend><strong>Devolver Producto</strong></legend><br>
-
+                           
+                           
+                           <div class="group-material">
+                               <input name="codigo" id="codigo" value="<%=ln_id%>" type="text" class="tooltips-general material-control" required="" readonly="">
+                               <label style=" top:-20px; font-size:17px; font-weight: 700; color:#333; font-weight: normal;"> Código de producto</label>
+                           </div>
+                                 <div class="group-material">
+                               <input id="responsable" name="responsable" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
+                               <label>Responsable</label>
+                           </div>
 
                            <label style=" top:-20px; font-size:17px; font-weight: 700; color:#333; font-weight: normal;">Motivo de devolución</label>
                            <div class="group-material">
@@ -107,15 +116,9 @@ lc_sAhora += "-"+ln_dia;
                                <label  style=" top:-20px; font-size:17px; font-weight: 700; color:#333; font-weight: normal;"> Cantidad final </label>
                            </div>
                              
-                           <div class="group-material">
-                               <input name="codigo" id="codigo" value="<%=ln_id%>" type="text" class="tooltips-general material-control" required="" readonly="">
-                               <label style=" top:-20px; font-size:17px; font-weight: 700; color:#333; font-weight: normal;"> Código de producto</label>
-                           </div>
+                           
                                
-                           <div class="group-material">
-                               <input id="responsable" name="responsable" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
-                               <label>Responsable</label>
-                           </div>
+                         
 
 
                            <div>
