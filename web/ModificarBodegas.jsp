@@ -27,7 +27,7 @@
             <div class="page-header">
               <h1 class="all-tittles">SIM<small> Modificar Bodega</small></h1>
             </div>
-        </div> String ln_id=request.getParameter("Id_Bodega");
+        </div>
  <%
           String ln_id=request.getParameter("Id_Bodega");
           BodegaService lo_bodegaService = new BodegaService();
