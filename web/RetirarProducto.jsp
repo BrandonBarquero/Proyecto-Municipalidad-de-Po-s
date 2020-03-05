@@ -131,11 +131,9 @@ lc_sAhora += "-0" + ln_dia;
 } else {
 lc_sAhora += "-"+ln_dia;
 } %>
-                            <div>
-                                <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Fecha de Salida</label>
-                                 <input id="date" name="date" value="<%=lc_sAhora%>" readonly type="date" class="tooltips-general material-control" required="">
-                            </div>
-                 
+                            
+                                 <input type="hidden" id="date" name="date" value="<%=lc_sAhora%>" readonly type="date" class="tooltips-general material-control" required="">
+                        
                  <br><br>
 
           

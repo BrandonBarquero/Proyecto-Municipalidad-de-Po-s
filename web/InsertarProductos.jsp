@@ -154,13 +154,9 @@ lc_sAhora += "-0" + ln_dia;
 } else {
 lc_sAhora += "-"+ln_dia;
 } %>
-                                <div class="group-material">
-                                    <input value="<%=lc_sAhora%>" required="" id="Fecha" name="Fecha" type="date" class="tooltips-general material-control" placeholder="Fecha entrada del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la fecha de entrada del producto">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Fecha de entrada</label>
-                            </div>
-
+                           
+                                    <input type="hidden" value="<%=lc_sAhora%>" required="" id="Fecha" name="Fecha" type="date" class="tooltips-general material-control" placeholder="Fecha entrada del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la fecha de entrada del producto">
+                         
                             <div class="group-material">
                                 <span>Ubicación</span>
                                 <select id="Ubicacion" name="Ubicacion" class="tooltips-general material-control" data-toggle="tooltip" data-placement="top" title="Elige la ubicación del producto">
