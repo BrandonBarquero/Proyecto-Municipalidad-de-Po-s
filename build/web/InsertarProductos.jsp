@@ -175,7 +175,7 @@ lc_sAhora += "-"+ln_dia;
                                 <span>Tipo Producto</span>
                                 <select id="Tipo" name="Tipo" class="tooltips-general material-control" data-toggle="tooltip" data-placement="top" title="Elige la ubicación del producto">
                                 <option value="" disabled="" selected="">Selecciona un tipo Producto</option>
-                                   <% for(int ln_x=0;ln_x<lo_bodega.size();ln_x++){ %>
+                                   <% for(int ln_x=0;ln_x<lo_tipoProducto.size();ln_x++){ %>
                                      <option  value="<%=lo_tipoProducto.get(ln_x).getNombreTipoProducto()%>"><%=lo_tipoProducto.get(ln_x).getNombreTipoProducto()%> </option>
                                            <% } %>
                                 </select>
