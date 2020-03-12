@@ -46,6 +46,17 @@
               <h1 class="all-tittles">SIM<small> Gastos por departamento</small></h1>
             </div>
         </div>
+         
+                 <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 lead">
+                    <ol class="breadcrumb">
+                     <li><a href="FECHAS.jsp">Gráfica de Gastos</a></li>
+                      <li class="active">Lista de Gastos</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
 
         <div class="container-fluid"  style="margin: 50px 0;">
             <div class="row">

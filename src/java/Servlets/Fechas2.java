@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Allan
+ * @author barqu
  */
-@WebServlet(name = "Fechas", urlPatterns = {"/Fechas"})
-public class Fechas extends HttpServlet {
+@WebServlet(name = "Fechas2", urlPatterns = {"/Fechas2"})
+public class Fechas2 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +32,7 @@ public class Fechas extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-             String dia1= request.getParameter("dia1");
+                String dia1= request.getParameter("dia1");
                 String mes1= request.getParameter("mes1");
                 String ano1= request.getParameter("ano1");
                 String dia2= request.getParameter("dia2");
@@ -44,8 +44,8 @@ public class Fechas extends HttpServlet {
                String x=ano1+mes1+dia1;
                String y=ano2+mes2+dia2;
         
-        response.sendRedirect("Gastos.jsp?Inicio="+x+"&Final="+y);
-        
+        response.sendRedirect("GastosLista.jsp?Inicio="+x+"&Final="+y);
+  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
