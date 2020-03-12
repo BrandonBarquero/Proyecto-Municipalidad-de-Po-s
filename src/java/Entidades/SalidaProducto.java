@@ -16,17 +16,69 @@ public class SalidaProducto {
     private int pn_cantidadSalida;
     private String pa_codigoProducto;
     private String pa_Responsable;
+    private String pa_Precio;
 
     public SalidaProducto() {
     }
 
-    public SalidaProducto(String ta_fechaSalida, String ta_Departamento, int tn_cantidadSalida, String ta_codigoProducto, String ta_Responsable) {
-        this.pa_fechaSalida = ta_fechaSalida;
-        this.pa_Departamento = ta_Departamento;
-        this.pn_cantidadSalida = tn_cantidadSalida;
-        this.pa_codigoProducto = ta_codigoProducto;
-        this.pa_Responsable = ta_Responsable;
+    public SalidaProducto(String pa_fechaSalida, String pa_Departamento, int pn_cantidadSalida, String pa_codigoProducto, String pa_Responsable, String pa_Precio) {
+        this.pa_fechaSalida = pa_fechaSalida;
+        this.pa_Departamento = pa_Departamento;
+        this.pn_cantidadSalida = pn_cantidadSalida;
+        this.pa_codigoProducto = pa_codigoProducto;
+        this.pa_Responsable = pa_Responsable;
+        this.pa_Precio = pa_Precio;
     }
+
+    public String getPa_fechaSalida() {
+        return pa_fechaSalida;
+    }
+
+    public void setPa_fechaSalida(String pa_fechaSalida) {
+        this.pa_fechaSalida = pa_fechaSalida;
+    }
+
+    public String getPa_Departamento() {
+        return pa_Departamento;
+    }
+
+    public void setPa_Departamento(String pa_Departamento) {
+        this.pa_Departamento = pa_Departamento;
+    }
+
+    public int getPn_cantidadSalida() {
+        return pn_cantidadSalida;
+    }
+
+    public void setPn_cantidadSalida(int pn_cantidadSalida) {
+        this.pn_cantidadSalida = pn_cantidadSalida;
+    }
+
+    public String getPa_codigoProducto() {
+        return pa_codigoProducto;
+    }
+
+    public void setPa_codigoProducto(String pa_codigoProducto) {
+        this.pa_codigoProducto = pa_codigoProducto;
+    }
+
+    public String getPa_Responsable() {
+        return pa_Responsable;
+    }
+
+    public void setPa_Responsable(String pa_Responsable) {
+        this.pa_Responsable = pa_Responsable;
+    }
+
+    public String getPa_Precio() {
+        return pa_Precio;
+    }
+
+    public void setPa_Precio(String pa_Precio) {
+        this.pa_Precio = pa_Precio;
+    }
+
+ 
 
     public String getFechaSalida() {
         return pa_fechaSalida;

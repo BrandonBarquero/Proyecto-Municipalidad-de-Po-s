@@ -1,9 +1,72 @@
+<%@page import="Dao.SalidaProductoDAO"%>
+<%@page import="Entidades.SalidaProducto"%>
+<%@page import="Services.SalidaProductoService"%>
+<%@page import="Entidades.Producto"%>
+<%@page import="Services.ProductoService"%>
+<%@page import="Entidades.Departamento"%>
+<%@page import="Services.DepartamentoService"%>
 <!DOCTYPE html>
+<%@ page import="java.util.*" %>
+<%@ page import="com.google.gson.Gson"%>
+<%@ page import="com.google.gson.JsonObject"%>
 <html lang="es">
 <head>
     <title>Gastos</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%
+Gson gsonObj = new Gson();
+Map<Object,Object> map = null;
+List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
+
+ DepartamentoService lo_departamentoService = new DepartamentoService();
+ ArrayList<Departamento> lo_departamento = lo_departamentoService.listaDepartamentos();
+ 
+ String Inicio=request.getParameter("Inicio");
+ String Final=request.getParameter("Final");
+ 
+ SalidaProductoDAO lo_productoService = new SalidaProductoDAO();
+  ArrayList<SalidaProducto> lo_producto = null;
+  int saldo=0;
+ for(int x=0; x<lo_departamento.size();x++){
+lo_producto=lo_productoService.listaSalidaProductosFiltrado(lo_departamento.get(x).getNombreD(),Inicio,Final);
+ 
+ for(int t=0; t<lo_producto.size();t++){
+ saldo+= lo_producto.get(t).getCantidadSalida()*Integer.valueOf(lo_producto.get(t).getPa_Precio());
+ }
+ map = new HashMap<Object,Object>(); map.put("label", lo_departamento.get(x).getNombreD()); map.put("y", saldo); list.add(map);
+ saldo=0;
+ }
+
+ 
+
+
+ 
+String dataPoints = gsonObj.toJson(list);
+%>
+    <script type="text/javascript">
+window.onload = function() { 
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	title: {
+		text: "Gastos por Departamento"
+	},
+	axisX: {
+		title: "Departamentos"
+	},
+	axisY: {
+		title:"Gastos en Colones"
+	},
+	data: [{
+		type: "column",
+		yValueFormatString: "¢#, Colones",
+		dataPoints: <%out.print(dataPoints);%>
+	}]
+});
+chart.render();
+ 
+}
+</script>
 </head>
 <body>
         <jsp:include page="Header.jsp"/>
@@ -48,40 +111,13 @@
 
 <br>
                                 <div class="table-responsive">
-                                    <table class="table table-hover text-center">
-                                        <thead>
-                                            <tr class="success">
-                                                <th class="text-center">Nombre</th>
-                                                <th class="text-center">Cantidad de materiales</th>
-                                                <th class="text-center">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Test</td>
-                                                <td>Test</td>
-                                                <td>Test</td>
-                                            </tr>
-                                    
-                                        </tbody>
-                                    </table>
+ <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                                 </div>
                             </div>
                         </div>
 
-
-
-
-
-
-                        
-
-
-           
-
-
            <!--Fin Cuerpo PÃ¡gina-->
-
 
          <jsp:include page="Footer.jsp"/>
     </div>

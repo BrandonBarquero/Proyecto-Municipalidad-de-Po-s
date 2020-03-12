@@ -15,10 +15,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%
-Gson gsonObj = new Gson();
-Map<Object,Object> map = null;
-List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
-
  DepartamentoService lo_departamentoService = new DepartamentoService();
  ArrayList<Departamento> lo_departamento = lo_departamentoService.listaDepartamentos();
  
@@ -28,44 +24,8 @@ List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
  SalidaProductoDAO lo_productoService = new SalidaProductoDAO();
   ArrayList<SalidaProducto> lo_producto = null;
   int saldo=0;
- for(int x=0; x<lo_departamento.size();x++){
-lo_producto=lo_productoService.listaSalidaProductosFiltrado(lo_departamento.get(x).getNombreD(),Inicio,Final);
- 
- for(int t=0; t<lo_producto.size();t++){
- saldo+= lo_producto.get(t).getCantidadSalida()*Integer.valueOf(lo_producto.get(t).getPa_Precio());
- }
- map = new HashMap<Object,Object>(); map.put("label", lo_departamento.get(x).getNombreD()); map.put("y", saldo); list.add(map);
- saldo=0;
- }
-
- 
-
-
- 
-String dataPoints = gsonObj.toJson(list);
 %>
     <script type="text/javascript">
-window.onload = function() { 
- 
-var chart = new CanvasJS.Chart("chartContainer", {
-	title: {
-		text: "Gastos por Departamento"
-	},
-	axisX: {
-		title: "Departamentos"
-	},
-	axisY: {
-		title:"Gastos en Colones"
-	},
-	data: [{
-		type: "column",
-		yValueFormatString: "¢#, Colones",
-		dataPoints: <%out.print(dataPoints);%>
-	}]
-});
-chart.render();
- 
-}
 </script>
 </head>
 <body>
@@ -111,8 +71,42 @@ chart.render();
 
 <br>
                                 <div class="table-responsive">
- <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                                    <form action="pdf">
+                                        <input type="" name="Inicio" readonly="" value="<%=Inicio%>"  />
+                                        <input type="" name="Final" readonly="" value="<%=Final%>"  />
+                                        
+                                        <input type="submit" value="Generar Reporte"  />
+                                    </form>
+                                    <table border="1">
+                                        <%
+  for(int x=0; x<lo_departamento.size();x++){
+lo_producto=lo_productoService.listaSalidaProductosFiltrado(lo_departamento.get(x).getNombreD(),Inicio,Final);
+ 
+ for(int t=0; t<lo_producto.size();t++){
+ saldo+= lo_producto.get(t).getCantidadSalida()*Integer.valueOf(lo_producto.get(t).getPa_Precio());
+ }
+ %>
+                <tbody>
+                                           
+                                            <tr>
+                                                
+                                                <td><%=lo_departamento.get(x).getNombreD()%></td>
+                                                <td><%=saldo%></td>
+                                            </tr>
+                                        </tbody>                          
+             <%                           
+                                        
+ saldo=0;
+ }
+                                        
+                                        %>
+                                      
+                                    </table>
+
+                                    
+                                    
+                                    
+                                    
                                 </div>
                             </div>
                         </div>

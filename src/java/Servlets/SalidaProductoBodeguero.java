@@ -51,10 +51,10 @@ public class SalidaProductoBodeguero extends HttpServlet {
             String ld_date=request.getParameter("date");
             String la_departamento=request.getParameter("departamento");
             String la_nuevaCantidad=request.getParameter("cantidadRetirar");
-        
+        String Precio=request.getParameter("Precio");
           int ln_numero = Integer.parseInt(la_suma);
           
-           SalidaProducto lo_salidaProducto = new SalidaProducto(ld_date,la_departamento,ln_numero,ln_codigoProducto,la_resta);
+           SalidaProducto lo_salidaProducto = new SalidaProducto(ld_date,la_departamento,ln_numero,ln_codigoProducto,la_resta,Precio);
             
              SalidaProductoService lo_salidaProductodao =new SalidaProductoService();
              ProductoService lo_productodao =new ProductoService();

@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Entidades.Departamento;
 import Entidades.Producto;
 import Entidades.SalidaProducto;
 import java.sql.Connection;
@@ -62,5 +63,25 @@ public class SalidaProductoDAO {
         ll_ps.close();
         return ln_r;
 }
+        
+          public ArrayList<SalidaProducto> listaSalidaProductosFiltrado(String ta_id, String Inicio,String Final) {
+        ArrayList<SalidaProducto> lo_SalidaProductos = new ArrayList<SalidaProducto>();
+        try {
+            ll_ps=pl_connection.prepareStatement("select * from Salida_Producto where Departamento='"+ta_id+"' and Fecha_Salida between '"+Inicio+"' and '"+Final+"'");
+            ll_resultSet = ll_ps.executeQuery();
+            while(ll_resultSet.next()) {
+                SalidaProducto lo_SalidaProducto = new SalidaProducto();
+                lo_SalidaProducto.setPa_Precio(ll_resultSet.getString("Precio"));
+                lo_SalidaProducto.setPn_cantidadSalida(ll_resultSet.getInt("Cantidad_Salida"));
+                lo_SalidaProductos.add(lo_SalidaProducto);
+            }ll_ps.close();
+            ll_resultSet.close();
+            return lo_SalidaProductos;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }  
      
 }

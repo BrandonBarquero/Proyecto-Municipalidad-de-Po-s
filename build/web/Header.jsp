@@ -56,7 +56,7 @@
                         </ul>
                     </li>
                    <li><a href="Bitacora.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-file-text zmdi-hc-fw" ></i>&nbsp;&nbsp; Bitacora</a></li>
-                    <li><a href="Gastos.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-trending-up zmdi-hc-fw" ></i>&nbsp;&nbsp; Gastos</a></li>
+                    <li><a href="FECHAS.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-trending-up zmdi-hc-fw" ></i>&nbsp;&nbsp; Gastos</a></li>
                     <li><a href="ListarDepartamentos.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-city-alt zmdi-hc-fw" ></i>&nbsp;&nbsp; Departamentos</a></li>
                     <li><a href="ListarBodegas.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-local-store zmdi-hc-fw" ></i>&nbsp;&nbsp; Bodegas</a></li>
                

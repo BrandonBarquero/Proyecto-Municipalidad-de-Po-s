@@ -89,6 +89,10 @@
                                 <input id="responsable" name="responsable" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
                                 <label>Responsable</label>
                             </div>
+                            <div class="group-material">
+                                <input id="responsable" name="precio" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
+                                <label>Precio</label>
+                            </div>
                                 
                                   <div class="group-material">
                                 <span>Departamento</span>
