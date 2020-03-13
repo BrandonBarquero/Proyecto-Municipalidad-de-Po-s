@@ -55,6 +55,13 @@
                             <li><a href="ListarProveedores.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Listar Proveedor</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <div class="dropdown-menu-button" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-ruler zmdi-hc-fw"></i>&nbsp;&nbsp;Unidades<i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
+                        <ul class="list-unstyled">
+                            <li><a href="InsertarUnidad.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-plus-circle"></i>&nbsp;&nbsp; Insertar Unidad</a></li>
+                            <li><a href="ListarUnidades.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Listar Unidades</a></li>
+                        </ul>
+                    </li>
                    <li><a href="Bitacora.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-file-text zmdi-hc-fw" ></i>&nbsp;&nbsp; Bitacora</a></li>
                     <li><a href="FECHAS.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-trending-up zmdi-hc-fw" ></i>&nbsp;&nbsp; Gastos</a></li>
                     <li><a href="ListarDepartamentos.jsp" style=" font-size: 18px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);"><i class="zmdi zmdi-city-alt zmdi-hc-fw" ></i>&nbsp;&nbsp; Departamentos</a></li>

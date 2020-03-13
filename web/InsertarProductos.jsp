@@ -1,3 +1,5 @@
+<%@page import="Entidades.Unidad"%>
+<%@page import="Services.UnidadService"%>
 <%@page import="Entidades.TipoProducto"%>
 <%@page import="Services.TipoProductoService"%>
 <%@page import="Entidades.Bodega"%>
@@ -25,6 +27,9 @@
           %>
     
     <%
+        UnidadService lo_unidadService = new UnidadService();
+        ArrayList<Unidad> lo_unidad = lo_unidadService.listaUnidad();
+        
         BodegaService lo_bodegaService = new BodegaService();
         ArrayList<Bodega> lo_bodega = lo_bodegaService.listaBodegas();
         
@@ -78,21 +83,26 @@
                             </div>
 
                             <div class="group-material">
-                                <input id="nombre" name="nombre" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ1234567890\s]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí el nombre del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del producto">
+                                <input id="nombre" name="nombre" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí el nombre del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe el nombre del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nombre</label>
                             </div>
 
+                            
                             <div class="group-material">
-                                <input id="Unidad" name="Unidad" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí la unidad del producto" required="" maxlength="6" data-toggle="tooltip" data-placement="top" title="Escribe la unidad o del producto">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Unidad</label>
+                                <span>Unidad</span>
+                                <select id="Unidad" name="Unidad" class="tooltips-general material-control" data-toggle="tooltip" data-placement="top" title="Elige la unidad del producto">
+                                <option value="" disabled="" selected="">Selecciona una unidad</option>
+                              <% for(int ln_x=0;ln_x<lo_unidad.size();ln_x++){ %>
+                                    <option  value="<%=lo_unidad.get(ln_x).getNombreUnidad()%>"><%=lo_unidad.get(ln_x).getNombreUnidad()%> </option>
+                                            <% } %>
+                                </select>
                             </div>
+                            
 
                             <div class="group-material">
-                                <input id="Descripcion" name="Descripcion" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ1234567890\s]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí la descripción del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la descripción del producto">
+                                <input id="Descripcion" name="Descripcion" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" class="tooltips-general material-control" placeholder="Escriba aquí la descripción del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escribe la descripción del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Descripción</label>
@@ -113,14 +123,14 @@
                             </div>
 
                             <div class="group-material">
-                                <input id="Marca" name="Marca" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ1234567890\s]{1,70}" class="tooltips-general material-control" placeholder="Escribe aquí la marca del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba la marca del producto">
+                                <input id="Marca" name="Marca" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" class="tooltips-general material-control" placeholder="Escribe aquí la marca del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba la marca del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Marca</label>
                             </div>
 
                             <div class="group-material">
-                                <input id="Proveedor" name="Proveedor" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ1234567890\s]{1,70}" class="tooltips-general material-control" placeholder="Escribe aquí el proveedor del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba el proveedor del producto">
+                                <input id="Proveedor" name="Proveedor" type="text" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{1,70}" class="tooltips-general material-control" placeholder="Escribe aquí el proveedor del producto" required="" maxlength="70" data-toggle="tooltip" data-placement="top" title="Escriba el proveedor del producto">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Proveedor</label>
