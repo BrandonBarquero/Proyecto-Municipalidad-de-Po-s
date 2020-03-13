@@ -90,9 +90,9 @@ public class pdf extends HttpServlet {
             documento.add(par1);
             
             
-            Image imagenes = Image.getInstance("C:\\Users\\Allan\\Documents\\NetBeansProjects\\Proyecto-Municipalidad-de-Po-s\\web\\assets\\img\\muni.png");
-            imagenes.setAlignment(Element.ALIGN_CENTER);
-            documento.add(imagenes);
+            //Image imagenes = Image.getInstance("C:\\Users\\Allan\\Documents\\NetBeansProjects\\Proyecto-Municipalidad-de-Po-s\\web\\assets\\img\\muni.png");
+          //  imagenes.setAlignment(Element.ALIGN_CENTER);
+          // documento.add(imagenes);
             
              PdfPTable tabla = new PdfPTable(2);
             

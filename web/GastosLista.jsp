@@ -81,29 +81,39 @@
 </div>
 
 <br>
-                                <div class="table-responsive">
-                                    <form action="pdf">
-                                        <input type="" name="Inicio" readonly="" value="<%=Inicio%>"  />
-                                        <input type="" name="Final" readonly="" value="<%=Final%>"  />
-                                        
-                                        <input type="submit" value="Generar Reporte"  />
+
+                                      <form action="pdf">
+                                        <input type="hidden" type="" name="Inicio" readonly="" value="<%=Inicio%>"  />
+                                        <input type="hidden" name="Final" readonly="" value="<%=Final%>"  />
+                                        <center>
+                                        <input class="btn btn-danger" type="submit" value="Generar Reporte"  />
+                                        </center>
+                                        <br><br>
                                     </form>
-                                    <table border="1">
-                                        <%
+                                        
+                                                            <%
   for(int x=0; x<lo_departamento.size();x++){
 lo_producto=lo_productoService.listaSalidaProductosFiltrado(lo_departamento.get(x).getNombreD(),Inicio,Final);
  
  for(int t=0; t<lo_producto.size();t++){
  saldo+= lo_producto.get(t).getCantidadSalida()*Integer.valueOf(lo_producto.get(t).getPa_Precio());
  }
- %>
-                <tbody>
+ %>                 
+
+                                <div class="table-responsive">
+                             <table id="datos" class="table table-hover text-center">
+                                   <thead>
+                                            <tr class="success">
+                                                <th class="text-center">Departamento</th>
+                                                <th class="text-center">Total</th>
+         </tr>
+                                        </thead>
                                            
-                                            <tr>
-                                                
+                                <tbody>
+                                    <tr>
                                                 <td><%=lo_departamento.get(x).getNombreD()%></td>
                                                 <td><%=saldo%></td>
-                                            </tr>
+                                    </tr>
                                         </tbody>                          
              <%                           
                                         
