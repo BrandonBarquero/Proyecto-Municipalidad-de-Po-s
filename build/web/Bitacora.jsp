@@ -52,6 +52,9 @@
                       <li class="active">Entradas</li>
                       <li><a href="Bitacora2.jsp">Salidas</a></li>
                       <li><a href="Bitacora3.jsp">Devoluciones</a></li>
+                       <li><a href="Bitacora4.jsp">Acceso al sistema</a></li>
+                       <li><a href="Bitacora5.jsp">Productos Desechos</a></li>
+                       <li><a href="Bitacora6.jsp">Eliminaciones</a></li>
                     </ol>
                 </div>
             </div>

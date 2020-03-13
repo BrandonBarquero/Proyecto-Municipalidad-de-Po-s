@@ -92,7 +92,7 @@
 
                                                 
                                                 <td> <a href="ModificarBodegas.jsp?Id_Bodega=<%=lu_var.get(ln_x).getIdBodega()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
-                                                <td> <a href="EliminarBodega?Id_Bodega=<%=lu_var.get(ln_x).getIdBodega()%>"><button   data-href="EliminarBodega?Id_Bodega=<%=lu_var.get(ln_x).getIdBodega()%>" data-placement="bottom"   class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
+                                                <td> <a href="EliminarBodega?Id_Bodega=<%=lu_var.get(ln_x).getIdBodega()%>&Nombre=<%=lu_var.get(ln_x).getNombreBodega()%>"><button   data-href="EliminarBodega?Id_Bodega=<%=lu_var.get(ln_x).getIdBodega()%>&Nombre=<%=lu_var.get(ln_x).getNombreBodega()%>"" data-placement="bottom"   class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
                                             </tr>
                                                                   <!--TR EXTRA-->                                  
           <tr style="align-items: center" class='noSearch hide'>

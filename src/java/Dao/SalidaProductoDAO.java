@@ -53,12 +53,13 @@ public class SalidaProductoDAO {
      
         public int insertar(SalidaProducto to_salidaProducto) throws ClassNotFoundException, SQLException  {
                
-        ll_ps= pl_connection.prepareStatement("insert into Salida_Producto(Fecha_Salida,Departamento,Cantidad_Salida,Codigo_Producto,Responsable)values(?,?,?,?,?)");
+        ll_ps= pl_connection.prepareStatement("insert into Salida_Producto(Fecha_Salida,Departamento,Cantidad_Salida,Codigo_Producto,Responsable,Precio)values(?,?,?,?,?,?)");
         ll_ps.setString(1,to_salidaProducto.getFechaSalida());
         ll_ps.setString(2,to_salidaProducto.getDepartamento());
         ll_ps.setInt(3,to_salidaProducto.getCantidadSalida());
         ll_ps.setString(4,to_salidaProducto.getCodigoProducto());
-        ll_ps.setString(5,to_salidaProducto.getResponsable());           
+        ll_ps.setString(5,to_salidaProducto.getResponsable());  
+        ll_ps.setString(6,to_salidaProducto.getPa_Precio());
         ln_r=ll_ps.executeUpdate();
         ll_ps.close();
         return ln_r;

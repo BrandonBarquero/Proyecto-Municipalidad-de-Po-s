@@ -6,8 +6,10 @@ package Servlets;
  * and open the template in the editor.
  */
 
+import Dao.BitacoraDAO;
 import Dao.LoginDAO;
 import Dao.UsuarioDAO;
+import Entidades.Bitacora;
 import Entidades.Usuario;
 import Services.Loginsv;
 import Services.UsuarioService;
@@ -24,7 +26,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author Allan
@@ -52,11 +56,29 @@ public class login extends HttpServlet {
       Usuario lo_usuario = new Usuario(la_cedula, la_contrasenaTraidaDelInput);
       HttpSession session=request.getSession();
       
+      BitacoraDAO dao = new BitacoraDAO();
       
       
+      
+      
+      Date date = new Date();
+//Caso 3: obtenerhora y fecha y salida por pantalla con formato:
+DateFormat hourdateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ");
+String fecha=hourdateFormat.format(date);
+
+      
+      
+      String action="Inicio de Sesion";
+     
+      
+      
+      
+      
+      Bitacora bitacora = new Bitacora(fecha,lo_usuariodao.selecionarNombre(la_cedula),action,action);
       switch(lo_objetoOperaciones.validarLogin(lo_usuario)){
           
       case 1:{
+          dao.insertar(bitacora);
       session.setAttribute("user",la_cedula);
       session.setAttribute("nivel","1");
       String Nombreusuario=lo_usuariodao.selecionarNombre(la_cedula);
@@ -65,6 +87,7 @@ public class login extends HttpServlet {
       break;}
       
       case 2:{ 
+           dao.insertar(bitacora);
       session.setAttribute("user2",la_cedula);
       session.setAttribute("nivel","2");
       String Nombreusuario=lo_usuariodao.selecionarNombre(la_cedula);

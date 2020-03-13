@@ -6,8 +6,10 @@ package Servlets.Eliminaciones;
  * and open the template in the editor.
  */
 
+import Dao.BitacoraDAO;
 import Dao.BodegaDAO;
 import Dao.ProductoDAO;
+import Entidades.Bitacora;
 import Services.BodegaService;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +18,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,6 +28,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -45,12 +51,52 @@ public class EliminarBodega extends HttpServlet {
       
        
          int ln_idDeBodega=Integer.parseInt(request.getParameter("Id_Bodega"));
+         String Nombre=request.getParameter("Nombre");
         
           BodegaService lo_bodegadao =new BodegaService();
             
              int ln_var=lo_bodegadao.eliminarBodega(ln_idDeBodega);
             
                
+             
+             
+              HttpSession session=request.getSession();
+              String la_Usuario2=(String) session.getAttribute("user5");
+             
+             
+             
+             
+             
+             
+               BitacoraDAO dao = new BitacoraDAO();
+      
+      
+      
+      
+      Date date = new Date();
+//Caso 3: obtenerhora y fecha y salida por pantalla con formato:
+DateFormat hourdateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ");
+String fecha=hourdateFormat.format(date);
+
+      
+      
+      String action="EliminacionBodega";
+     
+      
+      
+      
+      
+      Bitacora bitacora = new Bitacora(fecha,la_Usuario2,action,Nombre);
+             
+             
+             dao.insertar(bitacora);
+             
+             
+             
+             
+             
+             
+             
                
                 if(ln_var>=1){
                  response.sendRedirect("ListarBodegas.jsp");

@@ -17,7 +17,7 @@ public class SalidaProducto {
     private String pa_codigoProducto;
     private String pa_Responsable;
     private String pa_Precio;
-
+ 
     public SalidaProducto() {
     }
 
