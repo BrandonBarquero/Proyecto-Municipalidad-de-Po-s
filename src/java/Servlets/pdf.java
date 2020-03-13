@@ -63,15 +63,6 @@ public class pdf extends HttpServlet {
   ArrayList<Entidades.SalidaProducto> lo_producto = null;
   int saldo=0;
   
-  
-  
-        
-      
-        
-        
-        
-        
-        
         
         OutputStream out = response.getOutputStream();
         try{
@@ -90,14 +81,15 @@ public class pdf extends HttpServlet {
             documento.add(par1);
             
             
-            //Image imagenes = Image.getInstance("C:\\Users\\Allan\\Documents\\NetBeansProjects\\Proyecto-Municipalidad-de-Po-s\\web\\assets\\img\\muni.png");
-          //  imagenes.setAlignment(Element.ALIGN_CENTER);
-          // documento.add(imagenes);
+           Image imagenes = Image.getInstance("http://poasdigital.go.cr/images/logo2.png");
+           imagenes.scaleAbsolute(300f, 100f);
+           imagenes.setAlignment(Element.ALIGN_CENTER);
+           documento.add(imagenes);
             
              PdfPTable tabla = new PdfPTable(2);
             
-             PdfPCell celda1= new PdfPCell(new Paragraph("Departamentos",FontFactory.getFont("Arial", 12, Font.BOLD, BaseColor.RED)));
-            PdfPCell celda2= new PdfPCell(new Paragraph("Gasto Total en colones",FontFactory.getFont("Arial", 12, Font.BOLD, BaseColor.RED)));
+             PdfPCell celda1= new PdfPCell(new Paragraph("Departamento",FontFactory.getFont("Arial", 12, Font.BOLD, BaseColor.RED)));
+            PdfPCell celda2= new PdfPCell(new Paragraph("Gasto total en colones",FontFactory.getFont("Arial", 12, Font.BOLD, BaseColor.RED)));
             tabla.addCell(celda1);
             tabla.addCell(celda2);
             
