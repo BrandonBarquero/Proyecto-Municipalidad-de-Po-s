@@ -53,9 +53,12 @@
             <div class="row">
                 <div class="col-xs-12 lead">
                     <ol class="breadcrumb">
-                         <li><a href="Bitacora.jsp">Entradas</a></li>
-                      <li class="active">Salidas</li>
-                           <li><a href="Bitacora3.jsp">Devoluciones</a></li>
+                        <li><a href="Bitacora.jsp">Entradas</a></li>
+                        <li class="active">Salidas</li>
+                        <li><a href="Bitacora3.jsp">Devoluciones</a></li>
+                        <li><a href="Bitacora4.jsp">Acceso al sistema</a></li>
+                        <li><a href="Bitacora5.jsp">Productos Desechos</a></li>
+                        <li><a href="Bitacora6.jsp">Eliminaciones</a></li>
                     </ol>
                 </div>
             </div>
