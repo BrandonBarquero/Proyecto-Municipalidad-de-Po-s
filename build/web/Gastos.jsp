@@ -86,6 +86,17 @@ chart.render();
               <h1 class="all-tittles">SIM<small> Gastos por departamento</small></h1>
             </div>
         </div>
+         
+             <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 lead">
+                    <ol class="breadcrumb">
+                      <li class="active">Gráfica de Gastos</li>
+                      <li><a href="FECHAS2.jsp">Lista de Gastos</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
 
         <div class="container-fluid"  style="margin: 50px 0;">
             <div class="row">
@@ -104,10 +115,6 @@ chart.render();
                                 <h3 class="text-center all-tittles">Gastos por departamento</h3>
 
                                 <br>
-
-  <div class="md-form mt-0">
-  <input style="width: 25%; margin-left: 10px" class="form-control" type="text" placeholder="Buscar" aria-label="Search">
-</div>
 
 <br>
                                 <div class="table-responsive">

@@ -44,7 +44,7 @@
          
          
         <h4  style="color: #000; font-style: bold; font-size: 20px;">Fecha Inicial</h4>
-         <form action="Fechas">
+         <form action="Fechas2">
         <select style="border-color: #394a6d; border-width: 3px;" name="dia1">
   <option value="01">01</option>
   <option value="02">02</option>

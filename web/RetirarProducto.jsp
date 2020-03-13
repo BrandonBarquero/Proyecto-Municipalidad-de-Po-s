@@ -90,6 +90,7 @@
                                 <label>Responsable</label>
                             </div>
                             <div class="group-material">
+                                <input id="precio" name="Precio" type="number"  maxlength="70" class="tooltips-general material-control" required="">
                                 <input id="responsable" name="Precio" type="number" maxlength="70" class="tooltips-general material-control" required="">
                                 <label>Precio</label>
                             </div>
