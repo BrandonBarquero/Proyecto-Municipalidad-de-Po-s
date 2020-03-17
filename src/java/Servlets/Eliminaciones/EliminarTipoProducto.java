@@ -6,13 +6,17 @@ package Servlets.Eliminaciones;
  * and open the template in the editor.
  */
 
+import Dao.BitacoraDAO;
 import Dao.DepartamentoDAO;
 import Dao.TipoProductoDAO;
+import Entidades.Bitacora;
 import Services.TipoProductoService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -20,6 +24,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -43,8 +48,52 @@ public class EliminarTipoProducto extends HttpServlet {
          int ln_idTipoProducto=Integer.parseInt(request.getParameter("Id_Tipo_Producto"));
          
           TipoProductoService lo_tipoProductodao =new TipoProductoService();
+          int ln_var=lo_tipoProductodao.eliminarTipoProducto(ln_idTipoProducto);
           
-             int ln_var=lo_tipoProductodao.eliminarTipoProducto(ln_idTipoProducto);
+          String Nombre = request.getParameter("Nombre");
+          
+          
+          
+          
+          
+             
+              HttpSession session=request.getSession();
+              String la_Usuario2=(String) session.getAttribute("user5");
+             
+             
+             
+             
+             
+             
+               BitacoraDAO dao = new BitacoraDAO();
+      
+      
+      
+      
+      java.util.Date date = new java.util.Date();
+//Caso 3: obtenerhora y fecha y salida por pantalla con formato:
+DateFormat hourdateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ");
+String fecha=hourdateFormat.format(date);
+
+      
+      
+      String action="EliminacionTipoProducto";
+     
+      
+      
+      
+      
+      Bitacora bitacora = new Bitacora(fecha,la_Usuario2,action,Nombre);
+             
+             
+             dao.insertar(bitacora);
+          
+          
+          
+          
+          
+          
+             
                 if(ln_var>=1){
                 response.sendRedirect("ListarTipoProducto.jsp");
                 }else {

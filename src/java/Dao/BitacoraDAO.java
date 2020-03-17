@@ -71,7 +71,7 @@ public class BitacoraDAO {
         ArrayList<Bitacora> lo_Bitacoras = new ArrayList<Bitacora>();
         try {
             PreparedStatement ll_ps;
-            ll_ps=pl_connection.prepareStatement("select * from Bitacora where Tipo_Accion='EliminacionBodega'");
+            ll_ps=pl_connection.prepareStatement("select * from Bitacora where Tipo_Accion='EliminacionBodega' or Tipo_Accion='EliminacionUnidad' or Tipo_Accion='EliminacionTipoProducto'");
 
              ll_resultSet = ll_ps.executeQuery();
             while (ll_resultSet.next()) {

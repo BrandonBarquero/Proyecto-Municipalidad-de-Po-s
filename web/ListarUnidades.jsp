@@ -85,7 +85,7 @@
                             <td><%=lu_var.get(ln_x).getNombreUnidad()%> </td>
                             <td><%=lu_var.get(ln_x).getIdUnidad()%> </td>
                             <td> <a href="ModificarUnidades.jsp?Id_Unidad=<%=lu_var.get(ln_x).getIdUnidad()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
-                            <td> <a href="EliminarUnidad?Id_Unidad=<%=lu_var.get(ln_x).getIdUnidad()%>"><button   data-href="EliminarUnidad?Id_Unidad=<%=lu_var.get(ln_x).getIdUnidad()%>" data-placement="bottom"   class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
+                            <td> <a href="EliminarUnidad?Id_Unidad=<%=lu_var.get(ln_x).getIdUnidad()%>?Nombre=<%=lu_var.get(ln_x).getNombreUnidad()%>"><button   data-href="EliminarUnidad?Id_Unidad=<%=lu_var.get(ln_x).getIdUnidad()%>&Nombre=<%=lu_var.get(ln_x).getNombreUnidad()%>" data-placement="bottom"   class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
                         </tr>
                         <!--TR EXTRA-->                                  
                         <tr style="align-items: center" class='noSearch hide'>
