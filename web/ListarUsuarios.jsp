@@ -68,23 +68,23 @@
 
 <br>
                                 <div class="table-responsive">
-                                    <table id="datos" class="table table-hover text-center">
+                                    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                         <thead>
                                             <tr class="success">
-                                                <th class="text-center">Cédula</th>
-                                                <th class="text-center">Nombre</th>
-                                                <th class="text-center">Email</th>
-                                                <th class="text-center">Teléfono</th>
-                                                <th class="text-center">Rol</th>
+                                                <th th-sm class="text-center">Cédula</th>
+                                                <th th-sm class="text-center">Nombre</th>
+                                                <th th-sm class="text-center">Email</th>
+                                                <th th-sm class="text-center">Teléfono</th>
+                                                <th th-sm class="text-center">Rol</th>
 
                                                 <th class="text-center">Modificar Usuario</th>
                                                 <th class="text-center">Inactivar Usuario</th>
 
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody><tr>
                <%    for(int ln_x=0;ln_x<lo_ListaUsuarios.size();ln_x++){   %>
-                 <tr>
+                 
                      <td><%=lo_ListaUsuarios.get(ln_x).getCedula()%> </td>
                      <td><%=lo_ListaUsuarios.get(ln_x).getNombre()%> </td>
                      <td><%=lo_ListaUsuarios.get(ln_x).getCorreo()%> </td>
@@ -102,10 +102,7 @@
                      <% } %>
                      
                             <!--TR EXTRA-->                                  
-          <tr style="align-items: center" class='noSearch hide'>
-      <td colspan="5"></td>  
-                
-              </tr> 
+         
                  
                     
                                         </tbody>

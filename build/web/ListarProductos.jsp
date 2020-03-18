@@ -86,11 +86,11 @@
                                                  <th class="th-sm text-center" >Código del Producto</th>
                                                  <th class="th-sm text-center" >Cantidad</th>
 
-                                                 <th class="th-sm text-center" >Ver Detalles</th>
-                                                 <th class="th-sm text-center" >Modificar Producto</th>
-                                                 <th class="th-sm text-center" >Desechar Producto</th>
-                                                 <th class="th-sm text-center" >Retirar Producto</th>
-                                                 <th class="th-sm text-center" >Devolución</th>
+                                                 <th class=" text-center" >Ver Detalles</th>
+                                                 <th class=" text-center" >Modificar Producto</th>
+                                                 <th class=" text-center" >Desechar Producto</th>
+                                                 <th class=" text-center" >Retirar Producto</th>
+                                                 <th class=" text-center" >Devolución</th>
 
 
                                             </tr>
