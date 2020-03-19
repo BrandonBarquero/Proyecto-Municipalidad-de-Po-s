@@ -80,7 +80,7 @@
            <!--Fin Cuerpo Página-->
 
 
-        <jsp:include page="Footer.jsp"/>
-    </div>
+       
+     <jsp:include page="Footer.jsp"/>
 </body>
 </html>
