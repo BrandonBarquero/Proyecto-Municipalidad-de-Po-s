@@ -45,36 +45,40 @@ public class SalidaProductoBodeguero extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
       
+            PrintWriter lu_out = response.getWriter(); 
+
             String la_suma=request.getParameter("suma");
             String ln_codigoProducto=request.getParameter("codigoProducto");
             String la_resta=request.getParameter("responsable");
             String ld_date=request.getParameter("date");
             String la_departamento=request.getParameter("departamento");
             String la_nuevaCantidad=request.getParameter("cantidadRetirar");
-        String Precio=request.getParameter("Precio");
-          int ln_numero = Integer.parseInt(la_suma);
+            String la_disponible=request.getParameter("disponible");
+            String la_precio=request.getParameter("Precio");
+            String la_Suma=request.getParameter("suma");
+            if (la_Suma.equals("Valor negativo")){
+                response.sendRedirect("RetirarProductoError.jsp?codigoProducto="+ln_codigoProducto+"&disponible="+la_disponible);
+            }
+        
+            int ln_numero = Integer.parseInt(la_suma);
           
-           SalidaProducto lo_salidaProducto = new SalidaProducto(ld_date,la_departamento,ln_numero,ln_codigoProducto,la_resta,Precio);
+            Entidades.SalidaProducto lo_salidaProducto = new Entidades.SalidaProducto(ld_date,la_departamento,ln_numero,ln_codigoProducto,la_resta,la_precio);
             
-             SalidaProductoService lo_salidaProductodao =new SalidaProductoService();
-             ProductoService lo_productodao =new ProductoService();
-             int ln_var=lo_salidaProductodao.insertar(lo_salidaProducto);
-
-
-
+            SalidaProductoService lo_salidaProductodao =new SalidaProductoService();
+            ProductoService lo_productodao =new ProductoService();
              
+            int ln_var=lo_salidaProductodao.insertar(lo_salidaProducto);
+    
             String ln_codigo=request.getParameter("codigoProducto");
-            
-            
-           
-               
+
                 if(la_nuevaCantidad!=null&&ln_codigo!=null){
-                int ln_p=lo_productodao.actualizarCantidad(la_suma, ln_codigoProducto);
+                int ln_p = lo_productodao.actualizarCantidad(la_suma, ln_codigoProducto);
                  
-                response.sendRedirect("ListarProductos.jsp");
+                response.sendRedirect("ListarProductosBodeguero.jsp");
                 
                 
                 }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

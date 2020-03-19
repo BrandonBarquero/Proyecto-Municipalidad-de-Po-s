@@ -43,6 +43,7 @@
                     <li>
                         <div class="dropdown-menu-button"><i class="zmdi zmdi-case zmdi-hc-fw"></i>&nbsp;&nbsp; Productos <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
                         <ul class="list-unstyled">
+                            <li><a href="InsertarProductosBodeguero.jsp" style="color: black; font-size: 18px;"><i class="zmdi zmdi-shopping-cart-plus"></i>&nbsp;&nbsp; Insertar Productos</a></li>
                             <li><a href="ListarProductosBodeguero.jsp"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Lista Productos</a></li>
                             <li><a href="DesecharProductoBodeguero.jsp"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Lista Desechos</a></li>
                             <li><a href="ListarSalidasBodeguero.jsp"><i class="zmdi zmdi-file-text"></i>&nbsp;&nbsp; Lista Salidas</a></li>

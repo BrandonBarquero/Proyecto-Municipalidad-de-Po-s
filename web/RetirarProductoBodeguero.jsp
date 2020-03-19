@@ -9,14 +9,6 @@
 <%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 
-     <%
-              String la_Usuario2=(String) session.getAttribute("user2");
-          
-          if(la_Usuario2 == null){
-           response.sendRedirect("Error.jsp");
-          }
-           
-           %>
 <html lang="es">
 <head>
     <title>Retirar Producto</title>
@@ -24,22 +16,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <script>function cal() {
-  try {
-    var ln_a = parseInt(document.f.disponible.value),
-        ln_b = parseInt(document.f.cantidadRetirar.value);
-    if((ln_a-ln_b) >= 0){
-            document.f.suma.value = ln_a - ln_b;
-        }else
-            alert("La resta es negativa");
-    
-  } catch (e) {
-  }
-}</script>
+    <script>
+        function cal() {
+            try {
+                var ln_a = parseInt(document.retiro.disponible.value),
+                ln_b = parseInt(document.retiro.cantidadRetirar.value);
+                if((ln_a-ln_b) >= 0){
+                    document.retiro.suma.value = ln_a - ln_b;
+                }else{
+                    document.retiro.suma.value = "Valor negativo";
+                    alert("No se puede retirar más partes de los que existen disponibles.");
+                }
+            } catch (e) {
+                
+            }
+        }
+    </script>
         
+         <%
+              String la_Usuario2=(String) session.getAttribute("user2");
+          
+          if(la_Usuario2 == null){
+           response.sendRedirect("Error.jsp");
+          }
+           
+           %>
+           
         <%
+            
          int ln_id=Integer.parseInt(request.getParameter("Codigo_Producto"));
          int ln_id2=Integer.parseInt(request.getParameter("Cantidad"));
+         
          DepartamentoService lo_departamentoService = new DepartamentoService();
          ArrayList<Departamento> lu_var = lo_departamentoService.listaDepartamentos();
          %>
@@ -72,38 +79,47 @@
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                             <legend><strong>Retirar Producto</strong></legend><br>
-
-                                <div>
-                                       <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Cantidad disponible</label>
-                                    <input onchange="cal();" id="disponible" name="disponible" readonly value="<%=ln_id2%>" type="number" class="tooltips-general material-control" required="">
-                             
+                            
+                               <div>
+                                <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código de producto</label>               
+                                <input readonly="" value="<%=ln_id%>" readonly="" id="codigoProducto" name="codigoProducto" type="text" class="tooltips-general material-control" required="">
+                            </div>
+                            <br><br>
+                            
+                              <div class="group-material">
+                                <input id="responsable" name="responsable" type="text" pattern="[A-Z a-z]{1,70}" maxlength="70" class="tooltips-general material-control" required="">
+                                <label>Responsable</label>
+                            </div>
+                            <div class="group-material">
+                                <input id="precio" name="Precio" type="number"  maxlength="70" class="tooltips-general material-control" required="">
+                                <label>Precio</label>
+                            </div>
+                                
+                                  <div class="group-material">
+                                <span>Departamento</span>
+                                <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
+                                        <% for(int ln_x=0;ln_x<lu_var.size();ln_x++){ %>
+                 <option  value="<%=lu_var.get(ln_x).getNombreD()%>"> <%=lu_var.get(ln_x).getNombreD()%></option>
+                 
+                     <% } %>
+                                </select>
+ </div>
+                            <div>
+                                <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Cantidad disponible</label>
+                                <input readonly="" onchange="cal();" id="disponible" name="disponible" readonly value="<%=ln_id2%>" type="text" class="tooltips-general material-control" required="">
                             </div>
                                     
-                                    <br><br>
+                            <br><br>
 
-                                           <div class="group-material">
-                                <input onchange="cal();" id="cantidadRetirar" name="cantidadRetirar" type="number" class="tooltips-general material-control" required="">
+                            <div class="group-material">
+                                <input onchange="cal();" id="cantidadRetirar" name="cantidadRetirar" min="1" pattern="[0-9]{1,20}" type="number" class="tooltips-general material-control" required="">
                                 <label>Cantidad a retirar</label>
                             </div>
 
-                                                    <div class="group-material">
-                                <input id="suma" name="suma" type="number" class="tooltips-general material-control" required="">
-                                <label>Nueva cantidad disponible</label>
+                            <div class="group-material">
+                                <input readonly="" id="suma" name="suma" type="text" class="tooltips-general material-control" required="" readonly="">
+                                <label  style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Nueva cantidad disponible</label>
                             </div>
-
-                                                           <div>
-                             <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Código de producto</label>               
-                                <input id="codigoProducto" name="codigoProducto" readonly value="<%=ln_id%>" type="text" class="tooltips-general material-control" required="">
-
-                            </div>
-                                
-                                <br><br>
-
-                                                                    <div class="group-material">
-                                <input id="responsable" name="responsable" type="text" class="tooltips-general material-control" required="">
-                                <label>Responsable</label>
-                            </div>
-
             
                              <% Calendar ahora = Calendar.getInstance();
 int ln_anyo = ahora.get(Calendar.YEAR);
@@ -120,27 +136,11 @@ lc_sAhora += "-0" + ln_dia;
 } else {
 lc_sAhora += "-"+ln_dia;
 } %>
-                  <div>
-                        <label style=" top:-20px; font-size:17px;font-weight: 700; color:#333; font-weight: normal;">Fecha de Salida</label>
-                 <input id="date" name="date" value="<%=lc_sAhora%>" readonly type="date" class="tooltips-general material-control" required="">
-                              
-                            </div>
-                 
+                            
+                                 <input type="hidden" id="date" name="date" value="<%=lc_sAhora%>" readonly type="date" class="tooltips-general material-control" required="">
+                        
                  <br><br>
 
-          
-
-
-                            <div class="group-material">
-                                <span>Departamento</span>
-                                <select id="departamento" name="departamento" class="tooltips-general material-control" required="">
-                                     <% for(int ln_x=0;ln_x<lu_var.size();ln_x++){ %>
-                 <option  value="<%=lu_var.get(ln_x).getNombreD()%>" </option>
-                 
-                     <% } %>
-                                </select>
-                            </div>
-                       
                             <p class="text-center">
                                 <button type="submit" class="btn btn-primary retirar"><i class="zmdi zmdi-format-valign-bottom"></i> &nbsp;&nbsp; Retirar Producto</button>
                             </p>

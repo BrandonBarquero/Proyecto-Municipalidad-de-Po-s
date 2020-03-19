@@ -50,7 +50,7 @@ public class SalidaProducto extends HttpServlet {
             String la_departamento=request.getParameter("departamento");
             String la_nuevaCantidad=request.getParameter("cantidadRetirar");
             String la_disponible=request.getParameter("disponible");
-            String Precio=request.getParameter("Precio");
+            String la_precio=request.getParameter("Precio");
               String la_Suma=request.getParameter("suma");
               if (la_Suma.equals("Valor negativo")){
                 response.sendRedirect("RetirarProductoError.jsp?codigoProducto="+ln_codigoProducto+"&disponible="+la_disponible);
@@ -58,7 +58,7 @@ public class SalidaProducto extends HttpServlet {
         
           int ln_numero = Integer.parseInt(la_suma);
           
-           Entidades.SalidaProducto lo_salidaProducto = new Entidades.SalidaProducto(ld_date,la_departamento,ln_numero,ln_codigoProducto,la_resta,Precio);
+           Entidades.SalidaProducto lo_salidaProducto = new Entidades.SalidaProducto(ld_date,la_departamento,ln_numero,ln_codigoProducto,la_resta,la_precio);
             
              SalidaProductoService lo_salidaProductodao =new SalidaProductoService();
              ProductoService lo_productodao =new ProductoService();

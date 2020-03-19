@@ -42,6 +42,7 @@
 
             <div class="container-fluid">
             <ul class="nav nav-tabs nav-justified"  style="font-size: 17px;">
+                <li role="presentation"><a href="InsertarProductosBodeguero.jsp">Insertar Productos</a></li>
               <li role="presentation" ><a href="ListarProductosBodeguero.jsp">Listar Productos</a></li>
               <li role="presentation" class="active"><a href="DesecharProductoBodeguero.jsp">Listar Desechos</a></li>
               <li role="presentation"><a href="ListarSalidasBodeguero.jsp">Listar Salidas</a></li>

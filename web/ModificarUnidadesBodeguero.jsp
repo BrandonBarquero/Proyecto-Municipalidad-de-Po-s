@@ -56,7 +56,7 @@
         <div class="container-fluid">
             <div class="container-flat-form">
                 <div class="title-flat-form title-flat-blue">Modificar Unidad</div>
-                <form action="ModificarUnidadesBodegero" name="modificarr" autocomplete="off">
+                <form action="ModificarUnidadesBodeguero" name="modificarr" autocomplete="off">
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                                <div>

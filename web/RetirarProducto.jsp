@@ -46,9 +46,7 @@
                 
         DepartamentoService lo_departamentoService = new DepartamentoService();
         ArrayList<Departamento> lu_var = lo_departamentoService.listaDepartamentos();
-        
-        
-         %>
+        %>
         <jsp:include page="Header.jsp"/>
 
 
@@ -91,7 +89,6 @@
                             </div>
                             <div class="group-material">
                                 <input id="precio" name="Precio" type="number"  maxlength="70" class="tooltips-general material-control" required="">
-                                <input id="responsable" name="Precio" type="number" maxlength="70" class="tooltips-general material-control" required="">
                                 <label>Precio</label>
                             </div>
                                 
@@ -155,12 +152,6 @@ lc_sAhora += "-"+ln_dia;
                 </div>
             </form>
         </div>
-
-
-
-
-
-
 
            <!--Fin Cuerpo Página-->
 

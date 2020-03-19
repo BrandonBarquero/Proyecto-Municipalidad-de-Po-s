@@ -6,7 +6,9 @@ package Servlets;
  * and open the template in the editor.
  */
 
+import Dao.Bitacora_ProductoDAO;
 import Dao.ProductoDAO;
+import Entidades.Bitacora_Producto;
 import Services.ProductoService;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +17,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,6 +26,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -42,18 +47,37 @@ public class ActivarProductoBodeguero extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException, Exception {
              
-            int ln_codigoProductoBodeguero=Integer.parseInt(request.getParameter("Codigo_Producto"));
-       
-            ProductoService lo_productodao =new ProductoService();
+            int ln_codigoProducto=Integer.parseInt(request.getParameter("Codigo_Producto"));
+            String Codigo = request.getParameter("Codigo_Producto");
+
+            ProductoService lo_productodao = new ProductoService();
             
-            int ln_idCodigo=lo_productodao.activarProducto(ln_codigoProductoBodeguero);
+            int ln_idCodigo = lo_productodao.activarProducto(ln_codigoProducto);
+            
+            
+            
+            
+            HttpSession session=request.getSession();
+            String la_Usuario2=(String) session.getAttribute("user6");
+            Bitacora_ProductoDAO dao = new Bitacora_ProductoDAO();
+               
+            java.util.Date date = new java.util.Date();
+            //Caso 3: obtenerhora y fecha y salida por pantalla con formato:
+            DateFormat hourdateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ");
+            String fecha=hourdateFormat.format(date);
+            String Desechar= "ActivarDesecho";
+            Bitacora_Producto bitacora = new Bitacora_Producto(fecha,Desechar,la_Usuario2,Codigo,"0");
+            
+            dao.insertar(bitacora);
+            
             
             if(ln_idCodigo>=1){
                 response.sendRedirect("DesecharProductoBodeguero.jsp");
             }else{
                 out.println("<h1> Error</h1>");
-                response.sendRedirect("PaginaErrorBodeguero.jsp");
-            }  
+                response.sendRedirect("PaginaError.jsp");
+            }
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

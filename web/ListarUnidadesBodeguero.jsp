@@ -52,7 +52,7 @@
             <div class="col-xs-12 lead">
                 <ol class="breadcrumb">
                     <li class="active">Lista Unidades</li>
-                    <li><a href="InsertarBodegaBodeguero.jsp">Insertar Unidades</a></li>
+                    <li><a href="InsertarUnidadBodeguero.jsp">Insertar Unidades</a></li>
                 </ol>
             </div>
         </div>

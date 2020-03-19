@@ -78,7 +78,7 @@ String fecha=hourdateFormat.format(date);
       switch(lo_objetoOperaciones.validarLogin(lo_usuario)){
           
       case 1:{
-          dao.insertar(bitacora);
+      dao.insertar(bitacora);
       session.setAttribute("user",la_cedula);
       session.setAttribute("nivel","1");
       String Nombreusuario=lo_usuariodao.selecionarNombre(la_cedula);
@@ -87,7 +87,7 @@ String fecha=hourdateFormat.format(date);
       break;}
       
       case 2:{ 
-           dao.insertar(bitacora);
+      dao.insertar(bitacora);
       session.setAttribute("user2",la_cedula);
       session.setAttribute("nivel","2");
       String Nombreusuario=lo_usuariodao.selecionarNombre(la_cedula);

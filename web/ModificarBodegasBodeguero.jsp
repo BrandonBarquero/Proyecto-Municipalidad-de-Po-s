@@ -51,7 +51,7 @@
         <div class="container-fluid">
             <div class="container-flat-form">
                 <div class="title-flat-form title-flat-blue">Modificar Bodega</div>
-                <form action="ModificarBodegasBodegero" name="modificarr" autocomplete="off">
+                <form action="ModificarBodegasBodeguero" name="modificarr" autocomplete="off">
                     <div class="row">
                        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                                <div>
