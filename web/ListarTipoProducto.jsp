@@ -83,7 +83,7 @@
 
 
                                 <div class="table-responsive">
-                                    <table id="datos" class="table table-hover text-center">
+                                    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                         <thead>
                                             <tr class="success">
                                                 <th class="text-center">Nombre tipo de producto</th>
@@ -105,13 +105,10 @@
 
                                                 
                                                 <td> <a href="ModificarTipoProducto.jsp?Id_Tipo_Producto=<%=lo_tipoProducto.get(ln_x).getIdTipoProducto()%>"><button class="btn btn-success"><i class="zmdi zmdi-refresh"></i></button></td>
-                                                <td> <a href="EliminarTipoProducto?Id_Tipo_Producto=<%=lo_tipoProducto.get(ln_x).getIdTipoProducto()%>"><button data-href="EliminarTipoProducto?Id_Tipo_Producto=<%=lo_tipoProducto.get(ln_x).getIdTipoProducto()%>"  data-placement="bottom"    class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
+                                                <td> <a href="EliminarTipoProducto?Id_Tipo_Producto=<%=lo_tipoProducto.get(ln_x).getIdTipoProducto()%>&Nombre=<%=lo_tipoProducto.get(ln_x).getNombreTipoProducto()%>"><button data-href="EliminarTipoProducto?Id_Tipo_Producto=<%=lo_tipoProducto.get(ln_x).getIdTipoProducto()%>&Nombre=<%=lo_tipoProducto.get(ln_x).getNombreTipoProducto()%>"  data-placement="bottom"    class="btn btn-danger desechar"><i class="zmdi zmdi-delete"></i></button></td>  
                                             </tr>
                                                        <!--TR EXTRA-->                                  
-          <tr style="align-items: center" class='noSearch hide'>
-      <td colspan="5"></td>  
-                
-              </tr>           
+             
                                             <% } %>
                                         </tbody>
                                     </table>

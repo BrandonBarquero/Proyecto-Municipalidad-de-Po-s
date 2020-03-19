@@ -17,9 +17,14 @@
 <head>
     <title>Lista Productos</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+ 
 </head>
 <body>
+     
+
+    
      <%
         ProductoService lo_productoService = new ProductoService();
         ArrayList<Producto> lo_producto = lo_productoService.listaProductosActivos();
@@ -74,18 +79,18 @@
 
 <br>
                                 <div class="table-responsive">
-                                    <table id="datos" class="table table-hover text-center">
+                                    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                         <thead>
                                             <tr class="success">
-                                                <th class="text-center">Nombre</th>
-                                                <th class="text-center">Código del Producto</th>
-                                                <th class="text-center">Cantidad</th>
+                                                 <th class="th-sm text-center" >Nombre</th>
+                                                 <th class="th-sm text-center" >Código del Producto</th>
+                                                 <th class="th-sm text-center" >Cantidad</th>
 
-                                                <th class="text-center">Ver Detalles</th>
-                                                <th class="text-center">Modificar Producto</th>
-                                                <th class="text-center">Desechar Producto</th>
-                                                <th class="text-center">Retirar Producto</th>
-                                                <th class="text-center">Devolución</th>
+                                                 <th class=" text-center" >Ver Detalles</th>
+                                                 <th class=" text-center" >Modificar Producto</th>
+                                                 <th class=" text-center" >Desechar Producto</th>
+                                                 <th class=" text-center" >Retirar Producto</th>
+                                                 <th class=" text-center" >Devolución</th>
 
 
                                             </tr>
@@ -105,9 +110,7 @@
                                             </tr>
                      
           <!--TR EXTRA-->                                  
-                                            <tr style="align-items: center" class='noSearch hide'>
-                                                <td colspan="5"></td>  
-                                            </tr> 
+                                           
                                             <% }%>
                                         </tbody>
 

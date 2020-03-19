@@ -5,10 +5,15 @@
  */
 package Servlets.Eliminaciones;
 
+import Dao.BitacoraDAO;
+import Entidades.Bitacora;
 import Services.UnidadService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -16,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -40,6 +46,50 @@ public class EliminarUnidad extends HttpServlet {
         UnidadService lo_unidaddao =new UnidadService();
             
         int ln_var=lo_unidaddao.eliminarUnidad(ln_idUnidad);
+        
+        String Nombre = request.getParameter("Nombre");
+        
+        
+        
+           HttpSession session=request.getSession();
+              String la_Usuario2=(String) session.getAttribute("user5");
+             
+             
+             
+             
+             
+             
+               BitacoraDAO dao = new BitacoraDAO();
+      
+      
+      
+      
+      Date date = new Date();
+//Caso 3: obtenerhora y fecha y salida por pantalla con formato:
+DateFormat hourdateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ");
+String fecha=hourdateFormat.format(date);
+
+      
+      
+      String action="EliminacionUnidad";
+     
+      
+      
+      
+      
+      Bitacora bitacora = new Bitacora(fecha,la_Usuario2,action,Nombre);
+             
+             
+             dao.insertar(bitacora);
+             
+             
+             
+             
+        
+        
+        
+        
+        
         if(ln_var>=1){
             response.sendRedirect("ListarUnidades.jsp");
         }else {

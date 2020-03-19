@@ -72,7 +72,7 @@
                  
 
        <div class="table-responsive">
-                                    <table id="datos" class="table table-hover text-center">
+                                    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                         <thead>
                                             <tr class="success">
                                                 <th class="text-center">Departamento</th>
@@ -95,9 +95,7 @@
                                                 <td><%=la_var.get(x).getCantidadSalida()%></td>
                                             </tr>
  <!--TR EXTRA-->                                  
-                                            <tr style="align-items: center" class='noSearch hide'>
-                                                <td colspan="7"></td>  
-                                            </tr>
+                                          
 <% } %>
 
 
